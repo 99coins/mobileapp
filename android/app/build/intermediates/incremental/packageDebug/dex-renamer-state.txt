@@ -1,0 +1,4 @@
+#Sat Jul 15 14:27:36 IDT 2017
+base.0=/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_36072e37f150a90e888697a4d74acb54c78bf0bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_c8abc858cef23df11a6476c8034544bc7e424c4b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_96888c13a805fccf85f4726d869d9f1f1256c2d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_feeaa9456234669cf67da7122b758207725c23d5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_c6af430a5e6d46f963b1c4ef4af2fe5caf7fb240.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_5ff1e5cc873bb38d145aa3c1140cb4a36ce5cd94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_78c2db619eaf790dbc7eff8f63f2280bc6ebc5de.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.0.1_f4e0e5c6f271cc0b036ed64d2537dd737b53f93d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_b2d31b672c24d9c94ad2a9ed34ab049e1b100ef6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_d97fc5eb61a774bacc56c10be4f98cbb7e8475ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_4f34ff20b2468027c8402960b363d7ef195c4c7b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.0.1_0ee155950029ed54882a712402f8d397435f9df7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_e779154227eea6c0ac7ed1df7649f200124d5579.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_7ecc93d480ac4199f6ab4e2dd49d4b4253944921.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_c05d44b9b6ca6bea3d68ebd0a0a0b2cfb9867bf4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_752158741122c079b4e2a030495dfdfcd967ecc2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c5526d30278eb171f4a1325bd6b927c9057c91f4">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.46.3_17491c7db464d827d06835d1333c08655e75c8ae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_2b639500f4bd0855706ce4624afd441d62cb2e99.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_ca9210a27816d257d906f1fe0b5caee90d97b0cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.3/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_0ee30fbef2bdb6eb7854bf285226abca5babfc84.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/matanguttman/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/matanguttman/RN/NNBitcoins/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_0ec5280be9efbb8d8b4e848b16369ec4fceb52d2.jar" />
+    </item>
+
+</items>
