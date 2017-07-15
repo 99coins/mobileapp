@@ -9,4 +9,15 @@ dependencies: \
   /Users/matanguttman/RN/NNBitcoins/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
   /Users/matanguttman/RN/NNBitcoins/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
   /Users/matanguttman/RN/NNBitcoins/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
-  /Users/matanguttman/RN/NNBitcoins/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h
+  /Users/matanguttman/RN/NNBitcoins/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Fabric.framework/Modules/module.modulemap \
+  /Users/matanguttman/RN/NNBitcoins/ios/Fabric.framework/Headers/FABAttributes.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Fabric.framework/Headers/Fabric.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Modules/module.modulemap \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/ANSCompatibility.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/Answers.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/CLSStackFrame.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/CLSReport.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/CLSLogging.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/CLSAttributes.h \
+  /Users/matanguttman/RN/NNBitcoins/ios/Crashlytics.framework/Headers/Crashlytics.h

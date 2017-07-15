@@ -10,7 +10,8 @@
 		"eslint": "^3.19.0",
 		"moment": "^2.18.1",
 		"react": "16.0.0-alpha.12",
-		"react-native": "0.46.3"
+		"react-native": "0.46.3",
+		"react-native-scrollable-tab-view": "^0.6.7"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",
