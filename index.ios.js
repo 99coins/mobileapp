@@ -9,11 +9,11 @@
 // );
 
 // // Render it to the device
-// AppRegistry.registerComponent('NNBitcoins', () => App);
+// AppRegistry.registerComponent('NNCoins', () => App);
 
 
 import { AppRegistry } from 'react-native';
 
 import App from './index.js';
 
-AppRegistry.registerComponent('NNBitcoins', () => App);
+AppRegistry.registerComponent('NNCoins', () => App);
