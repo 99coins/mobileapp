@@ -235,7 +235,7 @@
 		</data>
 		<key>PlugIns/NNBitcoinsTests.xctest.dSYM/Contents/Resources/DWARF/NNBitcoinsTests</key>
 		<data>
-		S+PMAD8dZ4VPCNc+Xfpbb1WQRHY=
+		C/voDwAj6n1HfvnwmgD298h97G0=
 		</data>
 		<key>PlugIns/NNBitcoinsTests.xctest/Info.plist</key>
 		<data>
@@ -243,7 +243,7 @@
 		</data>
 		<key>PlugIns/NNBitcoinsTests.xctest/NNBitcoinsTests</key>
 		<data>
-		jF8Iv9cf2MSBOfrN3KFhWqi711s=
+		F/lgos6eCrzlEKDWY3LhVkE9BHs=
 		</data>
 		<key>PlugIns/NNBitcoinsTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
@@ -852,11 +852,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S+PMAD8dZ4VPCNc+Xfpbb1WQRHY=
+			C/voDwAj6n1HfvnwmgD298h97G0=
 			</data>
 			<key>hash2</key>
 			<data>
-			9X+8AfVrFK/sk5fCsuZeHYSpZmPgjOscQeYDb1/sGLs=
+			4GPVQkl7x6JaLxjq/DOuyXAvess4EESeXjqifzPjgOY=
 			</data>
 		</dict>
 		<key>PlugIns/NNBitcoinsTests.xctest/Info.plist</key>
@@ -874,11 +874,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jF8Iv9cf2MSBOfrN3KFhWqi711s=
+			F/lgos6eCrzlEKDWY3LhVkE9BHs=
 			</data>
 			<key>hash2</key>
 			<data>
-			LdEqBbxKaso3FayzNQYOgNfzaoPIf5IqYT3udroOMNg=
+			qNnp4hRo4rmUL8671c+0SmMnd2V0Dl78zfylX3gGQnI=
 			</data>
 		</dict>
 		<key>PlugIns/NNBitcoinsTests.xctest/_CodeSignature/CodeResources</key>
