@@ -1091,6 +1091,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
 				PRODUCT_NAME = NNCoins;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1112,6 +1113,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
 				PRODUCT_NAME = NNCoins;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
