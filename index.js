@@ -1,10 +1,10 @@
 import React from 'react';
-import moment from 'moment';
-import Header from './src/components/Header';
+//import moment from 'moment';
+import RouterComponent from './src/components/RouterComponent';
 
 // Create a component
 const App = () => (
-    <Header titleText={'TOP NEWS STORIES'} subtitleText={moment().format('MMMM Do, YYYY')} />
+    <RouterComponent />
 );
 
 export default App;
