@@ -1,10 +1,14 @@
+/* eslint-disable global-require */
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
+import Images from '@assets/images.js';
 
 import Chat from './Screens/Chat';
 import Rates from './Screens/Rates';
@@ -24,6 +28,7 @@ const RouterComponent = () => {
           key="tabbar"
           tabs={true}
           tabBarStyle={{ backgroundColor: 'rgb(39, 40, 45)' }}
+          swipeEnabled={true}
         >
              {/* Tab and it's scenes */}
              <Scene 
@@ -33,13 +38,28 @@ const RouterComponent = () => {
              component={Stories}                     
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
+             icon={() => (<Image source={Images.newsIcon} />)}
              />
 
             {/* Tab and it's scenes */}
-             <Scene key="Price" title="" icon={TabIcon} component={Rates} />
+             <Scene 
+             key="Price" 
+             title="" 
+             icon={TabIcon} 
+             component={Rates} 
+             icon={() => (<Image source={Images.priceIcon} />)}
+
+             />
     
              {/* Tab and it's scenes */}
-             <Scene key="AMA" title="" icon={TabIcon} component={Chat} />
+             <Scene 
+             key="AMA" 
+             title="" 
+             icon={TabIcon} 
+             component={Chat}
+             icon={() => (<Image source={Images.amaIcon} />)}
+ 
+             />
         </Scene>
 
     </Router>
