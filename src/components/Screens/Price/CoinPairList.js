@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, ListView } from 'react-native';
 import axios from 'axios';
+import CoidPairDetail from './CoinPairDetail';
 
 //create comonent
 class CoinPairList extends Component {
-    state = { pairs: [] };
 
     componentWillMount() {
-        console.log('componentWillMount in CoidPairlist');
 
+        console.log('componentWillMount in CoidPairlist');
+        //set initail datsource
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+            this.setState({ 
+              dataSource: ds
+        });
+
+        // fetch pairs
           axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD')
       .then(response => {
-
+        //parse response object
         const entries = Object.entries(response.data);
         console.log(entries);
 
         const result = entries.map(function(e) {
+            //create pair objects
              const pair = {};
              pair.fromSymbol = e[0];
              const toObj = e[1];
@@ -25,15 +33,32 @@ class CoinPairList extends Component {
         });
 
         console.log(result);
-
-        this.setState({ pairs: result });
+        //set updated datasource (will also trigger re-render)
+        this.setState({ 
+            dataSource: ds.cloneWithRows(result),
+        });
       });
     }
 
-    renderPairs() {
-        console.log('renderPairs in CoinPairlist');
+    renderRow(pair) {
+        console.log('renderRow in CoinPairlist');
+        return (
+            <CoidPairDetail key={pair.fromSymbol} pair={pair} />
+        );
+    }
+    renderList() {
+        console.log('renderList in CoinPairlist');
+        console.log(this.state);
+        //return this.state.pairs.map(pair => <CoidPairDetail key={pair.fromSymbol} pair={pair} />);
+        return (
+         
+            <ListView
+               dataSource={this.state.dataSource}
+               renderRow={this.renderRow}
+               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
 
-        return this.state.pairs.map(pair => <Text key={pair.fromSymbol}>{pair.fromSymbol}</Text>);
+            />
+        );
     }
 
     render() {
@@ -41,11 +66,22 @@ class CoinPairList extends Component {
 
         return (
           <View>
-            {this.renderPairs()}
+            {this.renderList()}
          </View>
      );
     }
 }
+
+const styles = StyleSheet.create({
+  /*
+   * Removed for brevity
+   */
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#8E8E8E',
+  },
+});
 
 export default CoinPairList;
 

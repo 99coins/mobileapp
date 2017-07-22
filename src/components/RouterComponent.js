@@ -48,6 +48,7 @@ const RouterComponent = () => {
              title="" 
              icon={TabIcon} 
              component={Price} 
+             navigationBarStyle={{ backgroundColor: 'white' }}
              icon={() => (<Image source={Images.priceIcon} />)}
 
              />

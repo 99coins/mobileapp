@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
 import CoinPairList from './CoinPairList';
 
 const Rates = () => {
@@ -7,4 +6,5 @@ const Rates = () => {
     <CoinPairList />
   );
 };
+
 export default Rates;
