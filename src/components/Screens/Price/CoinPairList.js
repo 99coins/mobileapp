@@ -17,9 +17,9 @@ class CoinPairList extends Component {
 
         const result = entries.map(function(e) {
              const pair = {};
-             pair.from = e[0];
+             pair.fromSymbol = e[0];
              const toObj = e[1];
-             pair.to = Object.keys(toObj)[0];
+             pair.toSymbol = Object.keys(toObj)[0];
              pair.price = toObj[Object.keys(toObj)[0]];
             return pair;
         });
@@ -33,7 +33,7 @@ class CoinPairList extends Component {
     renderPairs() {
         console.log('renderPairs in CoinPairlist');
 
-        return this.state.pairs.map(pair => <Text>{pair.from}</Text>);
+        return this.state.pairs.map(pair => <Text key={pair.fromSymbol}>{pair.fromSymbol}</Text>);
     }
 
     render() {
