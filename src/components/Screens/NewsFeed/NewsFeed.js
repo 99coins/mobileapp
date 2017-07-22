@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import moment from 'moment';
 
-const Stories = () => {
+const NewsFeed = () => {
      return (
     <View style={styles.container}>
       <Text style={styles.subtitleStyle} >{moment().format('MMMM Do, YYYY')}</Text>
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Stories;
+export default NewsFeed;

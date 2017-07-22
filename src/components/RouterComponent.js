@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 
-import React, { Component } from 'react';
+import React, { 
+  Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,9 +11,9 @@ import {
 import { Scene, Router } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 
-import Chat from './Screens/Chat';
-import Rates from './Screens/Rates';
-import Stories from './Screens/Stories';
+import AMA from './Screens/AMA/AMA';
+import Price from './Screens/Price/Price';
+import NewsFeed from './Screens/NewsFeed/NewsFeed';
 
 
 const TabIcon = ({ selected, title }) => {
@@ -35,7 +36,7 @@ const RouterComponent = () => {
              key="News" 
              title="TOP NEWS STORIES" 
              icon={TabIcon} 
-             component={Stories}                     
+             component={NewsFeed}                     
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} />)}
@@ -46,7 +47,7 @@ const RouterComponent = () => {
              key="Price" 
              title="" 
              icon={TabIcon} 
-             component={Rates} 
+             component={Price} 
              icon={() => (<Image source={Images.priceIcon} />)}
 
              />
@@ -56,7 +57,7 @@ const RouterComponent = () => {
              key="AMA" 
              title="" 
              icon={TabIcon} 
-             component={Chat}
+             component={AMA}
              icon={() => (<Image source={Images.amaIcon} />)}
  
              />
