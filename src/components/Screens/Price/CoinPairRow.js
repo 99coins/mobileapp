@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const CoinPairDetail = (props) => {
+const CoinPairRow = (props) => {
 
     //const { fromStyle, toStyle, priceStyle } = styles;
 
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CoinPairDetail;
+export default CoinPairRow;

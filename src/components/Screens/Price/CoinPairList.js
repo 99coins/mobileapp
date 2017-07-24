@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ListView } from 'react-native';
 import axios from 'axios';
-import CoidPairDetail from './CoinPairDetail';
+import CoinPairRow from './CoinPairRow';
 
 //create comonent
 class CoinPairList extends Component {
@@ -43,7 +43,7 @@ class CoinPairList extends Component {
     renderRow(pair) {
         console.log('renderRow in CoinPairlist');
         return (
-            <CoidPairDetail key={pair.fromSymbol} pair={pair} />
+            <CoinPairRow key={pair.fromSymbol} pair={pair} />
         );
     }
     renderList() {

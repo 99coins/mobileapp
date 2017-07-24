@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import moment from 'moment';
+import NewsItemsList from './NewsItemsList';
+
 
 const NewsFeed = () => {
      return (
     <View style={styles.container}>
       <Text style={styles.subtitleStyle} >{moment().format('MMMM Do, YYYY')}</Text>
-
-      <Text style={styles.welcome}>
-        Stories Screen
-      </Text>
+      <NewsItemsList />
     </View>
   );
 };

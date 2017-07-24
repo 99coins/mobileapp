@@ -52270,7 +52270,7 @@ var _Price = require(395                    ); // 395 = ./Screens/Price/Price
 
 var _Price2 = babelHelpers.interopRequireDefault(_Price);
 
-var _NewsFeed = require(397                          ); // 397 = ./Screens/NewsFeed/NewsFeed
+var _NewsFeed = require(424                          ); // 424 = ./Screens/NewsFeed/NewsFeed
 
 var _NewsFeed2 = babelHelpers.interopRequireDefault(_NewsFeed);
 
@@ -52334,10 +52334,11 @@ var RouterComponent = function RouterComponent() {
         title: '',
         icon: TabIcon,
         component: _Price2.default,
+        navigationBarStyle: { backgroundColor: 'white' },
         icon: function icon() {
           return _react2.default.createElement(_reactNative.Image, { source: _images2.default.priceIcon, __source: {
               fileName: _jsxFileName,
-              lineNumber: 51
+              lineNumber: 52
             }
           });
         },
@@ -52355,14 +52356,14 @@ var RouterComponent = function RouterComponent() {
         icon: function icon() {
           return _react2.default.createElement(_reactNative.Image, { source: _images2.default.amaIcon, __source: {
               fileName: _jsxFileName,
-              lineNumber: 61
+              lineNumber: 62
             }
           });
         },
 
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 57
         }
       })
     )
@@ -64246,8 +64247,6 @@ var _react = require(114    ); // 114 = react
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactNative = require(12            ); // 12 = react-native
-
 var _CoinPairList = require(396             ); // 396 = ./CoinPairList
 
 var _CoinPairList2 = babelHelpers.interopRequireDefault(_CoinPairList);
@@ -64256,10 +64255,11 @@ var Rates = function Rates() {
      return _react2.default.createElement(_CoinPairList2.default, {
           __source: {
                fileName: _jsxFileName,
-               lineNumber: 7
+               lineNumber: 6
           }
      });
 };
+
 exports.default = Rates;
 }, 395, null, "NNCoins/src/components/Screens/Price/Price.js");
 __d(/* NNCoins/src/components/Screens/Price/CoinPairList.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
@@ -64273,21 +64273,20 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(12            ); // 12 = react-native
 
+var _axios = require(397    ); // 397 = axios
+
+var _axios2 = babelHelpers.interopRequireDefault(_axios);
+
+var _CoinPairRow = require(423            ); // 423 = ./CoinPairRow
+
+var _CoinPairRow2 = babelHelpers.interopRequireDefault(_CoinPairRow);
+
 var CoinPairList = function (_Component) {
     babelHelpers.inherits(CoinPairList, _Component);
 
     function CoinPairList() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
         babelHelpers.classCallCheck(this, CoinPairList);
-
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = CoinPairList.__proto__ || Object.getPrototypeOf(CoinPairList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { pairs: [] }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+        return babelHelpers.possibleConstructorReturn(this, (CoinPairList.__proto__ || Object.getPrototypeOf(CoinPairList)).apply(this, arguments));
     }
 
     babelHelpers.createClass(CoinPairList, [{
@@ -64297,46 +64296,1136 @@ var CoinPairList = function (_Component) {
 
             console.log('componentWillMount in CoidPairlist');
 
-            fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD').then(function (response) {
-                return _this2.setState({ pairs: response });
+            var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                    return r1 !== r2;
+                } });
+            this.setState({
+                dataSource: ds
+            });
+
+            _axios2.default.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD').then(function (response) {
+                var entries = Object.entries(response.data);
+                console.log(entries);
+
+                var result = entries.map(function (e) {
+                    var pair = {};
+                    pair.fromSymbol = e[0];
+                    var toObj = e[1];
+                    pair.toSymbol = Object.keys(toObj)[0];
+                    pair.price = toObj[Object.keys(toObj)[0]];
+                    return pair;
+                });
+
+                console.log(result);
+
+                _this2.setState({
+                    dataSource: ds.cloneWithRows(result)
+                });
             });
         }
     }, {
-        key: 'rendePairs',
-        value: function rendePairs() {
-            return this.state.pairs.map(function (pair) {
-                return _react2.default.createElement(
-                    _reactNative.Text,
-                    {
-                        __source: {
+        key: 'renderRow',
+        value: function renderRow(pair) {
+            console.log('renderRow in CoinPairlist');
+            return _react2.default.createElement(_CoinPairRow2.default, { key: pair.fromSymbol, pair: pair, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 46
+                }
+            });
+        }
+    }, {
+        key: 'renderList',
+        value: function renderList() {
+            console.log('renderList in CoinPairlist');
+            console.log(this.state);
+
+            return _react2.default.createElement(_reactNative.ListView, {
+                dataSource: this.state.dataSource,
+                renderRow: this.renderRow,
+                renderSeparator: function renderSeparator(sectionId, rowId) {
+                    return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
+                            lineNumber: 58
                         }
-                    },
-                    pair.USD
-                );
+                    });
+                },
+
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 55
+                }
             });
         }
     }, {
         key: 'render',
         value: function render() {
+            console.log(this.state);
+
             return _react2.default.createElement(
                 _reactNative.View,
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 21
+                        lineNumber: 68
                     }
                 },
-                this.rendePairs()
+                this.renderList()
             );
         }
     }]);
     return CoinPairList;
 }(_react.Component);
 
+var styles = _reactNative.StyleSheet.create({
+    separator: {
+        flex: 1,
+        height: _reactNative.StyleSheet.hairlineWidth,
+        backgroundColor: '#8E8E8E'
+    }
+});
+
 exports.default = CoinPairList;
 }, 396, null, "NNCoins/src/components/Screens/Price/CoinPairList.js");
+__d(/* axios/index.js */function(global, require, module, exports) {module.exports = require(398          ); // 398 = ./lib/axios
+}, 397, null, "axios/index.js");
+__d(/* axios/lib/axios.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399      ); // 399 = ./utils
+var bind = require(400             ); // 400 = ./helpers/bind
+var Axios = require(402           ); // 402 = ./core/Axios
+var defaults = require(403         ); // 403 = ./defaults
+
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  utils.extend(instance, Axios.prototype, context);
+
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+var axios = createInstance(defaults);
+
+axios.Axios = Axios;
+
+axios.create = function create(instanceConfig) {
+  return createInstance(utils.merge(defaults, instanceConfig));
+};
+
+axios.Cancel = require(420              ); // 420 = ./cancel/Cancel
+axios.CancelToken = require(421                   ); // 421 = ./cancel/CancelToken
+axios.isCancel = require(417                ); // 417 = ./cancel/isCancel
+
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = require(422               ); // 422 = ./helpers/spread
+
+module.exports = axios;
+
+module.exports.default = axios;
+}, 398, null, "axios/lib/axios.js");
+__d(/* axios/lib/utils.js */function(global, require, module, exports) {'use strict';
+
+var bind = require(400             ); // 400 = ./helpers/bind
+var isBuffer = require(401        ); // 401 = is-buffer
+
+var toString = Object.prototype.toString;
+
+function isArray(val) {
+  return toString.call(val) === '[object Array]';
+}
+
+function isArrayBuffer(val) {
+  return toString.call(val) === '[object ArrayBuffer]';
+}
+
+function isFormData(val) {
+  return typeof FormData !== 'undefined' && val instanceof FormData;
+}
+
+function isArrayBufferView(val) {
+  var result;
+  if (typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView) {
+    result = ArrayBuffer.isView(val);
+  } else {
+    result = val && val.buffer && val.buffer instanceof ArrayBuffer;
+  }
+  return result;
+}
+
+function isString(val) {
+  return typeof val === 'string';
+}
+
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+function isUndefined(val) {
+  return typeof val === 'undefined';
+}
+
+function isObject(val) {
+  return val !== null && typeof val === 'object';
+}
+
+function isDate(val) {
+  return toString.call(val) === '[object Date]';
+}
+
+function isFile(val) {
+  return toString.call(val) === '[object File]';
+}
+
+function isBlob(val) {
+  return toString.call(val) === '[object Blob]';
+}
+
+function isFunction(val) {
+  return toString.call(val) === '[object Function]';
+}
+
+function isStream(val) {
+  return isObject(val) && isFunction(val.pipe);
+}
+
+function isURLSearchParams(val) {
+  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+}
+
+function trim(str) {
+  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+}
+
+function isStandardBrowserEnv() {
+  if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+    return false;
+  }
+  return typeof window !== 'undefined' && typeof document !== 'undefined';
+}
+
+function forEach(obj, fn) {
+  if (obj === null || typeof obj === 'undefined') {
+    return;
+  }
+
+  if (typeof obj !== 'object' && !isArray(obj)) {
+    obj = [obj];
+  }
+
+  if (isArray(obj)) {
+    for (var i = 0, l = obj.length; i < l; i++) {
+      fn.call(null, obj[i], i, obj);
+    }
+  } else {
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        fn.call(null, obj[key], key, obj);
+      }
+    }
+  }
+}
+
+function merge() {
+  var result = {};
+  function assignValue(val, key) {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
+      result[key] = merge(result[key], val);
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+function extend(a, b, thisArg) {
+  forEach(b, function assignValue(val, key) {
+    if (thisArg && typeof val === 'function') {
+      a[key] = bind(val, thisArg);
+    } else {
+      a[key] = val;
+    }
+  });
+  return a;
+}
+
+module.exports = {
+  isArray: isArray,
+  isArrayBuffer: isArrayBuffer,
+  isBuffer: isBuffer,
+  isFormData: isFormData,
+  isArrayBufferView: isArrayBufferView,
+  isString: isString,
+  isNumber: isNumber,
+  isObject: isObject,
+  isUndefined: isUndefined,
+  isDate: isDate,
+  isFile: isFile,
+  isBlob: isBlob,
+  isFunction: isFunction,
+  isStream: isStream,
+  isURLSearchParams: isURLSearchParams,
+  isStandardBrowserEnv: isStandardBrowserEnv,
+  forEach: forEach,
+  merge: merge,
+  extend: extend,
+  trim: trim
+};
+}, 399, null, "axios/lib/utils.js");
+__d(/* axios/lib/helpers/bind.js */function(global, require, module, exports) {'use strict';
+
+module.exports = function bind(fn, thisArg) {
+  return function wrap() {
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+    return fn.apply(thisArg, args);
+  };
+};
+}, 400, null, "axios/lib/helpers/bind.js");
+__d(/* is-buffer/index.js */function(global, require, module, exports) {/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer);
+};
+
+function isBuffer(obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj);
+}
+
+function isSlowBuffer(obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
+}
+}, 401, null, "is-buffer/index.js");
+__d(/* axios/lib/core/Axios.js */function(global, require, module, exports) {'use strict';
+
+var defaults = require(403            ); // 403 = ./../defaults
+var utils = require(399         ); // 399 = ./../utils
+var InterceptorManager = require(414                   ); // 414 = ./InterceptorManager
+var dispatchRequest = require(415                ); // 415 = ./dispatchRequest
+var isAbsoluteURL = require(418                         ); // 418 = ./../helpers/isAbsoluteURL
+var combineURLs = require(419                       ); // 419 = ./../helpers/combineURLs
+
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+Axios.prototype.request = function request(config) {
+  if (typeof config === 'string') {
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+  config.method = config.method.toLowerCase();
+
+  if (config.baseURL && !isAbsoluteURL(config.url)) {
+    config.url = combineURLs(config.baseURL, config.url);
+  }
+
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  Axios.prototype[method] = function (url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  Axios.prototype[method] = function (url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+}, 402, null, "axios/lib/core/Axios.js");
+__d(/* axios/lib/defaults.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399      ); // 399 = ./utils
+var normalizeHeaderName = require(404                            ); // 404 = ./helpers/normalizeHeaderName
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    adapter = require(405             ); // 405 = ./adapters/xhr
+  } else if (typeof process !== 'undefined') {
+    adapter = require(405              ); // 405 = ./adapters/http
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) || utils.isArrayBuffer(data) || utils.isBuffer(data) || utils.isStream(data) || utils.isFile(data) || utils.isBlob(data)) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) {}
+    }
+    return data;
+  }],
+
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+}, 403, null, "axios/lib/defaults.js");
+__d(/* axios/lib/helpers/normalizeHeaderName.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399       ); // 399 = ../utils
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+}, 404, null, "axios/lib/helpers/normalizeHeaderName.js");
+__d(/* axios/lib/adapters/xhr.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+var settle = require(406               ); // 406 = ./../core/settle
+var buildURL = require(409                    ); // 409 = ./../helpers/buildURL
+var parseHeaders = require(410                        ); // 410 = ./../helpers/parseHeaders
+var isURLSameOrigin = require(411                           ); // 411 = ./../helpers/isURLSameOrigin
+var createError = require(407                  ); // 407 = ../core/createError
+var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || require(412                ); // 412 = ./../helpers/btoa
+
+module.exports = function xhrAdapter(config) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    var requestData = config.data;
+    var requestHeaders = config.headers;
+
+    if (utils.isFormData(requestData)) {
+      delete requestHeaders['Content-Type'];
+    }
+
+    var request = new XMLHttpRequest();
+    var loadEvent = 'onreadystatechange';
+    var xDomain = false;
+
+    if (process.env.NODE_ENV !== 'test' && typeof window !== 'undefined' && window.XDomainRequest && !('withCredentials' in request) && !isURLSameOrigin(config.url)) {
+      request = new window.XDomainRequest();
+      loadEvent = 'onload';
+      xDomain = true;
+      request.onprogress = function handleProgress() {};
+      request.ontimeout = function handleTimeout() {};
+    }
+
+    if (config.auth) {
+      var username = config.auth.username || '';
+      var password = config.auth.password || '';
+      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+    }
+
+    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+
+    request.timeout = config.timeout;
+
+    request[loadEvent] = function handleLoad() {
+      if (!request || request.readyState !== 4 && !xDomain) {
+        return;
+      }
+
+      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+        return;
+      }
+
+      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+      var response = {
+        data: responseData,
+
+        status: request.status === 1223 ? 204 : request.status,
+        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+        headers: responseHeaders,
+        config: config,
+        request: request
+      };
+
+      settle(resolve, reject, response);
+
+      request = null;
+    };
+
+    request.onerror = function handleError() {
+      reject(createError('Network Error', config, null, request));
+
+      request = null;
+    };
+
+    request.ontimeout = function handleTimeout() {
+      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED', request));
+
+      request = null;
+    };
+
+    if (utils.isStandardBrowserEnv()) {
+      var cookies = require(413                   ); // 413 = ./../helpers/cookies
+
+      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
+
+      if (xsrfValue) {
+        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+      }
+    }
+
+    if ('setRequestHeader' in request) {
+      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+          delete requestHeaders[key];
+        } else {
+          request.setRequestHeader(key, val);
+        }
+      });
+    }
+
+    if (config.withCredentials) {
+      request.withCredentials = true;
+    }
+
+    if (config.responseType) {
+      try {
+        request.responseType = config.responseType;
+      } catch (e) {
+        if (config.responseType !== 'json') {
+          throw e;
+        }
+      }
+    }
+
+    if (typeof config.onDownloadProgress === 'function') {
+      request.addEventListener('progress', config.onDownloadProgress);
+    }
+
+    if (typeof config.onUploadProgress === 'function' && request.upload) {
+      request.upload.addEventListener('progress', config.onUploadProgress);
+    }
+
+    if (config.cancelToken) {
+      config.cancelToken.promise.then(function onCanceled(cancel) {
+        if (!request) {
+          return;
+        }
+
+        request.abort();
+        reject(cancel);
+
+        request = null;
+      });
+    }
+
+    if (requestData === undefined) {
+      requestData = null;
+    }
+
+    request.send(requestData);
+  });
+};
+}, 405, null, "axios/lib/adapters/xhr.js");
+__d(/* axios/lib/core/settle.js */function(global, require, module, exports) {'use strict';
+
+var createError = require(407            ); // 407 = ./createError
+
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError('Request failed with status code ' + response.status, response.config, null, response.request, response));
+  }
+};
+}, 406, null, "axios/lib/core/settle.js");
+__d(/* axios/lib/core/createError.js */function(global, require, module, exports) {'use strict';
+
+var enhanceError = require(408             ); // 408 = ./enhanceError
+
+module.exports = function createError(message, config, code, request, response) {
+  var error = new Error(message);
+  return enhanceError(error, config, code, request, response);
+};
+}, 407, null, "axios/lib/core/createError.js");
+__d(/* axios/lib/core/enhanceError.js */function(global, require, module, exports) {'use strict';
+
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+  error.request = request;
+  error.response = response;
+  return error;
+};
+}, 408, null, "axios/lib/core/enhanceError.js");
+__d(/* axios/lib/helpers/buildURL.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+
+function encode(val) {
+  return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
+}
+
+module.exports = function buildURL(url, params, paramsSerializer) {
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      }
+
+      if (!utils.isArray(val)) {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+}, 409, null, "axios/lib/helpers/buildURL.js");
+__d(/* axios/lib/helpers/parseHeaders.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) {
+    return parsed;
+  }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+    }
+  });
+
+  return parsed;
+};
+}, 410, null, "axios/lib/helpers/parseHeaders.js");
+__d(/* axios/lib/helpers/isURLSameOrigin.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+
+module.exports = utils.isStandardBrowserEnv() ? function standardBrowserEnv() {
+  var msie = /(msie|trident)/i.test(navigator.userAgent);
+  var urlParsingNode = document.createElement('a');
+  var originURL;
+
+  function resolveURL(url) {
+    var href = url;
+
+    if (msie) {
+      urlParsingNode.setAttribute('href', href);
+      href = urlParsingNode.href;
+    }
+
+    urlParsingNode.setAttribute('href', href);
+
+    return {
+      href: urlParsingNode.href,
+      protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+      host: urlParsingNode.host,
+      search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+      hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+      hostname: urlParsingNode.hostname,
+      port: urlParsingNode.port,
+      pathname: urlParsingNode.pathname.charAt(0) === '/' ? urlParsingNode.pathname : '/' + urlParsingNode.pathname
+    };
+  }
+
+  originURL = resolveURL(window.location.href);
+
+  return function isURLSameOrigin(requestURL) {
+    var parsed = utils.isString(requestURL) ? resolveURL(requestURL) : requestURL;
+    return parsed.protocol === originURL.protocol && parsed.host === originURL.host;
+  };
+}() : function nonStandardBrowserEnv() {
+  return function isURLSameOrigin() {
+    return true;
+  };
+}();
+}, 411, null, "axios/lib/helpers/isURLSameOrigin.js");
+__d(/* axios/lib/helpers/btoa.js */function(global, require, module, exports) {'use strict';
+
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+function E() {
+  this.message = 'String contains an invalid character';
+}
+E.prototype = new Error();
+E.prototype.code = 5;
+E.prototype.name = 'InvalidCharacterError';
+
+function btoa(input) {
+  var str = String(input);
+  var output = '';
+  for (var block, charCode, idx = 0, map = chars; str.charAt(idx | 0) || (map = '=', idx % 1); output += map.charAt(63 & block >> 8 - idx % 1 * 8)) {
+    charCode = str.charCodeAt(idx += 3 / 4);
+    if (charCode > 0xFF) {
+      throw new E();
+    }
+    block = block << 8 | charCode;
+  }
+  return output;
+}
+
+module.exports = btoa;
+}, 412, null, "axios/lib/helpers/btoa.js");
+__d(/* axios/lib/helpers/cookies.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+
+module.exports = utils.isStandardBrowserEnv() ? function standardBrowserEnv() {
+  return {
+    write: function write(name, value, expires, path, domain, secure) {
+      var cookie = [];
+      cookie.push(name + '=' + encodeURIComponent(value));
+
+      if (utils.isNumber(expires)) {
+        cookie.push('expires=' + new Date(expires).toGMTString());
+      }
+
+      if (utils.isString(path)) {
+        cookie.push('path=' + path);
+      }
+
+      if (utils.isString(domain)) {
+        cookie.push('domain=' + domain);
+      }
+
+      if (secure === true) {
+        cookie.push('secure');
+      }
+
+      document.cookie = cookie.join('; ');
+    },
+
+    read: function read(name) {
+      var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+      return match ? decodeURIComponent(match[3]) : null;
+    },
+
+    remove: function remove(name) {
+      this.write(name, '', Date.now() - 86400000);
+    }
+  };
+}() : function nonStandardBrowserEnv() {
+  return {
+    write: function write() {},
+    read: function read() {
+      return null;
+    },
+    remove: function remove() {}
+  };
+}();
+}, 413, null, "axios/lib/helpers/cookies.js");
+__d(/* axios/lib/core/InterceptorManager.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+}, 414, null, "axios/lib/core/InterceptorManager.js");
+__d(/* axios/lib/core/dispatchRequest.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+var transformData = require(416              ); // 416 = ./transformData
+var isCancel = require(417                 ); // 417 = ../cancel/isCancel
+var defaults = require(403          ); // 403 = ../defaults
+
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  config.headers = config.headers || {};
+
+  config.data = transformData(config.data, config.headers, config.transformRequest);
+
+  config.headers = utils.merge(config.headers.common || {}, config.headers[config.method] || {}, config.headers || {});
+
+  utils.forEach(['delete', 'get', 'head', 'post', 'put', 'patch', 'common'], function cleanHeaderConfig(method) {
+    delete config.headers[method];
+  });
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    response.data = transformData(response.data, response.headers, config.transformResponse);
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      if (reason && reason.response) {
+        reason.response.data = transformData(reason.response.data, reason.response.headers, config.transformResponse);
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+}, 415, null, "axios/lib/core/dispatchRequest.js");
+__d(/* axios/lib/core/transformData.js */function(global, require, module, exports) {'use strict';
+
+var utils = require(399         ); // 399 = ./../utils
+
+module.exports = function transformData(data, headers, fns) {
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+}, 416, null, "axios/lib/core/transformData.js");
+__d(/* axios/lib/cancel/isCancel.js */function(global, require, module, exports) {'use strict';
+
+module.exports = function isCancel(value) {
+  return !!(value && value.__CANCEL__);
+};
+}, 417, null, "axios/lib/cancel/isCancel.js");
+__d(/* axios/lib/helpers/isAbsoluteURL.js */function(global, require, module, exports) {'use strict';
+
+module.exports = function isAbsoluteURL(url) {
+  return (/^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
+  );
+};
+}, 418, null, "axios/lib/helpers/isAbsoluteURL.js");
+__d(/* axios/lib/helpers/combineURLs.js */function(global, require, module, exports) {'use strict';
+
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL;
+};
+}, 419, null, "axios/lib/helpers/combineURLs.js");
+__d(/* axios/lib/cancel/Cancel.js */function(global, require, module, exports) {'use strict';
+
+function Cancel(message) {
+  this.message = message;
+}
+
+Cancel.prototype.toString = function toString() {
+  return 'Cancel' + (this.message ? ': ' + this.message : '');
+};
+
+Cancel.prototype.__CANCEL__ = true;
+
+module.exports = Cancel;
+}, 420, null, "axios/lib/cancel/Cancel.js");
+__d(/* axios/lib/cancel/CancelToken.js */function(global, require, module, exports) {'use strict';
+
+var Cancel = require(420       ); // 420 = ./Cancel
+
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+}, 421, null, "axios/lib/cancel/CancelToken.js");
+__d(/* axios/lib/helpers/spread.js */function(global, require, module, exports) {'use strict';
+
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+}, 422, null, "axios/lib/helpers/spread.js");
+__d(/* NNCoins/src/components/Screens/Price/CoinPairRow.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/Users/matanguttman/RN/NNBitcoins/src/components/Screens/Price/CoinPairRow.js';
+
+var _react = require(114    ); // 114 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var CoinPairRow = function CoinPairRow(props) {
+
+    return _react2.default.createElement(
+        _reactNative.View,
+        { style: styles.container, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 9
+            }
+        },
+        _react2.default.createElement(
+            _reactNative.View,
+            { style: styles.pairContainer, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 10
+                }
+            },
+            _react2.default.createElement(
+                _reactNative.Text,
+                { style: styles.fromStyle, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 11
+                    }
+                },
+                props.pair.fromSymbol
+            ),
+            _react2.default.createElement(
+                _reactNative.Text,
+                { style: styles.toStyle, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 12
+                    }
+                },
+                props.pair.toSymbol
+            )
+        ),
+        _react2.default.createElement(
+            _reactNative.View,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 14
+                }
+            },
+            _react2.default.createElement(
+                _reactNative.Text,
+                { style: styles.priceStyle, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 15
+                    }
+                },
+                '$',
+                props.pair.price
+            )
+        )
+    );
+};
+
+var styles = _reactNative.StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'white'
+
+    },
+    pairContainer: {
+        flex: 0.6
+    },
+    fromStyle: {
+        fontSize: 20,
+        paddingLeft: 16,
+        paddingTop: 16
+    },
+    toStyle: {
+        fontSize: 16,
+        color: '#71737C',
+        paddingLeft: 16,
+        paddingBottom: 16
+    },
+    priceStyle: {
+        fontSize: 20,
+        paddingRight: 16
+    }
+});
+
+exports.default = CoinPairRow;
+}, 423, null, "NNCoins/src/components/Screens/Price/CoinPairRow.js");
 __d(/* NNCoins/src/components/Screens/NewsFeed/NewsFeed.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -64348,36 +65437,37 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(12            ); // 12 = react-native
 
-var _moment = require(398     ); // 398 = moment
+var _moment = require(425     ); // 425 = moment
 
 var _moment2 = babelHelpers.interopRequireDefault(_moment);
+
+var _NewsItemsList = require(426              ); // 426 = ./NewsItemsList
+
+var _NewsItemsList2 = babelHelpers.interopRequireDefault(_NewsItemsList);
 
 var NewsFeed = function NewsFeed() {
   return _react2.default.createElement(
     _reactNative.View,
     { style: styles.container, __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 9
       }
     },
     _react2.default.createElement(
       _reactNative.Text,
       { style: styles.subtitleStyle, __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 10
         }
       },
       (0, _moment2.default)().format('MMMM Do, YYYY')
     ),
-    _react2.default.createElement(
-      _reactNative.Text,
-      { style: styles.welcome, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      },
-      'Stories Screen'
-    )
+    _react2.default.createElement(_NewsItemsList2.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      }
+    })
   );
 };
 
@@ -64403,7 +65493,7 @@ var styles = _reactNative.StyleSheet.create({
 });
 
 exports.default = NewsFeed;
-}, 397, null, "NNCoins/src/components/Screens/NewsFeed/NewsFeed.js");
+}, 424, null, "NNCoins/src/components/Screens/NewsFeed/NewsFeed.js");
 __d(/* moment/moment.js */function(global, require, module, exports) {
 
 ;(function (global, factory) {
@@ -68328,7 +69418,329 @@ __d(/* moment/moment.js */function(global, require, module, exports) {
 
     return hooks;
 });
-}, 398, null, "moment/moment.js");
+}, 425, null, "moment/moment.js");
+__d(/* NNCoins/src/components/Screens/NewsFeed/NewsItemsList.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/Users/matanguttman/RN/NNBitcoins/src/components/Screens/NewsFeed/NewsItemsList.js';
+
+var _react = require(114    ); // 114 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var _axios = require(397    ); // 397 = axios
+
+var _axios2 = babelHelpers.interopRequireDefault(_axios);
+
+var _NewsItemRow = require(427            ); // 427 = ./NewsItemRow
+
+var _NewsItemRow2 = babelHelpers.interopRequireDefault(_NewsItemRow);
+
+var NewsItemList = function (_Component) {
+    babelHelpers.inherits(NewsItemList, _Component);
+
+    function NewsItemList() {
+        babelHelpers.classCallCheck(this, NewsItemList);
+        return babelHelpers.possibleConstructorReturn(this, (NewsItemList.__proto__ || Object.getPrototypeOf(NewsItemList)).apply(this, arguments));
+    }
+
+    babelHelpers.createClass(NewsItemList, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var _this2 = this;
+
+            console.log('componentWillMount in CoidPairlist');
+
+            var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                    return r1 !== r2;
+                } });
+            this.setState({
+                dataSource: ds
+            });
+
+            (0, _axios2.default)({
+                method: 'get',
+                url: 'https://www.cryptocompare.com/api/external/newsletter/',
+                responseType: 'text'
+            }).then(function (response) {
+                console.log(response.data);
+
+                var XMLParser = require(428               ); // 428 = react-xml-parser
+                var xml = new XMLParser().parseFromString(response.data);
+                console.log(xml);
+                var items = xml.getElementsByTagName('Item');
+                console.log(items);
+
+                _this2.setState({
+                    dataSource: ds.cloneWithRows(response.data)
+                });
+            });
+        }
+    }, {
+        key: 'renderRow',
+        value: function renderRow(item) {
+            console.log('renderRow in NewsItemList');
+            return _react2.default.createElement(_NewsItemRow2.default, { key: item.title, item: item, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 62
+                }
+            });
+        }
+    }, {
+        key: 'renderList',
+        value: function renderList() {
+            console.log('renderList in NewsItemList');
+            console.log(this.state);
+
+            return _react2.default.createElement(_reactNative.ListView, {
+                dataSource: this.state.dataSource,
+                renderRow: this.renderRow,
+                renderSeparator: function renderSeparator(sectionId, rowId) {
+                    return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 74
+                        }
+                    });
+                },
+
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 71
+                }
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            console.log(this.state);
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 84
+                    }
+                },
+                this.renderList()
+            );
+        }
+    }]);
+    return NewsItemList;
+}(_react.Component);
+
+var styles = _reactNative.StyleSheet.create({
+    separator: {
+        flex: 1,
+        height: _reactNative.StyleSheet.hairlineWidth,
+        backgroundColor: '#8E8E8E'
+    }
+});
+
+exports.default = NewsItemList;
+}, 426, null, "NNCoins/src/components/Screens/NewsFeed/NewsItemsList.js");
+__d(/* NNCoins/src/components/Screens/NewsFeed/NewsItemRow.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/Users/matanguttman/RN/NNBitcoins/src/components/Screens/NewsFeed/NewsItemRow.js';
+
+var _react = require(114    ); // 114 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var NewsItemRow = function NewsItemRow(props) {
+
+  return _react2.default.createElement(
+    _reactNative.View,
+    { style: styles.container, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    },
+    _react2.default.createElement(
+      _reactNative.View,
+      { style: styles.pairContainer, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.Text,
+        { style: styles.fromStyle, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 11
+          }
+        },
+        props.item.title
+      )
+    )
+  );
+};
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white'
+
+  },
+  pairContainer: {
+    flex: 0.6
+  },
+  fromStyle: {
+    fontSize: 20,
+    paddingLeft: 16,
+    paddingTop: 16
+  },
+  toStyle: {
+    fontSize: 16,
+    color: '#71737C',
+    paddingLeft: 16,
+    paddingBottom: 16
+  },
+  priceStyle: {
+    fontSize: 20,
+    paddingRight: 16
+  }
+});
+
+exports.default = NewsItemRow;
+}, 427, null, "NNCoins/src/components/Screens/NewsFeed/NewsItemRow.js");
+__d(/* react-xml-parser/xmlParser.js */function(global, require, module, exports) {function XMLParser() {
+    function _parseFromString(xmlText) {
+        xmlText = xmlText.replace(/\s{2,}/g, '').replace(/\\t\\n\\r/g, '').replace(/>/g, '>\n');
+        var tags = xmlText.split('\n');
+        var xml = [];
+
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i].indexOf('?xml') < 0) {
+                if (tags[i].indexOf('<') == 0 && tags[i].indexOf('CDATA') < 0) {
+                    xml.push(parseTag(tags[i]));
+                } else {
+                    xml[xml.length - 1].value = parseValue(tags[i]);
+                }
+            }
+        }
+
+        return convertTagsArrayToTree(xml)[0];
+    }
+
+    function parseTag(tagText, parent) {
+        tagText = tagText.replace('<', '').replace('>', '').split(' ');
+
+        var tag = {
+            name: tagText[0],
+            attributes: {},
+            children: [],
+            value: '',
+            getElementsByTagName: function getElementsByTagName(tagName) {
+                var matches = [];
+
+                if (tagName == '*' || this.name.toLowerCase() == tagName.toLowerCase()) {
+                    matches.push(this);
+                }
+
+                for (var i = 0; i < this.children.length; i++) {
+                    matches = matches.concat(this.children[i].getElementsByTagName(tagName));
+                }
+
+                return matches;
+            }
+        };
+
+        for (var i = 1; i < tagText.length; i++) {
+            var attribute = tagText[i].split('=');
+
+            tag.attributes[attribute[0]] = attribute[1].replace(/"/g, '').replace(/'/g, '').trim();
+        }
+
+        return tag;
+    }
+
+    function parseValue(tagValue) {
+        if (tagValue.indexOf('CDATA') < 0) {
+            return tagValue.trim();
+        }
+
+        return tagValue.substring(tagValue.lastIndexOf('[') + 1, tagValue.indexOf(']'));
+    }
+
+    function convertTagsArrayToTree(xml) {
+        var xmlTree = [];
+
+        if (xml.length == 0) {
+            return xmlTree;
+        }
+
+        var tag = xml.shift();
+
+        if (tag.value.indexOf('</') > -1) {
+            tag.value = tag.value.substring(0, tag.value.indexOf('</'));
+            xmlTree.push(tag);
+            xmlTree = xmlTree.concat(convertTagsArrayToTree(xml));
+
+            return xmlTree;
+        }
+
+        if (tag.name.indexOf('/') == 0) {
+            return xmlTree;
+        }
+
+        xmlTree.push(tag);
+        tag.children = convertTagsArrayToTree(xml);
+        xmlTree = xmlTree.concat(convertTagsArrayToTree(xml));
+
+        return xmlTree;
+    }
+
+    function _toString(xml) {
+        var xmlText = convertTagToText(xml);
+
+        if (xml.children.length > 0) {
+            for (var i = 0; i < xml.children.length; i++) {
+                xmlText += _toString(xml.children[i]);
+            }
+
+            xmlText += '</' + xml.name + '>';
+        }
+
+        return xmlText;
+    }
+
+    function convertTagToText(tag) {
+        var tagText = '<' + tag.name;
+        var attributesText = [];
+
+        for (var attribute in tag.attributes) {
+            tagText += ' ' + attribute + '="' + tag.attributes[attribute] + '"';
+        }
+
+        if (tag.value.length > 0) {
+            tagText += '>' + tag.value + '</' + tag.name + '>';
+        } else {
+            tagText += '>';
+        }
+
+        return tagText;
+    }
+
+    return {
+        parseFromString: function parseFromString(xmlText) {
+            return _parseFromString(xmlText);
+        },
+        toString: function toString(xml) {
+            return _toString(xml);
+        }
+    };
+}
+
+module.exports = XMLParser;
+}, 428, null, "react-xml-parser/xmlParser.js");
 ;require(38);
 ;require(0);
 //# sourceMappingURL=index.ios.map
