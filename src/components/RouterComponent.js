@@ -50,7 +50,6 @@ const RouterComponent = () => {
              component={Price} 
              navigationBarStyle={{ backgroundColor: 'white' }}
              icon={() => (<Image source={Images.priceIcon} />)}
-
              />
     
              {/* Tab and it's scenes */}

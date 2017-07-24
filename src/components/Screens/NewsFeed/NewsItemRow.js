@@ -1,18 +1,27 @@
-import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, Image, TouchableHighlight, Linking } from 'react-native';
 import Images from '@assets/images.js';
 
-const NewsItemRow = (props) => {
+class NewsItemRow extends Component {
 
+  openUrl = (url) => {
+    console.log(url);
+    Linking.openURL(url).catch(err => console.error('An error occurred', err));
+  }
+
+    render() {
     return (
-        <View style={styles.container}>
-             <Text style={styles.titleStyle}>{props.item.title}</Text>
+        <TouchableHighlight onPress={() => this.openUrl(this.props.item.link)}>
+            <View style={styles.container}>
+             <Text style={styles.titleStyle}>{this.props.item.title}</Text>
              <View style={styles.imageStyle}>
                 <Image source={Images.chevronIcon} />
              </View>
-        </View>
+            </View>
+        </TouchableHighlight>
     );
-};
+    }
+}
 
 //styling
 
