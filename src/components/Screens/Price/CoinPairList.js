@@ -65,7 +65,7 @@ class CoinPairList extends Component {
         console.log(this.state);
 
         return (
-          <View>
+          <View style={{ flex: 1 }} >
             {this.renderList()}
          </View>
      );

@@ -1,10 +1,20 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import CoinPairList from './CoinPairList';
 
 const Rates = () => {
      return (
-    <CoinPairList />
+    <View style={styles.container}>
+     <CoinPairList />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff'
+  }
+});
 
 export default Rates;
