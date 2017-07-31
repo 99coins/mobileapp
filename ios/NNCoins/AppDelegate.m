@@ -14,12 +14,17 @@
 
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <Smooch/Smooch.h>
+
 
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  [Smooch initWithSettings:
+   [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"]];
   
   [Fabric with:@[[Crashlytics class]]];
 

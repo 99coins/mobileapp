@@ -16,6 +16,7 @@
 		"react-native-button": "^2.1.0",
 		"react-native-router-flux": "^4.0.0-beta.11",
 		"react-native-scrollable-tab-view": "^0.6.7",
+		"react-native-smooch": "^0.2.2",
 		"timers": "^0.1.1"
 	},
 	"devDependencies": {
