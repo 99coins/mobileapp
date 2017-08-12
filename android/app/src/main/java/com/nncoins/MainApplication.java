@@ -6,10 +6,15 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+
 import com.facebook.soloader.SoLoader;
+import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 
 import java.util.Arrays;
 import java.util.List;
+
+import io.smooch.core.Smooch;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -18,11 +23,11 @@ public class MainApplication extends Application implements ReactApplication {
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
     }
-
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+              new MainReactPackage(),
+              new ReactNativeSmoochPackage()
       );
     }
   };
@@ -36,5 +41,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    Smooch.init(this, "7jaa5xt3vv4glultcdus28bnr");
   }
 }
