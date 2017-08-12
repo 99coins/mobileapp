@@ -8,8 +8,9 @@ import {
   View,
   Image
 } from 'react-native';
-import { Scene, Router } from 'react-native-router-flux';
+import { Scene, Router, TabView } from 'react-native-router-flux';
 import Images from '@assets/images.js';
+
 
 import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
@@ -22,7 +23,15 @@ const TabIcon = ({ selected, title }) => {
   );
 };
 
-const RouterComponent = () => {
+class RouterComponent extends Component {
+    
+  openChat = () => {
+   console.log('open chat');
+   const Smooch = require('react-native-smooch');
+   Smooch.show();
+  };
+
+  render() {
     return (
      <Router>
         <Scene
@@ -59,13 +68,14 @@ const RouterComponent = () => {
              icon={TabIcon} 
              component={AMA}
              icon={() => (<Image source={Images.amaIcon} />)}
- 
+             onEnter={() => this.openChat()}
              />
         </Scene>
 
     </Router>
     );
-};
+  }
+}
 
 // const styles = StyleSheet.create({
 //   container: {

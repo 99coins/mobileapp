@@ -1,28 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-const Chat = () => {
-     return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>
-        Chat Screen
-      </Text>
-    </View>
-  );
-};
+class Chat extends Component {
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-  },
-});
+  openChat = () => {
+   console.log('open chat');
+   const Smooch = require('react-native-smooch');
+   Smooch.show();
+  };
+
+    componentWillMount() {
+
+        console.log('componentWillMount in Chat');
+    }
+
+    render() {
+        console.log(this.state);
+        
+        return (
+        <View>
+        </View>
+        );
+    }
+}
 
 export default Chat;
