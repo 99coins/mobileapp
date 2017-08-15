@@ -29,6 +29,8 @@ class RouterComponent extends Component {
    console.log('open chat');
    const Smooch = require('react-native-smooch');
    Smooch.show();
+
+
   };
 
   render() {

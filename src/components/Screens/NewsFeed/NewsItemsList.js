@@ -31,7 +31,7 @@ class NewsItemList extends Component {
         console.log(items);
 
         this.setState({ 
-            dataSource: ds.cloneWithRows(items),
+            dataSource: ds.cloneWithRows(items.slice(0,5)),
         });
       });
     }
