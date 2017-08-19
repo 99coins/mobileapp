@@ -1,28 +1,47 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ListView } from 'react-native';
+import { Text, View, StyleSheet, ListView, RefreshControl } from 'react-native';
 import axios from 'axios';
 import NewsItemRow from './NewsItemRow';
 
+let _isMounted = false;
+
 //create comonente
-class NewsItemList extends Component {
-
+class NewsItemList extends Component {    
     componentWillMount() {
+        console.log('componentWillMount in NewsItemlist');
+        _isMounted = true;
+        console.log(_isMounted);
 
-        console.log('componentWillMount in CoidPairlist');
-        //set initail datsource
+         //set initail datsource
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
             this.setState({ 
-              dataSource: ds
+              dataSource: ds,
+              refreshing: false
         });
-
-        // fetch stories
+        this.fetchStories();
+    }
+    componentWillUnmount() {
+        console.log('componentWillUnmount in NewsItemlist');
+         _isMounted = false;
+    }
+    onRefresh() {
+        this.setState({ refreshing: true });
+        this.fetchStories();
+    }
+    fetchStories = () => {
+         // fetch stories
         axios({
               method: 'get',
               url: 'https://www.cryptocompare.com/api/external/newsletter/',
               responseType: 'text'
         })
-       .then(response => {
-        //parse response object
+       .then(response => { 
+            console.log(_isMounted);
+           this.parseResponse(response);
+      });
+    }
+    parseResponse = (response) => {
+       //parse response object
         console.log(response.data);
 
         const fastXmlParser = require('fast-xml-parser');
@@ -30,10 +49,15 @@ class NewsItemList extends Component {
         const items = jsonObj.rss.channel.item;
         console.log(items);
 
+        const ds = this.state.dataSource;
+        console.log(_isMounted);
+        if (_isMounted === true) {
+     
+        } 
         this.setState({ 
-            dataSource: ds.cloneWithRows(items.slice(0,5)),
-        });
-      });
+              refreshing: false,
+              dataSource: ds.cloneWithRows(items.slice(0, 5)),
+         });
     }
 
     renderRow(item) {
@@ -49,6 +73,11 @@ class NewsItemList extends Component {
         return (
          
             <ListView
+             refreshControl={
+                     <RefreshControl
+                         refreshing={this.state.refreshing}
+                          onRefresh={this.onRefresh.bind(this)}
+                     />}
                dataSource={this.state.dataSource}
                renderRow={this.renderRow}
                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -67,7 +96,6 @@ class NewsItemList extends Component {
      );
     }
 }
-
 const styles = StyleSheet.create({
 
   separator: {

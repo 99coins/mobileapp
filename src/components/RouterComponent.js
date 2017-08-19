@@ -8,7 +8,7 @@ import {
   View,
   Image
 } from 'react-native';
-import { Scene, Router, TabView } from 'react-native-router-flux';
+import { Scene, Router, TabView, Actions } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 
 
@@ -24,14 +24,49 @@ const TabIcon = ({ selected, title }) => {
 };
 
 class RouterComponent extends Component {
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     selected: 'News',
+  //   };
+  //   console.log(this.state);
+  // }
+
+  onEnterNews = () => {
+    console.log('enter news');
+     this.setState({ selected: 'News' });
+     console.log(this.state);
+  }
+
+  onEnterPrices = () => {
+     console.log('enter prices');
+      this.setState({ selected: 'Price' });
+      console.log(this.state);
+  }
+
+  onEnterChat = () => {
+    this.openChat();
+    setTimeout(() => this.openLastSeletedTab(),
+    1000);
+  }
+  openLastSeletedTab = () => {
+    const selectedTab = this.state.selected;
+    if (selectedTab === 'News') {
+      console.log('selected news');
+      Actions.News();
+    } else {
+     console.log('selected price');
+
+      Actions.Price();
+    }
+  }
     
   openChat = () => {
    console.log('open chat');
    const Smooch = require('react-native-smooch');
    Smooch.show();
-
-
-  };
+  }
 
   render() {
     return (
@@ -51,6 +86,7 @@ class RouterComponent extends Component {
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} />)}
+             onEnter={() => this.onEnterNews()}
              />
 
             {/* Tab and it's scenes */}
@@ -61,6 +97,7 @@ class RouterComponent extends Component {
              component={Price} 
              navigationBarStyle={{ backgroundColor: 'white' }}
              icon={() => (<Image source={Images.priceIcon} />)}
+             onEnter={() => this.onEnterPrices()}
              />
     
              {/* Tab and it's scenes */}
@@ -70,7 +107,7 @@ class RouterComponent extends Component {
              icon={TabIcon} 
              component={AMA}
              icon={() => (<Image source={Images.amaIcon} />)}
-             onEnter={() => this.openChat()}
+             onEnter={() => this.onEnterChat()}
              />
         </Scene>
 

@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ListView } from 'react-native';
+import { Text, View, StyleSheet, ListView, RefreshControl } from 'react-native';
 import axios from 'axios';
 import CoinPairRow from './CoinPairRow';
 
 //create comonent
 class CoinPairList extends Component {
 
-    componentWillMount() {
 
-        console.log('componentWillMount in CoidPairlist');
-        //set initail datsource
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       refreshing: false,
+//     };
+//   }
+
+    componentWillMount() {
+        console.log('componentWillMount in CoinPairlist');
+            //set initail datsource
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
             this.setState({ 
-              dataSource: ds
+              dataSource: ds,
+              refreshing: false 
         });
+        //this.setState({ refreshing: false });
+        this.fetchPairs();  
+    }
 
+    onRefresh() {
+        this.setState({ refreshing: true });
+        this.fetchPairs();
+    }
+
+    fetchPairs() {
         // fetch pairs
-          axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD')
+        axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD')
       .then(response => {
         //parse response object
         const entries = Object.entries(response.data);
@@ -34,12 +51,13 @@ class CoinPairList extends Component {
 
         console.log(result);
         //set updated datasource (will also trigger re-render)
+        const ds = this.state.dataSource;
         this.setState({ 
+            refreshing: false,
             dataSource: ds.cloneWithRows(result),
         });
       });
     }
-
     renderRow(pair) {
         console.log('renderRow in CoinPairlist');
         return (
@@ -53,6 +71,12 @@ class CoinPairList extends Component {
         return (
          
             <ListView
+               refreshControl={
+                <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this.onRefresh.bind(this)}
+                />
+        }
                dataSource={this.state.dataSource}
                renderRow={this.renderRow}
                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
