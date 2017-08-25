@@ -47,7 +47,7 @@ class NewsItemList extends Component {
         if (this.refs.newsList) {
             this.setState({ 
               refreshing: false,
-              dataSource: ds.cloneWithRows(items.slice(0, 5)),
+              dataSource: ds.cloneWithRows(items.slice(0, 20)),
             });
         } else {
             console.log('un mounted');

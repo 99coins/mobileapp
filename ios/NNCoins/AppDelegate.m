@@ -27,7 +27,7 @@
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
   SKTSettings* settings = [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"];
-  settings.conversationAccentColor = [UIColor redColor];
+  settings.conversationAccentColor = [UIColor colorWithRed:167/255.0 green:0/255.0 blue:26/255.0 alpha:1.0];
   settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
   
   [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:167/255.0 green:0/255.0 blue:26/255.0 alpha:1.0]];

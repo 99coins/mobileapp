@@ -42,11 +42,14 @@ const styles = StyleSheet.create({
 
   },
   titleStyle: {
+   flex: 0.92,
    fontSize: 18,
-   paddingLeft: 16
+   paddingLeft: 16,
+   paddingRight: 10
+
   },
   imageStyle: {
-   paddingRight: 16
+   flex: 0.08,
   },
 });
 

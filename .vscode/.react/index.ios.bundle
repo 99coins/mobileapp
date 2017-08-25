@@ -69610,7 +69610,7 @@ var NewsItemList = function (_Component) {
             if (_this.refs.newsList) {
                 _this.setState({
                     refreshing: false,
-                    dataSource: ds.cloneWithRows(items.slice(0, 5))
+                    dataSource: ds.cloneWithRows(items.slice(0, 20))
                 });
             } else {
                 console.log('un mounted');
@@ -69816,11 +69816,14 @@ var styles = _reactNative.StyleSheet.create({
 
   },
   titleStyle: {
+    flex: 0.92,
     fontSize: 18,
-    paddingLeft: 16
+    paddingLeft: 16,
+    paddingRight: 10
+
   },
   imageStyle: {
-    paddingRight: 16
+    flex: 0.08
   }
 });
 
