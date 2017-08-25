@@ -92,10 +92,11 @@ class RouterComponent extends Component {
             {/* Tab and it's scenes */}
              <Scene 
              key="Price" 
-             title="Latest Prices" 
+             title="LATEST PRICES" 
              icon={TabIcon} 
              component={Price} 
-             navigationBarStyle={{ backgroundColor: 'white' }}
+             navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
+             titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.priceIcon} />)}
              onEnter={() => this.onEnterPrices()}
              />

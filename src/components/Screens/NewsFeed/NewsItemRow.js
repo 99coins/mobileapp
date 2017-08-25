@@ -10,10 +10,16 @@ class NewsItemRow extends Component {
   }
 
     render() {
+      
+     console.log('render in NewsItemRow');
+    let desc = this.props.item.description.replace('<p><strong>', '');
+    desc = desc.replace('</strong></p>', '');
+    console.log(desc);
+
     return (
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.link)}>
             <View style={styles.container}>
-             <Text style={styles.titleStyle}>{this.props.item.title}</Text>
+             <Text style={styles.titleStyle}>{desc}</Text>
              <View style={styles.imageStyle}>
                 <Image source={Images.chevronIcon} />
              </View>

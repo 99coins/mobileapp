@@ -52382,14 +52382,15 @@ var RouterComponent = function (_Component) {
           }),
           _react2.default.createElement(_reactNativeRouterFlux.Scene, {
             key: 'Price',
-            title: '',
+            title: 'LATEST PRICES',
             icon: TabIcon,
             component: _Price2.default,
-            navigationBarStyle: { backgroundColor: 'white' },
+            navigationBarStyle: { backgroundColor: 'rgb(167, 0, 26)' },
+            titleStyle: { color: 'white' },
             icon: function icon() {
               return _react2.default.createElement(_reactNative.Image, { source: _images2.default.priceIcon, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 99
+                  lineNumber: 100
                 }
               });
             },
@@ -52409,7 +52410,7 @@ var RouterComponent = function (_Component) {
             icon: function icon() {
               return _react2.default.createElement(_reactNative.Image, { source: _images2.default.amaIcon, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 109
+                  lineNumber: 110
                 }
               });
             },
@@ -52418,7 +52419,7 @@ var RouterComponent = function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 104
+              lineNumber: 105
             }
           })
         )
@@ -64435,10 +64436,18 @@ var CoinPairList = function (_Component) {
                 }),
                 dataSource: this.state.dataSource,
                 renderRow: this.renderRow,
+                renderFooter: function renderFooter() {
+                    return _react2.default.createElement(Footer, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 82
+                        }
+                    });
+                },
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 82
+                            lineNumber: 83
                         }
                     });
                 },
@@ -64458,7 +64467,7 @@ var CoinPairList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 92
+                        lineNumber: 93
                     }
                 },
                 this.renderList()
@@ -64468,7 +64477,43 @@ var CoinPairList = function (_Component) {
     return CoinPairList;
 }(_react.Component);
 
+var Footer = function Footer() {
+    return _react2.default.createElement(
+        _reactNative.View,
+        { style: styles.container, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 101
+            }
+        },
+        _react2.default.createElement(
+            _reactNative.TouchableOpacity,
+            { style: styles.button, onPress: function onPress() {
+                    return console.log('load more');
+                }, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 102
+                }
+            },
+            _react2.default.createElement(
+                _reactNative.Text,
+                { style: styles.text, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 103
+                    }
+                },
+                'Pull down to refresh'
+            )
+        )
+    );
+};
+
 var styles = _reactNative.StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 8,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     separator: {
         flex: 1,
         height: _reactNative.StyleSheet.hairlineWidth,
@@ -69530,8 +69575,6 @@ var _NewsItemRow = require(427            ); // 427 = ./NewsItemRow
 
 var _NewsItemRow2 = babelHelpers.interopRequireDefault(_NewsItemRow);
 
-var _isMounted = false;
-
 var NewsItemList = function (_Component) {
     babelHelpers.inherits(NewsItemList, _Component);
 
@@ -69552,7 +69595,6 @@ var NewsItemList = function (_Component) {
                 url: 'https://www.cryptocompare.com/api/external/newsletter/',
                 responseType: 'text'
             }).then(function (response) {
-                console.log(_isMounted);
                 _this.parseResponse(response);
             });
         }, _this.parseResponse = function (response) {
@@ -69580,8 +69622,6 @@ var NewsItemList = function (_Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             console.log('componentWillMount in NewsItemlist');
-            _isMounted = true;
-            console.log(_isMounted);
 
             var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
                     return r1 !== r2;
@@ -69596,7 +69636,6 @@ var NewsItemList = function (_Component) {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
             console.log('componentWillUnmount in NewsItemlist');
-            _isMounted = false;
         }
     }, {
         key: 'onRefresh',
@@ -69607,10 +69646,9 @@ var NewsItemList = function (_Component) {
     }, {
         key: 'renderRow',
         value: function renderRow(item) {
-            console.log('renderRow in NewsItemList');
-            return _react2.default.createElement(_NewsItemRow2.default, { key: item.title, item: item, __source: {
+            return _react2.default.createElement(_NewsItemRow2.default, { key: item.description, item: item, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 67
+                    lineNumber: 59
                 }
             });
         }
@@ -69626,7 +69664,7 @@ var NewsItemList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 78
+                        lineNumber: 70
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -69634,14 +69672,14 @@ var NewsItemList = function (_Component) {
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 84
+                            lineNumber: 76
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 76
+                    lineNumber: 68
                 }
             });
         }
@@ -69652,9 +69690,9 @@ var NewsItemList = function (_Component) {
 
             return _react2.default.createElement(
                 _reactNative.View,
-                { ref: 'newsList', __source: {
+                { style: { flex: 1 }, ref: 'newsList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 94
+                        lineNumber: 86
                     }
                 },
                 this.renderList()
@@ -69717,41 +69755,46 @@ var NewsItemRow = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log('render in NewsItemRow');
+      var desc = this.props.item.description.replace('<p><strong>', '');
+      desc = desc.replace('</strong></p>', '');
+      console.log(desc);
+
       return _react2.default.createElement(
         _reactNative.TouchableHighlight,
         { onPress: function onPress() {
             return _this2.openUrl(_this2.props.item.link);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 20
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 21
             }
           },
           _react2.default.createElement(
             _reactNative.Text,
             { style: styles.titleStyle, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 16
+                lineNumber: 22
               }
             },
-            this.props.item.title
+            desc
           ),
           _react2.default.createElement(
             _reactNative.View,
             { style: styles.imageStyle, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 17
+                lineNumber: 23
               }
             },
             _react2.default.createElement(_reactNative.Image, { source: _images2.default.chevronIcon, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 18
+                lineNumber: 24
               }
             })
           )

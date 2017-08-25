@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ListView, RefreshControl } from 'react-native';
+import { Text, View, StyleSheet, ListView, RefreshControl, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import CoinPairRow from './CoinPairRow';
 
@@ -79,6 +79,7 @@ class CoinPairList extends Component {
         }
                dataSource={this.state.dataSource}
                renderRow={this.renderRow}
+               renderFooter={() => <Footer />}
                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
 
             />
@@ -96,10 +97,21 @@ class CoinPairList extends Component {
     }
 }
 
+const Footer = () => (
+  <View style={styles.container}>
+    <TouchableOpacity style={styles.button} onPress={() => console.log('load more')}>
+      <Text style={styles.text}>Pull down to refresh</Text>
+    </TouchableOpacity>
+  </View>
+);
+
 const styles = StyleSheet.create({
-  /*
-   * Removed for brevity
-   */
+ container: {
+    flex: 1,
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,

@@ -3,15 +3,10 @@ import { Text, View, StyleSheet, ListView, RefreshControl } from 'react-native';
 import axios from 'axios';
 import NewsItemRow from './NewsItemRow';
 
-let _isMounted = false;
-
 //create comonente
 class NewsItemList extends Component {    
     componentWillMount() {
         console.log('componentWillMount in NewsItemlist');
-        _isMounted = true;
-        console.log(_isMounted);
-
          //set initail datsource
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
             this.setState({ 
@@ -22,7 +17,6 @@ class NewsItemList extends Component {
     }
     componentWillUnmount() {
         console.log('componentWillUnmount in NewsItemlist');
-         _isMounted = false;
     }
     onRefresh() {
         this.setState({ refreshing: true });
@@ -36,7 +30,6 @@ class NewsItemList extends Component {
               responseType: 'text'
         })
        .then(response => { 
-            console.log(_isMounted);
            this.parseResponse(response);
       });
     }
@@ -62,9 +55,8 @@ class NewsItemList extends Component {
     }
 
     renderRow(item) {
-        console.log('renderRow in NewsItemList');
         return (
-            <NewsItemRow key={item.title} item={item} />
+            <NewsItemRow key={item.description} item={item} />
         );
     }
     renderList() {
@@ -91,7 +83,7 @@ class NewsItemList extends Component {
         console.log(this.state);
 
         return (
-          <View ref='newsList'>
+          <View style={{ flex: 1 }} ref='newsList' >
             {this.renderList()}
          </View>
      );

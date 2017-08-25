@@ -23,18 +23,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//  
-  [Smooch initWithSettings:
-  [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"]];
   
-  // Initialize Intercom
-  //[Intercom setApiKey:@"ios_sdk-c46bb4c48f8093e7ab1db40788a8006c9bf55d63" forAppId:@"oyl57bqx"];
-  // Register an unidentifed user with Intercom
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
-  //[Intercom registerUnidentifiedUser];
+  SKTSettings* settings = [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"];
+  settings.conversationAccentColor = [UIColor redColor];
+  settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
   
-  
-  //[Intercom setLauncherVisible:YES];
+  [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:167/255.0 green:0/255.0 blue:26/255.0 alpha:1.0]];
+  [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+  [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+  [Smooch initWithSettings:settings];
 
 
   
