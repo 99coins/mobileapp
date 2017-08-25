@@ -92,7 +92,7 @@ class RouterComponent extends Component {
             {/* Tab and it's scenes */}
              <Scene 
              key="Price" 
-             title="" 
+             title="Latest Prices" 
              icon={TabIcon} 
              component={Price} 
              navigationBarStyle={{ backgroundColor: 'white' }}

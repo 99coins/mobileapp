@@ -50,14 +50,15 @@ class NewsItemList extends Component {
         console.log(items);
 
         const ds = this.state.dataSource;
-        console.log(_isMounted);
-        if (_isMounted === true) {
-     
-        } 
-        this.setState({ 
+  
+        if (this.refs.newsList) {
+            this.setState({ 
               refreshing: false,
               dataSource: ds.cloneWithRows(items.slice(0, 5)),
-         });
+            });
+        } else {
+            console.log('un mounted');
+        }
     }
 
     renderRow(item) {
@@ -90,7 +91,7 @@ class NewsItemList extends Component {
         console.log(this.state);
 
         return (
-          <View>
+          <View ref='newsList'>
             {this.renderList()}
          </View>
      );

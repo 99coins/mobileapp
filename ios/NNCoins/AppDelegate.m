@@ -16,15 +16,27 @@
 #import <Crashlytics/Crashlytics.h>
 #import <Smooch/Smooch.h>
 
+//#import "Intercom/intercom.h"
 
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
+//  
   [Smooch initWithSettings:
-   [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"]];
+  [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"]];
+  
+  // Initialize Intercom
+  //[Intercom setApiKey:@"ios_sdk-c46bb4c48f8093e7ab1db40788a8006c9bf55d63" forAppId:@"oyl57bqx"];
+  // Register an unidentifed user with Intercom
+  
+  //[Intercom registerUnidentifiedUser];
+  
+  
+  //[Intercom setLauncherVisible:YES];
+
+
   
   [Fabric with:@[[Crashlytics class]]];
 

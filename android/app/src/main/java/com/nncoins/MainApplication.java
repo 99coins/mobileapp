@@ -3,6 +3,8 @@ package com.nncoins;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;
+import com.robinpowered.react.Intercom.IntercomPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -27,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new RCTSwipeRefreshLayoutPackage(),
+            new IntercomPackage(),
               new ReactNativeSmoochPackage()
       );
     }
@@ -41,6 +45,8 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    Smooch.init(this, "7jaa5xt3vv4glultcdus28bnr");
+    //Smooch.init(this, "7jaa5xt3vv4glultcdus28bnr");
+    Intercom.initialize(getApplicationContext(), "your api key", "your app id");
+
   }
 }
