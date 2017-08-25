@@ -64328,7 +64328,7 @@ var Rates = function Rates() {
 var styles = _reactNative.StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff'
+    backgroundColor: 'rgb(238, 238, 238)'
   }
 });
 
@@ -65611,7 +65611,7 @@ var NewsFeed = function NewsFeed() {
 var styles = _reactNative.StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff'
+    backgroundColor: 'rgb(238, 238, 238)'
   },
   welcome: {
     fontSize: 20,
@@ -69812,12 +69812,14 @@ var styles = _reactNative.StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'rgb(238, 238, 238)'
 
   },
   titleStyle: {
     flex: 0.92,
+    flexWrap: 'wrap',
     fontSize: 18,
+    color: 'rgb(33, 33, 33)',
     paddingLeft: 16,
     paddingRight: 10
 

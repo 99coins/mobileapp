@@ -16,7 +16,7 @@ const NewsFeed = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgb(238, 238, 238)',
   },
   welcome: {
     fontSize: 20,

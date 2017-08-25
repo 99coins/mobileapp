@@ -38,14 +38,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'rgb(238, 238, 238)'
 
   },
   titleStyle: {
    flex: 0.92,
+  flexWrap: 'wrap',
    fontSize: 18,
+   color: 'rgb(33, 33, 33)',
    paddingLeft: 16,
-   paddingRight: 10
+   paddingRight: 10,
 
   },
   imageStyle: {
