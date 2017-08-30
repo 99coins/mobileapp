@@ -26,7 +26,7 @@ class NewsItemList extends Component {
          // fetch stories
         axios({
               method: 'get',
-              url: 'https://www.cryptocompare.com/api/external/newsletter/',
+              url: 'https://www.cryptocompare.com/api/external/newsletter/?full=true',
               responseType: 'text'
         })
        .then(response => { 
@@ -56,7 +56,7 @@ class NewsItemList extends Component {
 
     renderRow(item) {
         return (
-            <NewsItemRow key={item.description} item={item} />
+            <NewsItemRow key={item.title} item={item} />
         );
     }
     renderList() {
