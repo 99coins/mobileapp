@@ -142,21 +142,6 @@
     <orderEntry type="library" exported="" name="support-vector-drawable-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-25.1.0" level="project" />
     <orderEntry type="module" module-name="react-native-smooch" exported="" />
-    <orderEntry type="library" exported="" name="firebase-analytics-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="firebase-core-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-tasks-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-base-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="subsampling-scale-image-view-3.5.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-location-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="ui-4.8.1" level="project" />
-    <orderEntry type="library" exported="" name="firebase-iid-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="gson-2.4" level="project" />
-    <orderEntry type="library" exported="" name="firebase-analytics-impl-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="universal-image-loader-1.9.5" level="project" />
-    <orderEntry type="library" exported="" name="firebase-common-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="firebase-messaging-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-basement-10.0.1" level="project" />
-    <orderEntry type="library" exported="" name="core-4.8.1" level="project" />
-    <orderEntry type="library" exported="" name="recyclerview-v7-25.1.0" level="project" />
+    <orderEntry type="module" module-name="react-native-smart-pull-to-refresh-listview" exported="" />
   </component>
 </module>
