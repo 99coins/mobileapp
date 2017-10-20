@@ -94,7 +94,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.nncoins"
+        applicationId "com.nncoins.android"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1

@@ -76,6 +76,7 @@ class RouterComponent extends Component {
           tabs={true}
           tabBarStyle={{ backgroundColor: 'rgb(39, 40, 45)' }}
           swipeEnabled={true}
+          
         >
              {/* Tab and it's scenes */}
              <Scene 
@@ -91,6 +92,7 @@ class RouterComponent extends Component {
 
             {/* Tab and it's scenes */}
              <Scene 
+             initial={true}
              key="Price" 
              title="LATEST PRICES" 
              icon={TabIcon} 

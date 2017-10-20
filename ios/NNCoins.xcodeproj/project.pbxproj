@@ -447,6 +447,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		156FBCC31F99F48000273F83 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				18D8F5FC225345ADBA112D8D /* libRCTSmooch.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		1578ACE41F3DC3010026F7E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +526,7 @@
 				00E356EF1AD99517003FC87E /* NNCoinsTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				1578AD601F3DC84D0026F7E7 /* Frameworks */,
+				156FBCC31F99F48000273F83 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
