@@ -29,11 +29,10 @@ platform :ios do
 
   lane :beta do
     increment_build_number
-    commit_version_bump
     push_to_git_remote
 
   # build your iOS app
- gym(project: "ios/NNCoins.xcodeproj",
+ gym(project: "NNCoins.xcodeproj",
  scheme: “NNCoins”,   
   configuration: “ad-hoc“,
   export_method: "ad-hoc")
