@@ -1,0 +1,7 @@
+app_identifier "com.99coins.ios" # The bundle identifier of your app
+apple_id "matan.guttman@gmail.com" # Your Apple email address
+
+team_id "DG95G74F4E" # Developer Portal Team ID
+
+# you can even provide different app identifiers, Apple IDs and team names per lane:
+# More information: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md

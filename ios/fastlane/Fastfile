@@ -1,0 +1,73 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.59.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    
+    carthage
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  lane :beta do
+    increment_build_number
+    commit_version_bump
+    push_to_git_remote
+
+  # build your iOS app
+ gym(scheme: “NNCoins”, 
+   project: "NNCoins.xcodeproj",
+  configuration: “ad-hoc“,
+  export_method: "ad-hoc")
+
+  # upload to Beta by Crashlytics
+  crashlytics(
+    api_token: "4bf445fcee59a03396edc73d7a81e0e7c50e98af",
+    build_secret: "f014575186ea5fa289041dd25ddccb9643289900514ea5c15d8878ff96374262",
+    groups: ['99Testers']
+  )
+
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics
