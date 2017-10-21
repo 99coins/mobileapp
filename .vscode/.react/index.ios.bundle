@@ -64375,8 +64375,11 @@ var CoinPairList = function (_Component) {
                 dataSource: ds,
                 refreshing: false
             });
-
-            this.fetchPairs();
+        }
+    }, {
+        key: 'componentWillUpdate',
+        value: function componentWillUpdate() {
+            console.log('componentWillUpdate in CoinPairlist');
         }
     }, {
         key: 'onRefresh',
@@ -64417,7 +64420,7 @@ var CoinPairList = function (_Component) {
             console.log('renderRow in CoinPairlist');
             return _react2.default.createElement(_CoinPairRow2.default, { key: pair.fromSymbol, pair: pair, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 64
+                    lineNumber: 68
                 }
             });
         }
@@ -64433,7 +64436,7 @@ var CoinPairList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 75
+                        lineNumber: 79
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -64442,34 +64445,34 @@ var CoinPairList = function (_Component) {
                     return _react2.default.createElement(Footer, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 82
+                            lineNumber: 86
                         }
                     });
                 },
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 83
+                            lineNumber: 87
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 73
+                    lineNumber: 77
                 }
             });
         }
     }, {
         key: 'render',
         value: function render() {
-            console.log(this.state);
+            console.log('render coin pair list');
 
             return _react2.default.createElement(
                 _reactNative.View,
                 { style: { flex: 1 }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 93
+                        lineNumber: 97
                     }
                 },
                 this.renderList()
@@ -64484,7 +64487,7 @@ var Footer = function Footer() {
         _reactNative.View,
         { style: styles.container, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 105
             }
         },
         _react2.default.createElement(
@@ -64493,14 +64496,14 @@ var Footer = function Footer() {
                     return console.log('load more');
                 }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 102
+                    lineNumber: 106
                 }
             },
             _react2.default.createElement(
                 _reactNative.Text,
                 { style: styles.text, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 103
+                        lineNumber: 107
                     }
                 },
                 'Pull down to refresh'
@@ -69820,7 +69823,8 @@ var styles = _reactNative.StyleSheet.create({
   titleStyle: {
     flex: 0.92,
     flexWrap: 'wrap',
-    fontSize: 18,
+    fontSize: 14,
+    fontWeight: '600',
     color: 'rgb(33, 33, 33)',
     paddingLeft: 16,
     paddingRight: 10

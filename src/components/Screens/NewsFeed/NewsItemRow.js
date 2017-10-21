@@ -19,10 +19,10 @@ class NewsItemRow extends Component {
     return (
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.link)}>
             <View style={styles.container}>
-             <Text style={styles.titleStyle}>{title}</Text>
-             <View style={styles.imageStyle}>
+              <Text style={styles.titleStyle}>{title}</Text>
+              <View style={styles.imageStyle}>
                 <Image source={Images.chevronIcon} />
-             </View>
+              </View>
             </View>
         </TouchableHighlight>
     );
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   titleStyle: {
    flex: 0.92,
   flexWrap: 'wrap',
-   fontSize: 18,
+   fontSize: 14,
+   fontWeight: '600',
    color: 'rgb(33, 33, 33)',
    paddingLeft: 16,
    paddingRight: 10,
