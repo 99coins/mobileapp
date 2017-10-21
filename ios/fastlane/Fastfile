@@ -29,13 +29,13 @@ platform :ios do
 
   lane :beta do
     increment_build_number
-    push_to_git_remote
 
   # build your iOS app
  gym(project: "NNCoins.xcodeproj",
  scheme: “NNCoins”,   
-  configuration: “ad-hoc“,
-  export_method: "ad-hoc")
+  configuration: “release“,
+  export_method: "ad-hoc"
+  )
 
   # upload to Beta by Crashlytics
   crashlytics(
