@@ -64366,8 +64366,6 @@ var CoinPairList = function (_Component) {
     babelHelpers.createClass(CoinPairList, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            console.log('componentWillMount in CoinPairlist');
-
             var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
                     return r1 !== r2;
                 } });
@@ -64379,40 +64377,83 @@ var CoinPairList = function (_Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            this.fetchPairs();
+            this.fetchData();
         }
     }, {
         key: 'onRefresh',
         value: function onRefresh() {
-            this.setState({ refreshing: true });
-            this.fetchPairs();
+            this.fetchData();
+        }
+    }, {
+        key: 'fetchData',
+        value: function fetchData() {
+            if (!this.state.coinList) {
+                this.fetchCoinList();
+            } else {
+                this.fetchPairs();
+            }
+        }
+    }, {
+        key: 'fetchCoinList',
+        value: function fetchCoinList() {
+            var _this2 = this;
+
+            _axios2.default.get('https://www.cryptocompare.com/api/data/coinlist/').then(function (response) {
+                var entries = Object.entries(response.data);
+                var coinList = entries[5][1];
+                console.log('fecthed coins');
+                console.log(coinList);
+
+                if (_this2.refs.coinPairList) {
+                    console.log('REF FOUND');
+
+                    console.log('set coins state');
+
+                    _this2.setState({
+                        coinList: coinList
+                    });
+
+                    _this2.fetchPairs();
+                }
+            });
         }
     }, {
         key: 'fetchPairs',
         value: function fetchPairs() {
-            var _this2 = this;
+            var _this3 = this;
+
+            this.setState({ refreshing: true });
 
             _axios2.default.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD').then(function (response) {
                 var entries = Object.entries(response.data);
-                console.log(entries);
 
-                var result = entries.map(function (e) {
-                    var pair = {};
-                    pair.fromSymbol = e[0];
-                    var toObj = e[1];
-                    pair.toSymbol = Object.keys(toObj)[0];
-                    pair.price = toObj[Object.keys(toObj)[0]];
-                    return pair;
-                });
+                if (_this3.refs.coinPairList) {
+                    if (_this3.state.coinList) {
+                        var list = _this3.state.coinList;
+                        var result = entries.map(function (e) {
+                            var pair = {};
+                            pair.fromSymbol = e[0];
+                            var toObj = e[1];
+                            pair.toSymbol = Object.keys(toObj)[0];
+                            pair.price = toObj[Object.keys(toObj)[0]];
+                            var coin = list[pair.fromSymbol];
+                            pair.imageUrl = coin.ImageUrl;
 
-                console.log(result);
-
-                if (_this2.refs.coinPairList) {
-                    var ds = _this2.state.dataSource;
-                    _this2.setState({
-                        refreshing: false,
-                        dataSource: ds.cloneWithRows(result)
-                    });
+                            return pair;
+                        });
+                        console.log(result);
+                        var ds = _this3.state.dataSource;
+                        _this3.setState({
+                            refreshing: false,
+                            dataSource: ds.cloneWithRows(result)
+                        });
+                    } else {
+                        console.log('missing coin data');
+                        _this3.setState({ refreshing: false });
+                    }
+                } else {
+                    console.log('component not mounted');
+                    _this3.setState({ refreshing: false });
                 }
             });
         }
@@ -64422,7 +64463,7 @@ var CoinPairList = function (_Component) {
             console.log('renderRow in CoinPairlist');
             return _react2.default.createElement(_CoinPairRow2.default, { key: pair.fromSymbol, pair: pair, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 71
+                    lineNumber: 98
                 }
             });
         }
@@ -64438,7 +64479,7 @@ var CoinPairList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 82
+                        lineNumber: 109
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -64447,21 +64488,21 @@ var CoinPairList = function (_Component) {
                     return _react2.default.createElement(Footer, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 89
+                            lineNumber: 116
                         }
                     });
                 },
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 90
+                            lineNumber: 117
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 80
+                    lineNumber: 107
                 }
             });
         }
@@ -64474,7 +64515,7 @@ var CoinPairList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, ref: 'coinPairList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 100
+                        lineNumber: 127
                     }
                 },
                 this.renderList()
@@ -64489,7 +64530,7 @@ var Footer = function Footer() {
         _reactNative.View,
         { style: styles.container, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 135
             }
         },
         _react2.default.createElement(
@@ -64498,14 +64539,14 @@ var Footer = function Footer() {
                     return console.log('load more');
                 }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 109
+                    lineNumber: 136
                 }
             },
             _react2.default.createElement(
                 _reactNative.Text,
                 { style: styles.text, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 110
+                        lineNumber: 137
                     }
                 },
                 'Pull down to refresh'
@@ -65485,6 +65526,8 @@ var _reactNative = require(12            ); // 12 = react-native
 
 var CoinPairRow = function CoinPairRow(props) {
 
+    var baseImageUrl = 'https://www.cryptocompare.com';
+
     return _react2.default.createElement(
         _reactNative.View,
         { style: styles.container, __source: {
@@ -65492,18 +65535,26 @@ var CoinPairRow = function CoinPairRow(props) {
                 lineNumber: 9
             }
         },
+        _react2.default.createElement(_reactNative.Image, {
+            style: { width: 50, height: 50 },
+            source: { uri: baseImageUrl + props.pair.imageUrl },
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 10
+            }
+        }),
         _react2.default.createElement(
             _reactNative.View,
             { style: styles.pairContainer, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 10
+                    lineNumber: 14
                 }
             },
             _react2.default.createElement(
                 _reactNative.Text,
                 { style: styles.fromStyle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 11
+                        lineNumber: 15
                     }
                 },
                 props.pair.fromSymbol
@@ -65512,7 +65563,7 @@ var CoinPairRow = function CoinPairRow(props) {
                 _reactNative.Text,
                 { style: styles.toStyle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 12
+                        lineNumber: 16
                     }
                 },
                 props.pair.toSymbol
@@ -65523,14 +65574,14 @@ var CoinPairRow = function CoinPairRow(props) {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 14
+                    lineNumber: 18
                 }
             },
             _react2.default.createElement(
                 _reactNative.Text,
                 { style: styles.priceStyle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 15
+                        lineNumber: 19
                     }
                 },
                 '$',
@@ -65542,6 +65593,7 @@ var CoinPairRow = function CoinPairRow(props) {
 
 var styles = _reactNative.StyleSheet.create({
     container: {
+        paddingLeft: 16,
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
@@ -65552,18 +65604,20 @@ var styles = _reactNative.StyleSheet.create({
         flex: 0.6
     },
     fromStyle: {
-        fontSize: 20,
+        fontSize: 16,
+        fontWeight: '600',
         paddingLeft: 16,
         paddingTop: 16
     },
     toStyle: {
-        fontSize: 16,
+        fontSize: 14,
         color: '#71737C',
         paddingLeft: 16,
         paddingBottom: 16
     },
     priceStyle: {
-        fontSize: 20,
+        fontSize: 18,
+        fontWeight: '500',
         paddingRight: 16
     }
 });

@@ -1,12 +1,16 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 
 const CoinPairRow = (props) => {
 
-    //const { fromStyle, toStyle, priceStyle } = styles;
+    const baseImageUrl = 'https://www.cryptocompare.com';
 
     return (
         <View style={styles.container}>
+            <Image
+                style={{ width: 50, height: 50 }}
+                 source={{ uri: baseImageUrl + props.pair.imageUrl }}
+            />
             <View style={styles.pairContainer}>
                 <Text style={styles.fromStyle}>{props.pair.fromSymbol}</Text>
                 <Text style={styles.toStyle}>{props.pair.toSymbol}</Text>
@@ -23,6 +27,7 @@ const CoinPairRow = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingLeft: 16,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -33,18 +38,20 @@ const styles = StyleSheet.create({
    	flex: 0.6
   },
   fromStyle: {
-   fontSize: 20,
+   fontSize: 16,
+   fontWeight: '600',
    paddingLeft: 16,
    paddingTop: 16
   },
   toStyle: {
-   fontSize: 16,
+   fontSize: 14,
    color: '#71737C',
    paddingLeft: 16,
    paddingBottom: 16
   },
   priceStyle: {
-   fontSize: 20,
+   fontSize: 18,
+   fontWeight: '500',
    paddingRight: 16
   },
 });

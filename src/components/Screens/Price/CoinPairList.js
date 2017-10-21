@@ -6,62 +6,89 @@ import CoinPairRow from './CoinPairRow';
 //create comonent
 class CoinPairList extends Component {
 
-
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       refreshing: false,
-//     };
-//   }
-
     componentWillMount() {
-        console.log('componentWillMount in CoinPairlist');
-            //set initail datsource
+        //set initail datsource
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-            this.setState({ 
+            this.setState({
               dataSource: ds,
               refreshing: false 
-        });
-        //this.setState({ refreshing: false });
-        //this.fetchPairs();  
+        }); 
     }
 
-    componentDidMount(){
-        //this.setState({ refreshing: false });
-        this.fetchPairs();
+    componentDidMount() {
+        this.fetchData();
     }
-
     onRefresh() {
-        this.setState({ refreshing: true });
-        this.fetchPairs();
+        this.fetchData();
+    }
+
+    fetchData() {
+        if (!this.state.coinList) {
+            this.fetchCoinList();
+        } else {
+            this.fetchPairs();
+        }
+    }
+
+    fetchCoinList(){
+        axios.get('https://www.cryptocompare.com/api/data/coinlist/')
+        .then(response => {
+            const entries = Object.entries(response.data);
+            const coinList = entries[5][1];
+            console.log('fecthed coins');
+            console.log(coinList);
+
+            if (this.refs.coinPairList) {
+                console.log('REF FOUND');
+
+                console.log('set coins state');
+
+                  this.setState({ 
+                       coinList: coinList,
+                  });
+
+                this.fetchPairs();
+            }
+        });    
     }
 
     fetchPairs() {
+        this.setState({ refreshing: true });
         // fetch pairs
         axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD')
       .then(response => {
         //parse response object
         const entries = Object.entries(response.data);
-        console.log(entries);
 
-        const result = entries.map(function(e) {
-            //create pair objects
-             const pair = {};
-             pair.fromSymbol = e[0];
-             const toObj = e[1];
-             pair.toSymbol = Object.keys(toObj)[0];
-             pair.price = toObj[Object.keys(toObj)[0]];
-            return pair;
-        });
-
-        console.log(result);
-        //set updated datasource (will also trigger re-render)
         if (this.refs.coinPairList) {
-            const ds = this.state.dataSource;
-             this.setState({ 
-               refreshing: false,
-               dataSource: ds.cloneWithRows(result),
-         });
+            if (this.state.coinList) {
+                const list = this.state.coinList;
+                const result = entries.map(function (e) {
+                //create pair objects
+                  const pair = {};
+                  pair.fromSymbol = e[0];
+                  const toObj = e[1];
+                  pair.toSymbol = Object.keys(toObj)[0];
+                  pair.price = toObj[Object.keys(toObj)[0]];
+                  const coin = list[pair.fromSymbol];
+                  pair.imageUrl = coin.ImageUrl;
+
+                 return pair;
+                 });
+                console.log(result);
+                const ds = this.state.dataSource;
+                this.setState({ 
+                     refreshing: false,
+                     dataSource: ds.cloneWithRows(result),
+                });
+            } else {
+                console.log('missing coin data');
+                this.setState({ refreshing: false });
+            }
+        } else {
+             console.log('component not mounted');
+            this.setState({ refreshing: false });
+
         }
       });
     }
