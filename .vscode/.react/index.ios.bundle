@@ -64377,9 +64377,9 @@ var CoinPairList = function (_Component) {
             });
         }
     }, {
-        key: 'componentWillUpdate',
-        value: function componentWillUpdate() {
-            console.log('componentWillUpdate in CoinPairlist');
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.fetchPairs();
         }
     }, {
         key: 'onRefresh',
@@ -64407,11 +64407,13 @@ var CoinPairList = function (_Component) {
 
                 console.log(result);
 
-                var ds = _this2.state.dataSource;
-                _this2.setState({
-                    refreshing: false,
-                    dataSource: ds.cloneWithRows(result)
-                });
+                if (_this2.refs.coinPairList) {
+                    var ds = _this2.state.dataSource;
+                    _this2.setState({
+                        refreshing: false,
+                        dataSource: ds.cloneWithRows(result)
+                    });
+                }
             });
         }
     }, {
@@ -64420,7 +64422,7 @@ var CoinPairList = function (_Component) {
             console.log('renderRow in CoinPairlist');
             return _react2.default.createElement(_CoinPairRow2.default, { key: pair.fromSymbol, pair: pair, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 68
+                    lineNumber: 71
                 }
             });
         }
@@ -64436,7 +64438,7 @@ var CoinPairList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 79
+                        lineNumber: 82
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -64445,34 +64447,34 @@ var CoinPairList = function (_Component) {
                     return _react2.default.createElement(Footer, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 86
+                            lineNumber: 89
                         }
                     });
                 },
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 87
+                            lineNumber: 90
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 77
+                    lineNumber: 80
                 }
             });
         }
     }, {
         key: 'render',
         value: function render() {
-            console.log('render coin pair list');
+            console.log('RENDERING COINS');
 
             return _react2.default.createElement(
                 _reactNative.View,
-                { style: { flex: 1 }, __source: {
+                { style: { flex: 1 }, ref: 'coinPairList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 97
+                        lineNumber: 100
                     }
                 },
                 this.renderList()
@@ -64487,7 +64489,7 @@ var Footer = function Footer() {
         _reactNative.View,
         { style: styles.container, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 105
+                lineNumber: 108
             }
         },
         _react2.default.createElement(
@@ -64496,14 +64498,14 @@ var Footer = function Footer() {
                     return console.log('load more');
                 }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 106
+                    lineNumber: 109
                 }
             },
             _react2.default.createElement(
                 _reactNative.Text,
                 { style: styles.text, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 107
+                        lineNumber: 110
                     }
                 },
                 'Pull down to refresh'

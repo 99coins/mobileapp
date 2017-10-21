@@ -23,7 +23,12 @@ class CoinPairList extends Component {
               refreshing: false 
         });
         //this.setState({ refreshing: false });
-        this.fetchPairs();  
+        //this.fetchPairs();  
+    }
+
+    componentDidMount(){
+        //this.setState({ refreshing: false });
+        this.fetchPairs();
     }
 
     onRefresh() {
@@ -51,11 +56,13 @@ class CoinPairList extends Component {
 
         console.log(result);
         //set updated datasource (will also trigger re-render)
-        const ds = this.state.dataSource;
-        this.setState({ 
-            refreshing: false,
-            dataSource: ds.cloneWithRows(result),
-        });
+        if (this.refs.coinPairList) {
+            const ds = this.state.dataSource;
+             this.setState({ 
+               refreshing: false,
+               dataSource: ds.cloneWithRows(result),
+         });
+        }
       });
     }
     renderRow(pair) {
@@ -87,10 +94,10 @@ class CoinPairList extends Component {
     }
 
     render() {
-        console.log(this.state);
+        console.log('RENDERING COINS');
 
         return (
-          <View style={{ flex: 1 }} >
+          <View style={{ flex: 1 }} ref='coinPairList'>
             {this.renderList()}
          </View>
      );
