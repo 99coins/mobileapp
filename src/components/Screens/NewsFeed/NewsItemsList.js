@@ -40,6 +40,8 @@ class NewsItemList extends Component {
         const fastXmlParser = require('fast-xml-parser');
         const jsonObj = fastXmlParser.parse(response.data);
         const items = jsonObj.rss.channel.item;
+        console.log('ITEMS: __________________');
+
         console.log(items);
 
         const ds = this.state.dataSource;
