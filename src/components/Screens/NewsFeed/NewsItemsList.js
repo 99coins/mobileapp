@@ -36,29 +36,39 @@ class NewsItemList extends Component {
     parseResponse = (response) => {
        //parse response object
         console.log(response.data);
+        const self = this;
+        const parseString = require('xml2js').parseString;
+        parseString(response.data, function (err, result) {
+            self.updateDatasource(result);
+        });
 
-        const fastXmlParser = require('fast-xml-parser');
-        const jsonObj = fastXmlParser.parse(response.data);
-        const items = jsonObj.rss.channel.item;
-        console.log('ITEMS: __________________');
+        // parseString(response.data, function (err, result) {
+        // }).then(result => {
+        //     this.updateDatasource(result);
+        // });
+    }
 
-        console.log(items);
+    updateDatasource = (result) => {
+        console.log('xml2js: __________________');
+          console.dir(result);
+          const items = result.rss.channel[0].item;
+          console.log(items);
 
-        const ds = this.state.dataSource;
+          const ds = this.state.dataSource;
   
-        if (this.refs.newsList) {
-            this.setState({ 
-              refreshing: false,
-              dataSource: ds.cloneWithRows(items.slice(0, 20)),
-            });
-        } else {
+         if (this.refs.newsList) {
+              this.setState({ 
+                refreshing: false,
+                dataSource: ds.cloneWithRows(items.slice(0, 20)),
+               });
+         } else {
             console.log('un mounted');
-        }
+         }
     }
 
     renderRow(item) {
         return (
-            <NewsItemRow key={item.title} item={item} />
+            <NewsItemRow key={item.title[0].textContent} item={item} />
         );
     }
     renderList() {
