@@ -69832,21 +69832,21 @@ var NewsItemRow = function (_Component) {
             return _this2.openUrl(_this2.props.item.link);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 22
+            lineNumber: 20
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 23
+              lineNumber: 21
             }
           },
           _react2.default.createElement(
             _reactNative.Text,
             { style: styles.titleStyle, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 24
+                lineNumber: 22
               }
             },
             title
@@ -69855,12 +69855,12 @@ var NewsItemRow = function (_Component) {
             _reactNative.View,
             { style: styles.imageStyle, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 25
+                lineNumber: 23
               }
             },
             _react2.default.createElement(_reactNative.Image, { source: _images2.default.chevronIcon, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 26
+                lineNumber: 24
               }
             })
           )
