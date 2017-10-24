@@ -52328,7 +52328,7 @@ var RouterComponent = function (_Component) {
       }
     }, _this.openChat = function () {
       console.log('open chat');
-      var Smooch = require(468                  ); // 468 = react-native-smooch
+      var Smooch = require(465                  ); // 465 = react-native-smooch
       Smooch.show();
     }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
   }
@@ -69712,7 +69712,7 @@ var NewsItemList = function (_Component) {
     }, {
         key: 'renderRow',
         value: function renderRow(item) {
-            return _react2.default.createElement(_NewsItemRow2.default, { key: item.title[0].textContent, item: item, __source: {
+            return _react2.default.createElement(_NewsItemRow2.default, { key: item.title, item: item, __source: {
                     fileName: _jsxFileName,
                     lineNumber: 71
                 }
@@ -77102,7 +77102,7 @@ function parse(str) {
 }, 464, null, "timers/index.js");
 __d(/* react-native-smooch/lib/SmoochClient.js */function(global, require, module, exports) {'use strict';
 
-var _react = require(469    ); // 469 = react
+var _react = require(466    ); // 466 = react
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
@@ -77118,27 +77118,27 @@ module.exports = babelHelpers.extends({}, SmoochManager, {
         return SmoochManager.login(userId, jwt);
     }
 });
-}, 468, null, "react-native-smooch/lib/SmoochClient.js");
+}, 465, null, "react-native-smooch/lib/SmoochClient.js");
 __d(/* react/react.js */function(global, require, module, exports) {'use strict';
 
-module.exports = require(470          ); // 470 = ./lib/React
-}, 469, null, "react/react.js");
+module.exports = require(467          ); // 467 = ./lib/React
+}, 466, null, "react/react.js");
 __d(/* react/lib/React.js */function(global, require, module, exports) {
 
 'use strict';
 
 var _assign = require(116            ); // 116 = object-assign
 
-var ReactChildren = require(471              ); // 471 = ./ReactChildren
-var ReactComponent = require(481               ); // 481 = ./ReactComponent
-var ReactPureComponent = require(483                   ); // 483 = ./ReactPureComponent
-var ReactClass = require(484           ); // 484 = ./ReactClass
-var ReactDOMFactories = require(486                  ); // 486 = ./ReactDOMFactories
-var ReactElement = require(474             ); // 474 = ./ReactElement
-var ReactPropTypes = require(491               ); // 491 = ./ReactPropTypes
-var ReactVersion = require(492             ); // 492 = ./ReactVersion
+var ReactChildren = require(468              ); // 468 = ./ReactChildren
+var ReactComponent = require(478               ); // 478 = ./ReactComponent
+var ReactPureComponent = require(480                   ); // 480 = ./ReactPureComponent
+var ReactClass = require(481           ); // 481 = ./ReactClass
+var ReactDOMFactories = require(483                  ); // 483 = ./ReactDOMFactories
+var ReactElement = require(471             ); // 471 = ./ReactElement
+var ReactPropTypes = require(488               ); // 488 = ./ReactPropTypes
+var ReactVersion = require(489             ); // 489 = ./ReactVersion
 
-var onlyChild = require(493          ); // 493 = ./onlyChild
+var onlyChild = require(490          ); // 490 = ./onlyChild
 var warning = require(25                ); // 25 = fbjs/lib/warning
 
 var createElement = ReactElement.createElement;
@@ -77146,7 +77146,7 @@ var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactElementValidator = require(487                      ); // 487 = ./ReactElementValidator
+  var ReactElementValidator = require(484                      ); // 484 = ./ReactElementValidator
   createElement = ReactElementValidator.createElement;
   createFactory = ReactElementValidator.createFactory;
   cloneElement = ReactElementValidator.cloneElement;
@@ -77195,16 +77195,16 @@ var React = {
 };
 
 module.exports = React;
-}, 470, null, "react/lib/React.js");
+}, 467, null, "react/lib/React.js");
 __d(/* react/lib/ReactChildren.js */function(global, require, module, exports) {
 
 'use strict';
 
-var PooledClass = require(472            ); // 472 = ./PooledClass
-var ReactElement = require(474             ); // 474 = ./ReactElement
+var PooledClass = require(469            ); // 469 = ./PooledClass
+var ReactElement = require(471             ); // 471 = ./ReactElement
 
 var emptyFunction = require(26                      ); // 26 = fbjs/lib/emptyFunction
-var traverseAllChildren = require(478                    ); // 478 = ./traverseAllChildren
+var traverseAllChildren = require(475                    ); // 475 = ./traverseAllChildren
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -77317,12 +77317,12 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-}, 471, null, "react/lib/ReactChildren.js");
+}, 468, null, "react/lib/ReactChildren.js");
 __d(/* react/lib/PooledClass.js */function(global, require, module, exports) {
 
 'use strict';
 
-var _prodInvariant = require(473                   ); // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ); // 470 = ./reactProdInvariant
 
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
 
@@ -77402,7 +77402,7 @@ var PooledClass = {
 };
 
 module.exports = PooledClass;
-}, 472, null, "react/lib/PooledClass.js");
+}, 469, null, "react/lib/PooledClass.js");
 __d(/* react/lib/reactProdInvariant.js */function(global, require, module, exports) {
 'use strict';
 
@@ -77425,20 +77425,20 @@ function reactProdInvariant(code) {
 }
 
 module.exports = reactProdInvariant;
-}, 473, null, "react/lib/reactProdInvariant.js");
+}, 470, null, "react/lib/reactProdInvariant.js");
 __d(/* react/lib/ReactElement.js */function(global, require, module, exports) {
 
 'use strict';
 
 var _assign = require(116            ); // 116 = object-assign
 
-var ReactCurrentOwner = require(475                  ); // 475 = ./ReactCurrentOwner
+var ReactCurrentOwner = require(472                  ); // 472 = ./ReactCurrentOwner
 
 var warning = require(25                ); // 25 = fbjs/lib/warning
-var canDefineProperty = require(476                  ); // 476 = ./canDefineProperty
+var canDefineProperty = require(473                  ); // 473 = ./canDefineProperty
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-var REACT_ELEMENT_TYPE = require(477                   ); // 477 = ./ReactElementSymbol
+var REACT_ELEMENT_TYPE = require(474                   ); // 474 = ./ReactElementSymbol
 
 var RESERVED_PROPS = {
   key: true,
@@ -77689,7 +77689,7 @@ ReactElement.isValidElement = function (object) {
 };
 
 module.exports = ReactElement;
-}, 474, null, "react/lib/ReactElement.js");
+}, 471, null, "react/lib/ReactElement.js");
 __d(/* react/lib/ReactCurrentOwner.js */function(global, require, module, exports) {
 
 'use strict';
@@ -77700,7 +77700,7 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-}, 475, null, "react/lib/ReactCurrentOwner.js");
+}, 472, null, "react/lib/ReactCurrentOwner.js");
 __d(/* react/lib/canDefineProperty.js */function(global, require, module, exports) {
 
 'use strict';
@@ -77714,7 +77714,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = canDefineProperty;
-}, 476, null, "react/lib/canDefineProperty.js");
+}, 473, null, "react/lib/canDefineProperty.js");
 __d(/* react/lib/ReactElementSymbol.js */function(global, require, module, exports) {
 
 'use strict';
@@ -77722,19 +77722,19 @@ __d(/* react/lib/ReactElementSymbol.js */function(global, require, module, expor
 var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
 
 module.exports = REACT_ELEMENT_TYPE;
-}, 477, null, "react/lib/ReactElementSymbol.js");
+}, 474, null, "react/lib/ReactElementSymbol.js");
 __d(/* react/lib/traverseAllChildren.js */function(global, require, module, exports) {
 
 'use strict';
 
-var _prodInvariant = require(473                   ); // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ); // 470 = ./reactProdInvariant
 
-var ReactCurrentOwner = require(475                  ); // 475 = ./ReactCurrentOwner
-var REACT_ELEMENT_TYPE = require(477                   ); // 477 = ./ReactElementSymbol
+var ReactCurrentOwner = require(472                  ); // 472 = ./ReactCurrentOwner
+var REACT_ELEMENT_TYPE = require(474                   ); // 474 = ./ReactElementSymbol
 
-var getIteratorFn = require(479              ); // 479 = ./getIteratorFn
+var getIteratorFn = require(476              ); // 476 = ./getIteratorFn
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
-var KeyEscapeUtils = require(480               ); // 480 = ./KeyEscapeUtils
+var KeyEscapeUtils = require(477               ); // 477 = ./KeyEscapeUtils
 var warning = require(25                ); // 25 = fbjs/lib/warning
 
 var SEPARATOR = '.';
@@ -77838,7 +77838,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 }
 
 module.exports = traverseAllChildren;
-}, 478, null, "react/lib/traverseAllChildren.js");
+}, 475, null, "react/lib/traverseAllChildren.js");
 __d(/* react/lib/getIteratorFn.js */function(global, require, module, exports) {
 
 'use strict';
@@ -77853,7 +77853,7 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-}, 479, null, "react/lib/getIteratorFn.js");
+}, 476, null, "react/lib/getIteratorFn.js");
 __d(/* react/lib/KeyEscapeUtils.js */function(global, require, module, exports) {
 
 'use strict';
@@ -77890,16 +77890,16 @@ var KeyEscapeUtils = {
 };
 
 module.exports = KeyEscapeUtils;
-}, 480, null, "react/lib/KeyEscapeUtils.js");
+}, 477, null, "react/lib/KeyEscapeUtils.js");
 __d(/* react/lib/ReactComponent.js */function(global, require, module, exports) {
 
 'use strict';
 
-var _prodInvariant = require(473                   ); // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ); // 470 = ./reactProdInvariant
 
-var ReactNoopUpdateQueue = require(482                     ); // 482 = ./ReactNoopUpdateQueue
+var ReactNoopUpdateQueue = require(479                     ); // 479 = ./ReactNoopUpdateQueue
 
-var canDefineProperty = require(476                  ); // 476 = ./canDefineProperty
+var canDefineProperty = require(473                  ); // 473 = ./canDefineProperty
 var emptyObject = require(113                   ); // 113 = fbjs/lib/emptyObject
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
 var warning = require(25                ); // 25 = fbjs/lib/warning
@@ -77952,7 +77952,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = ReactComponent;
-}, 481, null, "react/lib/ReactComponent.js");
+}, 478, null, "react/lib/ReactComponent.js");
 __d(/* react/lib/ReactNoopUpdateQueue.js */function(global, require, module, exports) {
 
 'use strict';
@@ -77987,15 +77987,15 @@ var ReactNoopUpdateQueue = {
 };
 
 module.exports = ReactNoopUpdateQueue;
-}, 482, null, "react/lib/ReactNoopUpdateQueue.js");
+}, 479, null, "react/lib/ReactNoopUpdateQueue.js");
 __d(/* react/lib/ReactPureComponent.js */function(global, require, module, exports) {
 
 'use strict';
 
 var _assign = require(116            ); // 116 = object-assign
 
-var ReactComponent = require(481               ); // 481 = ./ReactComponent
-var ReactNoopUpdateQueue = require(482                     ); // 482 = ./ReactNoopUpdateQueue
+var ReactComponent = require(478               ); // 478 = ./ReactComponent
+var ReactNoopUpdateQueue = require(479                     ); // 479 = ./ReactNoopUpdateQueue
 
 var emptyObject = require(113                   ); // 113 = fbjs/lib/emptyObject
 
@@ -78016,18 +78016,18 @@ _assign(ReactPureComponent.prototype, ReactComponent.prototype);
 ReactPureComponent.prototype.isPureReactComponent = true;
 
 module.exports = ReactPureComponent;
-}, 483, null, "react/lib/ReactPureComponent.js");
+}, 480, null, "react/lib/ReactPureComponent.js");
 __d(/* react/lib/ReactClass.js */function(global, require, module, exports) {
 
 'use strict';
 
-var _prodInvariant = require(473                   ), // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ), // 470 = ./reactProdInvariant
     _assign = require(116            ); // 116 = object-assign
 
-var ReactComponent = require(481               ); // 481 = ./ReactComponent
-var ReactElement = require(474             ); // 474 = ./ReactElement
-var ReactPropTypeLocationNames = require(485                           ); // 485 = ./ReactPropTypeLocationNames
-var ReactNoopUpdateQueue = require(482                     ); // 482 = ./ReactNoopUpdateQueue
+var ReactComponent = require(478               ); // 478 = ./ReactComponent
+var ReactElement = require(471             ); // 471 = ./ReactElement
+var ReactPropTypeLocationNames = require(482                           ); // 482 = ./ReactPropTypeLocationNames
+var ReactNoopUpdateQueue = require(479                     ); // 479 = ./ReactNoopUpdateQueue
 
 var emptyObject = require(113                   ); // 113 = fbjs/lib/emptyObject
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
@@ -78392,7 +78392,7 @@ var ReactClass = {
 };
 
 module.exports = ReactClass;
-}, 484, null, "react/lib/ReactClass.js");
+}, 481, null, "react/lib/ReactClass.js");
 __d(/* react/lib/ReactPropTypeLocationNames.js */function(global, require, module, exports) {
 
 'use strict';
@@ -78408,16 +78408,16 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = ReactPropTypeLocationNames;
-}, 485, null, "react/lib/ReactPropTypeLocationNames.js");
+}, 482, null, "react/lib/ReactPropTypeLocationNames.js");
 __d(/* react/lib/ReactDOMFactories.js */function(global, require, module, exports) {
 
 'use strict';
 
-var ReactElement = require(474             ); // 474 = ./ReactElement
+var ReactElement = require(471             ); // 471 = ./ReactElement
 
 var createDOMFactory = ReactElement.createFactory;
 if (process.env.NODE_ENV !== 'production') {
-  var ReactElementValidator = require(487                      ); // 487 = ./ReactElementValidator
+  var ReactElementValidator = require(484                      ); // 484 = ./ReactElementValidator
   createDOMFactory = ReactElementValidator.createFactory;
 }
 
@@ -78558,19 +78558,19 @@ var ReactDOMFactories = {
 };
 
 module.exports = ReactDOMFactories;
-}, 486, null, "react/lib/ReactDOMFactories.js");
+}, 483, null, "react/lib/ReactDOMFactories.js");
 __d(/* react/lib/ReactElementValidator.js */function(global, require, module, exports) {
 
 'use strict';
 
-var ReactCurrentOwner = require(475                  ); // 475 = ./ReactCurrentOwner
-var ReactComponentTreeHook = require(488                       ); // 488 = ./ReactComponentTreeHook
-var ReactElement = require(474             ); // 474 = ./ReactElement
+var ReactCurrentOwner = require(472                  ); // 472 = ./ReactCurrentOwner
+var ReactComponentTreeHook = require(485                       ); // 485 = ./ReactComponentTreeHook
+var ReactElement = require(471             ); // 471 = ./ReactElement
 
-var checkReactTypeSpec = require(489                   ); // 489 = ./checkReactTypeSpec
+var checkReactTypeSpec = require(486                   ); // 486 = ./checkReactTypeSpec
 
-var canDefineProperty = require(476                  ); // 476 = ./canDefineProperty
-var getIteratorFn = require(479              ); // 479 = ./getIteratorFn
+var canDefineProperty = require(473                  ); // 473 = ./canDefineProperty
+var getIteratorFn = require(476              ); // 476 = ./getIteratorFn
 var warning = require(25                ); // 25 = fbjs/lib/warning
 
 function getDeclarationErrorAddendum() {
@@ -78733,14 +78733,14 @@ var ReactElementValidator = {
 };
 
 module.exports = ReactElementValidator;
-}, 487, null, "react/lib/ReactElementValidator.js");
+}, 484, null, "react/lib/ReactElementValidator.js");
 __d(/* react/lib/ReactComponentTreeHook.js */function(global, require, module, exports) {
 
 'use strict';
 
-var _prodInvariant = require(473                   ); // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ); // 470 = ./reactProdInvariant
 
-var ReactCurrentOwner = require(475                  ); // 475 = ./ReactCurrentOwner
+var ReactCurrentOwner = require(472                  ); // 472 = ./ReactCurrentOwner
 
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
 var warning = require(25                ); // 25 = fbjs/lib/warning
@@ -79025,15 +79025,15 @@ var ReactComponentTreeHook = {
 };
 
 module.exports = ReactComponentTreeHook;
-}, 488, null, "react/lib/ReactComponentTreeHook.js");
+}, 485, null, "react/lib/ReactComponentTreeHook.js");
 __d(/* react/lib/checkReactTypeSpec.js */function(global, require, module, exports) {
 
 'use strict';
 
-var _prodInvariant = require(473                   ); // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ); // 470 = ./reactProdInvariant
 
-var ReactPropTypeLocationNames = require(485                           ); // 485 = ./ReactPropTypeLocationNames
-var ReactPropTypesSecret = require(490                     ); // 490 = ./ReactPropTypesSecret
+var ReactPropTypeLocationNames = require(482                           ); // 482 = ./ReactPropTypeLocationNames
+var ReactPropTypesSecret = require(487                     ); // 487 = ./ReactPropTypesSecret
 
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
 var warning = require(25                ); // 25 = fbjs/lib/warning
@@ -79041,7 +79041,7 @@ var warning = require(25                ); // 25 = fbjs/lib/warning
 var ReactComponentTreeHook;
 
 if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test') {
-  ReactComponentTreeHook = require(488                       ); // 488 = ./ReactComponentTreeHook
+  ReactComponentTreeHook = require(485                       ); // 485 = ./ReactComponentTreeHook
 }
 
 var loggedTypeFailures = {};
@@ -79065,7 +79065,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = require(488                       ); // 488 = ./ReactComponentTreeHook
+            ReactComponentTreeHook = require(485                       ); // 485 = ./ReactComponentTreeHook
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -79081,7 +79081,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 }
 
 module.exports = checkReactTypeSpec;
-}, 489, null, "react/lib/checkReactTypeSpec.js");
+}, 486, null, "react/lib/checkReactTypeSpec.js");
 __d(/* react/lib/ReactPropTypesSecret.js */function(global, require, module, exports) {
 
 'use strict';
@@ -79089,17 +79089,17 @@ __d(/* react/lib/ReactPropTypesSecret.js */function(global, require, module, exp
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
-}, 490, null, "react/lib/ReactPropTypesSecret.js");
+}, 487, null, "react/lib/ReactPropTypesSecret.js");
 __d(/* react/lib/ReactPropTypes.js */function(global, require, module, exports) {
 
 'use strict';
 
-var ReactElement = require(474             ); // 474 = ./ReactElement
-var ReactPropTypeLocationNames = require(485                           ); // 485 = ./ReactPropTypeLocationNames
-var ReactPropTypesSecret = require(490                     ); // 490 = ./ReactPropTypesSecret
+var ReactElement = require(471             ); // 471 = ./ReactElement
+var ReactPropTypeLocationNames = require(482                           ); // 482 = ./ReactPropTypeLocationNames
+var ReactPropTypesSecret = require(487                     ); // 487 = ./ReactPropTypesSecret
 
 var emptyFunction = require(26                      ); // 26 = fbjs/lib/emptyFunction
-var getIteratorFn = require(479              ); // 479 = ./getIteratorFn
+var getIteratorFn = require(476              ); // 476 = ./getIteratorFn
 var warning = require(25                ); // 25 = fbjs/lib/warning
 
 var ANONYMOUS = '<<anonymous>>';
@@ -79438,19 +79438,19 @@ function getClassName(propValue) {
 }
 
 module.exports = ReactPropTypes;
-}, 491, null, "react/lib/ReactPropTypes.js");
+}, 488, null, "react/lib/ReactPropTypes.js");
 __d(/* react/lib/ReactVersion.js */function(global, require, module, exports) {
 
 'use strict';
 
 module.exports = '15.4.2';
-}, 492, null, "react/lib/ReactVersion.js");
+}, 489, null, "react/lib/ReactVersion.js");
 __d(/* react/lib/onlyChild.js */function(global, require, module, exports) {
 'use strict';
 
-var _prodInvariant = require(473                   ); // 473 = ./reactProdInvariant
+var _prodInvariant = require(470                   ); // 470 = ./reactProdInvariant
 
-var ReactElement = require(474             ); // 474 = ./ReactElement
+var ReactElement = require(471             ); // 471 = ./ReactElement
 
 var invariant = require(13                  ); // 13 = fbjs/lib/invariant
 
@@ -79460,7 +79460,7 @@ function onlyChild(children) {
 }
 
 module.exports = onlyChild;
-}, 493, null, "react/lib/onlyChild.js");
+}, 490, null, "react/lib/onlyChild.js");
 ;require(38);
 ;require(0);
 //# sourceMappingURL=index.ios.map

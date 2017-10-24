@@ -68,7 +68,7 @@ class NewsItemList extends Component {
 
     renderRow(item) {
         return (
-            <NewsItemRow key={item.title[0].textContent} item={item} />
+            <NewsItemRow key={item.title} item={item} />
         );
     }
     renderList() {
