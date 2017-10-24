@@ -52274,6 +52274,8 @@ var _NewsFeed = require(424                          ); // 424 = ./Screens/NewsF
 
 var _NewsFeed2 = babelHelpers.interopRequireDefault(_NewsFeed);
 
+var Smooch = require(465                  ); // 465 = react-native-smooch
+
 var TabIcon = function TabIcon(_ref) {
   var selected = _ref.selected,
       title = _ref.title;
@@ -52282,7 +52284,7 @@ var TabIcon = function TabIcon(_ref) {
     _reactNative.Text,
     { style: { color: selected ? 'red' : 'black' }, __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 21
       }
     },
     title
@@ -52293,32 +52295,29 @@ var RouterComponent = function (_Component) {
   babelHelpers.inherits(RouterComponent, _Component);
 
   function RouterComponent() {
-    var _ref2;
-
-    var _temp, _this, _ret;
-
     babelHelpers.classCallCheck(this, RouterComponent);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = babelHelpers.possibleConstructorReturn(this, (RouterComponent.__proto__ || Object.getPrototypeOf(RouterComponent)).call(this));
 
-    return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref2 = RouterComponent.__proto__ || Object.getPrototypeOf(RouterComponent)).call.apply(_ref2, [this].concat(args))), _this), _this.onEnterNews = function () {
+    _this.onEnterNews = function () {
       console.log('enter news');
-      _this.setState({ selected: 'News' });
-      console.log(_this.state);
-    }, _this.onEnterPrices = function () {
+      _this.selectedTab = 'News';
+    };
+
+    _this.onEnterPrices = function () {
       console.log('enter prices');
-      _this.setState({ selected: 'Price' });
-      console.log(_this.state);
-    }, _this.onEnterChat = function () {
+      _this.selectedTab = 'Price';
+    };
+
+    _this.onEnterChat = function () {
       _this.openChat();
       setTimeout(function () {
         return _this.openLastSeletedTab();
       }, 1000);
-    }, _this.openLastSeletedTab = function () {
-      var selectedTab = _this.state.selected;
-      if (selectedTab === 'News') {
+    };
+
+    _this.openLastSeletedTab = function () {
+      if (_this.selectedTab === 'News') {
         console.log('selected news');
         _reactNativeRouterFlux.Actions.News();
       } else {
@@ -52326,11 +52325,15 @@ var RouterComponent = function (_Component) {
 
         _reactNativeRouterFlux.Actions.Price();
       }
-    }, _this.openChat = function () {
+    };
+
+    _this.openChat = function () {
       console.log('open chat');
-      var Smooch = require(465                  ); // 465 = react-native-smooch
       Smooch.show();
-    }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+    };
+
+    _this.selectedTab = 'Price';
+    return _this;
   }
 
   babelHelpers.createClass(RouterComponent, [{
@@ -52343,7 +52346,7 @@ var RouterComponent = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 73
+            lineNumber: 67
           }
         },
         _react2.default.createElement(
@@ -52353,10 +52356,10 @@ var RouterComponent = function (_Component) {
             tabs: true,
             tabBarStyle: { backgroundColor: 'rgb(39, 40, 45)' },
             swipeEnabled: true,
-
+            lazy: true,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 74
+              lineNumber: 68
             }
           },
           _react2.default.createElement(_reactNativeRouterFlux.Scene, {
@@ -52369,16 +52372,17 @@ var RouterComponent = function (_Component) {
             icon: function icon() {
               return _react2.default.createElement(_reactNative.Image, { source: _images2.default.newsIcon, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 89
+                  lineNumber: 83
                 }
               });
             },
             onEnter: function onEnter() {
               return _this2.onEnterNews();
             },
+            lazy: true,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 82
+              lineNumber: 76
             }
           }),
           _react2.default.createElement(_reactNativeRouterFlux.Scene, {
@@ -52392,16 +52396,17 @@ var RouterComponent = function (_Component) {
             icon: function icon() {
               return _react2.default.createElement(_reactNative.Image, { source: _images2.default.priceIcon, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 102
+                  lineNumber: 97
                 }
               });
             },
             onEnter: function onEnter() {
               return _this2.onEnterPrices();
             },
+            lazy: true,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 94
+              lineNumber: 89
             }
           }),
           _react2.default.createElement(_reactNativeRouterFlux.Scene, {
@@ -52412,16 +52417,17 @@ var RouterComponent = function (_Component) {
             icon: function icon() {
               return _react2.default.createElement(_reactNative.Image, { source: _images2.default.amaIcon, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 112
+                  lineNumber: 108
                 }
               });
             },
             onEnter: function onEnter() {
               return _this2.onEnterChat();
             },
+            lazy: true,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 107
+              lineNumber: 103
             }
           })
         )
@@ -69833,7 +69839,7 @@ var NewsItemRow = function (_Component) {
       return _react2.default.createElement(
         _reactNative.TouchableHighlight,
         { onPress: function onPress() {
-            return _this2.openUrl(_this2.props.item.link);
+            return _this2.openUrl(_this2.props.item.link[0]);
           }, __source: {
             fileName: _jsxFileName,
             lineNumber: 20

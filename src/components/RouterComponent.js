@@ -3,9 +3,7 @@
 import React, { 
   Component } from 'react';
 import {
-  StyleSheet,
   Text,
-  View,
   Image
 } from 'react-native';
 import { Scene, Router, TabView, Actions } from 'react-native-router-flux';
@@ -16,6 +14,7 @@ import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 
+const Smooch = require('react-native-smooch');
 
 const TabIcon = ({ selected, title }) => {
   return (
@@ -23,26 +22,22 @@ const TabIcon = ({ selected, title }) => {
   );
 };
 
+
 class RouterComponent extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     selected: 'News',
-  //   };
-  //   console.log(this.state);
-  // }
+  constructor() {
+      super();        
+      this.selectedTab = 'Price';      
+  } 
 
   onEnterNews = () => {
     console.log('enter news');
-     this.setState({ selected: 'News' });
-     console.log(this.state);
+     this.selectedTab = 'News';
   }
 
   onEnterPrices = () => {
      console.log('enter prices');
-      this.setState({ selected: 'Price' });
-      console.log(this.state);
+      this.selectedTab = 'Price';
   }
 
   onEnterChat = () => {
@@ -51,8 +46,8 @@ class RouterComponent extends Component {
     1000);
   }
   openLastSeletedTab = () => {
-    const selectedTab = this.state.selected;
-    if (selectedTab === 'News') {
+    //const selectedTab = this.state.selected;
+    if (this.selectedTab === 'News') {
       console.log('selected news');
       Actions.News();
     } else {
@@ -64,7 +59,6 @@ class RouterComponent extends Component {
     
   openChat = () => {
    console.log('open chat');
-   const Smooch = require('react-native-smooch');
    Smooch.show();
   }
 
@@ -73,10 +67,10 @@ class RouterComponent extends Component {
      <Router>
         <Scene
           key="tabbar"
-          tabs={true}
+          tabs
           tabBarStyle={{ backgroundColor: 'rgb(39, 40, 45)' }}
-          swipeEnabled={true}
-          
+          swipeEnabled
+          lazy
         >
              {/* Tab and it's scenes */}
              <Scene 
@@ -88,11 +82,12 @@ class RouterComponent extends Component {
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} />)}
              onEnter={() => this.onEnterNews()}
+             lazy
              />
 
             {/* Tab and it's scenes */}
              <Scene 
-             initial={true}
+             initial
              key="Price" 
              title="LATEST PRICES" 
              icon={TabIcon} 
@@ -101,6 +96,7 @@ class RouterComponent extends Component {
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.priceIcon} />)}
              onEnter={() => this.onEnterPrices()}
+             lazy
              />
     
              {/* Tab and it's scenes */}
@@ -111,6 +107,7 @@ class RouterComponent extends Component {
              component={AMA}
              icon={() => (<Image source={Images.amaIcon} />)}
              onEnter={() => this.onEnterChat()}
+             lazy
              />
         </Scene>
 
@@ -118,20 +115,4 @@ class RouterComponent extends Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: 'center',
-//     margin: 10,
-//   },
-// });
-
-
 export default RouterComponent;
