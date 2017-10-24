@@ -69662,6 +69662,7 @@ var NewsItemList = function (_Component) {
             console.log(response.data);
             var self = _this;
             var parseString = require(428     ).parseString; // 428 = xml2js
+
             parseString(response.data, function (err, result) {
                 self.updateDatasource(result);
             });
@@ -69714,7 +69715,7 @@ var NewsItemList = function (_Component) {
         value: function renderRow(item) {
             return _react2.default.createElement(_NewsItemRow2.default, { key: item.title, item: item, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 71
+                    lineNumber: 67
                 }
             });
         }
@@ -69730,7 +69731,7 @@ var NewsItemList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 82
+                        lineNumber: 78
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -69738,14 +69739,14 @@ var NewsItemList = function (_Component) {
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 88
+                            lineNumber: 84
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 80
+                    lineNumber: 76
                 }
             });
         }
@@ -69758,7 +69759,7 @@ var NewsItemList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, ref: 'newsList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 98
+                        lineNumber: 94
                     }
                 },
                 this.renderList()
@@ -69822,6 +69823,7 @@ var NewsItemRow = function (_Component) {
       var _this2 = this;
 
       console.log('render in NewsItemRow');
+
       var title = this.props.item.title[0].replace('<strong>', '');
       title = title.replace('</strong>', '');
       console.log(title);

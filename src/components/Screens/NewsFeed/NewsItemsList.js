@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ListView, RefreshControl } from 'react-native';
+import { View, StyleSheet, ListView, RefreshControl } from 'react-native';
 import axios from 'axios';
 import NewsItemRow from './NewsItemRow';
 
@@ -38,14 +38,10 @@ class NewsItemList extends Component {
         console.log(response.data);
         const self = this;
         const parseString = require('xml2js').parseString;
+
         parseString(response.data, function (err, result) {
             self.updateDatasource(result);
         });
-
-        // parseString(response.data, function (err, result) {
-        // }).then(result => {
-        //     this.updateDatasource(result);
-        // });
     }
 
     updateDatasource = (result) => {

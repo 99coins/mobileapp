@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "start:ios": "node node_modules/react-native/local-cli/cli.js run-ios --device \"iPhone"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -17,7 +18,8 @@
     "react-native-router-flux": "^4.0.0-beta.11",
     "react-native-smart-pull-to-refresh-listview": "^1.6.10",
     "react-native-smooch": "^0.2.2",
-    "timers": "^0.1.1"
+    "timers": "^0.1.1",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
