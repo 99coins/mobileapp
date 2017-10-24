@@ -3,7 +3,10 @@ import { View, StyleSheet, ListView, RefreshControl } from 'react-native';
 import axios from 'axios';
 import NewsItemRow from './NewsItemRow';
 
-const parseString = require('xml2js').parseString;
+//const parseString = require('xml2js').parseString;
+
+const parseString = require('react-native-xml2js').parseString;
+
 
 //create comonente
 class NewsItemList extends Component {    
@@ -37,13 +40,10 @@ class NewsItemList extends Component {
     }
     parseResponse = (response) => {
        //parse response object
-        console.log(response.data);
+        const data = response.data;
+        console.log(data);
+   
         const self = this;
-    
-        // parseString(response.data, function (err, result) {
-        //     self.updateDatasource(result);
-        // });
-
         parseString(response.data, (err, result) => self.updateDatasource(result));
     }
 
