@@ -69636,6 +69636,8 @@ var _NewsItemRow = require(427            ); // 427 = ./NewsItemRow
 
 var _NewsItemRow2 = babelHelpers.interopRequireDefault(_NewsItemRow);
 
+var parseString = require(428     ).parseString; // 428 = xml2js
+
 var NewsItemList = function (_Component) {
     babelHelpers.inherits(NewsItemList, _Component);
 
@@ -69661,7 +69663,6 @@ var NewsItemList = function (_Component) {
         }, _this.parseResponse = function (response) {
             console.log(response.data);
             var self = _this;
-            var parseString = require(428     ).parseString; // 428 = xml2js
 
             parseString(response.data, function (err, result) {
                 self.updateDatasource(result);
@@ -69715,7 +69716,7 @@ var NewsItemList = function (_Component) {
         value: function renderRow(item) {
             return _react2.default.createElement(_NewsItemRow2.default, { key: item.title, item: item, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 67
+                    lineNumber: 68
                 }
             });
         }
@@ -69731,7 +69732,7 @@ var NewsItemList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 78
+                        lineNumber: 79
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -69739,14 +69740,14 @@ var NewsItemList = function (_Component) {
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 84
+                            lineNumber: 85
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 76
+                    lineNumber: 77
                 }
             });
         }
@@ -69759,7 +69760,7 @@ var NewsItemList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, ref: 'newsList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 94
+                        lineNumber: 95
                     }
                 },
                 this.renderList()
