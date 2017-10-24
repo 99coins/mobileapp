@@ -32,8 +32,8 @@ platform :ios do
 
   # build your iOS app
  gym(project: "NNCoins.xcodeproj",
- scheme: “NNCoins”,   
-  configuration: “release“,
+  scheme: “NNCoins”,   
+  configuration: “ad-hoc“,
   export_method: "ad-hoc"
   )
 
