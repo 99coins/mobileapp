@@ -30,7 +30,7 @@ class CoinPairList extends Component {
         }
     }
 
-    fetchCoinList(){
+    fetchCoinList() {
         axios.get('https://www.cryptocompare.com/api/data/coinlist/')
         .then(response => {
             const entries = Object.entries(response.data);
@@ -44,7 +44,7 @@ class CoinPairList extends Component {
                 console.log('set coins state');
 
                   this.setState({ 
-                       coinList: coinList,
+                       coinList: coinList
                   });
 
                 this.fetchPairs();
@@ -88,7 +88,6 @@ class CoinPairList extends Component {
         } else {
              console.log('component not mounted');
             this.setState({ refreshing: false });
-
         }
       });
     }

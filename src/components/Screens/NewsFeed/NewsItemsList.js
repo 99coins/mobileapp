@@ -40,9 +40,11 @@ class NewsItemList extends Component {
         console.log(response.data);
         const self = this;
     
-        parseString(response.data, function (err, result) {
-            self.updateDatasource(result);
-        });
+        // parseString(response.data, function (err, result) {
+        //     self.updateDatasource(result);
+        // });
+
+        parseString(response.data, (err, result) => self.updateDatasource(result));
     }
 
     updateDatasource = (result) => {
