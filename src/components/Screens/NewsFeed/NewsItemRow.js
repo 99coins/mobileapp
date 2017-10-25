@@ -9,11 +9,19 @@ class NewsItemRow extends Component {
     Linking.openURL(url).catch(err => console.error('An error occurred', err));
   }
 
+    stripHtmlTags = (str) => {
+       if ((str === null) || (str === '')) {
+           return false;
+       } 
+       const strip = str.toString();
+       return strip.replace(/<[^>]*>/g, ''); 
+    }
+
     render() {
     console.log('render in NewsItemRow');
 
-    let title = this.props.item.title[0].replace('<strong>', '');
-    title = title.replace('</strong>', '');
+    let title = this.props.item.title[0];
+    title = this.stripHtmlTags(title);
     console.log(title);
 
     return (

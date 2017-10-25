@@ -49,7 +49,7 @@ class NewsItemList extends Component {
 
     updateDatasource = (result) => {
         console.log('xml2js: __________________');
-          const items = result.rss.channel[0].item;
+           const items = result.rss.channel[0].item;
           console.log(items);
 
           const ds = this.state.dataSource;
