@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "start:ios": "node node_modules/react-native/local-cli/cli.js run-ios --device \"iPhone"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.16.2",
