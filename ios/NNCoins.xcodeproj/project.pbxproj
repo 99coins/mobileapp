@@ -28,12 +28,6 @@
 		153C591E1FA505860076215B /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59171FA505860076215B /* FirebaseCoreDiagnostics.framework */; };
 		153C591F1FA505860076215B /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59181FA505860076215B /* nanopb.framework */; };
 		153C59201FA505B30076215B /* Firebase.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59161FA505860076215B /* Firebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		153C59211FA505B30076215B /* FirebaseAnalytics.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59121FA505850076215B /* FirebaseAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		153C59221FA505B30076215B /* FirebaseCore.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59131FA505850076215B /* FirebaseCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		153C59231FA505B30076215B /* FirebaseCoreDiagnostics.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59171FA505860076215B /* FirebaseCoreDiagnostics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		153C59241FA505B30076215B /* FirebaseInstanceID.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59141FA505860076215B /* FirebaseInstanceID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		153C59251FA505B30076215B /* FirebaseNanoPB.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59151FA505860076215B /* FirebaseNanoPB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		153C59261FA505B30076215B /* nanopb.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59181FA505860076215B /* nanopb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		153C59281FA50D610076215B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59271FA50D610076215B /* GoogleToolboxForMac.framework */; };
 		153C59291FA50D730076215B /* GoogleToolboxForMac.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59271FA50D610076215B /* GoogleToolboxForMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592A1FA50F4E0076215B /* libsqlite3.tbd */; };
@@ -271,12 +265,6 @@
 			files = (
 				153C59291FA50D730076215B /* GoogleToolboxForMac.framework in Embed */,
 				153C59201FA505B30076215B /* Firebase.framework in Embed */,
-				153C59211FA505B30076215B /* FirebaseAnalytics.framework in Embed */,
-				153C59221FA505B30076215B /* FirebaseCore.framework in Embed */,
-				153C59231FA505B30076215B /* FirebaseCoreDiagnostics.framework in Embed */,
-				153C59241FA505B30076215B /* FirebaseInstanceID.framework in Embed */,
-				153C59251FA505B30076215B /* FirebaseNanoPB.framework in Embed */,
-				153C59261FA505B30076215B /* nanopb.framework in Embed */,
 				1578AD651F3DC9CC0026F7E7 /* Smooch.framework in Embed */,
 			);
 			name = Embed;
@@ -593,7 +581,6 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				1578AD631F3DC9940026F7E7 /* Embed */,
-				15A6D7B71FA526E500A91CCD /* ShellScript */,
 				15A8E9D31F58AF1F00D145A0 /* ShellScript */,
 			);
 			buildRules = (
@@ -935,19 +922,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		15A6D7B71FA526E500A91CCD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"Target architectures: $ARCHS\"\n\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\necho $(lipo -info \"$FRAMEWORK_EXECUTABLE_PATH\")\n\nFRAMEWORK_TMP_PATH=\"$FRAMEWORK_EXECUTABLE_PATH-tmp\"\n\n# remove simulator's archs if location is not simulator's directory\ncase \"${TARGET_BUILD_DIR}\" in\n*\"iphonesimulator\")\necho \"No need to remove archs\"\n;;\n*)\nif $(lipo \"$FRAMEWORK_EXECUTABLE_PATH\" -verify_arch \"i386\") ; then\nlipo -output \"$FRAMEWORK_TMP_PATH\" -remove \"i386\" \"$FRAMEWORK_EXECUTABLE_PATH\"\necho \"i386 architecture removed\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_TMP_PATH\" \"$FRAMEWORK_EXECUTABLE_PATH\"\nfi\nif $(lipo \"$FRAMEWORK_EXECUTABLE_PATH\" -verify_arch \"x86_64\") ; then\nlipo -output \"$FRAMEWORK_TMP_PATH\" -remove \"x86_64\" \"$FRAMEWORK_EXECUTABLE_PATH\"\necho \"x86_64 architecture removed\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_TMP_PATH\" \"$FRAMEWORK_EXECUTABLE_PATH\"\nfi\n;;\nesac\n\necho \"Completed for executable $FRAMEWORK_EXECUTABLE_PATH\"\necho $(lipo -info \"$FRAMEWORK_EXECUTABLE_PATH\")\n\ndone";
-		};
 		15A8E9D31F58AF1F00D145A0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -956,13 +930,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Smooch.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Firebase.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FirebaseAnalytics.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FirebaseCore.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FirebaseCoreDiagnostics.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FirebaseInstanceID.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/nanopb.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FirebaseNanoPB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GoogleToolboxForMac.framework",
 			);
 			outputPaths = (
 			);
