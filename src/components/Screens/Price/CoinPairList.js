@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, ListView, RefreshControl, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import CoinPairRow from './CoinPairRow';
+import moment from 'moment';
+
 
 //create comonent
 class CoinPairList extends Component {
@@ -11,7 +13,8 @@ class CoinPairList extends Component {
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
             this.setState({
               dataSource: ds,
-              refreshing: false 
+              refreshing: false,
+              lastUpdate: null 
         }); 
     }
 
@@ -21,7 +24,6 @@ class CoinPairList extends Component {
     onRefresh() {
         this.fetchData();
     }
-
     fetchData() {
         this.setState({ refreshing: true });
 
@@ -81,6 +83,7 @@ class CoinPairList extends Component {
                 this.setState({ 
                      refreshing: false,
                      dataSource: ds.cloneWithRows(result),
+                     lastUpdate: new Date()
                 });
             } else {
                 console.log('missing coin data');
@@ -113,10 +116,22 @@ class CoinPairList extends Component {
         }
                dataSource={this.state.dataSource}
                renderRow={this.renderRow}
-               renderFooter={() => <Footer />}
+               renderFooter={this.renderFooter.bind(this)}
                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
 
             />
+        );
+    }
+
+    renderFooter() {
+        let lastUpdateText = '';
+        if (this.state.lastUpdate) {
+            lastUpdateText = lastUpdateText.concat(' (last update: ', moment(this.state.lastUpdate).format('hh:mm:ss'), ')');
+        }
+
+        console.log('renderFooter in CoinPairlist');
+        return (
+            <Footer text={lastUpdateText} />
         );
     }
 
@@ -131,10 +146,13 @@ class CoinPairList extends Component {
     }
 }
 
-const Footer = () => (
-  <View style={styles.container}>
+const Footer = (props) => (
+  <View>
     <TouchableOpacity style={styles.button} onPress={() => console.log('load more')}>
-      <Text style={styles.text}>Pull down to refresh</Text>
+        <View style={styles.footer}>
+            <Text style={styles.text}>Pull down to refresh</Text>
+            <Text style={styles.footerUpdateLabel}>{props.text}</Text>
+        </View>
     </TouchableOpacity>
   </View>
 );
@@ -151,6 +169,16 @@ const styles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#8E8E8E',
   },
+ footer: {
+    flex: 1,
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerUpdateLabel: {
+    fontSize: 11,
+    color: 'rgb(33,33,33)'
+  }
 });
 
 export default CoinPairList;

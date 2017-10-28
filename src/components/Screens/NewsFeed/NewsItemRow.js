@@ -22,7 +22,6 @@ class NewsItemRow extends Component {
     }
 
     render() {
-    console.log('render in NewsItemRow');
 
     let title = this.props.item.title;
     title = this.stripHtmlTags(title);

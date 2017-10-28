@@ -64385,6 +64385,10 @@ var _CoinPairRow = require(423            ); // 423 = ./CoinPairRow
 
 var _CoinPairRow2 = babelHelpers.interopRequireDefault(_CoinPairRow);
 
+var _moment = require(425     ); // 425 = moment
+
+var _moment2 = babelHelpers.interopRequireDefault(_moment);
+
 var CoinPairList = function (_Component) {
     babelHelpers.inherits(CoinPairList, _Component);
 
@@ -64401,7 +64405,8 @@ var CoinPairList = function (_Component) {
                 } });
             this.setState({
                 dataSource: ds,
-                refreshing: false
+                refreshing: false,
+                lastUpdate: null
             });
         }
     }, {
@@ -64475,7 +64480,8 @@ var CoinPairList = function (_Component) {
                         var ds = _this3.state.dataSource;
                         _this3.setState({
                             refreshing: false,
-                            dataSource: ds.cloneWithRows(result)
+                            dataSource: ds.cloneWithRows(result),
+                            lastUpdate: new Date()
                         });
                     } else {
                         console.log('missing coin data');
@@ -64493,7 +64499,7 @@ var CoinPairList = function (_Component) {
             console.log('renderRow in CoinPairlist');
             return _react2.default.createElement(_CoinPairRow2.default, { key: pair.fromSymbol, pair: pair, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 98
+                    lineNumber: 101
                 }
             });
         }
@@ -64509,30 +64515,38 @@ var CoinPairList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 109
+                        lineNumber: 112
                     }
                 }),
                 dataSource: this.state.dataSource,
                 renderRow: this.renderRow,
-                renderFooter: function renderFooter() {
-                    return _react2.default.createElement(Footer, {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 116
-                        }
-                    });
-                },
+                renderFooter: this.renderFooter.bind(this),
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 117
+                            lineNumber: 120
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 107
+                    lineNumber: 110
+                }
+            });
+        }
+    }, {
+        key: 'renderFooter',
+        value: function renderFooter() {
+            var lastUpdateText = '';
+            if (this.state.lastUpdate) {
+                lastUpdateText = lastUpdateText.concat(' (last update: ', (0, _moment2.default)(this.state.lastUpdate).format('hh:mm:ss'), ')');
+            }
+
+            console.log('renderFooter in CoinPairlist');
+            return _react2.default.createElement(Footer, { text: lastUpdateText, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 134
                 }
             });
         }
@@ -64545,7 +64559,7 @@ var CoinPairList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, ref: 'coinPairList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 127
+                        lineNumber: 142
                     }
                 },
                 this.renderList()
@@ -64555,12 +64569,13 @@ var CoinPairList = function (_Component) {
     return CoinPairList;
 }(_react.Component);
 
-var Footer = function Footer() {
+var Footer = function Footer(props) {
     return _react2.default.createElement(
         _reactNative.View,
-        { style: styles.container, __source: {
+        {
+            __source: {
                 fileName: _jsxFileName,
-                lineNumber: 135
+                lineNumber: 150
             }
         },
         _react2.default.createElement(
@@ -64569,17 +64584,34 @@ var Footer = function Footer() {
                     return console.log('load more');
                 }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 136
+                    lineNumber: 151
                 }
             },
             _react2.default.createElement(
-                _reactNative.Text,
-                { style: styles.text, __source: {
+                _reactNative.View,
+                { style: styles.footer, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 137
+                        lineNumber: 152
                     }
                 },
-                'Pull down to refresh'
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.text, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 153
+                        }
+                    },
+                    'Pull down to refresh'
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.footerUpdateLabel, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 154
+                        }
+                    },
+                    props.text
+                )
             )
         )
     );
@@ -64596,6 +64628,16 @@ var styles = _reactNative.StyleSheet.create({
         flex: 1,
         height: _reactNative.StyleSheet.hairlineWidth,
         backgroundColor: '#8E8E8E'
+    },
+    footer: {
+        flex: 1,
+        padding: 8,
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    footerUpdateLabel: {
+        fontSize: 11,
+        color: 'rgb(33,33,33)'
     }
 });
 
@@ -65654,74 +65696,6 @@ var styles = _reactNative.StyleSheet.create({
 
 exports.default = CoinPairRow;
 }, 423, null, "NNCoins/src/components/Screens/Price/CoinPairRow.js");
-__d(/* NNCoins/src/components/Screens/NewsFeed/NewsFeed.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _jsxFileName = '/Users/matanguttman/RN/NNBitcoins/src/components/Screens/NewsFeed/NewsFeed.js';
-
-var _react = require(114    ); // 114 = react
-
-var _react2 = babelHelpers.interopRequireDefault(_react);
-
-var _reactNative = require(12            ); // 12 = react-native
-
-var _moment = require(425     ); // 425 = moment
-
-var _moment2 = babelHelpers.interopRequireDefault(_moment);
-
-var _NewsItemsList = require(426              ); // 426 = ./NewsItemsList
-
-var _NewsItemsList2 = babelHelpers.interopRequireDefault(_NewsItemsList);
-
-var NewsFeed = function NewsFeed() {
-  return _react2.default.createElement(
-    _reactNative.View,
-    { style: styles.container, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 9
-      }
-    },
-    _react2.default.createElement(
-      _reactNative.Text,
-      { style: styles.subtitleStyle, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      },
-      (0, _moment2.default)().format('MMMM Do, YYYY')
-    ),
-    _react2.default.createElement(_NewsItemsList2.default, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      }
-    })
-  );
-};
-
-var styles = _reactNative.StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(238, 238, 238)'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff'
-  },
-  subtitleStyle: {
-    height: 0,
-    fontSize: 16,
-    color: '#676977',
-    backgroundColor: 'rgb(167, 0, 26)',
-    textAlign: 'center'
-
-  }
-});
-
-exports.default = NewsFeed;
-}, 424, null, "NNCoins/src/components/Screens/NewsFeed/NewsFeed.js");
 __d(/* moment/moment.js */function(global, require, module, exports) {
 
 ;(function (global, factory) {
@@ -69647,6 +69621,74 @@ __d(/* moment/moment.js */function(global, require, module, exports) {
     return hooks;
 });
 }, 425, null, "moment/moment.js");
+__d(/* NNCoins/src/components/Screens/NewsFeed/NewsFeed.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/Users/matanguttman/RN/NNBitcoins/src/components/Screens/NewsFeed/NewsFeed.js';
+
+var _react = require(114    ); // 114 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var _moment = require(425     ); // 425 = moment
+
+var _moment2 = babelHelpers.interopRequireDefault(_moment);
+
+var _NewsItemsList = require(426              ); // 426 = ./NewsItemsList
+
+var _NewsItemsList2 = babelHelpers.interopRequireDefault(_NewsItemsList);
+
+var NewsFeed = function NewsFeed() {
+  return _react2.default.createElement(
+    _reactNative.View,
+    { style: styles.container, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      }
+    },
+    _react2.default.createElement(
+      _reactNative.Text,
+      { style: styles.subtitleStyle, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      },
+      (0, _moment2.default)().format('MMMM Do, YYYY')
+    ),
+    _react2.default.createElement(_NewsItemsList2.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      }
+    })
+  );
+};
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'rgb(238, 238, 238)'
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: '#ffffff'
+  },
+  subtitleStyle: {
+    height: 0,
+    fontSize: 16,
+    color: '#676977',
+    backgroundColor: 'rgb(167, 0, 26)',
+    textAlign: 'center'
+
+  }
+});
+
+exports.default = NewsFeed;
+}, 424, null, "NNCoins/src/components/Screens/NewsFeed/NewsFeed.js");
 __d(/* NNCoins/src/components/Screens/NewsFeed/NewsItemsList.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -69863,8 +69905,6 @@ var NewsItemRow = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log('render in NewsItemRow');
-
       var title = this.props.item.title;
       title = this.stripHtmlTags(title);
 
@@ -69885,28 +69925,28 @@ var NewsItemRow = function (_Component) {
             return _this2.openUrl(_this2.props.item.url);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 46
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 48
+              lineNumber: 47
             }
           },
           _react2.default.createElement(
             _reactNative.View,
             { style: styles.firstLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 49
+                lineNumber: 48
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { numberOfLines: 2, style: styles.titleStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 50
+                  lineNumber: 49
                 }
               },
               title
@@ -69916,14 +69956,14 @@ var NewsItemRow = function (_Component) {
             _reactNative.View,
             { style: styles.secondLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 52
+                lineNumber: 51
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.dateStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 53
+                  lineNumber: 52
                 }
               },
               displayDate
@@ -69932,7 +69972,7 @@ var NewsItemRow = function (_Component) {
               _reactNative.Text,
               { style: styles.sourceStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 54
+                  lineNumber: 53
                 }
               },
               this.props.item.source
