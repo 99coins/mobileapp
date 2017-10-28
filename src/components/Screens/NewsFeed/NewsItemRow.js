@@ -27,9 +27,12 @@ class NewsItemRow extends Component {
     return (
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.link[0])}>
             <View style={styles.container}>
-              <Text style={styles.titleStyle}>{title}</Text>
-              <View style={styles.imageStyle}>
-                <Image source={Images.chevronIcon} />
+              <View style={styles.firstLine}>
+                   <Text style={styles.titleStyle}>{title}</Text>
+              </View>
+              <View style={styles.secondLine}>
+                 <Text style={styles.dateStyle}>OCT 18, 2017</Text>
+                 <Text style={styles.sourceStyle}>www.cryptocompare.com</Text>
               </View>
             </View>
         </TouchableHighlight>
@@ -41,23 +44,42 @@ class NewsItemRow extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: 80,
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'rgb(238, 238, 238)'
+    backgroundColor: 'rgb(238, 238, 238)',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  firstLine: {
+    flex: 0.6,
+    flexDirection: 'column',
+    justifyContent: 'center',
 
   },
+  secondLine: {
+    flex: 0.4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    paddingLeft: 16,
+    paddingRight: 16
+  },
   titleStyle: {
-   flex: 0.92,
-  flexWrap: 'wrap',
-   fontSize: 14,
+   flexWrap: 'wrap',
+   fontSize: 16,
    fontWeight: '600',
    color: 'rgb(33, 33, 33)',
    paddingLeft: 16,
-   paddingRight: 10,
-
+   paddingRight: 10
+  },
+  dateStyle: {
+   fontSize: 13,
+   color: 'rgb(97, 97, 97)'
+  },
+  sourceStyle: {
+   fontSize: 12,
+   color: 'rgb(97, 97, 97)'
   },
   imageStyle: {
    flex: 0.08,

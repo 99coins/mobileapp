@@ -69858,26 +69858,47 @@ var NewsItemRow = function (_Component) {
             }
           },
           _react2.default.createElement(
-            _reactNative.Text,
-            { style: styles.titleStyle, __source: {
+            _reactNative.View,
+            { style: styles.firstLine, __source: {
                 fileName: _jsxFileName,
                 lineNumber: 30
               }
             },
-            title
+            _react2.default.createElement(
+              _reactNative.Text,
+              { style: styles.titleStyle, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 31
+                }
+              },
+              title
+            )
           ),
           _react2.default.createElement(
             _reactNative.View,
-            { style: styles.imageStyle, __source: {
+            { style: styles.secondLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 31
+                lineNumber: 33
               }
             },
-            _react2.default.createElement(_reactNative.Image, { source: _images2.default.chevronIcon, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 32
-              }
-            })
+            _react2.default.createElement(
+              _reactNative.Text,
+              { style: styles.dateStyle, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 34
+                }
+              },
+              'OCT 18, 2017'
+            ),
+            _react2.default.createElement(
+              _reactNative.Text,
+              { style: styles.sourceStyle, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 35
+                }
+              },
+              'www.cryptocompare.com'
+            )
           )
         )
       );
@@ -69888,23 +69909,42 @@ var NewsItemRow = function (_Component) {
 
 var styles = _reactNative.StyleSheet.create({
   container: {
-    height: 60,
+    height: 80,
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'rgb(238, 238, 238)'
+    backgroundColor: 'rgb(238, 238, 238)',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  firstLine: {
+    flex: 0.6,
+    flexDirection: 'column',
+    justifyContent: 'center'
 
   },
+  secondLine: {
+    flex: 0.4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    paddingLeft: 16,
+    paddingRight: 16
+  },
   titleStyle: {
-    flex: 0.92,
     flexWrap: 'wrap',
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
     color: 'rgb(33, 33, 33)',
     paddingLeft: 16,
     paddingRight: 10
-
+  },
+  dateStyle: {
+    fontSize: 13,
+    color: 'rgb(97, 97, 97)'
+  },
+  sourceStyle: {
+    fontSize: 12,
+    color: 'rgb(97, 97, 97)'
   },
   imageStyle: {
     flex: 0.08
