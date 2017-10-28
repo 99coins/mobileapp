@@ -69802,6 +69802,10 @@ var _images = require(387                ); // 387 = @assets/images.js
 
 var _images2 = babelHelpers.interopRequireDefault(_images);
 
+var _moment = require(425     ); // 425 = moment
+
+var _moment2 = babelHelpers.interopRequireDefault(_moment);
+
 var NewsItemRow = function (_Component) {
   babelHelpers.inherits(NewsItemRow, _Component);
 
@@ -69841,34 +69845,45 @@ var NewsItemRow = function (_Component) {
       title = this.stripHtmlTags(title);
       console.log(title);
 
+      var pubDate = this.props.item.pubDate[0];
+      var date = new Date(pubDate);
+      var today = new Date();
+      var displayDate = void 0;
+
+      if (date.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
+        displayDate = date.getUTCHours();
+      }
+
+      displayDate = (0, _moment2.default)(date).format('ddd, MMM DD, YYYY');
+
       return _react2.default.createElement(
         _reactNative.TouchableHighlight,
         { onPress: function onPress() {
             return _this2.openUrl(_this2.props.item.link[0]);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 28
+            lineNumber: 46
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 29
+              lineNumber: 47
             }
           },
           _react2.default.createElement(
             _reactNative.View,
             { style: styles.firstLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 30
+                lineNumber: 48
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.titleStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 31
+                  lineNumber: 49
                 }
               },
               title
@@ -69878,23 +69893,23 @@ var NewsItemRow = function (_Component) {
             _reactNative.View,
             { style: styles.secondLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 33
+                lineNumber: 51
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.dateStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 34
+                  lineNumber: 52
                 }
               },
-              'OCT 18, 2017'
+              displayDate
             ),
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.sourceStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 35
+                  lineNumber: 53
                 }
               },
               'www.cryptocompare.com'

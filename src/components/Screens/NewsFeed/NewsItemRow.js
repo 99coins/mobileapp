@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableHighlight, Linking } from 'react-native';
 import Images from '@assets/images.js';
+import moment from 'moment';
+
 
 class NewsItemRow extends Component {
 
@@ -24,6 +26,22 @@ class NewsItemRow extends Component {
     title = this.stripHtmlTags(title);
     console.log(title);
 
+    const pubDate = this.props.item.pubDate[0];
+    const date = new Date(pubDate);
+    const today = new Date();
+    let displayDate;
+      //check if today
+    if (date.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
+      displayDate = date.getUTCHours();
+    }
+
+    displayDate = moment(date).format('ddd, MMM DD, YYYY');
+  
+
+    //    let title = this.props.item.title[0];
+    // title = this.stripHtmlTags(title);
+    // console.log(title);
+
     return (
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.link[0])}>
             <View style={styles.container}>
@@ -31,7 +49,7 @@ class NewsItemRow extends Component {
                    <Text style={styles.titleStyle}>{title}</Text>
               </View>
               <View style={styles.secondLine}>
-                 <Text style={styles.dateStyle}>OCT 18, 2017</Text>
+                 <Text style={styles.dateStyle}>{displayDate}</Text>
                  <Text style={styles.sourceStyle}>www.cryptocompare.com</Text>
               </View>
             </View>
