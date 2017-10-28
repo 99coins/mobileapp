@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableHighlight, Linking } from 'react-native';
 import Images from '@assets/images.js';
 import moment from 'moment';
+import { Actions } from 'react-native-router-flux';
+
 
 
 class NewsItemRow extends Component {
 
   openUrl = (url) => {
     console.log(url);
-    Linking.openURL(url).catch(err => console.error('An error occurred', err));
+   // Linking.openURL(url).catch(err => console.error('An error occurred', err));
+
+    Actions.News_2({ url: url });
   }
 
     stripHtmlTags = (str) => {

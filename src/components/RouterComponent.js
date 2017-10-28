@@ -6,13 +6,15 @@ import {
   Text,
   Image
 } from 'react-native';
-import { Scene, Router, TabView, Actions } from 'react-native-router-flux';
+import { Stack, Scene, Router, Actions } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 
 
 import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
+import NewsWebView from './Screens/WebView/NewsWebView';
+
 
 const Smooch = require('react-native-smooch');
 
@@ -71,20 +73,29 @@ class RouterComponent extends Component {
           tabBarStyle={{ backgroundColor: 'rgb(39, 40, 45)' }}
           swipeEnabled
           lazy
+          headerTintColor='white'
         >
              {/* Tab and it's scenes */}
              <Scene 
              key="News" 
              title="TOP NEWS STORIES" 
              icon={TabIcon} 
-             component={NewsFeed}                     
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} />)}
              onEnter={() => this.onEnterNews()}
              lazy
-             />
-
+             >
+              <Scene
+                key="News_1"
+                component={NewsFeed}
+              />
+              <Scene
+                key="News_2"
+                component={NewsWebView}
+                back
+              />
+             </Scene>
             {/* Tab and it's scenes */}
              <Scene 
              initial
@@ -110,7 +121,6 @@ class RouterComponent extends Component {
              lazy
              />
         </Scene>
-
     </Router>
     );
   }
