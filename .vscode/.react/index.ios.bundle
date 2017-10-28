@@ -69897,6 +69897,11 @@ var NewsItemRow = function (_Component) {
       }
       var strip = str.toString();
       return strip.replace(/<[^>]*>/g, '');
+    }, _this.isFromLast24Hours = function (date) {
+      var timeStamp = Math.round(new Date().getTime() / 1000);
+      var timeStampYesterday = timeStamp - 24 * 3600;
+      var is24 = date >= new Date(timeStampYesterday).getTime();
+      return is24;
     }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
   }
 
@@ -69910,43 +69915,40 @@ var NewsItemRow = function (_Component) {
 
       var pubDate = this.props.item.published_on;
       var date = new Date(pubDate * 1000);
-      var today = new Date();
       var displayDate = void 0;
-
-      if (date.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
-        displayDate = date.getUTCHours();
+      if (this.isFromLast24Hours(date)) {
+        displayDate = (0, _moment2.default)(date).format('HH:mm');
+      } else {
+        displayDate = (0, _moment2.default)(date).format('ddd, MMM DD, YYYY');
       }
-
-      displayDate = (0, _moment2.default)(date).format('ddd, MMM DD, YYYY');
-
       return _react2.default.createElement(
         _reactNative.TouchableHighlight,
         { onPress: function onPress() {
             return _this2.openUrl(_this2.props.item.url);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 44
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 47
+              lineNumber: 45
             }
           },
           _react2.default.createElement(
             _reactNative.View,
             { style: styles.firstLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 48
+                lineNumber: 46
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { numberOfLines: 2, style: styles.titleStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 49
+                  lineNumber: 47
                 }
               },
               title
@@ -69956,14 +69958,14 @@ var NewsItemRow = function (_Component) {
             _reactNative.View,
             { style: styles.secondLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 51
+                lineNumber: 49
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.dateStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 52
+                  lineNumber: 50
                 }
               },
               displayDate
@@ -69972,7 +69974,7 @@ var NewsItemRow = function (_Component) {
               _reactNative.Text,
               { style: styles.sourceStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 53
+                  lineNumber: 51
                 }
               },
               this.props.item.source

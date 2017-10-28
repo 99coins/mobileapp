@@ -20,28 +20,26 @@ class NewsItemRow extends Component {
        const strip = str.toString();
        return strip.replace(/<[^>]*>/g, ''); 
     }
+    
+   isFromLast24Hours = (date) => {
+    const timeStamp = Math.round(new Date().getTime() / 1000);
+    const timeStampYesterday = timeStamp - (24 * 3600);
+    const is24 = date >= new Date(timeStampYesterday).getTime();
+    return is24;
+   }
 
     render() {
-
     let title = this.props.item.title;
     title = this.stripHtmlTags(title);
 
    const pubDate = this.props.item.published_on;
    const date = new Date(pubDate * 1000);
-    const today = new Date();
-    let displayDate;
-      //check if today
-    if (date.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
-      displayDate = date.getUTCHours();
+   let displayDate;
+    if (this.isFromLast24Hours(date)) {
+        displayDate = moment(date).format('HH:mm');
+    } else {
+      displayDate = moment(date).format('ddd, MMM DD, YYYY');
     }
-
-    displayDate = moment(date).format('ddd, MMM DD, YYYY');
-  
-
-    //    let title = this.props.item.title[0];
-    // title = this.stripHtmlTags(title);
-    // console.log(title);
-
     return (
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.url)}>
             <View style={styles.container}>
