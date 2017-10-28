@@ -49,7 +49,7 @@ class NewsItemRow extends Component {
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.url)}>
             <View style={styles.container}>
               <View style={styles.firstLine}>
-                   <Text style={styles.titleStyle}>{title}</Text>
+                   <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
               </View>
               <View style={styles.secondLine}>
                  <Text style={styles.dateStyle}>{displayDate}</Text>

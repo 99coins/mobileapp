@@ -69904,7 +69904,7 @@ var NewsItemRow = function (_Component) {
             },
             _react2.default.createElement(
               _reactNative.Text,
-              { style: styles.titleStyle, __source: {
+              { numberOfLines: 2, style: styles.titleStyle, __source: {
                   fileName: _jsxFileName,
                   lineNumber: 52
                 }
