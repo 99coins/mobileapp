@@ -40,6 +40,11 @@ Runs all the tests
 fastlane ios beta
 ```
 
+### ios deploy
+```
+fastlane ios deploy
+```
+
 
 ----
 
