@@ -22,12 +22,11 @@ class NewsItemRow extends Component {
     render() {
     console.log('render in NewsItemRow');
 
-    let title = this.props.item.title[0];
+    let title = this.props.item.title;
     title = this.stripHtmlTags(title);
-    console.log(title);
 
-    const pubDate = this.props.item.pubDate[0];
-    const date = new Date(pubDate);
+   const pubDate = this.props.item.published_on;
+   const date = new Date(pubDate * 1000);
     const today = new Date();
     let displayDate;
       //check if today
@@ -43,14 +42,14 @@ class NewsItemRow extends Component {
     // console.log(title);
 
     return (
-        <TouchableHighlight onPress={() => this.openUrl(this.props.item.link[0])}>
+        <TouchableHighlight onPress={() => this.openUrl(this.props.item.url)}>
             <View style={styles.container}>
               <View style={styles.firstLine}>
                    <Text style={styles.titleStyle}>{title}</Text>
               </View>
               <View style={styles.secondLine}>
                  <Text style={styles.dateStyle}>{displayDate}</Text>
-                 <Text style={styles.sourceStyle}>www.cryptocompare.com</Text>
+                 <Text style={styles.sourceStyle}>{this.props.item.source}</Text>
               </View>
             </View>
         </TouchableHighlight>

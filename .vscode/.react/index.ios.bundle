@@ -69661,27 +69661,25 @@ var NewsItemList = function (_Component) {
         return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = NewsItemList.__proto__ || Object.getPrototypeOf(NewsItemList)).call.apply(_ref, [this].concat(args))), _this), _this.fetchStories = function () {
             (0, _axios2.default)({
                 method: 'get',
-                url: 'https://www.cryptocompare.com/api/external/newsletter/?full=true',
-                responseType: 'text'
+
+                url: 'https://min-api.cryptocompare.com/data/news/'
             }).then(function (response) {
                 _this.parseResponse(response);
             });
         }, _this.parseResponse = function (response) {
             var data = response.data;
+            console.log('data_____________________');
+
             console.log(data);
 
-            var self = _this;
-            parseString(response.data, function (err, result) {
-                return self.updateDatasource(result);
-            });
-        }, _this.updateDatasource = function (result) {
-            console.log('xml2js: __________________');
-            var items = result.rss.channel[0].item;
-            console.log(items);
+            _this.updateDatasource(data);
+        }, _this.updateDatasource = function (items) {
 
             var ds = _this.state.dataSource;
 
             if (_this.refs.newsList) {
+                console.log('renderrrrrrr');
+
                 _this.setState({
                     refreshing: false,
                     dataSource: ds.cloneWithRows(items.slice(0, 20))
@@ -69722,7 +69720,7 @@ var NewsItemList = function (_Component) {
         value: function renderRow(item) {
             return _react2.default.createElement(_NewsItemRow2.default, { key: item.title, item: item, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 69
+                    lineNumber: 76
                 }
             });
         }
@@ -69738,7 +69736,7 @@ var NewsItemList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 80
+                        lineNumber: 87
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -69746,14 +69744,14 @@ var NewsItemList = function (_Component) {
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 86
+                            lineNumber: 93
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 78
+                    lineNumber: 85
                 }
             });
         }
@@ -69766,7 +69764,7 @@ var NewsItemList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, ref: 'newsList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 96
+                        lineNumber: 103
                     }
                 },
                 this.renderList()
@@ -69841,12 +69839,11 @@ var NewsItemRow = function (_Component) {
 
       console.log('render in NewsItemRow');
 
-      var title = this.props.item.title[0];
+      var title = this.props.item.title;
       title = this.stripHtmlTags(title);
-      console.log(title);
 
-      var pubDate = this.props.item.pubDate[0];
-      var date = new Date(pubDate);
+      var pubDate = this.props.item.published_on;
+      var date = new Date(pubDate * 1000);
       var today = new Date();
       var displayDate = void 0;
 
@@ -69859,31 +69856,31 @@ var NewsItemRow = function (_Component) {
       return _react2.default.createElement(
         _reactNative.TouchableHighlight,
         { onPress: function onPress() {
-            return _this2.openUrl(_this2.props.item.link[0]);
+            return _this2.openUrl(_this2.props.item.url);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 45
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 47
+              lineNumber: 46
             }
           },
           _react2.default.createElement(
             _reactNative.View,
             { style: styles.firstLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 48
+                lineNumber: 47
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.titleStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 49
+                  lineNumber: 48
                 }
               },
               title
@@ -69893,14 +69890,14 @@ var NewsItemRow = function (_Component) {
             _reactNative.View,
             { style: styles.secondLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 51
+                lineNumber: 50
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.dateStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 52
+                  lineNumber: 51
                 }
               },
               displayDate
@@ -69909,10 +69906,10 @@ var NewsItemRow = function (_Component) {
               _reactNative.Text,
               { style: styles.sourceStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 53
+                  lineNumber: 52
                 }
               },
-              'www.cryptocompare.com'
+              this.props.item.source
             )
           )
         )

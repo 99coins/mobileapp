@@ -31,8 +31,9 @@ class NewsItemList extends Component {
          // fetch stories
         axios({
               method: 'get',
-              url: 'https://www.cryptocompare.com/api/external/newsletter/?full=true',
-              responseType: 'text'
+              //url: 'https://www.cryptocompare.com/api/external/newsletter/?full=true',
+              url: 'https://min-api.cryptocompare.com/data/news/'
+             // responseType: 'text'
         })
        .then(response => { 
            this.parseResponse(response);
@@ -41,20 +42,26 @@ class NewsItemList extends Component {
     parseResponse = (response) => {
        //parse response object
         const data = response.data;
+        console.log('data_____________________');
+
         console.log(data);
+
+        this.updateDatasource(data);
    
-        const self = this;
-        parseString(response.data, (err, result) => self.updateDatasource(result));
+        // const self = this;
+        // parseString(response.data, (err, result) => self.updateDatasource(result));
     }
 
-    updateDatasource = (result) => {
-        console.log('xml2js: __________________');
-           const items = result.rss.channel[0].item;
-          console.log(items);
+    updateDatasource = (items) => {
+        // console.log('xml2js: __________________');
+        //    const items = result.rss.channel[0].item;
+        //   console.log(items);
 
-          const ds = this.state.dataSource;
+        const ds = this.state.dataSource;
   
          if (this.refs.newsList) {
+                     console.log('renderrrrrrr');
+
               this.setState({ 
                 refreshing: false,
                 dataSource: ds.cloneWithRows(items.slice(0, 20)),
