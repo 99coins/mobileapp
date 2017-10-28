@@ -50,6 +50,20 @@ platform :ios do
 
   end
 
+  lane :deploy do
+
+    increment_build_number
+
+    increment_version_number(
+        bump_type: "patch"
+    )
+    push_to_git_remote
+
+    gym(project: "NNCoins.xcodeproj",
+    scheme: “NNCoins”, configuration: "Release”, export_method:”app-store”)
+    deliver(force: true)
+end
+
   # You can define as many lanes as you want
 
   after_all do |lane|
