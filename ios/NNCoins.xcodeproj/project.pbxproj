@@ -29,7 +29,6 @@
 		153C591F1FA505860076215B /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59181FA505860076215B /* nanopb.framework */; };
 		153C59201FA505B30076215B /* Firebase.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59161FA505860076215B /* Firebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		153C59281FA50D610076215B /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59271FA50D610076215B /* GoogleToolboxForMac.framework */; };
-		153C59291FA50D730076215B /* GoogleToolboxForMac.framework in Embed */ = {isa = PBXBuildFile; fileRef = 153C59271FA50D610076215B /* GoogleToolboxForMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592A1FA50F4E0076215B /* libsqlite3.tbd */; };
 		153C592D1FA50F660076215B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592C1FA50F660076215B /* libz.tbd */; };
 		153C59301FA513A40076215B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 153C592F1FA512B30076215B /* GoogleService-Info.plist */; };
@@ -263,7 +262,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				153C59291FA50D730076215B /* GoogleToolboxForMac.framework in Embed */,
 				153C59201FA505B30076215B /* Firebase.framework in Embed */,
 				1578AD651F3DC9CC0026F7E7 /* Smooch.framework in Embed */,
 			);
