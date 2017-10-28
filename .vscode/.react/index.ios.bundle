@@ -64417,6 +64417,8 @@ var CoinPairList = function (_Component) {
     }, {
         key: 'fetchData',
         value: function fetchData() {
+            this.setState({ refreshing: true });
+
             if (!this.state.coinList) {
                 this.fetchCoinList();
             } else {
@@ -64451,8 +64453,6 @@ var CoinPairList = function (_Component) {
         key: 'fetchPairs',
         value: function fetchPairs() {
             var _this3 = this;
-
-            this.setState({ refreshing: true });
 
             _axios2.default.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD').then(function (response) {
                 var entries = Object.entries(response.data);
@@ -64493,7 +64493,7 @@ var CoinPairList = function (_Component) {
             console.log('renderRow in CoinPairlist');
             return _react2.default.createElement(_CoinPairRow2.default, { key: pair.fromSymbol, pair: pair, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 97
+                    lineNumber: 98
                 }
             });
         }
@@ -64509,7 +64509,7 @@ var CoinPairList = function (_Component) {
                     onRefresh: this.onRefresh.bind(this),
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 108
+                        lineNumber: 109
                     }
                 }),
                 dataSource: this.state.dataSource,
@@ -64518,21 +64518,21 @@ var CoinPairList = function (_Component) {
                     return _react2.default.createElement(Footer, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 115
+                            lineNumber: 116
                         }
                     });
                 },
                 renderSeparator: function renderSeparator(sectionId, rowId) {
                     return _react2.default.createElement(_reactNative.View, { key: rowId, style: styles.separator, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 116
+                            lineNumber: 117
                         }
                     });
                 },
 
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 106
+                    lineNumber: 107
                 }
             });
         }
@@ -64545,7 +64545,7 @@ var CoinPairList = function (_Component) {
                 _reactNative.View,
                 { style: { flex: 1 }, ref: 'coinPairList', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 126
+                        lineNumber: 127
                     }
                 },
                 this.renderList()
@@ -64560,7 +64560,7 @@ var Footer = function Footer() {
         _reactNative.View,
         { style: styles.container, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 134
+                lineNumber: 135
             }
         },
         _react2.default.createElement(
@@ -64569,14 +64569,14 @@ var Footer = function Footer() {
                     return console.log('load more');
                 }, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 135
+                    lineNumber: 136
                 }
             },
             _react2.default.createElement(
                 _reactNative.Text,
                 { style: styles.text, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 136
+                        lineNumber: 137
                     }
                 },
                 'Pull down to refresh'
@@ -69726,7 +69726,7 @@ var NewsItemList = function (_Component) {
                 dataSource: ds,
                 refreshing: false
             });
-            this.fetchStories();
+            this.onRefresh();
         }
     }, {
         key: 'componentWillUnmount',
@@ -69885,28 +69885,28 @@ var NewsItemRow = function (_Component) {
             return _this2.openUrl(_this2.props.item.url);
           }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 47
           }
         },
         _react2.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 50
+              lineNumber: 48
             }
           },
           _react2.default.createElement(
             _reactNative.View,
             { style: styles.firstLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 51
+                lineNumber: 49
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { numberOfLines: 2, style: styles.titleStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 52
+                  lineNumber: 50
                 }
               },
               title
@@ -69916,14 +69916,14 @@ var NewsItemRow = function (_Component) {
             _reactNative.View,
             { style: styles.secondLine, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 54
+                lineNumber: 52
               }
             },
             _react2.default.createElement(
               _reactNative.Text,
               { style: styles.dateStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 55
+                  lineNumber: 53
                 }
               },
               displayDate
@@ -69932,7 +69932,7 @@ var NewsItemRow = function (_Component) {
               _reactNative.Text,
               { style: styles.sourceStyle, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 56
+                  lineNumber: 54
                 }
               },
               this.props.item.source

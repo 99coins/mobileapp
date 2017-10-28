@@ -16,13 +16,15 @@ class CoinPairList extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+       this.fetchData();
     }
     onRefresh() {
         this.fetchData();
     }
 
     fetchData() {
+        this.setState({ refreshing: true });
+
         if (!this.state.coinList) {
             this.fetchCoinList();
         } else {
@@ -53,7 +55,6 @@ class CoinPairList extends Component {
     }
 
     fetchPairs() {
-        this.setState({ refreshing: true });
         // fetch pairs
         axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD')
       .then(response => {

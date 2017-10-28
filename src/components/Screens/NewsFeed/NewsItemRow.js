@@ -4,8 +4,6 @@ import Images from '@assets/images.js';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 
-
-
 class NewsItemRow extends Component {
 
   openUrl = (url) => {

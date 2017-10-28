@@ -18,7 +18,7 @@ class NewsItemList extends Component {
               dataSource: ds,
               refreshing: false
         });
-        this.fetchStories();
+        this.onRefresh();
     }
     componentWillUnmount() {
         console.log('componentWillUnmount in NewsItemlist');
