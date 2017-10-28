@@ -126,7 +126,7 @@ class CoinPairList extends Component {
     renderFooter() {
         let lastUpdateText = '';
         if (this.state.lastUpdate) {
-            lastUpdateText = lastUpdateText.concat(' (last update: ', moment(this.state.lastUpdate).format('hh:mm:ss'), ')');
+            lastUpdateText = lastUpdateText.concat(' (last update: ', moment(this.state.lastUpdate).format('HH:mm:ss'), ')');
         }
 
         console.log('renderFooter in CoinPairlist');

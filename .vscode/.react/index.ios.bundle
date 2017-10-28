@@ -64540,7 +64540,7 @@ var CoinPairList = function (_Component) {
         value: function renderFooter() {
             var lastUpdateText = '';
             if (this.state.lastUpdate) {
-                lastUpdateText = lastUpdateText.concat(' (last update: ', (0, _moment2.default)(this.state.lastUpdate).format('hh:mm:ss'), ')');
+                lastUpdateText = lastUpdateText.concat(' (last update: ', (0, _moment2.default)(this.state.lastUpdate).format('HH:mm:ss'), ')');
             }
 
             console.log('renderFooter in CoinPairlist');
