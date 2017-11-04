@@ -7,15 +7,16 @@ import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
-
 import com.facebook.soloader.SoLoader;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
+import io.smooch.core.Smooch;
+import io.smooch.core.SmoochCallback;
+import io.smooch.core.Settings;
+
+
 
 import java.util.Arrays;
 import java.util.List;
-
-import io.smooch.core.Smooch;
-
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -24,11 +25,15 @@ public class MainApplication extends Application implements ReactApplication {
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
     }
+
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-              new MainReactPackage(),
-            new RCTSwipeRefreshLayoutPackage(), new ReactNativeSmoochPackage()
+          new MainReactPackage(),
+              new RCTSwipeRefreshLayoutPackage(),
+              new ReactNativeSmoochPackage()
+
+
       );
     }
   };
@@ -42,7 +47,12 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    Smooch.init(this, "7jaa5xt3vv4glultcdus28bnr");
 
+    Smooch.init(this, new Settings("7jaa5xt3vv4glultcdus28bnr"), new SmoochCallback() {
+          @Override
+          public void run(Response response) {
+              // Your code after init is complete
+          }
+      });
   }
 }
