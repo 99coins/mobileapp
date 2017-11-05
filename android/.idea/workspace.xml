@@ -60,10 +60,9 @@
       <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="120">
+              <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#774#775#0" expanded="true" />
                 <element signature="e#812#813#0" expanded="true" />
                 <element signature="e#1349#1508#0" expanded="true" />
@@ -81,7 +80,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#0#308#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,6 +123,11 @@
     <findStrings>
       <find>com.nncoins</find>
     </findStrings>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$USER_HOME$/desktop/bitcoin/keystores/android.jks" />
+    <option name="KEY_ALIAS" value="AndroidKey" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -3626,6 +3632,11 @@
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.2.3" />
     <property name="device.picker.selection" value="Nexus_5X_API_26_x86" />
     <property name="SearchEverywhereHistoryKey" value="support&#9;PSI&#9;JAVA://null#getUseDeveloperSupport&#10;com.nncoins&#9;null&#9;null&#10;MainApplication&#9;PSI&#9;JAVA://com.nncoins.MainApplication" />
+    <property name="ExportApk.ApkPath" value="$USER_HOME$/Desktop/Bitcoin/android" />
+    <property name="ExportApk.Flavors" value="" />
+    <property name="ExportApk.BuildType" value="release" />
+    <property name="ExportApk.SignV2" value="true" />
+    <property name="ExportApk.SignV1" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -3710,7 +3721,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509812607246" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509914707394" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3758,7 +3769,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509812607246" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509914707394" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3941,7 +3952,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509812607247" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509914707396" />
       </method>
     </configuration>
     <list size="1">
@@ -3984,7 +3995,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3993,10 +4003,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25292397" sideWeight="0.58082974" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.50572246" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -4421,7 +4431,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#308#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4435,10 +4447,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        <state relative-caret-position="120">
+          <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#774#775#0" expanded="true" />
             <element signature="e#812#813#0" expanded="true" />
             <element signature="e#1349#1508#0" expanded="true" />
