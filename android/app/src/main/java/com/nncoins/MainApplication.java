@@ -48,7 +48,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
 
-    Smooch.init(this, new Settings("7jaa5xt3vv4glultcdus28bnr"), new SmoochCallback() {
+    Smooch.init(this, new Settings("59675985f7801557005670b3"), new SmoochCallback() {
           @Override
           public void run(Response response) {
               // Your code after init is complete
