@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, StatusBar } from 'react-native';
 import moment from 'moment';
 import NewsItemsList from './NewsItemsList';
 
@@ -7,6 +7,10 @@ import NewsItemsList from './NewsItemsList';
 const NewsFeed = () => {
      return (
     <View style={styles.container}>
+            <StatusBar
+         backgroundColor="#A6001A"
+         barStyle="light-content"
+          />
       <Text style={styles.subtitleStyle} >{moment().format('MMMM Do, YYYY')}</Text>
       <NewsItemsList />
     </View>

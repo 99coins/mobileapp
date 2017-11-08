@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, StatusBar } from 'react-native';
 import CoinPairList from './CoinPairList';
 
 const Rates = () => {
      return (
     <View style={styles.container}>
+           <StatusBar
+         backgroundColor="#A6001A"
+         barStyle="light-content"
+          />
      <CoinPairList />
     </View>
   );

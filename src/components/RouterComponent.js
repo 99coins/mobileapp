@@ -71,6 +71,7 @@ class RouterComponent extends Component {
           key="tabbar"
           tabs
           tabBarStyle={{ backgroundColor: 'rgb(39, 40, 45)' }}
+          tabBarPosition={'bottom'}
           swipeEnabled
           lazy
           headerTintColor='white'
