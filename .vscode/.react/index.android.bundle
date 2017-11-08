@@ -76636,6 +76636,8 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(12            ); // 12 = react-native
 
+var _reactNativeRouterFlux = require(313                       ); // 313 = react-native-router-flux
+
 var NewsWebView = function (_Component) {
   babelHelpers.inherits(NewsWebView, _Component);
 
@@ -76645,6 +76647,30 @@ var NewsWebView = function (_Component) {
   }
 
   babelHelpers.createClass(NewsWebView, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _reactNative.BackHandler.addEventListener('hardwareBackPress', function () {
+        return _this2.backAndroid();
+      });
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      var _this3 = this;
+
+      _reactNative.BackHandler.removeEventListener('hardwareBackPress', function () {
+        return _this3.backAndroid();
+      });
+    }
+  }, {
+    key: 'backAndroid',
+    value: function backAndroid() {
+      _reactNativeRouterFlux.Actions.pop();
+      return true;
+    }
+  }, {
     key: 'renderLoadingView',
     value: function renderLoadingView() {
       return _react2.default.createElement(_reactNative.ActivityIndicator, {
@@ -76652,7 +76678,7 @@ var NewsWebView = function (_Component) {
         size: 'large',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 20
         }
       });
     }
@@ -76666,7 +76692,7 @@ var NewsWebView = function (_Component) {
         startInLoadingState: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18
+          lineNumber: 31
         }
       });
     }
