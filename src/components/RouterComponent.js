@@ -83,7 +83,7 @@ class RouterComponent extends Component {
              icon={TabIcon} 
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
-             icon={() => (<Image source={Images.newsIcon} />)}
+             icon={() => (<Image source={Images.newsIcon} style={{ width: 24, height: 24 }} />)}
              onEnter={() => this.onEnterNews()}
              lazy
              >
@@ -106,7 +106,7 @@ class RouterComponent extends Component {
              component={Price} 
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
-             icon={() => (<Image source={Images.priceIcon} />)}
+             icon={() => (<Image source={Images.priceIcon} style={{ width: 24, height: 24 }} />)}
              onEnter={() => this.onEnterPrices()}
              lazy
              />
@@ -117,7 +117,7 @@ class RouterComponent extends Component {
              title="" 
              icon={TabIcon} 
              component={AMA}
-             icon={() => (<Image source={Images.amaIcon} />)}
+             icon={() => (<Image source={Images.amaIcon} style={{ width: 30, height: 24 }} />)}
              onEnter={() => this.onEnterChat()}
              lazy
              />
