@@ -3,12 +3,12 @@ package com.nncoins;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import io.smooch.core.Smooch;
 import io.smooch.core.SmoochCallback;
 import io.smooch.core.Settings;
@@ -30,10 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-              new RCTSwipeRefreshLayoutPackage(),
-              new ReactNativeSmoochPackage()
-
-
+            new ReactNativeSmoochPackage(),
+              new RCTSwipeRefreshLayoutPackage()
       );
     }
   };
