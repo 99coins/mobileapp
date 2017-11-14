@@ -44,8 +44,10 @@ class RouterComponent extends Component {
 
   onEnterChat = () => {
     this.openChat();
-    setTimeout(() => this.openLastSeletedTab(),
-    1000);
+
+    this.openLastSeletedTab();
+    // setTimeout(() => this.openLastSeletedTab(),
+    // 1000);
   }
   openLastSeletedTab = () => {
     //const selectedTab = this.state.selected;
@@ -84,12 +86,13 @@ class RouterComponent extends Component {
              navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} style={{ width: 24, height: 24 }} />)}
-             onEnter={() => this.onEnterNews()}
              lazy
              >
               <Scene
                 key="News_1"
                 component={NewsFeed}
+                onEnter={() => this.onEnterNews()}
+
               />
               <Scene
                 key="News_2"
