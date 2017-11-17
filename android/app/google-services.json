@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "194467419393",
+    "firebase_url": "https://bitcoinsmobile-f8540.firebaseio.com",
+    "project_id": "bitcoinsmobile-f8540",
+    "storage_bucket": "bitcoinsmobile-f8540.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194467419393:android:2a7c7c03d97ac1f8",
+        "android_client_info": {
+          "package_name": "com.nncoins"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194467419393-bmo15la546ikg6shsghalao8rv805tho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACqCUtCFG3cgJkwrJl-fih2gbenenHA5Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

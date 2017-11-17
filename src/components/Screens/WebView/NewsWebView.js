@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { WebView, ActivityIndicator, BackHandler } from 'react-native';
-import { Actions } from 'react-native-router-flux'
+import { WebView, ActivityIndicatorIOS, BackHandler, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 class NewsWebView extends Component {
 
@@ -17,9 +17,9 @@ backAndroid() {
 }
 renderLoadingView() {
   return (
-    <ActivityIndicator
-      color='rgb(33, 33, 33)'
-      size='large'
+    <ActivityIndicatorIOS
+          style={[styles.centering, styles.gray, { height: 40 }]}
+          color="white"
     />
   );
 }
@@ -36,5 +36,15 @@ renderLoadingView() {
     );
   }
 }
+
+var styles = StyleSheet.create({
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  gray: {
+    backgroundColor: '#cccccc',
+  }
+});
 
 export default NewsWebView;
