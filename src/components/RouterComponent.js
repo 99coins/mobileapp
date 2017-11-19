@@ -6,7 +6,7 @@ import {
   Text,
   Image
 } from 'react-native';
-import { Stack, Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 
 
@@ -30,7 +30,7 @@ class RouterComponent extends Component {
   constructor() {
       super();        
       this.selectedTab = 'Price';      
-  } 
+  }  
 
   onEnterNews = () => {
     console.log('enter news');
@@ -48,6 +48,20 @@ class RouterComponent extends Component {
     this.openLastSeletedTab();
     // setTimeout(() => this.openLastSeletedTab(),
     // 1000);
+  }  
+  onBackPress = () => {
+    console.log('back press');
+    if (Actions.currentScene === 'News_2') {
+      Actions.pop();
+      return true;
+    }
+
+     return false;
+  }
+
+  openChat = () => {
+   console.log('open chat');
+   Smooch.show();
   }
   openLastSeletedTab = () => {
     //const selectedTab = this.state.selected;
@@ -60,15 +74,10 @@ class RouterComponent extends Component {
       Actions.Price();
     }
   }
-    
-  openChat = () => {
-   console.log('open chat');
-   Smooch.show();
-  }
 
   render() {
     return (
-     <Router>
+     <Router backAndroidHandler={this.onBackPress}>
         <Scene
           key="tabbar"
           tabs
