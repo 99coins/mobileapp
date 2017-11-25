@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableHighlight, Linking } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import Images from '@assets/images.js';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
@@ -42,7 +42,12 @@ class NewsItemRow extends Component {
     }
     return (
         <TouchableHighlight onPress={() => this.openUrl(this.props.item.url)}>
-            <View style={styles.container}>
+          <View style={styles.container}>
+            <Image
+                style={styles.image}
+                 source={{ uri: this.props.item.imageurl }}
+            />
+            <View style={styles.textContainer}>
               <View style={styles.firstLine}>
                    <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
               </View>
@@ -50,6 +55,7 @@ class NewsItemRow extends Component {
                  <Text style={styles.dateStyle}>{displayDate}</Text>
                  <Text style={styles.sourceStyle}>{this.props.item.source}</Text>
               </View>
+            </View>
             </View>
         </TouchableHighlight>
     );
@@ -60,34 +66,39 @@ class NewsItemRow extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
+   height: 80,
     flex: 1,
+    flexDirection: 'row',
+    paddingLeft: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 8
+  },
+  image: {
+    width: 74, 
+    height: 64
+  },
+  textContainer: {
+    flex: 0.6,
     justifyContent: 'space-between',
     backgroundColor: 'rgb(238, 238, 238)',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
+    paddingLeft: 10
+    },
   firstLine: {
-    flex: 0.6,
     flexDirection: 'column',
     justifyContent: 'center',
-
   },
   secondLine: {
     flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    paddingLeft: 16,
-    paddingRight: 16
-  },
+    alignItems: 'flex-end'
+    },
   titleStyle: {
    flexWrap: 'wrap',
    fontSize: 16,
-   fontWeight: '600',
-   color: 'rgb(33, 33, 33)',
-   paddingLeft: 16,
-   paddingRight: 10
+   fontWeight: '400',
+   color: 'rgb(33, 33, 33)'
   },
   dateStyle: {
    fontSize: 13,

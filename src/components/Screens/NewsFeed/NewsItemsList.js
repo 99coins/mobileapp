@@ -90,7 +90,7 @@ class NewsItemList extends Component {
                      />}
                dataSource={this.state.dataSource}
                renderRow={this.renderRow}
-               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+               //renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
 
             />
         );

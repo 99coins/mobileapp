@@ -29,7 +29,7 @@ class RouterComponent extends Component {
 
   constructor() {
       super();        
-      this.selectedTab = 'Price';      
+      this.selectedTab = 'News';      
   }  
 
   onEnterNews = () => {
@@ -111,7 +111,6 @@ class RouterComponent extends Component {
              </Scene>
             {/* Tab and it's scenes */}
              <Scene 
-             initial
              key="Price" 
              title="LATEST PRICES" 
              icon={TabIcon} 
