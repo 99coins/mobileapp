@@ -1,10 +1,13 @@
 import React from 'react';
-//import moment from 'moment';
+import Store from './src/Store';
+import { Provider } from 'react-redux';
 import RouterComponent from './src/components/RouterComponent';
 
 // Create a component
 const App = () => (
-    <RouterComponent />
+    <Provider store={Store}>
+        <RouterComponent />
+    </Provider>
 );
 
 export default App;

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "remotedev-debugger — hostname localhost — port 5678 — injectserver"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -20,6 +21,10 @@
     "react-native-smart-pull-to-refresh-listview": "^1.6.10",
     "react-native-smooch": "1.0.0",
     "react-native-xml2js": "^1.0.3",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
     "timers": "^0.1.1"
   },
   "devDependencies": {
@@ -30,9 +35,16 @@
     "events": "^1.1.1",
     "jest": "20.0.4",
     "react-test-renderer": "16.0.0-alpha.12",
+    "redux-logger": "^3.0.6",
+    "remote-redux-devtools": "^0.5.12",
+    "remotedev-rn-debugger": "^0.8.3",
     "stream": "0.0.2"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "remotedev": {
+    "hostname": "localhost",
+   "port": 5678
   }
 }

@@ -15,6 +15,10 @@ import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
 
+import { connect } from 'react-redux';
+
+import FetchCoinList from './../Actions/FetchCoinList';
+
 
 const Smooch = require('react-native-smooch');
 
@@ -30,6 +34,9 @@ class RouterComponent extends Component {
   constructor() {
       super();        
       this.selectedTab = 'News';      
+  }  
+  componentDidMount() {
+    this.props.FetchCoinList();
   }  
 
   onEnterNews = () => {
@@ -137,4 +144,12 @@ class RouterComponent extends Component {
     );
   }
 }
-export default RouterComponent;
+
+function mapStateToProps(state) {
+    return {
+        crypto: state.crypto
+    }
+}
+
+export default connect(mapStateToProps, { FetchCoinList })(RouterComponent);
+
