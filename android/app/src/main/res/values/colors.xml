@@ -1,7 +1,7 @@
 <resources>
 
-    <color name="Smooch_accent">#A6001A</color>
-    <color name="Smooch_accentDark">#A6001A</color>
+    <color name="Smooch_accent">#DBDCDD</color>
+    <color name="Smooch_accentDark">#DBDCDD</color>
 
     <!-- <color name="Smooch_accent">#9200aa</color>
     <color name="Smooch_accentDark">#76008a</color>

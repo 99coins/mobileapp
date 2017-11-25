@@ -66515,26 +66515,30 @@ var _CoinPairList = require(412             ); // 412 = ./CoinPairList
 
 var _CoinPairList2 = babelHelpers.interopRequireDefault(_CoinPairList);
 
+var _colors = require(409                ); // 409 = @assets/colors.js
+
+var _colors2 = babelHelpers.interopRequireDefault(_colors);
+
 var Rates = function Rates() {
   return _react2.default.createElement(
     _reactNative.View,
     { style: styles.container, __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 9
       }
     },
     _react2.default.createElement(_reactNative.StatusBar, {
-      backgroundColor: '#A6001A',
+      backgroundColor: _colors2.default.gray200,
       barStyle: 'light-content',
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 8
+        lineNumber: 10
       }
     }),
     _react2.default.createElement(_CoinPairList2.default, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 14
       }
     })
   );
@@ -71869,6 +71873,18 @@ __d(/* moment/moment.js */function(global, require, module, exports) {
     return hooks;
 });
 }, 440, null, "moment/moment.js");
+__d(/* @assets/colors.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+
+var colors = {
+    gray100: 'rgb(234, 235, 236)',
+    gray200: 'rgb(219, 220, 221)'
+};
+
+exports.default = colors;
+}, 409, null, "@assets/colors.js");
 __d(/* NNCoins/src/components/Screens/NewsFeed/NewsFeed.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -71888,27 +71904,31 @@ var _NewsItemsList = require(442              ); // 442 = ./NewsItemsList
 
 var _NewsItemsList2 = babelHelpers.interopRequireDefault(_NewsItemsList);
 
+var _colors = require(409                ); // 409 = @assets/colors.js
+
+var _colors2 = babelHelpers.interopRequireDefault(_colors);
+
 var NewsFeed = function NewsFeed() {
   return _react2.default.createElement(
     _reactNative.View,
     { style: styles.container, __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 10
       }
     },
     _react2.default.createElement(_reactNative.StatusBar, {
-      backgroundColor: '#A6001A',
+      backgroundColor: _colors2.default.gray200,
       barStyle: 'light-content',
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 11
       }
     }),
     _react2.default.createElement(
       _reactNative.Text,
       { style: styles.subtitleStyle, __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 15
         }
       },
       (0, _moment2.default)().format('MMMM Do, YYYY')
@@ -71916,7 +71936,7 @@ var NewsFeed = function NewsFeed() {
     _react2.default.createElement(_NewsItemsList2.default, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 16
       }
     })
   );
