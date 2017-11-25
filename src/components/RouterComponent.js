@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import Images from '@assets/images.js';
-
+import Colors from '@assets/colors.js';
 
 import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
@@ -81,7 +81,7 @@ class RouterComponent extends Component {
         <Scene
           key="tabbar"
           tabs
-          tabBarStyle={{ backgroundColor: 'rgb(39, 40, 45)' }}
+          tabBarStyle={{ backgroundColor: Colors.gray200 }}
           tabBarPosition={'bottom'}
           swipeEnabled
           lazy
@@ -92,7 +92,7 @@ class RouterComponent extends Component {
              key="News" 
              title="NEWS" 
              icon={TabIcon} 
-             navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
+             navigationBarStyle={{ backgroundColor: Colors.gray200 }}
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} style={{ width: 24, height: 24 }} />)}
              lazy
@@ -115,7 +115,7 @@ class RouterComponent extends Component {
              title="LATEST PRICES" 
              icon={TabIcon} 
              component={Price} 
-             navigationBarStyle={{ backgroundColor: 'rgb(167, 0, 26)' }}
+             navigationBarStyle={{ backgroundColor: Colors.gray200 }}
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.priceIcon} style={{ width: 24, height: 24 }} />)}
              onEnter={() => this.onEnterPrices()}
