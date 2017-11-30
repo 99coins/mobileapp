@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity, ListView, RefreshControl } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
 import CoinPairRow from './CoinPairRow';
 import moment from 'moment';
 import { connect } from 'react-redux';

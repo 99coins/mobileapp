@@ -18,7 +18,7 @@ import NewsWebView from './Screens/WebView/NewsWebView';
 import { connect } from 'react-redux';
 
 import FetchCoinList from './../Actions/FetchCoinList';
-
+import Header from './Header.js';
 
 const Smooch = require('react-native-smooch');
 
@@ -92,15 +92,12 @@ class RouterComponent extends Component {
           tabBarPosition={'bottom'}
           swipeEnabled
           lazy
-          headerTintColor='white'
+          navBar={Header}
         >
              {/* Tab and it's scenes */}
              <Scene 
              key="News" 
-             title="NEWS" 
              icon={TabIcon} 
-             navigationBarStyle={{ backgroundColor: Colors.gray200 }}
-             titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.newsIcon} style={{ width: 24, height: 24 }} />)}
              lazy
              >
@@ -119,11 +116,9 @@ class RouterComponent extends Component {
             {/* Tab and it's scenes */}
              <Scene 
              key="Price" 
-             title="LATEST PRICES" 
+             //title="LATEST PRICES" 
              icon={TabIcon} 
              component={Price} 
-             navigationBarStyle={{ backgroundColor: Colors.gray200 }}
-             titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.priceIcon} style={{ width: 24, height: 24 }} />)}
              onEnter={() => this.onEnterPrices()}
              initial

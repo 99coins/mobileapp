@@ -1,14 +1,14 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View, Image } from 'react-native';
+import Images from '@assets/images.js';
+import Colors from '@assets/colors.js';
 
 //create comonent
-const Header = (props) => {
-    const { textStyle, viewStyle, subtitleStyle } = styles;
+const Header = () => {
+    const { viewStyle, imageStyle } = styles;
     return (
-        <View style={viewStyle}>
-             <Text style={textStyle} >{props.titleText}</Text>
-             <Text style={subtitleStyle} >{props.subtitleText}</Text>
-
+        <View style={viewStyle} >
+            <Image source={Images.logo} style={imageStyle} />
         </View>
     );
 };
@@ -18,18 +18,14 @@ const Header = (props) => {
 const styles = {
     viewStyle: {
         height: 86,
-        backgroundColor: '#B91121',
+        backgroundColor: { backgroundColor: Colors.gray100 },
         justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 20
+        alignItems: 'flex-start',
+        paddingLeft: 8
     },
-    textStyle: {
-        fontSize: 20,
-        color: '#FFFFFF'
-    },
-    subtitleStyle: {
-        fontSize: 16,
-        color: '#676977'
+    imageStyle: {
+        resizeMode: 'contain',
+        width: 180
     }
 };
 

@@ -6,7 +6,8 @@ const images = {
     chevronIcon: require('./img/icn_Chevron.png'),
     newsIcon_pressed: require('./img/icn_news_pressed.png'),
     newsIcon: require('./img/icn_news.png'),
-    priceIcon: require('./img/icn_price.png')  
+    priceIcon: require('./img/icn_price.png'), 
+    logo: require('./img/logo.png'),
 };
 
 
