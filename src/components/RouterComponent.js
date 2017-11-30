@@ -92,7 +92,15 @@ class RouterComponent extends Component {
           tabBarPosition={'bottom'}
           swipeEnabled
           lazy
-          navBar={Header}
+          //navBar={Header}
+          navigationBarTitleImage={Images.logo}
+          navigationBarTitleImageStyle={{
+            resizeMode: 'contain',
+            width: 180 }}
+          navigationBarStyle={{ 
+            backgroundColor: Colors.gray100,
+            paddingLeft: 8
+          }}
         >
              {/* Tab and it's scenes */}
              <Scene 
