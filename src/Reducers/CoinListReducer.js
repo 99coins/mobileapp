@@ -15,15 +15,15 @@ export default function (state = initialState, action) {
     switch (action.type) {
 
         case FETCHING_COIN_LIST:
-            return Object.assign(state, {
+            return Object.assign({}, state, {
                 isFetching: true,
-                data: [],
+                data: null,
                 hasError: false,
                 errorMessage: null
             });
 
         case FETCHING_COIN_LIST_SUCCESS:
-            return Object.assign(state, {
+            return Object.assign({}, state, {
                 isFetching: false,
                 data: action.payload,
                 hasError: false,
@@ -31,11 +31,11 @@ export default function (state = initialState, action) {
             });
 
         case FETCHING_COIN_LIST_FAIL:
-            return Object.assign(state, {
+            return Object.assign({}, state, {
                 isFetching: false,
-                data: [],
+                data: action.payload,
                 hasError: true,
-                errorMessage: action.payload
+                errorMessage: action.err
             });
 
     

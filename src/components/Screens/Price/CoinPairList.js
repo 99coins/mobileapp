@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity, ListView, RefreshControl } from 'react-native';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import CoinPairRow from './CoinPairRow';
-import moment from 'moment';
 import { connect } from 'react-redux';
 
 import FetchPriceData from './../../../Actions/FetchPriceData';
+import FetchCoinList from './../../../Actions/FetchCoinList';
 
 //create comonent
 class CoinPairList extends Component {
 
-    componentWillMount() {
-        console.log('componentwillmount prices');
-        this.props.FetchPriceData();
-    }    
+  componentDidMount() {
+        console.log('componentDidMount prices');
+         this.props.FetchCoinList();
+         this.props.FetchPriceData();
+  }
+    getImageURLForCoin(symbol) {
+        const { coinList } = this.props;
+        if (coinList.isFetching === false && coinList.hasError === false) {
+            console.log(coinList);
+            console.log('getImageForCoin' + symbol);
+            const baseImageURL = coinList.data.BaseImageUrl;
+            const coin = coinList.data.Data[symbol];
+            if (coin){
+                console.log(coin.ImageUrl);
+                  return baseImageURL + coin.ImageUrl;
+            }
+            return;
+        }
+        return;
+    }
+    
     renderItem = ({ item }) => (
       <CoinPairRow 
                 key={item.id}
@@ -20,6 +37,7 @@ class CoinPairList extends Component {
                 symbol={item.symbol}
                 priceUsd={item.price_usd}
                 percentChange24h={item.percent_change_24h}
+                imageUrl={this.getImageURLForCoin(item.symbol)}
       />
   );
 
@@ -38,9 +56,9 @@ class CoinPairList extends Component {
     render() {
         console.log('RENDERING COINS');
 
-        const { priceData } = this.props;
+        const { priceData, coinList } = this.props;
 
-        console.log(priceData);
+        console.log(coinList);
 
        if (priceData.isFetching) {
             return (
@@ -52,7 +70,7 @@ class CoinPairList extends Component {
         return (
           <FlatList
             data={priceData.data}
-             extraData={priceData}
+             extraData={coinList.data}
              //keyExtractor={this._keyExtractor}
             renderItem={this.renderItem}
           />
@@ -97,7 +115,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        priceData: state.priceData
+        priceData: state.priceData,
+        coinList: state.coinList
     };
 }
-export default connect(mapStateToProps, { FetchPriceData })(CoinPairList);
+export default connect(mapStateToProps, { FetchPriceData, FetchCoinList })(CoinPairList);

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
-const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h }) => {
+const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
     return (
         <View style={styles.container}>
-            <Image style={styles.image} />
+            <Image style={styles.image} source={{ uri: imageUrl }} />
             <Text style={styles.coinSymbol}>{symbol}</Text>
             <Text style={styles.seperator}>|</Text>
             <Text style={styles.coinName}>{coinName}</Text>

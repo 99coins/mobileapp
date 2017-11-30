@@ -8,16 +8,15 @@ import {
 
 
 export default function FetchCoinList() {
-
     return dispatch => {
-        dispatch({ type: FETCHING_COIN_LIST })
+        dispatch({ type: FETCHING_COIN_LIST });
 
         return axios.get(`${CRYPTO_COMPARE_BASE_URL}/data/all/coinlist`)
             .then(res => {
                 dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res.data });
             })
             .catch(err => {
-                dispatch({ type: FETCHING_COIN_LIST_FAIL, payload: err.data });
+                dispatch({ type: FETCHING_COIN_LIST_FAIL, payload: err });
             });
     };
 }

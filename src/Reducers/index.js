@@ -3,5 +3,6 @@ import CoinListReducer from './CoinListReducer';
 import PriceDataReducer from './PriceDataReducer';
 
 export default combineReducers({
-    priceData: PriceDataReducer
+    priceData: PriceDataReducer,
+    coinList: CoinListReducer
 });
