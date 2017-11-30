@@ -33,10 +33,10 @@ class RouterComponent extends Component {
 
   constructor() {
       super();        
-      this.selectedTab = 'News';      
+      this.selectedTab = 'Price';      
   }  
   componentDidMount() {
-    this.props.FetchCoinList();
+   // this.props.FetchCoinList();
   }  
 
   onEnterNews = () => {
@@ -126,6 +126,7 @@ class RouterComponent extends Component {
              titleStyle={{ color: 'white' }}
              icon={() => (<Image source={Images.priceIcon} style={{ width: 24, height: 24 }} />)}
              onEnter={() => this.onEnterPrices()}
+             initial
              lazy
              />
     

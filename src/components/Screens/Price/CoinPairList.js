@@ -1,127 +1,28 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ListView, RefreshControl, TouchableOpacity } from 'react-native';
-import axios from 'axios';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, ListView, RefreshControl } from 'react-native';
+import { List, ListItem } from 'react-native-elements';
 import CoinPairRow from './CoinPairRow';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
+import FetchPriceData from './../../../Actions/FetchPriceData';
 
 //create comonent
 class CoinPairList extends Component {
 
     componentWillMount() {
-        //set initail datsource
-        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-            this.setState({
-              dataSource: ds,
-              refreshing: false,
-              lastUpdate: null 
-        }); 
-    }
-
-    componentDidMount() {
-       this.fetchData();
-    }
-    onRefresh() {
-        this.fetchData();
-    }
-    fetchData() {
-        this.setState({ refreshing: true });
-
-        if (!this.state.coinList) {
-            this.fetchCoinList();
-        } else {
-            this.fetchPairs();
-        }
-    }
-
-    fetchCoinList() {
-        axios.get('https://www.cryptocompare.com/api/data/coinlist/')
-        .then(response => {
-            const entries = Object.entries(response.data);
-            const coinList = entries[5][1];
-            console.log('fecthed coins');
-            console.log(coinList);
-
-            if (this.refs.coinPairList) {
-                console.log('REF FOUND');
-
-                console.log('set coins state');
-
-                  this.setState({ 
-                       coinList: coinList
-                  });
-
-                this.fetchPairs();
-            }
-        });    
-    }
-
-    fetchPairs() {
-        // fetch pairs
-        axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,DASH,XRP&tsyms=USD')
-      .then(response => {
-        //parse response object
-        const entries = Object.entries(response.data);
-
-        if (this.refs.coinPairList) {
-            if (this.state.coinList) {
-                const list = this.state.coinList;
-                const result = entries.map(function (e) {
-                //create pair objects
-                  const pair = {};
-                  pair.fromSymbol = e[0];
-                  const toObj = e[1];
-                  pair.toSymbol = Object.keys(toObj)[0];
-                  pair.price = toObj[Object.keys(toObj)[0]];
-                  const coin = list[pair.fromSymbol];
-                  pair.imageUrl = coin.ImageUrl;
-
-                 return pair;
-                 });
-                console.log(result);
-                const ds = this.state.dataSource;
-                this.setState({ 
-                     refreshing: false,
-                     dataSource: ds.cloneWithRows(result),
-                     lastUpdate: new Date()
-                });
-            } else {
-                console.log('missing coin data');
-                this.setState({ refreshing: false });
-            }
-        } else {
-             console.log('component not mounted');
-            this.setState({ refreshing: false });
-        }
-      });
-    }
-    renderRow(pair) {
-        console.log('renderRow in CoinPairlist');
-        return (
-            <CoinPairRow key={pair.fromSymbol} pair={pair} />
-        );
-    }
-    renderList() {
-        console.log('renderList in CoinPairlist');
-        console.log(this.state);
-        //return this.state.pairs.map(pair => <CoidPairDetail key={pair.fromSymbol} pair={pair} />);
-        return (
-         
-            <ListView
-               refreshControl={
-                <RefreshControl
-                   refreshing={this.state.refreshing}
-                   onRefresh={this.onRefresh.bind(this)}
-                />
-        }
-               dataSource={this.state.dataSource}
-               renderRow={this.renderRow}
-               renderFooter={this.renderFooter.bind(this)}
-               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-
-            />
-        );
-    }
+        console.log('componentwillmount prices');
+        this.props.FetchPriceData();
+    }    
+    renderItem = ({ item }) => (
+      <CoinPairRow 
+                key={item.id}
+                coinName={item.name}
+                symbol={item.symbol}
+                priceUsd={item.price_usd}
+                percentChange24h={item.percent_change_24h}
+      />
+  );
 
     renderFooter() {
         let lastUpdateText = '';
@@ -138,12 +39,26 @@ class CoinPairList extends Component {
     render() {
         console.log('RENDERING COINS');
 
+        const { priceData } = this.props;
+
+        console.log(priceData);
+
+       if (priceData.isFetching) {
+            return (
+                <View>
+                   <Text>refreshing</Text>
+                </View>
+            );
+        }
         return (
-          <View style={{ flex: 1 }} ref='coinPairList'>
-            {this.renderList()}
-         </View>
-     );
-    }
+          <FlatList
+            data={priceData.data}
+             extraData={priceData}
+             //keyExtractor={this._keyExtractor}
+            renderItem={this.renderItem}
+          />
+    );
+   }
 }
 
 const Footer = (props) => (
@@ -181,5 +96,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CoinPairList;
-
+function mapStateToProps(state) {
+    return {
+        priceData: state.priceData
+    };
+}
+export default connect(mapStateToProps, { FetchPriceData })(CoinPairList);

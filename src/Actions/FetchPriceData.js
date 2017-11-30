@@ -16,7 +16,7 @@ export default function FetchPriceData() {
                 dispatch({ type: FETCHING_PRICE_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
-                dispatch({ type: FETCHING_PRICE_DATA_FAIL, payload: err.data });
+                dispatch({ type: FETCHING_PRICE_DATA_FAIL, payload: err });
             });
      };
 }
