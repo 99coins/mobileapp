@@ -46,7 +46,7 @@ class RouterComponent extends Component {
 
   onEnterPrices = () => {
      console.log('enter prices');
-      this.selectedTab = 'Price';
+      this.selectedTab = 'News';
   }
 
   onEnterChat = () => {
@@ -85,51 +85,48 @@ class RouterComponent extends Component {
   render() {
     return (
      <Router backAndroidHandler={this.onBackPress}>
-        <Scene
-          key="tabbar"
-          tabs
-          tabBarStyle={{ backgroundColor: Colors.gray200 }}
-          tabBarPosition={'bottom'}
-          swipeEnabled
-          lazy
-          //navBar={Header}
+       <Scene
+          key="root"
           navigationBarTitleImage={Images.logo}
           navigationBarTitleImageStyle={{
             resizeMode: 'contain',
             width: 180 }}
           navigationBarStyle={{ 
             backgroundColor: Colors.gray100,
-            paddingLeft: 8
+            paddingTop: 16,
+            paddingLeft: 8,
+            shadowOpacity: 0,
+            elevation: 0
           }}
+       >
+
+        <Scene
+          key="tabbar"
+          tabs
+          tabBarStyle={{ backgroundColor: Colors.gray100 }}
+          tabBarPosition={'top'}
+          swipeEnabled
+          lazy
+          wrap={false}
+          //navBar={Header}
         >
              {/* Tab and it's scenes */}
              <Scene 
              key="News" 
              icon={TabIcon} 
-             icon={() => (<Image source={Images.newsIcon} style={{ width: 24, height: 24 }} />)}
              lazy
-             >
-              <Scene
-                key="News_1"
-                component={NewsFeed}
-                onEnter={() => this.onEnterNews()}
+             initial
+             component={NewsFeed}
+             onEnter={() => this.onEnterNews()}
+             />
 
-              />
-              <Scene
-                key="News_2"
-                component={NewsWebView}
-                back
-              />
-             </Scene>
             {/* Tab and it's scenes */}
              <Scene 
              key="Price" 
              //title="LATEST PRICES" 
              icon={TabIcon} 
              component={Price} 
-             icon={() => (<Image source={Images.priceIcon} style={{ width: 24, height: 24 }} />)}
              onEnter={() => this.onEnterPrices()}
-             initial
              lazy
              />
     
@@ -139,11 +136,16 @@ class RouterComponent extends Component {
              title="" 
              icon={TabIcon} 
              component={AMA}
-             icon={() => (<Image source={Images.amaIcon} style={{ width: 30, height: 24 }} />)}
              onEnter={() => this.onEnterChat()}
              lazy
              />
         </Scene>
+        <Scene
+            key="News_2"
+            component={NewsWebView}
+            back
+        /> 
+       </Scene>
     </Router>
     );
   }

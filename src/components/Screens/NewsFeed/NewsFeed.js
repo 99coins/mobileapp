@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, StatusBar } from 'react-native';
-import moment from 'moment';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import NewsItemsList from './NewsItemsList';
 import Colors from '@assets/colors.js';
 
@@ -12,7 +11,6 @@ const NewsFeed = () => {
          backgroundColor={Colors.gray200}
          barStyle="light-content"
       />
-      <Text style={styles.subtitleStyle} >{moment().format('MMMM Do, YYYY')}</Text>
       <NewsItemsList />
     </View>
   );
