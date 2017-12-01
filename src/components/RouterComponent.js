@@ -14,6 +14,7 @@ import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
+import { Share } from 'react-native';
 
 const Smooch = require('react-native-smooch');
 
@@ -22,7 +23,18 @@ class RouterComponent extends Component {
   constructor() {
       super();        
       this.selectedTab = 'Price';      
-  }  
+  }
+  onShare() {
+     Share.share({
+        message: 'Found this intresteing article on the 99 Bitcoins App',
+        url: "https://www.cryptocompare.com/",
+        title: 'Wow, did you see that?'
+         }, {
+        // Android only:
+        dialogTitle: 'Share BAM goodness',
+        // iOS only:
+    });
+  } 
   onEnterNews = () => {
     console.log('enter news');
      this.selectedTab = 'News';
@@ -74,11 +86,14 @@ class RouterComponent extends Component {
           navigationBarTitleImage={Images.logo}
           navigationBarTitleImageStyle={{
             resizeMode: 'contain',
-            width: 180 }}
+            width: 180,
+            marginTop: 8
+             }}
           navigationBarStyle={{ 
             backgroundColor: Colors.gray100,
             paddingLeft: 8,
             shadowOpacity: 0,
+            justifyContent: 'center',
             elevation: 0,
             borderBottomColor: 'transparent'
           }}
@@ -134,6 +149,8 @@ class RouterComponent extends Component {
         <Scene
             key="News_2"
             component={NewsWebView}
+            rightButtonImage={Images.shareIcon}
+            onRight={() => this.onShare()}
             back
         /> 
        </Scene>

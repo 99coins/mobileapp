@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
 import { WebView, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { Share } from 'react-native';
+
 
 class NewsWebView extends Component {
 
-// componentDidMount() {
-//   console.log('did mount news webviewwwwwww');
-//    BackHandler.addEventListener('hardwareBackPress', () => this.backAndroid()); // Listen for the hardware back button on Android to be pressed
-// }
-
-// componentWillUnmount() {
-//     BackHandler.removeEventListener('hardwareBackPress', () => this.backAndroid()); // Remove listener
-//  }
-// backAndroid() {
-//    if (Actions.state.index === 0) {
-//       return false;
-//     }
-//     Actions.pop(); // Return to previous screen
-//     return true;// Needed so BackHandler knows that you are overriding the default action and that it should not close the app
-// }
 renderLoadingView() {
   return (
     <ActivityIndicator
