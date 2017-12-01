@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   titleStyle: {
    flexWrap: 'wrap',
    fontSize: 16,
-   fontWeight: '400',
+   fontWeight: 'bold',
    color: Colors.gray900
   },
   dateStyle: {

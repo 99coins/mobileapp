@@ -77,10 +77,10 @@ class RouterComponent extends Component {
             width: 180 }}
           navigationBarStyle={{ 
             backgroundColor: Colors.gray100,
-            paddingTop: 16,
             paddingLeft: 8,
             shadowOpacity: 0,
             elevation: 0,
+            borderBottomColor: 'transparent'
           }}
           backButtonTintColor={Colors.themeRed}
        >
