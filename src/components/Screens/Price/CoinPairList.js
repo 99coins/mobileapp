@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
 import CoinPairRow from './CoinPairRow';
 import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
@@ -63,9 +63,11 @@ class CoinPairList extends Component {
 
        if (priceData.isFetching) {
             return (
-                <View>
-                   <Text>refreshing</Text>
-                </View>
+                 <ActivityIndicator
+                    color='rgb(33, 33, 33)'
+                    size='small'
+                     style={{ padding: 20 }}
+                 />
             );
         }
         return (
