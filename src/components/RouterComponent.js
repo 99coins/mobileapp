@@ -87,7 +87,7 @@ class RouterComponent extends Component {
         <Scene
           key="tabbar"
           tabs
-          tabBarStyle={{ backgroundColor: Colors.gray100, borderBottomColor: 'red', color: Colors.gray700 }}
+          tabBarStyle={{ backgroundColor: Colors.gray100, borderBottomColor: 'red' }}
           tabBarPosition={'top'}
           swipeEnabled
           lazy

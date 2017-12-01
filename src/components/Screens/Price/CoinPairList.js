@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import CoinPairRow from './CoinPairRow';
+import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
+import Colors from '@assets/colors.js';
+
 
 import FetchPriceData from './../../../Actions/FetchPriceData';
 import FetchCoinList from './../../../Actions/FetchCoinList';
@@ -38,7 +41,19 @@ class CoinPairList extends Component {
                 percentChange24h={item.percent_change_24h}
                 imageUrl={this.getImageURLForCoin(item.symbol)}
       />
-  );
+    );
+    renderSeparator = () => {
+        return (
+            <View
+             style={{
+             height: 1,
+             width: '95%',
+             backgroundColor: Colors.gray100,
+             marginLeft: 16
+            }}
+            />
+        );
+    };
     render() {
         console.log('RENDERING COINS');
 
@@ -56,9 +71,12 @@ class CoinPairList extends Component {
         return (
           <FlatList
             data={priceData.data}
-             extraData={coinList.data}
-             //keyExtractor={this._keyExtractor}
+            extraData={coinList.data}
+            keyExtractor={item => item.id}
             renderItem={this.renderItem}
+            ItemSeparatorComponent={this.renderSeparator}
+            ListHeaderComponent={CoinListHeader}
+
           />
     );
    }

@@ -5,12 +5,16 @@ import Colors from '@assets/colors.js';
 const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
     return (
         <View style={styles.container}>
-            <Image style={styles.image} source={{ uri: imageUrl }} />
-            <Text style={styles.coinSymbol}>{symbol}</Text>
-            <Text style={styles.seperator}>|</Text>
-            <Text style={styles.coinName}>{coinName}</Text>
-            <Text style={styles.coinPrice}>${priceUsd}</Text>
-            <Text style={percentChange24h < 0 ? styles.priceChangeMinus : styles.priceChangePlus}>{percentChange24h}%</Text>
+            <View style={styles.coinContainer}>
+                <Image style={styles.image} source={{ uri: imageUrl }} />
+                <Text style={styles.coinSymbol}>{symbol}</Text>
+                <Text style={styles.seperator}>|</Text>
+                <Text style={styles.coinName}>{coinName}</Text>
+            </View>
+            <View style={styles.priceContainer}>
+                 <Text style={styles.coinPrice}>${priceUsd}</Text>
+                 <Text style={percentChange24h < 0 ? styles.priceChangeMinus : styles.priceChangePlus}>{percentChange24h}%</Text>
+             </View>    
 
         </View>
     );
@@ -22,26 +26,37 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         padding: 16,
-        backgroundColor: Colors.gray50
+        backgroundColor: Colors.gray50,
+        borderBottomWidth: 0,
+        justifyContent: 'space-between'
     },
+    coinContainer: {
+        flexDirection: 'row',
+
+    },
+    priceContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+
     coinSymbol: {
         marginTop: 10,
-        marginLeft: 16,
-        marginRight: 5,
+        marginLeft: 8,
         fontWeight: 'bold',        
-    },
-    coinName: {
-        marginTop: 10,
-        marginLeft: 5,
-        marginRight: 16
     },
     seperator: {
         marginTop: 10,
+        marginLeft: 2,
+
     },
+    coinName: {
+        marginTop: 10,
+        marginLeft: 2,
+
+    },
+ 
     coinPrice: {
         marginTop: 10,
-        marginLeft: 'auto',
-        marginRight: 10,
         fontWeight: 'bold',        
     },
     image: {
@@ -54,15 +69,17 @@ const styles = StyleSheet.create({
     },
     priceChangePlus: {
         color: '#00BFA5',
-        marginLeft: 5,
         marginTop: 10,
         fontWeight: '400',
+        width: 60,
+        textAlign: 'right'
     },
     priceChangeMinus: {
         color: '#DD2C00',
-        marginLeft: 5,
         marginTop: 10,
         fontWeight: '400',
+        width: 60,
+        textAlign: 'right'
     }
 });
 
