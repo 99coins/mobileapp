@@ -94,7 +94,7 @@ class RouterComponent extends Component {
           wrap={false}
           activeTintColor={Colors.themeRed}
           inactiveTintColor={Colors.gray700}
-          titleStyle={{ fontWeight: 'bold' }}
+          labelStyle={{ fontWeight: 'bold' }}
           focused
           indicatorStyle={{ backgroundColor: Colors.themeRed }}
           //navBar={Header}
