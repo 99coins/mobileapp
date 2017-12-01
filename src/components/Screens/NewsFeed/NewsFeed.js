@@ -9,7 +9,7 @@ const NewsFeed = () => {
     <View style={styles.container}>
       <StatusBar
          backgroundColor={Colors.gray200}
-         barStyle="light-content"
+         barStyle="dark-content"
       />
       <NewsItemsList />
     </View>

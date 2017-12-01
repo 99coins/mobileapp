@@ -29,14 +29,16 @@
   
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
-  SKTSettings* settings = [SKTSettings settingsWithAppToken:@"7jaa5xt3vv4glultcdus28bnr"];
-  settings.conversationAccentColor = [UIColor colorWithRed:167/255.0 green:0/255.0 blue:26/255.0 alpha:1.0];
-  settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
+  SKTSettings* settings = [SKTSettings settingsWithAppId:@"59675985f7801557005670b3"];
   
-  [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:167/255.0 green:0/255.0 blue:26/255.0 alpha:1.0]];
+  settings.conversationAccentColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+  //settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
+  
+  [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0]];
   [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
   [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
-  [Smooch initWithSettings:settings];
+  
+  [Smooch initWithSettings:settings completionHandler:nil];
 
 
   
