@@ -80,8 +80,9 @@ class RouterComponent extends Component {
             paddingTop: 16,
             paddingLeft: 8,
             shadowOpacity: 0,
-            elevation: 0
+            elevation: 0,
           }}
+          backButtonTintColor={Colors.themeRed}
        >
 
         <Scene

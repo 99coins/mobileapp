@@ -23,7 +23,8 @@ renderLoadingView() {
   return (
     <ActivityIndicator
       color='rgb(33, 33, 33)'
-      size='large'
+      size='small'
+      style={{ padding: 20 }}
     />
   );
 }
