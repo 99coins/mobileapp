@@ -26,7 +26,7 @@ class RouterComponent extends Component {
   }
   onShare() {
      Share.share({
-        message: 'Found this intresteing article on the 99 Bitcoins App',
+        message: 'Found this intresteing article on the 99Bitcoins App',
         url: "https://www.cryptocompare.com/",
         title: 'Wow, did you see that?'
          }, {
@@ -42,7 +42,7 @@ class RouterComponent extends Component {
 
   onEnterPrices = () => {
      console.log('enter prices');
-      this.selectedTab = 'News';
+      this.selectedTab = 'Price';
   }
 
   onEnterChat = () => {
