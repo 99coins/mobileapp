@@ -6,7 +6,9 @@ const colors = {
     gray200: 'rgb(217, 216, 216)',
     gray500: 'rgb(142, 142, 142)',
     gray700: 'rgb(97, 97, 97)',
-    gray900: 'rgb(33, 33, 33)'
+    gray900: 'rgb(33, 33, 33)',
+
+    themeRed: 'rgb(171, 35, 37)'
 };
 
 
