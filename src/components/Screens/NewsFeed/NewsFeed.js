@@ -1,7 +1,7 @@
 import React from 'react';
+import Colors from '@assets/colors.js';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import NewsItemsList from './NewsItemsList';
-import Colors from '@assets/colors.js';
 
 
 const NewsFeed = () => {
@@ -19,22 +19,8 @@ const NewsFeed = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(238, 238, 238)',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-  },
-    subtitleStyle: {
-        height: 0,
-        fontSize: 16,
-        color: '#676977',
-        backgroundColor: 'rgb(167, 0, 26)',
-        textAlign: 'center'
-
-    }
+    backgroundColor: Colors.gray50
+  }
 });
 
 export default NewsFeed;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
+import Colors from '@assets/colors.js';
 
 const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
     return (
@@ -8,10 +9,8 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl })
             <Text style={styles.coinSymbol}>{symbol}</Text>
             <Text style={styles.seperator}>|</Text>
             <Text style={styles.coinName}>{coinName}</Text>
-            <Text style={styles.coinPrice}>{priceUsd}
-                <Text style={styles.moneySymbol}> $ </Text>
-            </Text>
-            <Text style={styles.priceChange}>{percentChange24h}</Text>
+            <Text style={styles.coinPrice}>${priceUsd}</Text>
+            <Text style={percentChange24h < 0 ? styles.priceChangeMinus : styles.priceChangePlus}>{percentChange24h}%</Text>
 
         </View>
     );
@@ -21,28 +20,20 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl })
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
         flexDirection: 'row',
-        marginBottom: 20,
-        borderBottomColor: '#e5e5e5',
-        borderBottomWidth: 3,
-        padding: 20
-    },
-    upperRow: {
-        display: 'flex',
-        flexDirection: 'row',
-        marginBottom: 15
+        padding: 16,
+        backgroundColor: Colors.gray50
     },
     coinSymbol: {
         marginTop: 10,
-        marginLeft: 20,
+        marginLeft: 16,
         marginRight: 5,
         fontWeight: 'bold',        
     },
     coinName: {
         marginTop: 10,
         marginLeft: 5,
-        marginRight: 20
+        marginRight: 16
     },
     seperator: {
         marginTop: 10,
@@ -54,21 +45,24 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',        
     },
     image: {
-        width: 35,
-        height: 35,
+        width: 36,
+        height: 36,
+        borderRadius: 18
     },
     moneySymbol: {
         fontWeight: 'bold',
     },
-    percentChangePlus: {
+    priceChangePlus: {
         color: '#00BFA5',
-        fontWeight: 'bold',
-        marginLeft: 5
+        marginLeft: 5,
+        marginTop: 10,
+        fontWeight: '400',
     },
-    percentChangeMinus: {
+    priceChangeMinus: {
         color: '#DD2C00',
-        fontWeight: 'bold',
-        marginLeft: 5
+        marginLeft: 5,
+        marginTop: 10,
+        fontWeight: '400',
     }
 });
 

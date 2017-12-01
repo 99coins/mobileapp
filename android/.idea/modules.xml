@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/NNCoins.iml" filepath="$PROJECT_DIR$/NNCoins.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-smart-pull-to-refresh-listview/android/react-native-smart-swipe-refresh-layout.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-smart-pull-to-refresh-listview/android/react-native-smart-swipe-refresh-layout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-smart-pull-to-refresh-listview/android/react-native-smart-swipe-refresh-layout.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-smart-pull-to-refresh-listview/android/react-native-smart-swipe-refresh-layout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" />
     </modules>
   </component>

@@ -4,7 +4,6 @@ import { View } from 'react-native';
 class Chat extends Component {
 
     componentWillMount() {
-
         console.log('componentWillMount in Chat');
     }
 

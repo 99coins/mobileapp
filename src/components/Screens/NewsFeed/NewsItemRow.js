@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import Images from '@assets/images.js';
+import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
 
@@ -72,7 +73,9 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingTop: 8,
     paddingBottom: 8,
-    paddingRight: 8
+    paddingRight: 8,
+    backgroundColor: Colors.gray50
+
   },
   image: {
     width: 74, 
@@ -81,7 +84,6 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 0.6,
     justifyContent: 'space-between',
-    backgroundColor: 'rgb(238, 238, 238)',
     paddingLeft: 10
     },
   firstLine: {
@@ -98,15 +100,15 @@ const styles = StyleSheet.create({
    flexWrap: 'wrap',
    fontSize: 16,
    fontWeight: '400',
-   color: 'rgb(33, 33, 33)'
+   color: Colors.gray900
   },
   dateStyle: {
    fontSize: 13,
-   color: 'rgb(97, 97, 97)'
+   color: Colors.gray700
   },
   sourceStyle: {
    fontSize: 12,
-   color: 'rgb(97, 97, 97)'
+   color: Colors.gray700
   },
   imageStyle: {
    flex: 0.08,

@@ -15,16 +15,7 @@ import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
 
-import { connect } from 'react-redux';
-
 const Smooch = require('react-native-smooch');
-
-const TabIcon = ({ selected, title }) => {
-  return (
-    <Text style={{ color: selected ? 'red' : 'black' }}>{title}</Text>
-  );
-};
-
 
 class RouterComponent extends Component {
 
@@ -96,7 +87,7 @@ class RouterComponent extends Component {
         <Scene
           key="tabbar"
           tabs
-          tabBarStyle={{ backgroundColor: Colors.gray100 }}
+          tabBarStyle={{ backgroundColor: Colors.gray100, borderBottomColor: 'red', color: Colors.gray700 }}
           tabBarPosition={'top'}
           swipeEnabled
           lazy
@@ -106,7 +97,7 @@ class RouterComponent extends Component {
              {/* Tab and it's scenes */}
              <Scene 
              key="News" 
-             icon={TabIcon} 
+             //icon={TabIcon} 
              lazy
              component={NewsFeed}
              onEnter={() => this.onEnterNews()}
@@ -116,7 +107,7 @@ class RouterComponent extends Component {
              <Scene 
              key="Price" 
              //title="LATEST PRICES" 
-             icon={TabIcon} 
+             //icon={TabIcon} 
              component={Price} 
              onEnter={() => this.onEnterPrices()}
              lazy
@@ -128,7 +119,7 @@ class RouterComponent extends Component {
              <Scene 
              key="AMA" 
              title="" 
-             icon={TabIcon} 
+             //icon={TabIcon} 
              component={AMA}
              onEnter={() => this.onEnterChat()}
              lazy
@@ -144,15 +135,10 @@ class RouterComponent extends Component {
     );
   }
 }
-
-// function mapStateToProps(state) {
-//     return {
-//         coinList: state.coinList
-//     };
-// }
-
-//export default connect(mapStateToProps, { FetchCoinList })(RouterComponent);
-
+const styles = {
+    tab: {
+      backgroundColor: Colors.gray100,
+      color: 'red'
+    }
+};    
 export default RouterComponent;
-
-
