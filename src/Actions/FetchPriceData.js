@@ -11,7 +11,7 @@ export default function FetchPriceData() {
     return dispatch => {
         dispatch({ type: FETCHING_PRICE_DATA });
 
-        return axios.get(`${COIN_MARKET_CAP_BASE_URL}/v1/ticker/?limit=20`)
+        return axios.get(`${COIN_MARKET_CAP_BASE_URL}/v1/ticker/?limit=30`)
             .then(res => {
                 dispatch({ type: FETCHING_PRICE_DATA_SUCCESS, payload: res.data });
             })

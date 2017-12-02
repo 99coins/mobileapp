@@ -22,10 +22,16 @@ class CoinPairList extends Component {
         if (coinList.isFetching === false && coinList.hasError === false) {
             console.log('getImageForCoin' + symbol);
             const baseImageURL = coinList.data.BaseImageUrl;
-            const coin = coinList.data.Data[symbol];
+            let coin = coinList.data.Data[symbol];
+            if (symbol === 'MIOTA') {
+                coin = coinList.data.Data.IOT;
+            }
+            if (symbol === 'BCC') {
+                coin = coinList.data.Data.BCCOIN;
+            }
             if (coin) {
                 console.log(coin.ImageUrl);
-                  return baseImageURL + coin.ImageUrl;
+                return baseImageURL + coin.ImageUrl;
             }
             return;
         }
