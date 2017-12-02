@@ -120,10 +120,10 @@
     <orderEntry type="library" name="com.android.support:recyclerview-v7-26.0.2" level="project" />
     <orderEntry type="library" name="com.android.support:support-media-compat-26.0.2" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.4@jar" level="project" />
-    <orderEntry type="library" name="io.smooch:ui-5.6.2" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-26.0.2" level="project" />
+    <orderEntry type="library" name="io.smooch:ui-5.7.1" level="project" />
     <orderEntry type="library" name="com.facebook.fresco:imagepipeline-base-1.0.1" level="project" />
-    <orderEntry type="library" name="io.smooch:core-5.6.2" level="project" />
+    <orderEntry type="library" name="io.smooch:core-5.7.1" level="project" />
     <orderEntry type="library" name="javax.inject:javax.inject:1@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-fragment-26.0.2" level="project" />
     <orderEntry type="library" name="com.parse.bolts:bolts-tasks:1.4.0@jar" level="project" />
