@@ -22,7 +22,7 @@ onShare(url) {
         title: 'Wow, did you see that?'
          }, {
         // Android only:
-        dialogTitle: 'Share BAM goodness',
+        dialogTitle: url,
         // iOS only:
     });
 }

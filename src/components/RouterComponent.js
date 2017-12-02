@@ -139,7 +139,7 @@ class RouterComponent extends Component {
             component={NewsWebView}
             rightButtonImage={Images.shareIcon}
             onRight={(scene) => {
-              console.log(scene.url);
+              console.log(scene);
                scene.component.prototype.onShare(scene.url);
             }}
             back
