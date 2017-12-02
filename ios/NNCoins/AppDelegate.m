@@ -21,7 +21,9 @@
 //#import "Intercom/intercom.h"
 
 
+
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -31,12 +33,16 @@
   
   SKTSettings* settings = [SKTSettings settingsWithAppId:@"59675985f7801557005670b3"];
   
-  settings.conversationAccentColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+  UIColor *themeRed = [UIColor colorWithRed:171/255.0 green:35/255.0 blue:37/255.0 alpha:1.0];
+  UIColor *gray100 = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+
+  
+  settings.conversationAccentColor = themeRed;
   //settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
   
-  [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0]];
-  [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-  [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+  [[UINavigationBar appearance] setBarTintColor:gray100];
+  [[UINavigationBar appearance] setTintColor:themeRed];
+  [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : themeRed }];
   
   [Smooch initWithSettings:settings completionHandler:nil];
 
