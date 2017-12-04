@@ -32,6 +32,12 @@ class NewsItemRow extends Component {
     return is24;
    }
 
+   isToday = (date) => {
+     const today = new Date();
+
+     return today.toDateString() === date.toDateString();
+   }
+
     render() {
     let title = this.props.item.title;
     title = this.stripHtmlTags(title);
@@ -39,7 +45,7 @@ class NewsItemRow extends Component {
    const pubDate = this.props.item.published_on;
    const date = new Date(pubDate * 1000);
    let displayDate;
-    if (this.isFromLast24Hours(date)) {
+    if (this.isToday(date)) {
         displayDate = moment(date).format('HH:mm');
     } else {
       displayDate = moment(date).format('ddd, MMM DD, YYYY');
