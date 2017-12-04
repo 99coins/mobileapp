@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import Image from 'react-native-image-progress';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
+
+import * as Progress from 'react-native-progress';
 
 class NewsItemRow extends Component {
 
@@ -47,6 +50,10 @@ class NewsItemRow extends Component {
             <Image
                 style={styles.image}
                  source={{ uri: this.props.item.imageurl }}
+                 indicator={Progress.CircleSnail}
+                 indicatorProps={{
+                  color: Colors.themeRed,
+                  }}
             />
             <View style={styles.textContainer}>
               <View style={styles.firstLine}>
