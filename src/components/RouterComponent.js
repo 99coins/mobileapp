@@ -127,7 +127,7 @@ class RouterComponent extends Component {
              {/* Tab and it's scenes */}
              <Scene 
              key="AMA" 
-             title="" 
+             title="LIVE CHAT" 
              //icon={TabIcon} 
              component={AMA}
              onEnter={() => this.onEnterChat()}
