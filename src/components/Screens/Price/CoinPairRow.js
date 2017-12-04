@@ -1,12 +1,19 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Colors from '@assets/colors.js';
+import * as Progress from 'react-native-progress';
+import Image from 'react-native-image-progress';
 
 const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
     return (
         <View style={styles.container}>
             <View style={styles.coinContainer}>
-                <Image style={styles.image} source={{ uri: imageUrl }} />
+                <Image 
+                    style={styles.image} 
+                    source={{ uri: imageUrl }} 
+                    indicator={Progress.CircleSnail}
+                    indicatorProps={{ color: Colors.themeRed }}
+                />
                 <Text style={styles.coinSymbol}>{symbol}</Text>
                 <Text style={styles.seperator}>|</Text>
                 <Text style={styles.coinName}>{coinName}</Text>
