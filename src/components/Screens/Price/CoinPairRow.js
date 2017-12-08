@@ -11,6 +11,7 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl })
                 <Image 
                     style={styles.image} 
                     source={{ uri: imageUrl }} 
+                    cache='force-cache'
                     indicator={Progress.CircleSnail}
                     indicatorProps={{ color: Colors.themeRed }}
                 />
