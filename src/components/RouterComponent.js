@@ -94,7 +94,6 @@ class RouterComponent extends Component {
           tabBarStyle={{ backgroundColor: Colors.gray100 }}
           tabBarPosition={'top'}
           swipeEnabled
-          lazy
           wrap={false}
           activeTintColor={Colors.themeRed}
           inactiveTintColor={Colors.gray700}
@@ -107,7 +106,6 @@ class RouterComponent extends Component {
              <Scene 
              key="News" 
              //icon={TabIcon} 
-             lazy
              component={NewsFeed}
              onEnter={() => this.onEnterNews()}
              />
