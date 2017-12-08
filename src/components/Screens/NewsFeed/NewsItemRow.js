@@ -56,6 +56,7 @@ class NewsItemRow extends Component {
             <Image
                 style={styles.image}
                  source={{ uri: this.props.item.imageurl }}
+                 cache='force-cache'
                  indicator={Progress.CircleSnail}
                  indicatorProps={{
                   color: Colors.themeRed,
