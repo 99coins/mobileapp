@@ -5,18 +5,32 @@ import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
 
-
 import FetchPriceData from './../../../Actions/FetchPriceData';
 import FetchCoinList from './../../../Actions/FetchCoinList';
+
 
 //create comonent
 class CoinPairList extends Component {
 
-  componentDidMount() {
+
+    componentDidMount() {
         console.log('componentDidMount prices');
-         this.props.FetchCoinList();
-         this.props.FetchPriceData();
-  }
+        this.props.FetchCoinList();
+        this.props.FetchPriceData();
+
+        setInterval(() => {
+            this.props.FetchPriceData();
+        }, 2000);
+
+        // const timer = setInterval(this.props.FetchPriceData(), 1000);
+        // this.setState({ timer });
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount prices');
+
+        //clearInterval(this.timer);
+    }
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
         if (coinList.isFetching === false && coinList.hasError === false) {
@@ -65,9 +79,9 @@ class CoinPairList extends Component {
 
         const { priceData, coinList } = this.props;
 
-        console.log(coinList);
+         //console.log(coinList);
 
-       if (priceData.isFetching) {
+       if (this.props.priceData.data.length === 0) {
             return (
                  <ActivityIndicator
                     color='rgb(33, 33, 33)'

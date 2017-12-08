@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
         case FETCHING_COIN_LIST:
             return Object.assign({}, state, {
                 isFetching: true,
-                data: null,
+                data: [],
                 hasError: false,
                 errorMessage: null
             });
@@ -33,7 +33,7 @@ export default function (state = initialState, action) {
         case FETCHING_COIN_LIST_FAIL:
             return Object.assign({}, state, {
                 isFetching: false,
-                data: action.payload,
+                data: [],
                 hasError: true,
                 errorMessage: action.err
             });
