@@ -20,7 +20,7 @@ class CoinPairList extends Component {
 
         setInterval(() => {
             this.props.FetchPriceData();
-        }, 2000);
+        }, 30000);
 
         // const timer = setInterval(this.props.FetchPriceData(), 1000);
         // this.setState({ timer });
