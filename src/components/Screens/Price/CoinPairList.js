@@ -15,8 +15,9 @@ class CoinPairList extends Component {
 
     componentDidMount() {
         console.log('componentDidMount prices');
-        this.props.FetchCoinList();
         this.props.FetchPriceData();
+        this.props.FetchCoinList();
+
 
         setInterval(() => {
             this.props.FetchPriceData();
