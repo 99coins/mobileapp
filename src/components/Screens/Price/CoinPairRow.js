@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     image: {
         width: 36,
         height: 36,
-        borderRadius: 18
+        borderRadius: 18,
+        overflow: 'hidden'
     },
     moneySymbol: {
         fontWeight: 'bold',
