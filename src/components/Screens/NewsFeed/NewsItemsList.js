@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ListView, RefreshControl } from 'react-native';
+import { View, StyleSheet, ListView, RefreshControl, FlatList, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import NewsItemRow from './NewsItemRow';
-
-//const parseString = require('xml2js').parseString;
+import { connect } from 'react-redux';
+import FetchNewsList from './../../../Actions/FetchNewsList';
 
 const parseString = require('react-native-xml2js').parseString;
 
 
 //create comonente
 class NewsItemList extends Component {    
-    componentWillMount() {
-        console.log('componentWillMount in NewsItemlist');
-         //set initail datsource
-        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-            this.setState({ 
-              dataSource: ds,
-              refreshing: false
-        });
-        this.onRefresh();
-    }
-    componentWillUnmount() {
-        console.log('componentWillUnmount in NewsItemlist');
-    }
+
+     componentWillMount() {
+        console.log('componentWillMount news');
+        this.props.FetchNewsList();
+     }
+
+    // componentWillMount() {
+    //     console.log('componentWillMount in NewsItemlist');
+    //      //set initail datsource
+    //     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    //         this.setState({ 
+    //           dataSource: ds,
+    //           refreshing: false
+    //     });
+    //     this.onRefresh();
+    // }
+    // componentWillUnmount() {
+    //     console.log('componentWillUnmount in NewsItemlist');
+    // }
     onRefresh() {
-        this.setState({ refreshing: true });
-        this.fetchStories();
+         this.props.FetchNewsList();
     }
     fetchStories = () => {
          // fetch stories
@@ -96,18 +101,38 @@ class NewsItemList extends Component {
         );
     }
 
+    renderItem = ({ item }) => (
+        <NewsItemRow key={item.title} item={item} />
+    );
+
     render() {
-        console.log(this.state);
+        console.log('RENDERING NEWS');
 
+        const { newsList } = this.props;
+        console.log(newsList);
+
+    //    if (newsList.isFetching === true) {
+    //         return (
+    //              <ActivityIndicator
+    //                 color='rgb(33, 33, 33)'
+    //                 size='small'
+    //                  style={{ padding: 20 }}
+    //              />
+    //         );
+    //     }
         return (
-          <View style={{ flex: 1 }} ref='newsList' >
-            {this.renderList()}
-         </View>
-     );
-    }
+          <FlatList
+            onRefresh={() => this.onRefresh()}
+            refreshing={newsList.isFetching}
+            data={newsList.data}
+            keyExtractor={item => item.id}
+            renderItem={this.renderItem}
+          />
+        );
+   }
 }
-const styles = StyleSheet.create({
 
+const styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
@@ -115,5 +140,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewsItemList;
-
+function mapStateToProps(state) {
+    return {
+        newsList: state.newsList
+    };
+}
+export default connect(mapStateToProps, { FetchNewsList })(NewsItemList);

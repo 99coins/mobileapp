@@ -108,6 +108,7 @@ class RouterComponent extends Component {
              //icon={TabIcon} 
              component={NewsFeed}
              onEnter={() => this.onEnterNews()}
+             lazy
              />
 
             {/* Tab and it's scenes */}
