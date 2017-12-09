@@ -15,6 +15,8 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl })
                         cache='force-cache'
                         indicator={Progress.CircleSnail}
                         indicatorProps={{ color: Colors.themeRed }}
+                        resizeMode='contain'
+
                     />
                     <View style={{ position: 'absolute', height: 56, width: 56, borderWidth: 10, borderRadius: 28, borderColor: Colors.gray50 }}></View>
 
@@ -83,8 +85,7 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 18,
-        overflow: 'hidden',
-        resizeMode: 'contain'
+        overflow: 'hidden'
     },
     moneySymbol: {
         fontWeight: 'bold',
