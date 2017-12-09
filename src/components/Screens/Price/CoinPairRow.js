@@ -8,13 +8,17 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl })
     return (
         <View style={styles.container}>
             <View style={styles.coinContainer}>
-                <Image 
-                    style={styles.image} 
-                    source={{ uri: imageUrl }} 
-                    cache='force-cache'
-                    indicator={Progress.CircleSnail}
-                    indicatorProps={{ color: Colors.themeRed }}
-                />
+                <View style={styles.circleContainer}>
+                    <Image 
+                        style={styles.image} 
+                        source={{ uri: imageUrl }} 
+                        cache='force-cache'
+                        indicator={Progress.CircleSnail}
+                        indicatorProps={{ color: Colors.themeRed }}
+                    />
+                    <View style={{ position: 'absolute', height: 56, width: 56, borderWidth: 10, borderRadius: 28, borderColor: Colors.gray50 }}></View>
+
+                 </View>
                 <Text style={styles.coinSymbol}>{symbol}</Text>
                 <Text style={styles.seperator}>|</Text>
                 <Text style={styles.coinName}>{coinName}</Text>
@@ -41,6 +45,14 @@ const styles = StyleSheet.create({
     coinContainer: {
         flexDirection: 'row',
 
+    },
+    circleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+        // flex: 1,
+        // height: 46,
+        // width: 46
     },
     priceContainer: {
         flexDirection: 'row',
@@ -71,7 +83,8 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 18,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        resizeMode: 'contain'
     },
     moneySymbol: {
         fontWeight: 'bold',
