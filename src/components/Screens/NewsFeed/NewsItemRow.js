@@ -4,19 +4,11 @@ import Image from 'react-native-image-progress';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
-import { Actions } from 'react-native-router-flux';
 
 import * as Progress from 'react-native-progress';
 
-class NewsItemRow extends Component {
-
-  openUrl = (url) => {
-    console.log(url);
-   // Linking.openURL(url).catch(err => console.error('An error occurred', err));
-
-    Actions.News_2({ url: url });
-  }
-
+class NewsItemRow extends React.PureComponent {
+  
     stripHtmlTags = (str) => {
        if ((str === null) || (str === '')) {
            return false;
@@ -38,6 +30,10 @@ class NewsItemRow extends Component {
      return today.toDateString() === date.toDateString();
    }
 
+   _onPress = () => {
+    this.props.onPressItem(this.props.item);
+  };
+
     render() {
     let title = this.props.item.title;
     title = this.stripHtmlTags(title);
@@ -51,7 +47,7 @@ class NewsItemRow extends Component {
       displayDate = moment(date).format('ddd, MMM DD, YYYY');
     }
     return (
-        <TouchableHighlight onPress={() => this.openUrl(this.props.item.url)}>
+        <TouchableHighlight onPress={this._onPress}>
           <View style={styles.container}>
             <Image
                 style={styles.image}
