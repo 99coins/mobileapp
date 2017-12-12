@@ -1,24 +1,22 @@
 <resources>
 
-    <color name="Smooch_accent">#E6E6E6</color>
-    <color name="Smooch_accentDark">#E6E6E6</color>
+    <!--<color name="Smooch_accent">#E6E6E6</color>-->
+    <!--<color name="Smooch_accentDark">#E6E6E6</color>-->
+    <!--<color name="Smooch_accentLight">#AB2325</color>-->
+    <!--<color name="Smooch_header">#AB2325</color>-->
+
+    <color name="Smooch_accent">#AB2325</color>
+    <color name="Smooch_accentDark">#AB2325</color>
     <color name="Smooch_accentLight">#AB2325</color>
-    <color name="Smooch_header">#AB2325</color>
+
+    <color name="Smooch_userMessageText">#ffffff</color>
 
 
-    <!-- <color name="Smooch_accent">#9200aa</color>
-    <color name="Smooch_accentDark">#76008a</color>
-    <color name="Smooch_accentLight">#be7cca</color>
-
-        <color name="Smooch_userMessageText">#AB2325</color>
-    <color name="Smooch_backgroundInput">#AB2325</color>
-
-    <color name="Smooch_backgroundInput">#ffffff</color>
 
     <color name="Smooch_btnSendHollow">#c0c0c0</color>
     <color name="Smooch_btnSendHollowBorder">#303030</color>
 
-    <color name="Smooch_header">#AB2325</color>
+    <color name="Smooch_header">#989898</color>
 
     <color name="Smooch_messageDate">@color/Smooch_header</color>
     <color name="Smooch_messageShadow">#7f999999</color>
@@ -31,5 +29,5 @@
     <color name="Smooch_userMessageBackground">@color/Smooch_accent</color>
     <color name="Smooch_userMessageBorder">@color/Smooch_accentDark</color>
     <color name="Smooch_userMessageFailedBackground">@color/Smooch_accentLight</color>
-    <color name="Smooch_userMessageText">#ffffff</color> -->
+
 </resources>
