@@ -36,7 +36,7 @@ platform :ios do
   export_method: "ad-hoc",
   export_options: {
         provisioningProfiles: { 
-          "com.99coins.ios": "99coins-adhoc",
+          "com.99coins.ios": "99bitcoins-adhoc",
         }
       }
   )
