@@ -1015,7 +1015,7 @@
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1052,7 +1052,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1074,8 +1074,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
 				PRODUCT_NAME = NNCoins;
-				PROVISIONING_PROFILE = "67636d41-7ed1-4b70-b330-e1a3d7c5abc0";
-				PROVISIONING_PROFILE_SPECIFIER = "99coins-prod";
+				PROVISIONING_PROFILE = "7840ddeb-281b-4c1d-a670-9be7b7015c95";
+				PROVISIONING_PROFILE_SPECIFIER = "99bitcoins-prod";
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1123,7 +1123,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1145,8 +1145,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
 				PRODUCT_NAME = NNCoins;
-				PROVISIONING_PROFILE = "3e90c5db-6440-4fce-ad94-8cc3a9eff542";
-				PROVISIONING_PROFILE_SPECIFIER = "99coins-adhoc";
+				PROVISIONING_PROFILE = "e38b21fa-582f-4124-90a2-577af4acc844";
+				PROVISIONING_PROFILE_SPECIFIER = "99bitcoins-adhoc";
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
