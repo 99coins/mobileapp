@@ -8,16 +8,13 @@ import {
   View
 } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
-import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
-
-const Smooch = require('react-native-smooch');
+import ChatButton from './ChatButton';
 
 class RouterComponent extends Component {
 
@@ -50,11 +47,6 @@ class RouterComponent extends Component {
     }
 
      return false;
-  }
-
-  openChat = () => {
-   console.log('open chat');
-   Smooch.show();
   }
   openLastSeletedTab = () => {
     //const selectedTab = this.state.selected;
@@ -147,7 +139,7 @@ class RouterComponent extends Component {
             back
         /> 
        </Scene>
-        <Scene component={ActionButton} />
+        <Scene component={ChatButton} />
       </Overlay>
     </Router>
     );
