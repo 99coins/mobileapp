@@ -23,8 +23,6 @@ export default function (state = initialState, action) {
             });
 
         case FETCHING_NEWS_LIST_SUCCESS:
-        console.log('SUCCESSS**********');
-        console.log(action.payload);
         if (state.data !== action.payload) {
             return Object.assign({}, state, {
                 isFetching: false,

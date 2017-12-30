@@ -17,6 +17,15 @@ class NewsItemList extends React.PureComponent {
         console.log('componentWillMount news');
         this.props.FetchNewsList();
     }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps news');
+        console.log(nextProps);
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate news');
+    }
     onRefresh() {
          this.props.FetchNewsList();
     }

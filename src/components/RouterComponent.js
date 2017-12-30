@@ -123,7 +123,7 @@ class RouterComponent extends Component {
 
              />
     
-             {/* Tab and it's scenes */}
+              {/* Tab and it's scenes 
              <Scene 
              key="AMA" 
              title="LIVE CHAT" 
@@ -131,7 +131,7 @@ class RouterComponent extends Component {
              component={AMA}
              onEnter={() => this.onEnterChat()}
              lazy
-             />
+             /> */}
         </Scene>
         <Scene
             key="News_2"
