@@ -15,30 +15,29 @@ export default function (state = initialState, action) {
     switch (action.type) {
 
         case FETCHING_COIN_LIST:
-            return Object.assign({}, state, {
+            return { ...state,    
                 isFetching: true,
                 data: [],
                 hasError: false,
-                errorMessage: null
-            });
+                errorMessage: null 
+            };
 
         case FETCHING_COIN_LIST_SUCCESS:
-            return Object.assign({}, state, {
+            return { ...state,    
                 isFetching: false,
                 data: action.payload,
                 hasError: false,
-                errorMessage: null
-            });
+                errorMessage: null 
+            };
 
         case FETCHING_COIN_LIST_FAIL:
-            return Object.assign({}, state, {
+
+            return { ...state,    
                 isFetching: false,
                 data: [],
                 hasError: true,
-                errorMessage: action.err
-            });
-
-    
+                errorMessage: action.err 
+            };
         default:
             return state;
     }

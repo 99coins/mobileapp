@@ -11,17 +11,22 @@ import FetchCoinList from './../../../Actions/FetchCoinList';
 
 //create comonent
 class CoinPairList extends Component {
-
+    constructor(props) {
+    super(props);
+    this.state = {
+      showSpinner: false
+    };
+  }
 
     componentDidMount() {
         console.log('componentDidMount prices');
-        this.props.FetchPriceData();
         this.props.FetchCoinList();
+        this.props.FetchPriceData();
 
 
-        setInterval(() => {
-            this.props.FetchPriceData();
-        }, 30000);
+        // setInterval(() => {
+        //     this.props.FetchPriceData();
+        // }, 30000);
 
         // const timer = setInterval(this.props.FetchPriceData(), 1000);
         // this.setState({ timer });
@@ -31,6 +36,10 @@ class CoinPairList extends Component {
         console.log('componentWillUnmount prices');
 
         //clearInterval(this.timer);
+    }
+    onRefresh() {
+        //this.props.showSpinner = true;
+        this.props.FetchPriceData();
     }
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
@@ -82,17 +91,19 @@ class CoinPairList extends Component {
 
          //console.log(coinList);
 
-       if (this.props.priceData.data.length === 0) {
-            return (
-                 <ActivityIndicator
-                    color='rgb(33, 33, 33)'
-                    size='small'
-                     style={{ padding: 20 }}
-                 />
-            );
-        }
+    //    if (this.props.priceData.data.length === 0) {
+    //         return (
+    //              <ActivityIndicator
+    //                 color='rgb(33, 33, 33)'
+    //                 size='small'
+    //                  style={{ padding: 20 }}
+    //              />
+    //         );
+    //     }
         return (
           <FlatList
+            onRefresh={() => this.onRefresh()}
+            refreshing={priceData.isFetching && this.state.showSpinner}
             data={priceData.data}
             extraData={coinList.data}
             keyExtractor={item => item.id}

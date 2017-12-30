@@ -9,9 +9,17 @@ import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
 import ChatButton from './ChatButton';
+import FirstChatModal from './FirstChatModal';
+import { chatButtonTapped } from '../Actions/ChatActions';
+import { connect } from 'react-redux';
+
+const Smooch = require('react-native-smooch');
 
 class RouterComponent extends Component {
 
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+  }
   onBackPress = () => {
     console.log('back press');
     if (Actions.currentScene === 'News_2') {
@@ -20,6 +28,10 @@ class RouterComponent extends Component {
     }
      return false;
   }
+  openChat = () => {
+    console.log('open chat');
+    Smooch.show();
+  }  
   render() {
     return (
      <Router backAndroidHandler={this.onBackPress}>
@@ -85,12 +97,20 @@ class RouterComponent extends Component {
                scene.component.prototype.onShare(scene.url);
             }}
             back
-        /> 
+        />
        </Scene>
-        <Scene component={ChatButton} />
+        <Scene component={ChatButton} />        
       </Overlay>
     </Router>
     );
   }
 }   
-export default RouterComponent;
+const mapStateToProps = state => {
+    return {
+        chatState: state.chatState
+    };
+};
+
+export default connect(mapStateToProps, { 
+    chatButtonTapped, 
+})(RouterComponent);
