@@ -3,6 +3,10 @@ package com.nncoins;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;
+import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
+import com.evollu.react.fa.FIRAnalyticsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;
 import com.facebook.react.ReactNativeHost;
@@ -30,6 +34,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new RCTSwipeRefreshLayoutPackage(),
+            new GoogleAnalyticsBridgePackage(),
+            new FIRAnalyticsPackage(),
             new ReactNativeSmoochPackage(),
               new RCTSwipeRefreshLayoutPackage()
       );

@@ -4,12 +4,14 @@ import React, {
   Component } from 'react';
 import {
   Text,
-  Image
+  Image,
+  View
 } from 'react-native';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
-
 import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
@@ -69,6 +71,7 @@ class RouterComponent extends Component {
   render() {
     return (
      <Router backAndroidHandler={this.onBackPress}>
+      <Overlay key="overlay">
        <Scene
           key="root"
           navigationBarTitleImage={Images.logo}
@@ -144,6 +147,8 @@ class RouterComponent extends Component {
             back
         /> 
        </Scene>
+        <Scene component={ActionButton} />
+      </Overlay>
     </Router>
     );
   }
