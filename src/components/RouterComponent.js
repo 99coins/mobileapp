@@ -2,15 +2,9 @@
 
 import React, { 
   Component } from 'react';
-import {
-  Text,
-  Image,
-  View
-} from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
-import AMA from './Screens/AMA/AMA';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
@@ -18,48 +12,14 @@ import ChatButton from './ChatButton';
 
 class RouterComponent extends Component {
 
-  constructor() {
-      super();        
-      this.selectedTab = 'Price';      
-  }
-  onEnterNews = () => {
-    console.log('enter news');
-     this.selectedTab = 'News';
-  }
-
-  onEnterPrices = () => {
-     console.log('enter prices');
-      this.selectedTab = 'Price';
-  }
-
-  onEnterChat = () => {
-    this.openChat();
-
-    this.openLastSeletedTab();
-    // setTimeout(() => this.openLastSeletedTab(),
-    // 1000);
-  }  
   onBackPress = () => {
     console.log('back press');
     if (Actions.currentScene === 'News_2') {
       Actions.pop();
       return true;
     }
-
      return false;
   }
-  openLastSeletedTab = () => {
-    //const selectedTab = this.state.selected;
-    if (this.selectedTab === 'News') {
-      console.log('selected news');
-      Actions.News();
-    } else {
-     console.log('selected price');
-
-      Actions.Price();
-    }
-  }
-
   render() {
     return (
      <Router backAndroidHandler={this.onBackPress}>
@@ -102,31 +62,19 @@ class RouterComponent extends Component {
              key="News" 
              //icon={TabIcon} 
              component={NewsFeed}
-             onEnter={() => this.onEnterNews()}
+             //onEnter={() => this.onEnterNews()}
              lazy
              />
 
             {/* Tab and it's scenes */}
              <Scene 
              key="Price" 
-             //title="LATEST PRICES" 
-             //icon={TabIcon} 
              component={Price} 
-             onEnter={() => this.onEnterPrices()}
+             //onEnter={() => this.onEnterPrices()}
              lazy
              initial
 
              />
-    
-              {/* Tab and it's scenes 
-             <Scene 
-             key="AMA" 
-             title="LIVE CHAT" 
-             //icon={TabIcon} 
-             component={AMA}
-             onEnter={() => this.onEnterChat()}
-             lazy
-             /> */}
         </Scene>
         <Scene
             key="News_2"
@@ -144,11 +92,5 @@ class RouterComponent extends Component {
     </Router>
     );
   }
-}
-const styles = {
-    tab: {
-      backgroundColor: Colors.gray100,
-      color: 'red'
-    }
-};    
+}   
 export default RouterComponent;
