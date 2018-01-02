@@ -8,12 +8,9 @@ import Colors from '@assets/colors.js';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
-import ChatButton from './ChatButton';
+import Chat from './Screens/AMA/AMA';
 import FirstChatModal from './FirstChatModal';
-import { chatButtonTapped } from '../Actions/ChatActions';
-import { connect } from 'react-redux';
 
-const Smooch = require('react-native-smooch');
 
 class RouterComponent extends Component {
 
@@ -27,11 +24,7 @@ class RouterComponent extends Component {
       return true;
     }
      return false;
-  }
-  openChat = () => {
-    console.log('open chat');
-    Smooch.show();
-  }  
+  } 
   render() {
     return (
      <Router backAndroidHandler={this.onBackPress}>
@@ -99,18 +92,12 @@ class RouterComponent extends Component {
             back
         />
        </Scene>
-        <Scene component={ChatButton} />        
+        <Scene component={Chat} />        
       </Overlay>
     </Router>
     );
   }
 }   
-const mapStateToProps = state => {
-    return {
-        chatState: state.chatState
-    };
-};
 
-export default connect(mapStateToProps, { 
-    chatButtonTapped, 
-})(RouterComponent);
+
+export default RouterComponent;
