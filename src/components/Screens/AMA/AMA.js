@@ -177,7 +177,7 @@ cardStyle: {
     marginRight: 16, 
     alignItems: 'center',
     borderRadius: 4,
-    marginBottom: 250
+    marginBottom: 280
 },
 textContainerStyle: {
    padding: 16
