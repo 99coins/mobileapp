@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-//import ChatButton from '../../ChatButton';
+import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStorage } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { chatButtonTapped } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
 import ActionButton from 'react-native-action-button';
-const chatIcon = (<Icon name="comments" size={30} color='white' />);
 import Colors from '@assets/colors.js';
 import { Input } from '../../common';
 
+const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
 const Smooch = require('react-native-smooch');
 
@@ -19,53 +18,80 @@ class Chat extends Component {
         this.state = {
               modalVisible: false,
               userNickName: '',
-              chatWindowOpen: false
+              shouldShowModal: true
          };
     }
 
     componentWillMount() {
         console.log('componentWillMount in Chat');
     }
+    componentDidMount() {
+       console.log('componentDidMount in Chat');
+       this.checkIfNameWasSet();
+    }
+
+    async checkIfNameWasSet() {
+        try {
+        const value = await AsyncStorage.getItem('@didSetNickName');
+        if (value !== null) {
+            console.log(value);
+            this.setState({ shouldShowModal: false });
+        }
+        } catch (error) {
+             console.log(error);
+        }
+    }
+
     setName(text) {
         this.setState({ userNickName: text });
     }
 
     onChatButtonTap =() => {
-        this.setModalVisible(true);
+
+        if (this.state.shouldShowModal) {
+            this.setModalVisible(true);
+        } else { 
+            this.openChat();
+        }
     }
 
     setModalVisible(visible) {
         this.setState({ modalVisible: visible });
     }
 
-    openChat = () => {
+    async openChat (){
         console.log('open chat');
         const nickname = this.state.userNickName;
+
         if (nickname.length > 0) { 
+           //only first time
            console.log(nickname);
-           //Smooch.setEmail(nickname);
            Smooch.setFirstName(nickname);
+
+          try {
+             await AsyncStorage.setItem('@didSetNickName', 'true');
+          } catch (error) {
+            console.log(error);
+          }
+
+          this.restoreInitialState();
+
+         setTimeout(() => Smooch.show(), 1000);
+        } else {
+            Smooch.show();
         }
-
-        this.restoreInitialState();
-
-        // Smooch.show();
-        setTimeout(() => Smooch.show(), 1000);
     }
 
     restoreInitialState = () => {
         this.setState({ 
             modalVisible: false,
-            userNickName: ''
+            userNickName: '',
+            shouldShowModal: false
          });
     }
     
     render() {
         console.log(this.state);
-
-        // if (this.state.chatWindowOpen) {
-        //     Smooch.show();
-        // }     
 
         return (
 
@@ -102,7 +128,7 @@ class Chat extends Component {
                         <TouchableOpacity
                              onPress={() => {
                               //this.setModalVisible(!this.state.modalVisible);
-                              this.openChat();
+                               this.openChat();
                              }}
                              disabled={this.state.userNickName.length === 0}
                 
