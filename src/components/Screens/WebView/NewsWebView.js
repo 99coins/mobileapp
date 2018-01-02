@@ -17,7 +17,7 @@ renderLoadingView() {
 }
 onShare(url) {
      Share.share({
-        message: 'Found this intresteing article on the 99Bitcoins App',
+        message: 'Found this intresteing article on the 99Bitcoins App ',
         url: url,
         title: 'Wow, did you see that?'
          }, {
