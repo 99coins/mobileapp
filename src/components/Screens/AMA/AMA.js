@@ -127,6 +127,7 @@ class Chat extends Component {
                              onChangeText={(text) => {
                                 this.setName(text);
                              }}
+                             style={styles.inputStyle}
                         />
                         <TouchableOpacity
                              onPress={() => {
@@ -205,8 +206,8 @@ decriptionStyle: {
 
 },
 
-inputContainerStyle: {
-    //padding: 16
+inputStyle: {
+    height: 30
 },
 buttonContainer: {
 		width: 200,
