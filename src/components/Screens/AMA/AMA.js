@@ -95,7 +95,7 @@ class Chat extends Component {
 
         return (
             //pointerEvents='box-none'
-            <View style={styles.containerStyle}>
+            <View style={styles.containerStyle} pointerEvents='box-none'>
               <ActionButton
                  buttonColor={Colors.themeRed}
                  onPress={() => { this.onChatButtonTap(); }}
