@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStorage, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { chatButtonTapped } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
@@ -94,8 +94,8 @@ class Chat extends Component {
         console.log(this.state);
 
         return (
-
-            <View style={styles.containerStyle} pointerEvents='box-none' >
+            //pointerEvents='box-none'
+            <View style={styles.containerStyle}>
               <ActionButton
                  buttonColor={Colors.themeRed}
                  onPress={() => { this.onChatButtonTap(); }}
@@ -109,9 +109,11 @@ class Chat extends Component {
                         this.setModalVisible(false);
                     }}
                  >
-                    <View style={styles.modalStyle}>
-                        <View style={styles.cardStyle}>
-                            <View style={styles.textContainerStyle}>
+                <TouchableWithoutFeedback onPress={() => this.setState({ modalVisible: false })}>
+
+                    <View style={styles.modalStyle}> 
+                        <View style={styles.cardStyle} >
+                            <View style={styles.textContainerStyle} >
                              <Text style={styles.titleStyle}>Meet Your Personal Bitcoin Mentor!</Text>
                              <Text style={styles.decriptionStyle} allowFontScaling >
                                  New to the crypto world? Wer'e here to help.
@@ -139,8 +141,11 @@ class Chat extends Component {
                         </TouchableOpacity>
                      </View>
                     </View>
+                 </TouchableWithoutFeedback>
+
                 </Modal>
             </View>
+
 
         );
     }
