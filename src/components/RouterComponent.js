@@ -9,8 +9,9 @@ import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
 import Chat from './Screens/AMA/AMA';
-import FirstChatModal from './FirstChatModal';
-
+import { connect } from 'react-redux';
+import FetchNewsList from '../Actions/FetchNewsList';
+import FetchPriceData from '../Actions/FetchPriceData';
 
 class RouterComponent extends Component {
 
@@ -64,10 +65,17 @@ class RouterComponent extends Component {
         >
              {/* Tab and it's scenes */}
              <Scene 
-             key="News" 
+             key="News"
+             name="NewsFeed" 
              //icon={TabIcon} 
              component={NewsFeed}
-             //onEnter={() => this.onEnterNews()}
+             /* onEnter={() => this.onEnterNews()} */
+
+             onEnter={() => {
+              console.log('on enter news');
+              this.props.FetchNewsList();
+             }}
+
              lazy
              />
 
@@ -76,6 +84,11 @@ class RouterComponent extends Component {
              key="Price" 
              component={Price} 
              //onEnter={() => this.onEnterPrices()}
+             onEnter={() => {
+              console.log('on enter prices');
+              this.props.FetchPriceData();
+             }}
+
              lazy
              initial
 
@@ -100,4 +113,4 @@ class RouterComponent extends Component {
 }   
 
 
-export default RouterComponent;
+export default connect(null, { FetchNewsList, FetchPriceData })(RouterComponent);
