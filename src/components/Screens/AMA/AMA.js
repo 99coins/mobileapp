@@ -60,6 +60,7 @@ class Chat extends Component {
     }
 
     async openChat (){
+
         console.log('open chat');
         const nickname = this.state.userNickName;
 
