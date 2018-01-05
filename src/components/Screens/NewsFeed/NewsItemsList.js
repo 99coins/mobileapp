@@ -56,7 +56,7 @@ class NewsItemList extends React.PureComponent {
         return (
           <FlatList
             onRefresh={() => this.onRefresh()}
-            refreshing={newsList.isFetching}
+            refreshing={false}
             data={newsList.data}
             extraData={this.state}
             keyExtractor={this.keyExtractor}

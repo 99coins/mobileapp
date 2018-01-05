@@ -11,34 +11,13 @@ import FetchCoinList from './../../../Actions/FetchCoinList';
 
 //create comonent
 class CoinPairList extends Component {
-    constructor(props) {
-    super(props);
-    this.state = {
-      showSpinner: false
-    };
-  }
 
     componentDidMount() {
         console.log('componentDidMount prices');
         this.props.FetchCoinList();
         this.props.FetchPriceData();
-
-
-        // setInterval(() => {
-        //     this.props.FetchPriceData();
-        // }, 30000);
-
-        // const timer = setInterval(this.props.FetchPriceData(), 1000);
-        // this.setState({ timer });
-    }
-
-    componentWillUnmount() {
-        console.log('componentWillUnmount prices');
-
-        //clearInterval(this.timer);
     }
     onRefresh() {
-        //this.props.showSpinner = true;
         this.props.FetchPriceData();
     }
     getImageURLForCoin(symbol) {
@@ -86,24 +65,11 @@ class CoinPairList extends Component {
     };
     render() {
         console.log('RENDERING COINS');
-
         const { priceData, coinList } = this.props;
-
-         //console.log(coinList);
-
-    //    if (this.props.priceData.data.length === 0) {
-    //         return (
-    //              <ActivityIndicator
-    //                 color='rgb(33, 33, 33)'
-    //                 size='small'
-    //                  style={{ padding: 20 }}
-    //              />
-    //         );
-    //     }
         return (
           <FlatList
             onRefresh={() => this.onRefresh()}
-            refreshing={priceData.isFetching && this.state.showSpinner}
+            refreshing={false}
             data={priceData.data}
             extraData={coinList.data}
             keyExtractor={item => item.id}

@@ -14,7 +14,7 @@ const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
         style={inputStyle}
         value={value}
         onChangeText={onChangeText}
-        autoFocus
+        //autoFocus
       />
     </View>
   );
