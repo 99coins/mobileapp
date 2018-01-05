@@ -171,9 +171,11 @@ buttonContainerStyle: {
 },
 modalStyle: {
     backgroundColor: 'rgba(33,33,33,0.5)',
-    position: 'relative',
+    position: 'absolute',
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    height: windowHeight, 
+    width: windowWidth 
 },
 cardStyle: {
     backgroundColor: 'white',
@@ -182,7 +184,7 @@ cardStyle: {
     marginRight: 16, 
     alignItems: 'center',
     borderRadius: 4,
-    marginBottom: 280
+    marginBottom: 300
 },
 textContainerStyle: {
    padding: 16
