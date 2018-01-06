@@ -95,56 +95,48 @@ class Chat extends Component {
         console.log(this.state);
 
         return (
-            //pointerEvents='box-none'
             <View style={styles.containerStyle} pointerEvents='box-none'>
               <ActionButton
                  buttonColor={Colors.themeRed}
                  onPress={() => { this.onChatButtonTap(); }}
                  icon={chatIcon}
               />
-                 <Modal
+                <Modal
                     animationType={'fade'}
                     transparent
                     visible={this.state.modalVisible}
                     onRequestClose={() => {
                         this.setModalVisible(false);
                     }}
-                 >
+                >
                 <TouchableWithoutFeedback onPress={() => this.setState({ modalVisible: false })}>
 
                     <View style={styles.modalStyle}> 
                         <View style={styles.cardStyle} >
                             <View style={styles.textContainerStyle} >
-                             <Text style={styles.titleStyle}>Meet Your Personal Bitcoin Mentor!</Text>
-                             <Text style={styles.decriptionStyle} allowFontScaling >
-                                 New to the crypto world? Wer'e here to help.
-                                 Ask us anything and one of our team members will answer shortly.
-                             </Text>
+                                <Text style={styles.titleStyle}>Meet Your Personal Bitcoin Mentor!</Text>
+                                <Text style={styles.decriptionStyle} allowFontScaling >
+                                    New to the crypto world? Wer'e here to help.
+                                    Ask us anything and one of our team members will answer shortly.
+                                </Text>
                             </View>
-                        <Input
-                             label="Nickname"
-                             placeholder="Enter a nickname to begin.."
-                             onChangeText={(text) => {
+                            <Input
+                                placeholder="Enter a nickname to begin.."
+                                onChangeText={(text) => {
                                 this.setName(text);
-                             }}
-                             style={styles.inputStyle}
-                        />
-                        <TouchableOpacity
-                             onPress={() => {
-                              //this.setModalVisible(!this.state.modalVisible);
-                               this.openChat();
-                             }}
-                             disabled={this.state.userNickName.length === 0}
-                
-                        >
-                            <View style={styles.buttonContainer}>
-                             <Text style={styles.buttonText}>Start Chat!</Text>
-                            </View>
-                        </TouchableOpacity>
-                     </View>
+                                }}
+                            />
+                            <TouchableOpacity
+                                onPress={() => { this.openChat(); }}
+                                disabled={this.state.userNickName.length === 0}
+                            >
+                                <View style={styles.buttonContainer}>
+                                    <Text style={styles.buttonText}>Start Chat!</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                 </TouchableWithoutFeedback>
-
+                </TouchableWithoutFeedback>
                 </Modal>
             </View>
 
@@ -163,14 +155,6 @@ containerStyle: {
     height: windowHeight, 
     width: windowWidth 
 },
-buttonContainerStyle: {
-    backgroundColor: 'rgba(33,33,33,0.5)',
-    // position: 'relative',
-     flex: 0.5,
-      //flexDirection: 'column'
-    //flexDirection: 'column',
-    //justifyContent: 'flex-end'
-},
 modalStyle: {
     backgroundColor: 'rgba(33,33,33,0.5)',
     position: 'absolute',
@@ -185,11 +169,12 @@ cardStyle: {
     marginLeft: 16,
     marginRight: 16, 
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderRadius: 4,
-    marginBottom: 300
+    marginBottom: 285
 },
 textContainerStyle: {
-   padding: 16
+   marginTop: 16
 },
 titleStyle: {
     textAlign: 'center',
@@ -202,12 +187,8 @@ decriptionStyle: {
     textAlign: 'center',
     color: Colors.gray500,
     fontSize: 15,
-    paddingTop: 16
+    //paddingTop: 16
 
-},
-
-inputStyle: {
-    height: 30
 },
 buttonContainer: {
 		width: 200,
@@ -216,7 +197,7 @@ buttonContainer: {
 		borderRadius: 10,
         justifyContent: 'center',
         marginBottom: 16,
-        marginTop: 16
+       // marginTop: 16
 },
 buttonText: {
 		color: 'white',
