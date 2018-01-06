@@ -171,10 +171,12 @@ cardStyle: {
     alignItems: 'center',
     justifyContent: 'space-between',
     borderRadius: 4,
-    marginBottom: 285
+    marginBottom: 290
 },
 textContainerStyle: {
-   marginTop: 16
+   marginTop: 16,
+   marginLeft: 16,
+   marginRight: 16
 },
 titleStyle: {
     textAlign: 'center',
@@ -188,6 +190,7 @@ decriptionStyle: {
     color: Colors.gray500,
     fontSize: 15,
     //paddingTop: 16
+    marginTop: 8
 
 },
 buttonContainer: {
