@@ -28,6 +28,10 @@ class Chat extends Component {
     componentDidMount() {
        console.log('componentDidMount in Chat');
        this.checkIfNameWasSet();
+
+       Smooch.getUnreadCount().then(res => {
+            console.log(res);
+       });
     }
 
     async checkIfNameWasSet() {

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -58,6 +57,7 @@
 		DE3E9AE21F58410DAA469CB5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABA6E45A29F45D49AE32838 /* CoreData.framework */; };
 		E39677FA7B9F4F4C8005DAD0 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350CE692175740DF9099AC53 /* Octicons.ttf */; };
 		ED6177F146754A6282138A2E /* libRNFIRAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BD96A2F6FB4D058E161C4F /* libRNFIRAnalytics.a */; };
+		E2EE386886AC4E4ABF13A747 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AA4D1EB26040BD8590098C /* libRNFetchBlob.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +385,8 @@
 		D0119AD11B3843C69410F572 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		EABA6E45A29F45D49AE32838 /* CoreData.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F468902B8FEE459C8A155C50 /* RCTSmooch.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTSmooch.xcodeproj; path = "../node_modules/react-native-smooch/ios/RCTSmooch.xcodeproj"; sourceTree = "<group>"; };
+		238B89B456A74764901C2259 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B5AA4D1EB26040BD8590098C /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,6 +426,7 @@
 				6319CF42CEED472B99BA067F /* SystemConfiguration.framework in Frameworks */,
 				88C304C3F6014D9883442F4E /* libsqlite3.0.tbd in Frameworks */,
 				3B78D4D0B7784F0E9810B242 /* libRNVectorIcons.a in Frameworks */,
+				E2EE386886AC4E4ABF13A747 /* libRNFetchBlob.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +657,7 @@
 				1986D5D62C3246B6914D807B /* RNFIRAnalytics.xcodeproj */,
 				A37C37CCB14249E684F7020E /* RCTGoogleAnalyticsBridge.xcodeproj */,
 				8820E57086C84B0FB2239810 /* RNVectorIcons.xcodeproj */,
+				238B89B456A74764901C2259 /* RNFetchBlob.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1190,11 +1194,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase-analytics/ios",
 					"$(SRCROOT)/../node_modules/react-native-google-analytics-bridge/ios/RCTGoogleAnalyticsBridge/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
@@ -1235,11 +1241,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase-analytics/ios",
 					"$(SRCROOT)/../node_modules/react-native-google-analytics-bridge/ios/RCTGoogleAnalyticsBridge/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
@@ -1315,11 +1323,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase-analytics/ios",
 					"$(SRCROOT)/../node_modules/react-native-google-analytics-bridge/ios/RCTGoogleAnalyticsBridge/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",

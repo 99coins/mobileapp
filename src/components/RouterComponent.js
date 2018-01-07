@@ -2,6 +2,7 @@
 
 import React, { 
   Component } from 'react';
+import { AppState } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
@@ -13,10 +14,17 @@ import { connect } from 'react-redux';
 import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
 
+
 class RouterComponent extends Component {
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
+  state = {
+    appState: AppState.currentState
+  }
+  componentDidMount() {
+      AppState.addEventListener('change', this.handleAppStateChange);
+  }
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
   }
   onBackPress = () => {
     console.log('back press');
@@ -25,6 +33,18 @@ class RouterComponent extends Component {
       return true;
     }
      return false;
+  }
+  handleAppStateChange = (nextAppState) => {
+    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
+      console.log('App has come to the foreground!');
+      console.log(Actions.currentScene);
+      if (Actions.currentScene === 'Price') {
+        this.props.FetchPriceData();
+      } else {
+        this.props.FetchNewsList();
+      }
+    }
+    this.setState({ appState: nextAppState });
   } 
   render() {
     return (
