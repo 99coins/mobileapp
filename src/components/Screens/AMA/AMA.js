@@ -5,7 +5,7 @@ import { chatButtonTapped } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
 import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
-import { Input } from '../../common';
+import { Input, Badge } from '../../common';
 
 const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
@@ -18,7 +18,8 @@ class Chat extends Component {
         this.state = {
               modalVisible: false,
               userNickName: '',
-              shouldShowModal: true
+              shouldShowModal: true,
+              BadgeCount: 0
          };
     }
 
@@ -31,6 +32,7 @@ class Chat extends Component {
 
        Smooch.getUnreadCount().then(res => {
             console.log(res);
+            this.setState({ BadgeCount: res });
        });
     }
 
@@ -84,6 +86,7 @@ class Chat extends Component {
          setTimeout(() => Smooch.show(), 1000);
         } else {
             Smooch.show();
+            this.setState({ BadgeCount: 0 });
         }
     }
 
@@ -91,8 +94,16 @@ class Chat extends Component {
         this.setState({ 
             modalVisible: false,
             userNickName: '',
-            shouldShowModal: false
+            shouldShowModal: false,
+            BadgeCount: 0
          });
+    }
+
+    renderBadge =() => {
+        if (this.state.BadgeCount > 0) {
+            return <Badge number={this.state.BadgeCount} />;
+        }
+        return null;
     }
     
     render() {
@@ -100,11 +111,12 @@ class Chat extends Component {
 
         return (
             <View style={styles.containerStyle} pointerEvents='box-none'>
-              <ActionButton
-                 buttonColor={Colors.themeRed}
-                 onPress={() => { this.onChatButtonTap(); }}
-                 icon={chatIcon}
-              />
+
+                <ActionButton
+                     buttonColor={Colors.themeRed}
+                     onPress={() => { this.onChatButtonTap(); }}
+                    icon={chatIcon}
+                />
                 <Modal
                     animationType={'fade'}
                     transparent
@@ -142,6 +154,7 @@ class Chat extends Component {
                     </View>
                 </TouchableWithoutFeedback>
                 </Modal>
+                {this.renderBadge()} 
             </View>
 
 
@@ -157,7 +170,16 @@ containerStyle: {
     top: 0, 
     left: 0, 
     height: windowHeight, 
-    width: windowWidth 
+    width: windowWidth,
+    flexDirection: 'column',
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end'
+},
+chatButtonContainerStyle: {
+   alignSelf: 'flex-end',
+   top: 100
+
 },
 modalStyle: {
     backgroundColor: 'rgba(33,33,33,0.5)',

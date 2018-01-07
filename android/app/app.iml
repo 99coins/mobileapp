@@ -179,5 +179,6 @@
     <orderEntry type="module" module-name="react-native-vector-icons" />
     <orderEntry type="module" module-name="react-native-firebase-analytics" />
     <orderEntry type="module" module-name="react-native-google-analytics-bridge" />
+    <orderEntry type="module" module-name="react-native-fetch-blob" />
   </component>
 </module>
