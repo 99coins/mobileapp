@@ -23,7 +23,6 @@ class CoinPairList extends Component {
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
         if (coinList.isFetching === false && coinList.hasError === false) {
-            console.log('getImageForCoin' + symbol);
             const baseImageURL = coinList.data.BaseImageUrl;
             let coin = coinList.data.Data[symbol];
             if (symbol === 'MIOTA') {
@@ -33,7 +32,6 @@ class CoinPairList extends Component {
                 coin = coinList.data.Data.BCCOIN;
             }
             if (coin) {
-                console.log(coin.ImageUrl);
                 return baseImageURL + coin.ImageUrl;
             }
             return;

@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import Colors from '@assets/colors.js';
 import * as Progress from 'react-native-progress';
 import Image from 'react-native-image-progress';
-import {CustomCachedImage} from "react-native-img-cache";
+import { CustomCachedImage } from 'react-native-img-cache';
 
 
 const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
