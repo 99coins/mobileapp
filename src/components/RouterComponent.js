@@ -21,10 +21,10 @@ class RouterComponent extends Component {
     appState: AppState.currentState
   }
   componentDidMount() {
-      AppState.addEventListener('change', this.handleAppStateChange);
+      //AppState.addEventListener('change', this.handleAppStateChange);
   }
   componentWillUnmount() {
-    AppState.removeEventListener('change', this.handleAppStateChange);
+    //AppState.removeEventListener('change', this.handleAppStateChange);
   }
   onBackPress = () => {
     console.log('back press');
