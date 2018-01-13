@@ -192,6 +192,11 @@ const SwipeableRow = createReactClass({
     );
   },
 
+  close(): void {
+    this.props.onClose();
+    this._animateToClosedPosition();
+  },
+
   _onSwipeableViewLayout(event: Object): void {
     this.setState({
       isSwipeableViewRendered: true,
@@ -270,6 +275,7 @@ const SwipeableRow = createReactClass({
       {
         duration,
         toValue,
+        useNativeDriver: true,
       },
     ).start(() => {
       this._previousLeft = toValue;

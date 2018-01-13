@@ -181,7 +181,6 @@ const Text = createReactClass({
     testID: PropTypes.string,
     /**
      * Used to locate this view from native code.
-     * @platform android
      */
     nativeID: PropTypes.string,
     /**
