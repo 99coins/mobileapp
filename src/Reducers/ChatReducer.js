@@ -1,16 +1,19 @@
 import {
-    CHAT_BUTTON_TAPPED,
+    GET_UNREAD_COUNT,
+    GET_UNREAD_COUNT_SUCCESS
 } from './../Utils/ActionTypes';
 
 const initialState = {
-    shouldDisplayChatWindow: false
+    badgeCount: 0
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
 
-        case CHAT_BUTTON_TAPPED:
-            return { ...state, shouldDisplayChatWindow: true };
+        case GET_UNREAD_COUNT:
+             return state;
+        case GET_UNREAD_COUNT_SUCCESS:
+            return { ...state, badgeCount: action.payload };
         default: return state;
     }
 }

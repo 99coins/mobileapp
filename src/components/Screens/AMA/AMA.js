@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStorage, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { chatButtonTapped } from '../../../Actions/ChatActions';
+import { getUnreadCount } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
 import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
@@ -19,21 +19,21 @@ class Chat extends Component {
               modalVisible: false,
               userNickName: '',
               shouldShowModal: true,
-              BadgeCount: 0
          };
     }
 
     componentWillMount() {
         console.log('componentWillMount in Chat');
+        this.props.getUnreadCount();
     }
     componentDidMount() {
        console.log('componentDidMount in Chat');
        this.checkIfNameWasSet();
 
-       Smooch.getUnreadCount().then(res => {
-            console.log(res);
-            this.setState({ BadgeCount: res });
-       });
+    //    Smooch.getUnreadCount().then(res => {
+    //         console.log(res);
+    //         this.setState({ BadgeCount: res });
+    //    });
     }
 
     async checkIfNameWasSet() {
@@ -86,7 +86,7 @@ class Chat extends Component {
          setTimeout(() => Smooch.show(), 1000);
         } else {
             Smooch.show();
-            this.setState({ BadgeCount: 0 });
+            //this.setState({ BadgeCount: 0 });
         }
     }
 
@@ -94,14 +94,14 @@ class Chat extends Component {
         this.setState({ 
             modalVisible: false,
             userNickName: '',
-            shouldShowModal: false,
-            BadgeCount: 0
-         });
+            shouldShowModal: false
+        });
     }
 
     renderBadge =() => {
-        if (this.state.BadgeCount > 0) {
-            return <Badge number={this.state.BadgeCount} />;
+        const { chatState } = this.props;
+        if (chatState.badgeCount > 0) {
+            return <Badge number={chatState.badgeCount} />;
         }
         return null;
     }
@@ -236,12 +236,11 @@ buttonText: {
 }
 });
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
     return {
         chatState: state.chatState
     };
-};
-
+}
 export default connect(mapStateToProps, { 
-    chatButtonTapped, 
+    getUnreadCount, 
 })(Chat);
