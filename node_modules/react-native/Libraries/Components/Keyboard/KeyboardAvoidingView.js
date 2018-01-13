@@ -22,13 +22,8 @@ const View = require('View');
 const ViewPropTypes = require('ViewPropTypes');
 
 import type EmitterSubscription from 'EmitterSubscription';
+import type {ViewLayout, ViewLayoutEvent} from 'ViewPropTypes';
 
-type Rect = {
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-};
 type ScreenRect = {
   screenX: number,
   screenY: number,
@@ -40,11 +35,6 @@ type KeyboardChangeEvent = {
   endCoordinates: ScreenRect,
   duration?: number,
   easing?: string,
-};
-type LayoutEvent = {
-  nativeEvent: {
-    layout: Rect,
-  }
 };
 
 const viewRef = 'VIEW';
@@ -87,7 +77,7 @@ const KeyboardAvoidingView = createReactClass({
   },
 
   subscriptions: ([]: Array<EmitterSubscription>),
-  frame: (null: ?Rect),
+  frame: (null: ?ViewLayout),
 
   relativeKeyboardHeight(keyboardFrame: ScreenRect): number {
     const frame = this.frame;
@@ -123,7 +113,7 @@ const KeyboardAvoidingView = createReactClass({
     this.setState({bottom: height});
   },
 
-  onLayout(event: LayoutEvent) {
+  onLayout(event: ViewLayoutEvent) {
     this.frame = event.nativeEvent.layout;
   },
 
