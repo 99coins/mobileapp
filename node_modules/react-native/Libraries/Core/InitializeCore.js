@@ -38,6 +38,15 @@ if (global.window === undefined) {
 
 const defineLazyObjectProperty = require('defineLazyObjectProperty');
 
+// Set up collections
+const _shouldPolyfillCollection = require('_shouldPolyfillES6Collection');
+if (_shouldPolyfillCollection('Map')) {
+  polyfillGlobal('Map', () => require('Map'));
+}
+if (_shouldPolyfillCollection('Set')) {
+  polyfillGlobal('Set', () => require('Set'));
+}
+
 /**
  * Sets an object's property. If a property with the same name exists, this will
  * replace it but maintain its descriptor configuration. The property will be
@@ -117,16 +126,9 @@ if (!global.__fbDisableExceptionsManager) {
 }
 
 // Check for compatibility between the JS and native code
-const ReactNativeVersionCheck = require('ReactNativeVersionCheck');
-ReactNativeVersionCheck.checkVersions();
-
-// Set up collections
-const _shouldPolyfillCollection = require('_shouldPolyfillES6Collection');
-if (_shouldPolyfillCollection('Map')) {
-  polyfillGlobal('Map', () => require('Map'));
-}
-if (_shouldPolyfillCollection('Set')) {
-  polyfillGlobal('Set', () => require('Set'));
+if (__DEV__) {
+  const ReactNativeVersionCheck = require('ReactNativeVersionCheck');
+  ReactNativeVersionCheck.checkVersions();
 }
 
 // Set up Promise
@@ -205,6 +207,26 @@ BatchedBridge.registerLazyCallableModule('RCTLog', () => require('RCTLog'));
 BatchedBridge.registerLazyCallableModule('RCTDeviceEventEmitter', () => require('RCTDeviceEventEmitter'));
 BatchedBridge.registerLazyCallableModule('RCTNativeAppEventEmitter', () => require('RCTNativeAppEventEmitter'));
 BatchedBridge.registerLazyCallableModule('PerformanceLogger', () => require('PerformanceLogger'));
+
+global.fetchBundle = function(
+  bundleId: number,
+  callback: (?Error) => void,
+) {
+  const {BundleFetcher} = require('NativeModules');
+  if (!BundleFetcher) {
+    throw new Error('BundleFetcher is missing');
+  }
+
+  BundleFetcher.fetchBundle(bundleId, (errorObject: ?{message: string, code: string}) => {
+    if (errorObject) {
+      const error = new Error(errorObject.message);
+      (error: any).code = errorObject.code;
+      callback(error);
+    }
+
+    callback(null);
+  });
+};
 
 // Set up devtools
 if (__DEV__) {
