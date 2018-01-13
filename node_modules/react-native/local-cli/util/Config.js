@@ -11,7 +11,7 @@
 'use strict';
 
 const blacklist = require('metro-bundler/src/blacklist');
-const findSymlinksPaths = require('./findSymlinksPaths');
+const findSymlinkedModules = require('./findSymlinkedModules');
 const fs = require('fs');
 const getPolyfills = require('../../rn-get-polyfills');
 const invariant = require('fbjs/lib/invariant');
@@ -60,7 +60,7 @@ export type ConfigT = {
    * Specify any additional polyfill modules that should be processed
    * before regular module loading.
    */
- getPolyfillModuleNames: () => Array<string>,
+  getPolyfillModuleNames: () => Array<string>,
 
   /**
    * Specify any additional platforms to be used by the packager.
@@ -150,13 +150,14 @@ function getProjectPath() {
   return path.resolve(__dirname, '../..');
 }
 
-const resolveSymlink = (roots) =>
-  roots.concat(
-    findSymlinksPaths(
-      path.join(getProjectPath(), 'node_modules'),
-      roots
-    )
+const resolveSymlinksForRoots = roots =>
+  roots.reduce(
+    (arr, rootPath) => arr.concat(
+      findSymlinkedModules(rootPath, roots)
+    ),
+    [...roots]
   );
+
 
 /**
  * Module capable of getting the configuration out of a given file.
@@ -177,9 +178,9 @@ const Config = {
     getProjectRoots: () => {
       const root = process.env.REACT_NATIVE_APP_ROOT;
       if (root) {
-        return resolveSymlink([path.resolve(root)]);
+        return resolveSymlinksForRoots([path.resolve(root)]);
       }
-      return resolveSymlink([getProjectPath()]);
+      return resolveSymlinksForRoots([getProjectPath()]);
     },
     getProvidesModuleNodeModules: () => providesModuleNodeModules.slice(),
     getSourceExts: () => [],
@@ -195,51 +196,30 @@ const Config = {
   }: ConfigT),
 
   find(startDir: string): ConfigT {
-    return Config.findCustom(startDir, Config.DEFAULTS);
-  },
-
-  /**
-   * This allows a callsite to grab a config that may have custom fields or
-   * a different version of the config. In that case the defaults have to be
-   * specified explicitely.
-   */
-  findCustom<TConfig: {}>(startDir: string, defaults: TConfig): TConfig {
-    return Config.findWithPathCustom(startDir, defaults).config;
+    return this.findWithPath(startDir).config;
   },
 
   findWithPath(startDir: string): {config: ConfigT, projectPath: string} {
-    return Config.findWithPathCustom(startDir, Config.DEFAULTS);
-  },
-
-  findWithPathCustom<TConfig: {}>(startDir: string, defaults: TConfig): {config: TConfig, projectPath: string} {
     const configPath = findConfigPath(startDir);
     invariant(
       configPath,
       `Can't find "${RN_CLI_CONFIG}" file in any parent folder of "${startDir}"`,
     );
     const projectPath = path.dirname(configPath);
-    return {config: Config.loadFileCustom(configPath, defaults), projectPath};
+    return {config: this.loadFile(configPath, startDir), projectPath};
   },
 
   findOptional(startDir: string): ConfigT {
-    return Config.findOptionalCustom(startDir, Config.DEFAULTS);
-  },
-
-  findOptionalCustom<TConfig: {}>(startDir: string, defaults: TConfig): TConfig {
     const configPath = findConfigPath(startDir);
     return configPath
-      ? Config.loadFileCustom(configPath, defaults)
-      : {...defaults};
+      ? this.loadFile(configPath, startDir)
+      : {...Config.DEFAULTS};
   },
 
   loadFile(pathToConfig: string): ConfigT {
-    return Config.loadFileCustom(pathToConfig, Config.DEFAULTS);
-  },
-
-  loadFileCustom<TConfig: {}>(pathToConfig: string, defaults: TConfig): TConfig {
-    // $FlowFixMe: necessary dynamic require
+    //$FlowFixMe: necessary dynamic require
     const config: {} = require(pathToConfig);
-    return {...defaults, ...config};
+    return {...Config.DEFAULTS, ...config};
   },
 };
 
