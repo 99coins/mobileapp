@@ -6,9 +6,11 @@ import FetchNewsList from './../../../Actions/FetchNewsList';
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
 
-
 //create comonente
-class NewsItemList extends React.PureComponent {       
+class NewsItemList extends React.PureComponent {   
+    
+    state = { disableTouch: false };
+
     componentWillMount() {
         console.log('componentWillMount news');
         this.props.FetchNewsList();
