@@ -1,118 +1,46 @@
 diff --git a/NNBitcoins/.flowconfig b/NNBitcoins/.flowconfig
-index 8346120..a359500 100644
+index a359500..1ac2a7b 100644
 --- a/NNBitcoins/.flowconfig
 +++ b/NNBitcoins/.flowconfig
-@@ -12,14 +12,15 @@
- ; For RN Apps installed via npm, "Libraries" folder is inside
- ; "node_modules/react-native" but in the source repo it is in the root
- .*/Libraries/react-native/React.js
--.*/Libraries/react-native/ReactNative.js
-+
-+; Ignore polyfills
-+.*/Libraries/polyfills/.*
- 
- [include]
- 
- [libs]
- node_modules/react-native/Libraries/react-native/react-native-interface.js
--node_modules/react-native/flow
--flow/
-+node_modules/react-native/flow/
- 
- [options]
- emoji=true
-@@ -32,14 +33,16 @@ module.name_mapper='^[./a-zA-Z0-9$_-]+\.\(bmp\|gif\|jpg\|jpeg\|png\|psd\|svg\|we
- 
- suppress_type=$FlowIssue
- suppress_type=$FlowFixMe
-+suppress_type=$FlowFixMeProps
-+suppress_type=$FlowFixMeState
+@@ -37,12 +37,12 @@ suppress_type=$FlowFixMeProps
+ suppress_type=$FlowFixMeState
  suppress_type=$FixMe
  
--suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(>=0\\.\\(4[0-9]\\|[1-3][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)
--suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(4[0-9]\\|[1-3][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
-+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(>=0\\.\\(5[0-3]\\|[1-4][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)
-+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(5[0-3]\\|[1-4][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
+-suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(>=0\\.\\(5[0-3]\\|[1-4][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)
+-suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(5[0-3]\\|[1-4][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
++suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(>=0\\.\\(5[0-6]\\|[1-4][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)
++suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(5[0-6]\\|[1-4][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
  suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
  suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
  
  unsafe.enable_getters_and_setters=true
  
  [version]
--^0.49.1
-+^0.53.0
-diff --git a/NNBitcoins/.gitignore b/NNBitcoins/.gitignore
-index 10be197..0826423 100644
---- a/NNBitcoins/.gitignore
-+++ b/NNBitcoins/.gitignore
-@@ -46,8 +46,8 @@ buck-out/
- # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
- # screenshots whenever they are needed.
- # For more information about the recommended setup visit:
--# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
-+# https://docs.fastlane.tools/best-practices/source-control/
- 
--fastlane/report.xml
--fastlane/Preview.html
--fastlane/screenshots
-+*/fastlane/report.xml
-+*/fastlane/Preview.html
-+*/fastlane/screenshots
-diff --git a/NNBitcoins/android/app/build.gradle b/NNBitcoins/android/app/build.gradle
-index c76fe5c..c8ea1af 100644
---- a/NNBitcoins/android/app/build.gradle
-+++ b/NNBitcoins/android/app/build.gradle
-@@ -72,6 +72,10 @@ import com.android.build.OutputFile
-  * ]
-  */
- 
-+project.ext.react = [
-+    entryFile: "index.js"
-+]
-+
- apply from: "../../node_modules/react-native/react.gradle"
- 
- /**
-diff --git a/NNBitcoins/android/app/src/main/java/com/nncoins/MainApplication.java b/NNBitcoins/android/app/src/main/java/com/nncoins/MainApplication.java
-index be5c458..efd809f 100644
---- a/NNBitcoins/android/app/src/main/java/com/nncoins/MainApplication.java
-+++ b/NNBitcoins/android/app/src/main/java/com/nncoins/MainApplication.java
-@@ -25,6 +25,11 @@ public boolean getUseDeveloperSupport() {
-           new MainReactPackage()
-       );
-     }
-+
-+    @Override
-+    protected String getJSMainModuleName() {
-+      return "index";
-+    }
-   };
- 
-   @Override
-diff --git a/NNBitcoins/ios/NNCoins/AppDelegate.m b/NNBitcoins/ios/NNCoins/AppDelegate.m
-index 9b8ee1a..82f99f2 100644
---- a/NNBitcoins/ios/NNCoins/AppDelegate.m
-+++ b/NNBitcoins/ios/NNCoins/AppDelegate.m
-@@ -18,7 +18,7 @@ - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(
- {
-   NSURL *jsCodeLocation;
- 
--  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
-+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
- 
-   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                       moduleName:@"NNCoins"
+-^0.53.0
++^0.56.0
+diff --git a/NNBitcoins/ios/NNCoins/Images.xcassets/Contents.json b/NNBitcoins/ios/NNCoins/Images.xcassets/Contents.json
+new file mode 100644
+index 0000000..2d92bd5
+--- /dev/null
++++ b/NNBitcoins/ios/NNCoins/Images.xcassets/Contents.json
+@@ -0,0 +1,6 @@
++{
++  "info" : {
++    "version" : 1,
++    "author" : "xcode"
++  }
++}
 diff --git a/NNBitcoins/package.json b/NNBitcoins/package.json
-index d248811..ae7ef6a 100644
+index ae7ef6a..2257fd3 100644
 --- a/NNBitcoins/package.json
 +++ b/NNBitcoins/package.json
 @@ -6,7 +6,7 @@
      "start": "node node_modules/react-native/local-cli/cli.js start"
    },
    "dependencies": {
--    "react": "16.0.0-alpha.12",
--    "react-native": "0.48.0"
-+    "react": "16.0.0-beta.5",
-+    "react-native": "0.49.0"
+-    "react": "16.0.0-beta.5",
+-    "react-native": "0.49.0"
++    "react": "16.0.0",
++    "react-native": "0.50.0"
    }
  }
