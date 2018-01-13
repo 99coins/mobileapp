@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { SectionList, Text } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import FetchNewsList from './../../../Actions/FetchNewsList';
 import { Actions } from 'react-native-router-flux';
+import VideoPlayer from 'react-native-video-player';
+
 
 //create comonente
-class NewsItemList extends React.PureComponent {    
-
-   state = { selected: (new Map(): Map<string, boolean>),
-             disableTouch: false };
-
-   keyExtractor = (item, index) => item.id;
-
+class NewsItemList extends React.PureComponent {       
     componentWillMount() {
         console.log('componentWillMount news');
         this.props.FetchNewsList();
@@ -30,22 +26,30 @@ class NewsItemList extends React.PureComponent {
                 this.state.disableTouch = false;
              }, 2000);
 
-            // this.setState((state) => {
-            //     const selected = new Map(state.selected);
-            //     selected.set(item.id, !selected.get(item.id)); // toggle
-            //     return { selected };
-            // });
         } else {
             console.log('touch disabled');
         }
     }
+    keyExtractor = (item, index) => item.id;
+
     renderItem = ({ item }) => (
         <NewsItemRow 
             id={item.id}
             item={item}
             onPressItem={this.onPressItem}
-            selected={!!this.state.selected.get(item.id)}
         />
+    );
+
+    renderVideo= ({ item }) => (
+       <VideoPlayer
+          //endWithThumbnail
+          //thumbnail={{ uri: item }}
+          video={{ uri: item }}
+          videoWidth={200}
+          videoHeight={100}
+          duration={20/* I'm using a hls stream here, react-native-video
+            //can't figure out the length, so I pass it here from the vimeo config */}
+       />
     );
 
     render() {
@@ -54,14 +58,25 @@ class NewsItemList extends React.PureComponent {
         const { newsList } = this.props;
         console.log(newsList);
         return (
-          <FlatList
+        //   <SectionList
+        //     onRefresh={() => this.onRefresh()}
+        //     refreshing={false}
+        //     data={newsList.data}
+        //     extraData={this.state}
+        //     keyExtractor={this.keyExtractor}
+        //     renderItem={this.renderItem}
+        //   />
+          <SectionList
             onRefresh={() => this.onRefresh()}
             refreshing={false}
-            data={newsList.data}
-            extraData={this.state}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderItem}
+            sections={[ // heterogeneous rendering between sections
+             { data: ['https://www.youtube.com/watch?v=KlIFQ7GIdBA'], renderItem: this.renderVideo },
+             { data: newsList.data, renderItem: this.renderItem }
+       
+            ]}
           />
+
+
         );
    }
 }

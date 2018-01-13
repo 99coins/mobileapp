@@ -38,6 +38,8 @@ class CoinPairList extends Component {
         }
         return;
     }
+    keyExtractor = (item, index) => item.id;
+
     
     renderItem = ({ item }) => (
       <CoinPairRow 
@@ -70,7 +72,7 @@ class CoinPairList extends Component {
             refreshing={false}
             data={priceData.data}
             extraData={coinList.data}
-            keyExtractor={item => item.id}
+            keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
             ItemSeparatorComponent={this.renderSeparator}
             ListHeaderComponent={CoinListHeader}
