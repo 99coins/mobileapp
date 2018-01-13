@@ -13,7 +13,7 @@ import Chat from './Screens/AMA/AMA';
 import { connect } from 'react-redux';
 import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
-import { getUnreadCount } from '../../../Actions/ChatActions';
+import { getUnreadCount } from '../Actions/ChatActions';
 
 var PushNotification = require('react-native-push-notification');
 
