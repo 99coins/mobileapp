@@ -2,7 +2,7 @@
 
 import React, { 
   Component } from 'react';
-import { AppState, PushNotificationIOS } from 'react-native';
+import { AppState } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
@@ -15,7 +15,6 @@ import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 
-var PushNotification = require('react-native-push-notification');
 
 class RouterComponent extends Component {
 
@@ -24,19 +23,6 @@ class RouterComponent extends Component {
   }
   componentDidMount() {
    //AppState.addEventListener('change', this.handleAppStateChange);
-
-    PushNotification.configure({
-
-    // (required) Called when a remote or local notification is opened or received
-    onNotification: (notification) => {
-      console.log('NOTIFICATION:', notification);
-
-        this.props.getUnreadCount();
-
-        notification.finish(PushNotificationIOS.FetchResult.NoData);
-    },
-    requestPermissions: false
-});
   }
   componentWillUnmount() {
     //AppState.removeEventListener('change', this.handleAppStateChange);

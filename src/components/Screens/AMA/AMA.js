@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStorage, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { getUnreadCount } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
 import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
@@ -9,7 +8,7 @@ import { Input, Badge } from '../../common';
 
 const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
-const Smooch = require('react-native-smooch');
+//const Smooch = require('react-native-smooch');
 
 class Chat extends Component {
 
@@ -24,7 +23,7 @@ class Chat extends Component {
 
     componentWillMount() {
         console.log('componentWillMount in Chat');
-        this.props.getUnreadCount();
+       // this.props.getUnreadCount();
     }
     componentDidMount() {
        console.log('componentDidMount in Chat');
@@ -65,15 +64,14 @@ class Chat extends Component {
         this.setState({ modalVisible: visible });
     }
 
-    async openChat (){
-
+    async openChat() {
         console.log('open chat');
         const nickname = this.state.userNickName;
 
         if (nickname.length > 0) { 
            //only first time
            console.log(nickname);
-           Smooch.setFirstName(nickname);
+           //Smooch.setFirstName(nickname);
 
           try {
              await AsyncStorage.setItem('@didSetNickName', 'true');
@@ -83,10 +81,10 @@ class Chat extends Component {
 
           this.restoreInitialState();
 
-         setTimeout(() => Smooch.show(), 1000);
-        } else {
-            Smooch.show();
-            //this.setState({ BadgeCount: 0 });
+        //  setTimeout(() => Smooch.show(), 1000);
+        // } else {
+        //     Smooch.show();
+        //     //this.setState({ BadgeCount: 0 });
         }
     }
 
@@ -98,13 +96,13 @@ class Chat extends Component {
         });
     }
 
-    renderBadge =() => {
-        const { chatState } = this.props;
-        if (chatState.badgeCount > 0) {
-            return <Badge number={chatState.badgeCount} />;
-        }
-        return null;
-    }
+    // renderBadge =() => {
+    //     const { chatState } = this.props;
+    //     if (chatState.badgeCount > 0) {
+    //         return <Badge number={chatState.badgeCount} />;
+    //     }
+    //     return null;
+    // }
     
     render() {
         console.log(this.state);
@@ -154,7 +152,6 @@ class Chat extends Component {
                     </View>
                 </TouchableWithoutFeedback>
                 </Modal>
-                {this.renderBadge()} 
             </View>
 
 
@@ -236,11 +233,4 @@ buttonText: {
 }
 });
 
-function mapStateToProps(state) {
-    return {
-        chatState: state.chatState
-    };
-}
-export default connect(mapStateToProps, { 
-    getUnreadCount, 
-})(Chat);
+export default Chat;

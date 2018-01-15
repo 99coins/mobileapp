@@ -26,6 +26,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150969A11FF7C6CC00FD6A2B /* libRNVectorIcons.a */; };
+		151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEF642002C4DD00D5913C /* libRNFetchBlob.a */; };
+		151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEFBC2006A41500D5913C /* libRCTVideo.a */; };
 		153C59191FA505860076215B /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59121FA505850076215B /* FirebaseAnalytics.framework */; };
 		153C591A1FA505860076215B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59131FA505850076215B /* FirebaseCore.framework */; };
 		153C591B1FA505860076215B /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59141FA505860076215B /* FirebaseInstanceID.framework */; };
@@ -42,9 +45,7 @@
 		1578AD401F3DC7DC0026F7E7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD3E1F3DC7DC0026F7E7 /* Crashlytics.framework */; };
 		1578AD411F3DC7DC0026F7E7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD3F1F3DC7DC0026F7E7 /* Fabric.framework */; };
 		24DB2ACA69474AE3931C6ACA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0119AD11B3843C69410F572 /* Foundation.ttf */; };
-		3B78D4D0B7784F0E9810B242 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 829D53118BA748D19534EF0B /* libRNVectorIcons.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		5F87134CD4EB47E48DA94D95 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE582A0FDBEA4A1BA6AFA5AD /* libRCTVideo.a */; };
 		6319CF42CEED472B99BA067F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B591AE74644CA8B250FD5B /* SystemConfiguration.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		88C304C3F6014D9883442F4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 426D691BF20E4136B52C7E3F /* libsqlite3.0.tbd */; };
@@ -52,7 +53,6 @@
 		B7DFFD90D8E8471892368C8A /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05AC09FC43D44350BFEDDE25 /* Feather.ttf */; };
 		D2C013FD0BD9416C82DCA5DC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 050D7E4C4C4747DD9CE4C648 /* Entypo.ttf */; };
 		DE3E9AE21F58410DAA469CB5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABA6E45A29F45D49AE32838 /* CoreData.framework */; };
-		E2EE386886AC4E4ABF13A747 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AA4D1EB26040BD8590098C /* libRNFetchBlob.a */; };
 		E39677FA7B9F4F4C8005DAD0 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350CE692175740DF9099AC53 /* Octicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -487,9 +487,9 @@
 				DE3E9AE21F58410DAA469CB5 /* CoreData.framework in Frameworks */,
 				6319CF42CEED472B99BA067F /* SystemConfiguration.framework in Frameworks */,
 				88C304C3F6014D9883442F4E /* libsqlite3.0.tbd in Frameworks */,
-				3B78D4D0B7784F0E9810B242 /* libRNVectorIcons.a in Frameworks */,
-				E2EE386886AC4E4ABF13A747 /* libRNFetchBlob.a in Frameworks */,
-				5F87134CD4EB47E48DA94D95 /* libRCTVideo.a in Frameworks */,
+				151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */,
+				151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */,
+				151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
