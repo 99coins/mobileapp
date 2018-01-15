@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <Smooch/Smooch.h>
 @import Firebase;
 
 #import "RCTBundleURLProvider.h"
@@ -24,20 +23,20 @@
   
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
-  SKTSettings* settings = [SKTSettings settingsWithAppId:@"59675985f7801557005670b3"];
+//  SKTSettings* settings = [SKTSettings settingsWithAppId:@"59675985f7801557005670b3"];
+//  
+//  UIColor *themeRed = [UIColor colorWithRed:171/255.0 green:35/255.0 blue:37/255.0 alpha:1.0];
+//  UIColor *gray100 = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+//
+//  
+//  settings.conversationAccentColor = themeRed;
+//  //settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
+//  
+//  [[UINavigationBar appearance] setBarTintColor:gray100];
+//  [[UINavigationBar appearance] setTintColor:themeRed];
+//  [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : themeRed }];
   
-  UIColor *themeRed = [UIColor colorWithRed:171/255.0 green:35/255.0 blue:37/255.0 alpha:1.0];
-  UIColor *gray100 = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
-
-  
-  settings.conversationAccentColor = themeRed;
-  //settings.conversationStatusBarStyle = UIStatusBarStyleLightContent;
-  
-  [[UINavigationBar appearance] setBarTintColor:gray100];
-  [[UINavigationBar appearance] setTintColor:themeRed];
-  [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : themeRed }];
-  
-  [Smooch initWithSettings:settings completionHandler:nil];
+  //[Smooch initWithSettings:settings completionHandler:nil];
 
 
   
