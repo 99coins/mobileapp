@@ -6,6 +6,8 @@ import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
 import { Input, Badge } from '../../common';
 
+var Intercom = require('react-native-intercom');
+
 const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
 //const Smooch = require('react-native-smooch');
@@ -19,6 +21,8 @@ class Chat extends Component {
               userNickName: '',
               shouldShowModal: true,
          };
+    Intercom.registerUnidentifiedUser();
+    //    Intercom.setLauncherVisibility('VISIBLE');   
     }
 
     componentWillMount() {
@@ -73,6 +77,9 @@ class Chat extends Component {
            console.log(nickname);
            //Smooch.setFirstName(nickname);
 
+           Intercom.registerIdentifiedUser({ userId: nickname });
+
+
           try {
              await AsyncStorage.setItem('@didSetNickName', 'true');
           } catch (error) {
@@ -80,11 +87,9 @@ class Chat extends Component {
           }
 
           this.restoreInitialState();
-
-        //  setTimeout(() => Smooch.show(), 1000);
-        // } else {
-        //     Smooch.show();
-        //     //this.setState({ BadgeCount: 0 });
+          setTimeout(() => Intercom.displayMessageComposer(), 1000);
+        } else {
+            Intercom.displayMessenger();
         }
     }
 
