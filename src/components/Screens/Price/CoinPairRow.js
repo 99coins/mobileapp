@@ -3,16 +3,13 @@ import { Text, View, StyleSheet } from 'react-native';
 import Colors from '@assets/colors.js';
 import * as Progress from 'react-native-progress';
 import Image from 'react-native-image-progress';
-import { CustomCachedImage } from 'react-native-img-cache';
-
 
 const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
     return (
         <View style={styles.container}>
             <View style={styles.coinContainer}>
                 <View style={styles.circleContainer}>
-                    <CustomCachedImage
-                        component={Image} 
+                    <Image 
                         style={styles.image} 
                         source={{ uri: imageUrl }} 
                         cache='force-cache'
