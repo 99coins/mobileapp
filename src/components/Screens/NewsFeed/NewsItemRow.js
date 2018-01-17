@@ -4,6 +4,8 @@ import Image from 'react-native-image-progress';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
+import { capitalizeFirstLetter } from '../../common';
+
 
 import * as Progress from 'react-native-progress';
 
@@ -64,7 +66,7 @@ class NewsItemRow extends React.PureComponent {
               </View>
               <View style={styles.secondLine}>
                  <Text style={styles.dateStyle}>{displayDate}</Text>
-                 <Text style={styles.sourceStyle}>{this.props.item.source}</Text>
+                 <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
               </View>
             </View>
             </View>
@@ -85,14 +87,13 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     paddingRight: 8,
     backgroundColor: Colors.gray50
-
   },
   image: {
     width: 74, 
     height: 64
   },
   textContainer: {
-    flex: 0.6,
+    flex: 1,
     justifyContent: 'space-between',
     paddingLeft: 10
     },

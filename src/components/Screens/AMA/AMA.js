@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
-import { Input, Badge } from '../../common';
+import { Input } from '../../common';
 
 var Intercom = require('react-native-intercom');
 
