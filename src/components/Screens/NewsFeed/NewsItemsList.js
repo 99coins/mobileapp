@@ -49,7 +49,7 @@ class NewsItemList extends React.PureComponent {
        return (
              <VideoPlayer
                  endWithThumbnail
-                 thumbnail={{ uri: weeklyVideo.thumbnail }}
+                 thumbnail={{ uri: weeklyVideo.thumbnailUrl }}
                  video={{ uri: weeklyVideo.videoUrl }}
                  videoWidth={weeklyVideo.video.width}
                  videoHeight={weeklyVideo.video.height}
