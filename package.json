@@ -6,7 +6,6 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "build:ios": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/NNCoins/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
-
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -23,6 +22,7 @@
     "react-native-google-analytics-bridge": "^5.3.3",
     "react-native-icon-badge": "^1.1.3",
     "react-native-img-cache": "^1.5.3",
+    "react-native-livechat": "^1.0.22",
     "react-native-popup-dialog": "^0.10.45",
     "react-native-progress": "^3.4.0",
     "react-native-push-notification": "^3.0.2",

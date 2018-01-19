@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import { SectionList, Text } from 'react-native';
+import { FlatList, Text, Button, View } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import FetchNewsList from './../../../Actions/FetchNewsList';
+import FetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
+
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
 
 //create comonente
 class NewsItemList extends React.PureComponent {   
-    
     state = { disableTouch: false };
 
     componentWillMount() {
         console.log('componentWillMount news');
         this.props.FetchNewsList();
+        this.props.FetchWeeklyUpdateVideo();
     }
     onRefresh() {
         console.log('onRefresh news');
@@ -27,7 +29,6 @@ class NewsItemList extends React.PureComponent {
              setTimeout(() => {
                 this.state.disableTouch = false;
              }, 2000);
-
         } else {
             console.log('touch disabled');
         }
@@ -42,41 +43,46 @@ class NewsItemList extends React.PureComponent {
         />
     );
 
-    renderVideo= ({ item }) => (
-       <VideoPlayer
-          //endWithThumbnail
-          //thumbnail={{ uri: item }}
-          video={{ uri: item }}
-          videoWidth={200}
-          videoHeight={100}
-          duration={20/* I'm using a hls stream here, react-native-video
-            //can't figure out the length, so I pass it here from the vimeo config */}
-       />
-    );
+    renderVideo = () => {
+       const { weeklyVideo } = this.props;
+       if (weeklyVideo.video) {
+       return (
+             <VideoPlayer
+                 endWithThumbnail
+                 thumbnail={{ uri: weeklyVideo.thumbnail }}
+                 video={{ uri: weeklyVideo.videoUrl }}
+                 videoWidth={weeklyVideo.video.width}
+                 videoHeight={weeklyVideo.video.height}
+                 duration={weeklyVideo.video.duration}
+                 ref={(r) => { this.player = r; }}
+             />
+         );
+       }
+        return <View />;
+    }
 
     render() {
         console.log('RENDERING NEWS');
 
-        const { newsList } = this.props;
+        const { newsList, weeklyVideo } = this.props;
+        console.log(weeklyVideo);
         console.log(newsList);
         return (
+         <FlatList
+            data={newsList.data}
+            extraData={this.state}
+            keyExtractor={this.keyExtractor}
+            renderItem={this.renderItem}
+            ListHeaderComponent={this.renderVideo}
+         />
         //   <SectionList
         //     onRefresh={() => this.onRefresh()}
         //     refreshing={false}
-        //     data={newsList.data}
-        //     extraData={this.state}
-        //     keyExtractor={this.keyExtractor}
-        //     renderItem={this.renderItem}
+        //     sections={[ // heterogeneous rendering between sections
+        //      { data: [weeklyVideo.data], renderItem: this.renderVideo },
+        //      { data: newsList.data, renderItem: this.renderItem }
+        //     ]}
         //   />
-          <SectionList
-            onRefresh={() => this.onRefresh()}
-            refreshing={false}
-            sections={[ // heterogeneous rendering between sections
-             { data: ['https://www.youtube.com/watch?v=KlIFQ7GIdBA'], renderItem: this.renderVideo },
-             { data: newsList.data, renderItem: this.renderItem }
-       
-            ]}
-          />
 
 
         );
@@ -84,7 +90,8 @@ class NewsItemList extends React.PureComponent {
 }
 function mapStateToProps(state) {
     return {
-        newsList: state.newsList
+        newsList: state.newsList,
+        weeklyVideo: state.weeklyVideo
     };
 }
-export default connect(mapStateToProps, { FetchNewsList })(NewsItemList);
+export default connect(mapStateToProps, { FetchNewsList, FetchWeeklyUpdateVideo })(NewsItemList);
