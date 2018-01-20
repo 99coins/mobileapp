@@ -32,6 +32,9 @@
 		151C1805200D452F00FE40AF /* libRNIntercom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C1804200D44F600FE40AF /* libRNIntercom.a */; };
 		151C180E200D4AB100FE40AF /* Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C180D200D4AB100FE40AF /* Intercom.framework */; };
 		151C180F200D4ABE00FE40AF /* Intercom.framework in Embed */ = {isa = PBXBuildFile; fileRef = 151C180D200D4AB100FE40AF /* Intercom.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		15295F1C2013AB5E00777051 /* Smooch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; };
+		15295F1D2013AB6900777051 /* Smooch.framework in Embed */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		15295F1E2013ABB900777051 /* libRCTSmooch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15295EFF2013AA5000777051 /* libRCTSmooch.a */; };
 		153C59191FA505860076215B /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59121FA505850076215B /* FirebaseAnalytics.framework */; };
 		153C591A1FA505860076215B /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59131FA505850076215B /* FirebaseCore.framework */; };
 		153C591B1FA505860076215B /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C59141FA505860076215B /* FirebaseInstanceID.framework */; };
@@ -143,6 +146,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 112EE36D1CC0AB8A00BF6BB8;
 			remoteInfo = RNIntercom;
+		};
+		15295EFE2013AA5000777051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 242250383AAE4419B17523F9 /* RCTSmooch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
+			remoteInfo = RCTSmooch;
 		};
 		15650B281FD5DE7200B35161 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -384,6 +394,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				15295F1D2013AB6900777051 /* Smooch.framework in Embed */,
 				151C180F200D4ABE00FE40AF /* Intercom.framework in Embed */,
 				153C59201FA505B30076215B /* Firebase.framework in Embed */,
 			);
@@ -437,6 +448,7 @@
 		16768DCD826D447B8C44D251 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		1986D5D62C3246B6914D807B /* RNFIRAnalytics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFIRAnalytics.xcodeproj; path = "../node_modules/react-native-firebase-analytics/ios/RNFIRAnalytics.xcodeproj"; sourceTree = "<group>"; };
 		238B89B456A74764901C2259 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
+		242250383AAE4419B17523F9 /* RCTSmooch.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTSmooch.xcodeproj; path = "../node_modules/react-native-smooch/ios/RCTSmooch.xcodeproj"; sourceTree = "<group>"; };
 		28AE10BC7DD045AB9EAF32E3 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		350CE692175740DF9099AC53 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		37EDCC50DD1B4A4E9E18617B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -467,6 +479,8 @@
 			files = (
 				15650B4A1FD5DEA800B35161 /* libART.a in Frameworks */,
 				153C592D1FA50F660076215B /* libz.tbd in Frameworks */,
+				15295F1E2013ABB900777051 /* libRCTSmooch.a in Frameworks */,
+				15295F1C2013AB5E00777051 /* Smooch.framework in Frameworks */,
 				153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */,
 				153C59191FA505860076215B /* FirebaseAnalytics.framework in Frameworks */,
 				153C591A1FA505860076215B /* FirebaseCore.framework in Frameworks */,
@@ -586,9 +600,8 @@
 			isa = PBXGroup;
 			children = (
 				15A8E9E61F5B405D00D145A0 /* NNCoins.entitlements */,
-				1578AD641F3DC9CC0026F7E7 /* Smooch.framework */,
-				1578AD3E1F3DC7DC0026F7E7 /* Crashlytics.framework */,
 				1578AD3F1F3DC7DC0026F7E7 /* Fabric.framework */,
+				1578AD3E1F3DC7DC0026F7E7 /* Crashlytics.framework */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -655,6 +668,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		15295EEC2013AA5000777051 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15295EFF2013AA5000777051 /* libRCTSmooch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		15650B241FD5DE7200B35161 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +701,7 @@
 		1578AD601F3DC84D0026F7E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1578AD641F3DC9CC0026F7E7 /* Smooch.framework */,
 				151C180D200D4AB100FE40AF /* Intercom.framework */,
 				153C592C1FA50F660076215B /* libz.tbd */,
 				153C592A1FA50F4E0076215B /* libsqlite3.tbd */,
@@ -754,6 +776,7 @@
 				8820E57086C84B0FB2239810 /* RNVectorIcons.xcodeproj */,
 				238B89B456A74764901C2259 /* RNFetchBlob.xcodeproj */,
 				AE6ED85E00974A3FAFBFDE85 /* RCTVideo.xcodeproj */,
+				242250383AAE4419B17523F9 /* RCTSmooch.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -903,6 +926,10 @@
 					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 				},
 				{
+					ProductGroup = 15295EEC2013AA5000777051 /* Products */;
+					ProjectRef = 242250383AAE4419B17523F9 /* RCTSmooch.xcodeproj */;
+				},
+				{
 					ProductGroup = 832341B11AAA6A8300B99B32 /* Products */;
 					ProjectRef = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
 				},
@@ -1029,6 +1056,13 @@
 			fileType = archive.ar;
 			path = libRNIntercom.a;
 			remoteRef = 151C1803200D44F600FE40AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		15295EFF2013AA5000777051 /* libRCTSmooch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTSmooch.a;
+			remoteRef = 15295EFE2013AA5000777051 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		15650B291FD5DE7200B35161 /* libART.a */ = {
@@ -1304,6 +1338,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Intercom.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Firebase.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Smooch.framework",
 			);
 			outputPaths = (
 			);
@@ -1373,6 +1408,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
+					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1425,6 +1461,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
+					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1512,6 +1549,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
+					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

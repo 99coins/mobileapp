@@ -22,10 +22,10 @@ class RouterComponent extends Component {
     appState: AppState.currentState
   }
   componentDidMount() {
-   //AppState.addEventListener('change', this.handleAppStateChange);
+   AppState.addEventListener('change', this.handleAppStateChange);
   }
   componentWillUnmount() {
-    //AppState.removeEventListener('change', this.handleAppStateChange);
+    AppState.removeEventListener('change', this.handleAppStateChange);
   }
   onBackPress = () => {
     console.log('back press');
@@ -39,11 +39,12 @@ class RouterComponent extends Component {
     if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
       console.log('App has come to the foreground!');
       console.log(Actions.currentScene);
-      if (Actions.currentScene === 'Price') {
-        this.props.FetchPriceData();
-      } else {
-        this.props.FetchNewsList();
-      }
+      this.props.getUnreadCount();
+      // if (Actions.currentScene === 'Price') {
+      //   this.props.FetchPriceData();
+      // } else {
+      //   this.props.FetchNewsList();
+      // }
     }
     this.setState({ appState: nextAppState });
   } 
@@ -95,6 +96,7 @@ class RouterComponent extends Component {
              onEnter={() => {
               console.log('on enter news');
               this.props.FetchNewsList();
+              this.props.getUnreadCount();
              }}
 
              lazy
@@ -108,6 +110,7 @@ class RouterComponent extends Component {
              onEnter={() => {
               console.log('on enter prices');
               this.props.FetchPriceData();
+              this.props.getUnreadCount();
              }}
 
              lazy

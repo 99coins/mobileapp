@@ -3,15 +3,14 @@ import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStora
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
-import { Input } from '../../common';
+import { Input, Badge } from '../../common';
+import { getUnreadCount } from '../../../Actions/ChatActions';
+import { connect } from 'react-redux';
 
-import { init } from "@livechat/livechat-visitor-sdk";
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
-import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 
 const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
-//const Smooch = require('react-native-smooch');
+const Smooch = require('react-native-smooch');
 
 class Chat extends Component {
 
@@ -20,142 +19,18 @@ class Chat extends Component {
         this.state = {
               modalVisible: false,
               userNickName: '',
-              shouldShowModal: true,
-              chatWindowVisible: false,
-              messages: [],
-              onlineStatus: false,
-              typingText: null,
-              users: {
-                system: {
-                   name: 'system',
-                   _id: 'system',
-               },
-              },
+              shouldShowModal: true
          };
-         this.visitorSDK = init({
-              license: 9424965
-          });
-          this.visitorSDK.on('new_message', this.handleNewMessage.bind(this));
-          this.visitorSDK.on('agent_changed', this.handleAgentChanged.bind(this));
-          this.visitorSDK.on('status_changed', this.handleStateChange.bind(this));
-          this.visitorSDK.on('typing_indicator', this.handleTypingIndicator.bind(this));
-          this.visitorSDK.on('chat_ended', this.handleChatEnded.bind(this));
-          this.visitorSDK.on('visitor_data', this.hendleVisitorData.bind(this));
-          this.handleInputTextChange = this.handleInputTextChange.bind(this);
-          this.handleSend = this.handleSend.bind(this);
-          this.renderFooter = this.renderFooter.bind(this);
-          this.getRenderInputToolbar = this.getRenderInputToolbar.bind(this);
     }
 
     componentWillMount() {
         console.log('componentWillMount in Chat');
-       // this.props.getUnreadCount();
+        this.props.getUnreadCount();
     }
     componentDidMount() {
        console.log('componentDidMount in Chat');
        this.checkIfNameWasSet();
-
-    //    Smooch.getUnreadCount().then(res => {
-    //         console.log(res);
-    //         this.setState({ BadgeCount: res });
-    //    });
     }
-  renderFooter(props) {
-    if (this.state.typingText) {
-      return (
-        <View style={styles.footerContainer}>
-          <Text style={styles.footerText}>
-            {this.state.typingText}
-          </Text>
-        </View>
-      );
-    }
-    return null;
-  }
-
-  handleAgentChanged(newAgent) {
-    this.addUser(newAgent, 'agent'); 
-  }
-
-  hendleVisitorData(visitorData) {
-    console.log('visitor:', visitorData);
-    this.addUser(visitorData, 'visitor'); 
-  }
-
-  addUser(newUser, type) {
-    this.setState({
-      users: Object.assign({}, this.state.users, {
-        [newUser.id]: {
-          _id: newUser.id,
-          type: type,
-          name: newUser.name || newUser.type,
-          avatar: newUser.avatarUrl ? 'https://' + newUser.avatarUrl : null,
-        }
-      })  
-    });
-  }
-
-  handleStateChange(statusData) {
-    this.setState({
-      onlineStatus: statusData.status === 'online',
-    });
-  }
-
-  handleInputTextChange(text) {
-    this.visitorSDK.setSneakPeek({ text: text });
-  }
-
-  handleChatEnded() {
-    this.setState({
-      messages: [{
-        text: 'Chat is closed',
-        _id: String(Math.random()),
-        createdAt: Date.now(),
-        user: {
-          _id: 'system',
-        },
-      }, ...this.state.messages]
-    });
-  }
-
-  handleTypingIndicator(typingData) {
-    this.setState({
-      typingText: typingData.isTyping ? 'Agent is typing...' : null,
-    });
-  }
-
-  handleSend(messages) {
-    this.visitorSDK.sendMessage({
-      customId: String(Math.random()),
-      text: messages[0].text,
-    });
-  }
-
-  handleNewMessage(newMessage) {
-    this.addMessage(newMessage);
-  }
-
-  addMessage(message) {
-    this.setState({
-      messages: [{
-        text: message.text,
-        _id: message.id,
-        createdAt: message.timestamp,
-        user: this.state.users[message.authorId],
-      }, ...this.state.messages]
-    });
-  }
-
-  getVisitor() {
-    const visitorId = Object.keys(this.state.users).find((userId) => this.state.users[userId].type === 'visitor');
-    return this.state.users[visitorId];
-  }
-
-  getRenderInputToolbar() {
-    return this.state.onlineStatus ? null : () => null;
-  }
-
-
     async checkIfNameWasSet() {
         try {
         const value = await AsyncStorage.getItem('@didSetNickName');
@@ -181,9 +56,6 @@ class Chat extends Component {
     setModalVisible(visible) {
         this.setState({ modalVisible: visible });
     }
-    setChatWindowVisible(visible) {
-        this.setState({ chatWindowVisible: visible });
-    }
 
     async openChat() {
         console.log('open chat');
@@ -192,7 +64,7 @@ class Chat extends Component {
         if (nickname.length > 0) { 
            //only first time
            console.log(nickname);
-           //Smooch.setFirstName(nickname);
+           Smooch.setFirstName(nickname);
 
           try {
              await AsyncStorage.setItem('@didSetNickName', 'true');
@@ -202,12 +74,14 @@ class Chat extends Component {
 
           this.restoreInitialState();
 
-        //  setTimeout(() => Smooch.show(), 1000);
-        // } else {
-        //     Smooch.show();
-        //     //this.setState({ BadgeCount: 0 });
+        setTimeout(() => Smooch.show(), 1000);
+        } else {
+            Smooch.show();
+            //this.setState({ BadgeCount: 0 });
+            //this.props.getUnreadCount();
+
+            setTimeout(() => this.props.getUnreadCount(), 1000);
         }
-      this.setChatWindowVisible(true);
     }
 
     restoreInitialState = () => {
@@ -218,13 +92,13 @@ class Chat extends Component {
         });
     }
 
-    // renderBadge =() => {
-    //     const { chatState } = this.props;
-    //     if (chatState.badgeCount > 0) {
-    //         return <Badge number={chatState.badgeCount} />;
-    //     }
-    //     return null;
-    // }
+    renderBadge =() => {
+        const { chatState } = this.props;
+        if (chatState.badgeCount > 0) {
+            return <Badge number={chatState.badgeCount} />;
+        }
+        return null;
+    }
     
     render() {
         console.log(this.state);
@@ -274,41 +148,8 @@ class Chat extends Component {
                     </View>
                 </TouchableWithoutFeedback>
                 </Modal>
-
-                <Modal
-                    visible={this.state.chatWindowVisible}
-                    onRequestClose={() => {
-                        this.setChatWindowVisible(false);
-                    }}
-                >
-                <View style={styles.container}>
-                  <NavBar style={StyleSheet.flatten(styles.navigation)}>
-                    <NavButton onPress={() => this.setChatWindowVisible(false)}>
-                      <NavButtonText>
-                           {'Close'}
-                      </NavButtonText>
-                    </NavButton>
-                     <NavTitle style={StyleSheet.flatten(styles.navigation)}>
-                         {'Ask Us Anything!'}
-                     </NavTitle>
-                  </NavBar>
-                <View>
-                   <Text style={styles.status}>{ this.state.onlineStatus ? 'Ask us any question you have about Bitcoin and cryptocurrencies. One of our staff members will answer you as soon as possible!' : 'Our agents are not available right now.' }</Text>
-                </View>
-                <GiftedChat
-                    messages={this.state.messages}
-                    renderActions={this.renderCustomActions}
-                    renderFooter={this.renderFooter}
-                    renderInputToolbar={this.getRenderInputToolbar()}
-                    onSend={this.handleSend}
-                    onInputTextChanged={this.handleInputTextChange}
-                    user={this.getVisitor()}
-                />
-      </View>
-                </Modal>
+                 {this.renderBadge()}
             </View>
-
-
         );
     }
 }
@@ -384,33 +225,14 @@ buttonText: {
 		fontSize: 20,
 		fontWeight: 'bold',
 		textAlign: 'center'
-},
-    container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-  },
-  navigation: {
-    flex: 1,
-  },
-  systemMessage: {
-    backgroundColor: '#fff',
-    alignSelf: 'center', 
-  },
-  footerContainer: {
-    marginTop: 5,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
-  },
-  footerText: {
-    fontSize: 14,
-    color: '#aaa',
-  },
-  status: {
-    textAlign: 'center',
-    padding: 5,
-  }
+}
 });
 
-export default Chat;
+function mapStateToProps(state) {
+    return {
+        chatState: state.chatState
+    };
+}
+export default connect(mapStateToProps, { 
+    getUnreadCount, 
+})(Chat);

@@ -14,7 +14,7 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"//ֿ
-#import "Intercom/intercom.h"
+#import <Smooch/Smooch.h>
 
 @implementation AppDelegate
 
@@ -24,7 +24,17 @@
   
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
-  [Intercom setApiKey:@"ios_sdk-965b77cec8c9c98aaa14eb98db6fa0251bbf552a" forAppId:@"cckuc5nv"];
+  SKTSettings* settings = [SKTSettings settingsWithAppId:@"59675985f7801557005670b3"];
+
+  UIColor *themeRed = [UIColor colorWithRed:171/255.0 green:35/255.0 blue:37/255.0 alpha:1.0];
+  UIColor *gray100 = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+  settings.conversationAccentColor = themeRed;
+ [[UINavigationBar appearance] setBarTintColor:gray100];
+ [[UINavigationBar appearance] setTintColor:themeRed];
+ [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : themeRed }];
+ 
+ [Smooch initWithSettings:settings completionHandler:nil];
+
   
   [Fabric with:@[[Crashlytics class]]];
 
@@ -54,7 +64,7 @@
 // Required for the register event.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [Intercom setDeviceToken:deviceToken];
+   // [Intercom setDeviceToken:deviceToken];
 }
 // Required for the notification event. You must call the completion handler after handling the remote notification.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
