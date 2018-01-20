@@ -2,7 +2,7 @@
 
 import React, { 
   Component } from 'react';
-import { AppState } from 'react-native';
+import { AppState, NotificationsIOS } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
@@ -17,15 +17,27 @@ import { getUnreadCount } from '../Actions/ChatActions';
 
 
 class RouterComponent extends Component {
-
   state = {
     appState: AppState.currentState
   }
   componentDidMount() {
-   AppState.addEventListener('change', this.handleAppStateChange);
+    AppState.addEventListener('change', this.handleAppStateChange);
+    //NotificationsIOS.addEventListener('notificationReceivedForeground', this.onNotificationReceivedForeground.bind(this));
+    //NotificationsIOS.addEventListener('notificationReceivedBackground', this.onNotificationReceivedBackground.bind(this));
   }
   componentWillUnmount() {
     AppState.removeEventListener('change', this.handleAppStateChange);
+    //NotificationsIOS.removeEventListener('notificationReceivedForeground', this.onNotificationReceivedForeground.bind(this));
+	 // NotificationsIOS.removeEventListener('notificationReceivedBackground', this.onNotificationReceivedBackground.bind(this));
+  }
+  onNotificationReceivedForeground(notification) {
+    console.log("Notification Received - Foreground", notification);
+    this.props.getUnreadCount();  
+  }
+
+  onNotificationReceivedBackground(notification) {
+    console.log("Notification Received - Background", notification);
+    this.props.getUnreadCount();  
   }
   onBackPress = () => {
     console.log('back press');
