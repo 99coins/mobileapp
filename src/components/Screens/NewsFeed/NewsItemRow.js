@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
 import Image from 'react-native-image-progress';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
@@ -76,10 +76,12 @@ class NewsItemRow extends React.PureComponent {
 }
 
 //styling
-
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
    height: 80,
+   width: windowWidth,
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 8,

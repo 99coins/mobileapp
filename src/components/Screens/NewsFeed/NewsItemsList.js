@@ -72,8 +72,10 @@ class NewsItemList extends React.PureComponent {
             data={newsList.data}
             extraData={this.state}
             keyExtractor={this.keyExtractor}
+            refreshing={false}
             renderItem={this.renderItem}
             ListHeaderComponent={this.renderVideo}
+            onRefresh={() => this.onRefresh()}
          />
         //   <SectionList
         //     onRefresh={() => this.onRefresh()}

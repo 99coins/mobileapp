@@ -40,11 +40,11 @@ class RouterComponent extends Component {
       console.log('App has come to the foreground!');
       console.log(Actions.currentScene);
       this.props.getUnreadCount();
-      // if (Actions.currentScene === 'Price') {
-      //   this.props.FetchPriceData();
-      // } else {
-      //   this.props.FetchNewsList();
-      // }
+      if (Actions.currentScene === 'Price') {
+         this.props.FetchPriceData();
+      } else {
+        this.props.FetchNewsList();
+      }
     }
     this.setState({ appState: nextAppState });
   } 
