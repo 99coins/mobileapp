@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, AsyncStorage, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { connect } from 'react-redux';
 import ActionButton from 'react-native-action-button';
 import Colors from '@assets/colors.js';
 import { Input } from '../../common';
-import LiveChat from 'react-native-livechat'
+
 import { init } from "@livechat/livechat-visitor-sdk";
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
-
-var Intercom = require('react-native-intercom');
+import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 
 const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
@@ -23,31 +21,30 @@ class Chat extends Component {
               modalVisible: false,
               userNickName: '',
               shouldShowModal: true,
+              chatWindowVisible: false,
               messages: [],
               onlineStatus: false,
               typingText: null,
-                users: {
-                     system: {
-                       name: 'system',
+              users: {
+                system: {
+                   name: 'system',
                    _id: 'system',
-                 }
-                }
-        };
-        this.visitorSDK = init({
-            license: 9424965
-         });
-            this.visitorSDK.on('new_message', this.handleNewMessage.bind(this));
-            this.visitorSDK.on('agent_changed', this.handleAgentChanged.bind(this));
-            this.visitorSDK.on('status_changed', this.handleStateChange.bind(this));
-            this.visitorSDK.on('typing_indicator', this.handleTypingIndicator.bind(this));
-            this.visitorSDK.on('chat_ended', this.handleChatEnded.bind(this));
-            this.visitorSDK.on('visitor_data', this.hendleVisitorData.bind(this));
-            this.handleInputTextChange = this.handleInputTextChange.bind(this);
-            this.handleSend = this.handleSend.bind(this);
-            this.renderFooter = this.renderFooter.bind(this);
-            this.getRenderInputToolbar = this.getRenderInputToolbar.bind(this);
-    //Intercom.registerUnidentifiedUser();
-    //    Intercom.setLauncherVisibility('VISIBLE');   
+               },
+              },
+         };
+         this.visitorSDK = init({
+              license: 9424965
+          });
+          this.visitorSDK.on('new_message', this.handleNewMessage.bind(this));
+          this.visitorSDK.on('agent_changed', this.handleAgentChanged.bind(this));
+          this.visitorSDK.on('status_changed', this.handleStateChange.bind(this));
+          this.visitorSDK.on('typing_indicator', this.handleTypingIndicator.bind(this));
+          this.visitorSDK.on('chat_ended', this.handleChatEnded.bind(this));
+          this.visitorSDK.on('visitor_data', this.hendleVisitorData.bind(this));
+          this.handleInputTextChange = this.handleInputTextChange.bind(this);
+          this.handleSend = this.handleSend.bind(this);
+          this.renderFooter = this.renderFooter.bind(this);
+          this.getRenderInputToolbar = this.getRenderInputToolbar.bind(this);
     }
 
     componentWillMount() {
@@ -63,7 +60,7 @@ class Chat extends Component {
     //         this.setState({ BadgeCount: res });
     //    });
     }
-renderFooter(props) {
+  renderFooter(props) {
     if (this.state.typingText) {
       return (
         <View style={styles.footerContainer}>
@@ -75,12 +72,14 @@ renderFooter(props) {
     }
     return null;
   }
+
   handleAgentChanged(newAgent) {
-    this.addUser(newAgent, 'agent');
+    this.addUser(newAgent, 'agent'); 
   }
 
   hendleVisitorData(visitorData) {
-    this.addUser(visitorData, 'visitor') ;
+    console.log('visitor:', visitorData);
+    this.addUser(visitorData, 'visitor'); 
   }
 
   addUser(newUser, type) {
@@ -168,22 +167,22 @@ renderFooter(props) {
              console.log(error);
         }
     }
-
-    setName(text) {
-        this.setState({ userNickName: text });
-    }
-
     onChatButtonTap =() => {
-
         if (this.state.shouldShowModal) {
             this.setModalVisible(true);
         } else { 
             this.openChat();
         }
     }
+    setName(text) {
+        this.setState({ userNickName: text });
+    }
 
     setModalVisible(visible) {
         this.setState({ modalVisible: visible });
+    }
+    setChatWindowVisible(visible) {
+        this.setState({ chatWindowVisible: visible });
     }
 
     async openChat() {
@@ -195,9 +194,6 @@ renderFooter(props) {
            console.log(nickname);
            //Smooch.setFirstName(nickname);
 
-           //Intercom.registerIdentifiedUser({ userId: nickname });
-
-
           try {
              await AsyncStorage.setItem('@didSetNickName', 'true');
           } catch (error) {
@@ -205,10 +201,13 @@ renderFooter(props) {
           }
 
           this.restoreInitialState();
-          setTimeout(() => Intercom.displayMessageComposer(), 1000);
-        } else {
-            Intercom.displayMessenger();
+
+        //  setTimeout(() => Smooch.show(), 1000);
+        // } else {
+        //     Smooch.show();
+        //     //this.setState({ BadgeCount: 0 });
         }
+      this.setChatWindowVisible(true);
     }
 
     restoreInitialState = () => {
@@ -232,12 +231,13 @@ renderFooter(props) {
 
         return (
             <View style={styles.containerStyle} pointerEvents='box-none'>
-                {/* <ActionButton
+
+                <ActionButton
                      buttonColor={Colors.themeRed}
                      onPress={() => { this.onChatButtonTap(); }}
                     icon={chatIcon}
-                /> */}
-                {/* <Modal
+                />
+                <Modal
                     animationType={'fade'}
                     transparent
                     visible={this.state.modalVisible}
@@ -273,16 +273,39 @@ renderFooter(props) {
                         </View>
                     </View>
                 </TouchableWithoutFeedback>
-                </Modal> */}
-               <GiftedChat
+                </Modal>
+
+                <Modal
+                    visible={this.state.chatWindowVisible}
+                    onRequestClose={() => {
+                        this.setChatWindowVisible(false);
+                    }}
+                >
+                <View style={styles.container}>
+                  <NavBar style={StyleSheet.flatten(styles.navigation)}>
+                    <NavButton onPress={() => this.setChatWindowVisible(false)}>
+                      <NavButtonText>
+                           {'Close'}
+                      </NavButtonText>
+                    </NavButton>
+                     <NavTitle style={StyleSheet.flatten(styles.navigation)}>
+                         {'Ask Us Anything!'}
+                     </NavTitle>
+                  </NavBar>
+                <View>
+                   <Text style={styles.status}>{ this.state.onlineStatus ? 'Ask us any question you have about Bitcoin and cryptocurrencies. One of our staff members will answer you as soon as possible!' : 'Our agents are not available right now.' }</Text>
+                </View>
+                <GiftedChat
                     messages={this.state.messages}
                     renderActions={this.renderCustomActions}
                     renderFooter={this.renderFooter}
-                     renderInputToolbar={this.getRenderInputToolbar()}
-                     onSend={this.handleSend}
-                     onInputTextChanged={this.handleInputTextChange}
-                     user={this.getVisitor()}
-               />
+                    renderInputToolbar={this.getRenderInputToolbar()}
+                    onSend={this.handleSend}
+                    onInputTextChanged={this.handleInputTextChange}
+                    user={this.getVisitor()}
+                />
+      </View>
+                </Modal>
             </View>
 
 
@@ -362,7 +385,7 @@ buttonText: {
 		fontWeight: 'bold',
 		textAlign: 'center'
 },
-container: {
+    container: {
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
