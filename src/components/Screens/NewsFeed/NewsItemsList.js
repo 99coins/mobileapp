@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Text, Button, View } from 'react-native';
+import { FlatList, Text, Button, View, Dimensions } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import FetchNewsList from './../../../Actions/FetchNewsList';
@@ -7,6 +7,7 @@ import FetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
 
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
+const windowWidth = Dimensions.get('window').width;
 
 //create comonente
 class NewsItemList extends React.PureComponent {   
@@ -55,6 +56,8 @@ class NewsItemList extends React.PureComponent {
                  videoHeight={weeklyVideo.video.height}
                  duration={weeklyVideo.video.duration}
                  ref={(r) => { this.player = r; }}
+                 //width={windowWidth}
+                 resizeMode={'cover'}
              />
          );
        }

@@ -15,7 +15,7 @@
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"//ֿ
 #import <Smooch/Smooch.h>
-#import "RNNotifications.h"
+//#import "RNNotifications.h"
 
 
 @implementation AppDelegate
@@ -61,16 +61,16 @@
 // Required to register for notifications
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
-    [RNNotifications didRegisterUserNotificationSettings:notificationSettings];
+    //[RNNotifications didRegisterUserNotificationSettings:notificationSettings];
 }
 // Required for the register event.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-   [RNNotifications didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+   //[RNNotifications didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 // Required for the notification event.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification {
-  [RNNotifications didReceiveRemoteNotification:notification];
+ // [RNNotifications didReceiveRemoteNotification:notification];
 }
 // Required for the registrationError event.
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -80,7 +80,7 @@
 // Required for the localNotification event.
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-  [RNNotifications didReceiveLocalNotification:notification];
+  //[RNNotifications didReceiveLocalNotification:notification];
 }
 
 @end
