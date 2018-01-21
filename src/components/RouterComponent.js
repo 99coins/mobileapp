@@ -19,19 +19,6 @@ import { getUnreadCount } from '../Actions/ChatActions';
 
 
 class RouterComponent extends Component {
-  state = {
-    appState: AppState.currentState
-  }
-  componentDidMount() {
-    //AppState.addEventListener('change', this.handleAppStateChange);
-    //NotificationsIOS.addEventListener('notificationReceivedForeground', this.onNotificationReceivedForeground.bind(this));
-    //NotificationsIOS.addEventListener('notificationReceivedBackground', this.onNotificationReceivedBackground.bind(this));
-  }
-  componentWillUnmount() {
-    //AppState.removeEventListener('change', this.handleAppStateChange);
-    //NotificationsIOS.removeEventListener('notificationReceivedForeground', this.onNotificationReceivedForeground.bind(this));
-	 // NotificationsIOS.removeEventListener('notificationReceivedBackground', this.onNotificationReceivedBackground.bind(this));
-  }
 
   onNotificationReceivedForeground(notification) {
     console.log("Notification Received - Foreground", notification);
@@ -50,19 +37,6 @@ class RouterComponent extends Component {
     }
      return false;
   }
-  handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-      console.log('App has come to the foreground!');
-      console.log(Actions.currentScene);
-      this.props.getUnreadCount();
-      // if (Actions.currentScene === 'Price') {
-      //    this.props.FetchPriceData();
-      // } else {
-      //   this.props.FetchNewsList();
-      // }
-    }
-    this.setState({ appState: nextAppState });
-  } 
   render() {
     return (
      <Router backAndroidHandler={this.onBackPress}>
