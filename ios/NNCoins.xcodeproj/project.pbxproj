@@ -59,7 +59,6 @@
 		D2C013FD0BD9416C82DCA5DC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 050D7E4C4C4747DD9CE4C648 /* Entypo.ttf */; };
 		DE3E9AE21F58410DAA469CB5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABA6E45A29F45D49AE32838 /* CoreData.framework */; };
 		E39677FA7B9F4F4C8005DAD0 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350CE692175740DF9099AC53 /* Octicons.ttf */; };
-		F2AE0A12570B4EC9A22FEDB6 /* libRNNotifications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBDA9FE9C3C4DE4BFF9CD30 /* libRNNotifications.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -496,7 +495,6 @@
 				151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */,
 				151C1805200D452F00FE40AF /* libRNIntercom.a in Frameworks */,
 				151C180E200D4AB100FE40AF /* Intercom.framework in Frameworks */,
-				F2AE0A12570B4EC9A22FEDB6 /* libRNNotifications.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1348,7 +1346,7 @@
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1404,7 +1402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1494,7 +1492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 65;
+				CURRENT_PROJECT_VERSION = 66;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
