@@ -14,6 +14,8 @@ import { connect } from 'react-redux';
 import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
+//import shallowCompare from 'react-addons-shallow-compare'
+
 
 
 class RouterComponent extends Component {
@@ -21,15 +23,16 @@ class RouterComponent extends Component {
     appState: AppState.currentState
   }
   componentDidMount() {
-    AppState.addEventListener('change', this.handleAppStateChange);
+    //AppState.addEventListener('change', this.handleAppStateChange);
     //NotificationsIOS.addEventListener('notificationReceivedForeground', this.onNotificationReceivedForeground.bind(this));
     //NotificationsIOS.addEventListener('notificationReceivedBackground', this.onNotificationReceivedBackground.bind(this));
   }
   componentWillUnmount() {
-    AppState.removeEventListener('change', this.handleAppStateChange);
+    //AppState.removeEventListener('change', this.handleAppStateChange);
     //NotificationsIOS.removeEventListener('notificationReceivedForeground', this.onNotificationReceivedForeground.bind(this));
 	 // NotificationsIOS.removeEventListener('notificationReceivedBackground', this.onNotificationReceivedBackground.bind(this));
   }
+
   onNotificationReceivedForeground(notification) {
     console.log("Notification Received - Foreground", notification);
     this.props.getUnreadCount();  

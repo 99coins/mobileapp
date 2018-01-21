@@ -10,7 +10,7 @@ import FetchCoinList from './../../../Actions/FetchCoinList';
 
 
 //create comonent
-class CoinPairList extends Component {
+class CoinPairList extends React.PureComponent {
 
     componentDidMount() {
         console.log('componentDidMount prices');

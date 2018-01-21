@@ -4,9 +4,11 @@ import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import FetchNewsList from './../../../Actions/FetchNewsList';
 import FetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
-
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
+import memoize from 'lodash/memoize'
+
+
 const windowWidth = Dimensions.get('window').width;
 
 //create comonente
@@ -15,12 +17,17 @@ class NewsItemList extends React.PureComponent {
 
     componentWillMount() {
         console.log('componentWillMount news');
-        this.props.FetchNewsList();
-        this.props.FetchWeeklyUpdateVideo();
+        this.onRefresh();
     }
     onRefresh() {
         console.log('onRefresh news');
-         this.props.FetchNewsList();
+        const { newsList, weeklyVideo } = this.props;
+        if (newsList.isFetching === false) {
+            this.props.FetchNewsList();
+        }
+         if (weeklyVideo.video === null) {
+            this.props.FetchWeeklyUpdateVideo();
+        }
     }
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
@@ -43,25 +50,24 @@ class NewsItemList extends React.PureComponent {
             onPressItem={this.onPressItem}
         />
     );
+    _renderVideo = memoize((video) => 
+            <VideoPlayer
+                 endWithThumbnail
+                 thumbnail={{ uri: video.thumbnailUrl }}
+                 video={{ uri: video.videoUrl }}
+                 videoWidth={video.video.width}
+                 videoHeight={video.video.height}
+                 duration={video.video.duration}
+                 ref={(r) => { this.player = r; }}
+            />)
 
     renderVideo = () => {
-       const { weeklyVideo } = this.props;
-       if (weeklyVideo.video) {
-       return (
-             <VideoPlayer
-                 endWithThumbnail
-                 thumbnail={{ uri: weeklyVideo.thumbnailUrl }}
-                 video={{ uri: weeklyVideo.videoUrl }}
-                 videoWidth={weeklyVideo.video.width}
-                 videoHeight={weeklyVideo.video.height}
-                 duration={weeklyVideo.video.duration}
-                 ref={(r) => { this.player = r; }}
-                 //width={windowWidth}
-                 resizeMode={'cover'}
-             />
-         );
-       }
-        return <View />;
+        const { weeklyVideo } = this.props;
+        if (weeklyVideo.video) {
+            console.log('VIDEO FOUND', this._renderVideo(weeklyVideo));
+            return this._renderVideo(weeklyVideo);
+        }
+        return null;
     }
 
     render() {
