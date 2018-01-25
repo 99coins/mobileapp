@@ -59,6 +59,7 @@ class NewsItemList extends React.PureComponent {
                  videoHeight={video.video.height}
                  duration={video.video.duration}
                  ref={(r) => { this.player = r; }}
+                 resizeMode={'cover'}
             />)
 
     renderVideo = () => {

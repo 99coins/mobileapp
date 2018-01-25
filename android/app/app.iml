@@ -112,7 +112,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
@@ -141,7 +140,6 @@
     <orderEntry type="library" name="com.google.firebase:firebase-messaging-license-11.8.0" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-common-11.8.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-tasks-11.8.0" level="project" />
-    <orderEntry type="library" name="com.facebook.react:react-native-0.51.0" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-common-license-11.8.0" level="project" />
     <orderEntry type="library" name="com.facebook.fbui.textlayoutbuilder:staticlayout-proxy:1.0@jar" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-core-11.8.0" level="project" />
@@ -171,6 +169,7 @@
     <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.6.0@jar" level="project" />
     <orderEntry type="library" name="com.facebook.fresco:fbcore-1.3.0" level="project" />
     <orderEntry type="library" name="com.facebook.fresco:drawee-1.3.0" level="project" />
+    <orderEntry type="library" name="com.facebook.react:react-native-0.52.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-analytics-license-11.8.0" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-messaging-11.8.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-location-11.8.0" level="project" />
@@ -188,5 +187,6 @@
     <orderEntry type="module" module-name="react-native-firebase-analytics" />
     <orderEntry type="module" module-name="react-native-google-analytics-bridge" />
     <orderEntry type="module" module-name="react-native-fetch-blob" />
+    <orderEntry type="module" module-name="react-native-notifications" />
   </component>
 </module>
