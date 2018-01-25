@@ -31,9 +31,9 @@ export default function (state = initialState, action) {
         if (state.data !== action.payload) {
             return Object.assign({}, state, {
                 isFetching: false,
-                thumbnailUrl: action.payload.video.thumbs['640'],
-                videoUrl: action.payload.request.files.hls.cdns.akfire_interconnect_quic.url,
-                video: action.payload.video,
+                thumbnailUrl: action.payload.videos[0].thumbnail.url,
+                videoUrl: action.payload.videos[0].assets[1].url,
+                video: action.payload.videos[0].assets[1],
                 hasError: false,
                 errorMessage: null
             }); 
