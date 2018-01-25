@@ -85,7 +85,7 @@ class RouterComponent extends Component {
              onEnter={() => {
               console.log('on enter news');
               this.props.FetchNewsList();
-              this.props.getUnreadCount();
+              //this.props.getUnreadCount();
              }}
 
              lazy
@@ -99,7 +99,7 @@ class RouterComponent extends Component {
              onEnter={() => {
               console.log('on enter prices');
               this.props.FetchPriceData();
-              this.props.getUnreadCount();
+             // this.props.getUnreadCount();
              }}
 
              lazy
