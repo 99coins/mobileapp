@@ -6,7 +6,7 @@ import Colors from '@assets/colors.js';
 import { Input, Badge } from '../../common';
 import { getUnreadCount } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
-
+import shallowCompare from 'react-addons-shallow-compare';
 
 const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
@@ -30,6 +30,11 @@ class Chat extends Component {
     componentDidMount() {
        console.log('componentDidMount in Chat');
        this.checkIfNameWasSet();
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log(this, nextProps, nextState);
+
+        return shallowCompare(this, nextProps, nextState);
     }
     async checkIfNameWasSet() {
         try {
@@ -101,7 +106,7 @@ class Chat extends Component {
     }
     
     render() {
-        console.log(this.state);
+        console.log("RENDER AMA");
 
         return (
             <View style={styles.containerStyle} pointerEvents='box-none'>
