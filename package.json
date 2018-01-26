@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-plugin-transform-remove-console": "^6.8.5",
     "eslint": "^3.19.0",
     "fast-xml-parser": "^2.6.0",
     "moment": "^2.18.1",

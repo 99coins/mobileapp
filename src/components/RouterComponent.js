@@ -16,8 +16,6 @@ import FetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 //import shallowCompare from 'react-addons-shallow-compare'
 
-
-
 class RouterComponent extends Component {
 
   onNotificationReceivedForeground(notification) {

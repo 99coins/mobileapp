@@ -8,7 +8,7 @@ import Colors from '@assets/colors.js';
 import FetchPriceData from './../../../Actions/FetchPriceData';
 import FetchCoinList from './../../../Actions/FetchCoinList';
 
-
+const ITEM_HEIGHT = 56;
 //create comonent
 class CoinPairList extends React.PureComponent {
 
@@ -76,6 +76,9 @@ class CoinPairList extends React.PureComponent {
             renderItem={this.renderItem}
             ItemSeparatorComponent={this.renderSeparator}
             ListHeaderComponent={CoinListHeader}
+            getItemLayout={(data, index) => (
+                 { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
+            )}
 
           />
     );

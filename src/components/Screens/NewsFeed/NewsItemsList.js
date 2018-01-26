@@ -9,8 +9,7 @@ import VideoPlayer from 'react-native-video-player';
 import memoize from 'lodash/memoize'
 
 
-const windowWidth = Dimensions.get('window').width;
-
+const ITEM_HEIGHT = 80;
 //create comonente
 class NewsItemList extends React.PureComponent {   
     state = { disableTouch: false };
@@ -86,6 +85,9 @@ class NewsItemList extends React.PureComponent {
             renderItem={this.renderItem}
             ListHeaderComponent={this.renderVideo}
             onRefresh={() => this.onRefresh()}
+            getItemLayout={(data, index) => (
+                 { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
+            )}
          />
         //   <SectionList
         //     onRefresh={() => this.onRefresh()}
