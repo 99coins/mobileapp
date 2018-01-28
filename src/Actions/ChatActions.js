@@ -1,9 +1,7 @@
 import {
-    CHAT_BUTTON_TAPPED,
     OPEN_CHAT_WINDOW,
     OPEN_CHAT_FORM,
     CLOSE_CHAT_FORM,
-    GET_UNREAD_COUNT,
     GET_UNREAD_COUNT_SUCCESS,
     SAVE_NICNAME_SET,
     SAVE_NICNAME_SET_SUCCESS,
@@ -13,13 +11,11 @@ import {
 
 } from './../Utils/ActionTypes';
 import { AsyncStorage } from 'react-native';
-//import ChatReducer from './Reducers/ChatReducer';
 
 const Smooch = require('react-native-smooch');
 
 export function chatButtonTapped() {
     return (dispatch, getState) => {
-       dispatch({ type: CHAT_BUTTON_TAPPED });
        if (getState().chatState.shouldShowModal) {
           dispatch({ type: OPEN_CHAT_FORM });
           return;
@@ -33,12 +29,8 @@ export const openChat = (nickName) => {
             console.log('Nickname:', nickName);
             Smooch.setFirstName(nickName);
             dispatch(saveNickNameSet());
-            //dispatch({ type: OPEN_CHAT_WINDOW }); 
             setTimeout(() => Smooch.show(), 1000);
          } else {
-            console.log('Nickname:', nickName);
-
-            //dispatch({ type: OPEN_CHAT_WINDOW });
              Smooch.show();
          }
         dispatch({ type: OPEN_CHAT_WINDOW }); 
