@@ -22,6 +22,7 @@ const styles = {
     fontWeight: '600'
   },
   badgeStyle: {
+    position: 'absolute',
     backgroundColor: '#fff',
     borderRadius: 10,
     borderWidth: 1,

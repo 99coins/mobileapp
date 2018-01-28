@@ -9,7 +9,9 @@ import Colors from '@assets/colors.js';
 import Price from './Screens/Price/Price';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
-import Chat from './Screens/AMA/AMA';
+import ChatForm from './Screens/AMA/ChatForm';
+import ChatButton from './Screens/AMA/ChatButton';
+import UnreadBadge from './Screens/AMA/UnreadBadge';
 import { connect } from 'react-redux';
 import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
@@ -116,7 +118,10 @@ class RouterComponent extends Component {
             back
         />
        </Scene>
-        <Scene component={Chat} />        
+        <Scene component={ChatButton} />   
+        <Scene component={UnreadBadge} />   
+        <Scene component={ChatForm} /> 
+
       </Overlay>
     </Router>
     );
