@@ -9,7 +9,12 @@ const chatIcon = (<Icon name="comments" size={30} color='white' />);
 
 class ChatButton extends Component {
 
+    shouldComponentUpdate() {
+        return false;
+    }
+
     render() {
+        console.log('RENDER CHAT BUTTON');
         return (
                <ActionButton
                     buttonColor={Colors.themeRed}

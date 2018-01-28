@@ -27,7 +27,7 @@ onShare(url) {
     });
 }
 render() {
-    console.log(this);
+    console.log('RENDER WEB VIEW');
     return (
       <WebView
         source={{ uri: this.props.url }}

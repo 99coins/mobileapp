@@ -11,12 +11,15 @@ import memoize from 'lodash/memoize'
 
 const ITEM_HEIGHT = 80;
 //create comonente
-class NewsItemList extends React.PureComponent {   
+class NewsItemList extends Component {   
     state = { disableTouch: false };
 
     componentWillMount() {
         console.log('componentWillMount news');
         this.onRefresh();
+    }
+    shouldComponentUpdate(nextProps) {
+        return (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video);
     }
     onRefresh() {
         console.log('onRefresh news');
@@ -71,7 +74,7 @@ class NewsItemList extends React.PureComponent {
     }
 
     render() {
-        console.log('RENDERING NEWS');
+        console.log('RENDERING NEWS LIST');
 
         const { newsList, weeklyVideo } = this.props;
         console.log(weeklyVideo);
@@ -89,16 +92,6 @@ class NewsItemList extends React.PureComponent {
                  { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
             )}
          />
-        //   <SectionList
-        //     onRefresh={() => this.onRefresh()}
-        //     refreshing={false}
-        //     sections={[ // heterogeneous rendering between sections
-        //      { data: [weeklyVideo.data], renderItem: this.renderVideo },
-        //      { data: newsList.data, renderItem: this.renderItem }
-        //     ]}
-        //   />
-
-
         );
    }
 }

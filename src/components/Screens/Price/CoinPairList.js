@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import CoinPairRow from './CoinPairRow';
 import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
@@ -10,12 +10,15 @@ import FetchCoinList from './../../../Actions/FetchCoinList';
 
 const ITEM_HEIGHT = 56;
 //create comonent
-class CoinPairList extends React.PureComponent {
+class CoinPairList extends Component {
 
     componentDidMount() {
         console.log('componentDidMount prices');
         this.props.FetchCoinList();
         this.props.FetchPriceData();
+    }
+    shouldComponentUpdate(nextProps) {
+        return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
     }
     onRefresh() {
         this.props.FetchPriceData();
@@ -64,7 +67,7 @@ class CoinPairList extends React.PureComponent {
         );
     };
     render() {
-        console.log('RENDERING COINS');
+        console.log('RENDERING COIN LIST');
         const { priceData, coinList } = this.props;
         return (
           <FlatList

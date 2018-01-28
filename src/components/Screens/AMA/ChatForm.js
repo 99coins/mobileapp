@@ -15,8 +15,6 @@ class ChatForm extends Component {
        console.log('componentDidMount in ChatForm');
     }
     shouldComponentUpdate(nextProps) {
-        console.log(this.props.chatState, nextProps.chatState);
-        console.log(this.props.chatState.userNickName);
         return (this.props.chatState.modalVisible !== nextProps.chatState.modalVisible);
     }
  

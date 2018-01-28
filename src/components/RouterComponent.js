@@ -16,7 +16,6 @@ import { connect } from 'react-redux';
 import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
-//import shallowCompare from 'react-addons-shallow-compare'
 
 class RouterComponent extends Component {
 
