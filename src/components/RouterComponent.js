@@ -2,7 +2,6 @@
 
 import React, { 
   Component } from 'react';
-import { AppState, NotificationsIOS } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
@@ -12,6 +11,8 @@ import NewsWebView from './Screens/WebView/NewsWebView';
 import ChatForm from './Screens/AMA/ChatForm';
 import ChatButton from './Screens/AMA/ChatButton';
 import UnreadBadge from './Screens/AMA/UnreadBadge';
+import EventHandler from './EventHandler';
+
 import { connect } from 'react-redux';
 import FetchNewsList from '../Actions/FetchNewsList';
 import FetchPriceData from '../Actions/FetchPriceData';
@@ -19,15 +20,6 @@ import { getUnreadCount } from '../Actions/ChatActions';
 
 class RouterComponent extends Component {
 
-  onNotificationReceivedForeground(notification) {
-    console.log("Notification Received - Foreground", notification);
-    this.props.getUnreadCount();  
-  }
-
-  onNotificationReceivedBackground(notification) {
-    console.log("Notification Received - Background", notification);
-    this.props.getUnreadCount();  
-  }
   onBackPress = () => {
     console.log('back press');
     if (Actions.currentScene === 'News_2') {
@@ -120,6 +112,7 @@ class RouterComponent extends Component {
         <Scene component={ChatButton} />   
         <Scene component={UnreadBadge} />   
         <Scene component={ChatForm} /> 
+        <Scene component={EventHandler} />
 
       </Overlay>
     </Router>

@@ -23,13 +23,15 @@ class NewsItemList extends Component {
     }
     onRefresh() {
         console.log('onRefresh news');
-        const { newsList, weeklyVideo } = this.props;
-        if (newsList.isFetching === false) {
-            this.props.FetchNewsList();
-        }
-         if (weeklyVideo.video === null) {
-            this.props.FetchWeeklyUpdateVideo();
-        }
+        //const { newsList, weeklyVideo } = this.props;
+        this.props.FetchNewsList();
+        this.props.FetchWeeklyUpdateVideo();
+        // if (newsList.isFetching === false) {
+        //     this.props.FetchNewsList();
+        // }
+        //  if (weeklyVideo.video === null) {
+        //     this.props.FetchWeeklyUpdateVideo();
+        // }
     }
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
