@@ -33,10 +33,10 @@ class NewsItemList extends Component {
         //     this.props.FetchWeeklyUpdateVideo();
         // }
     }
-    onPressItem = (item, webview) => {
+    onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.News_2({ url: item.url, webview: webview });
+            Actions.News_2({ url: item.url });
 
              setTimeout(() => {
                 this.state.disableTouch = false;
@@ -77,10 +77,7 @@ class NewsItemList extends Component {
 
     render() {
         console.log('RENDERING NEWS LIST');
-
-        const { newsList, weeklyVideo } = this.props;
-        console.log(weeklyVideo);
-        console.log(newsList);
+        const { newsList } = this.props;
         return (
          <FlatList
             data={newsList.data}

@@ -5,18 +5,22 @@ import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-import NewsWebView from '../WebView/NewsWebView';
+//import NewsWebView from '../WebView/NewsWebView';
 
 import * as Progress from 'react-native-progress';
 
-class NewsItemRow extends React.PureComponent {
+class NewsItemRow extends Component {
 
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      webview: <NewsWebView url={props.item.url} />,
-    };
+  //   this.state = {
+  //     webview: <NewsWebView url={props.item.url} />,
+  //   };
+  // }
+
+  shouldComponentUpdate(nextProps) {
+      return (this.props.id !== nextProps.id);
   }
 
   stripHtmlTags = (str) => {
@@ -42,9 +46,7 @@ class NewsItemRow extends React.PureComponent {
 
   _onPress = () => {
 
-    console.log({ ...this.state.webview });
-
-    this.props.onPressItem(this.props.item, this.state.webview);
+    this.props.onPressItem(this.props.item);
   };
 
   render() {
@@ -81,9 +83,9 @@ class NewsItemRow extends React.PureComponent {
               <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
             </View>
           </View>
-          <View style={{ height: 0, width: 0 }}>
+          {/* <View style={{ height: 0, width: 0 }}>
              {this.state.webview}
-          </View>
+          </View> */}
         </View>
       </TouchableHighlight>
     );

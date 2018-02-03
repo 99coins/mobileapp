@@ -1,31 +1,15 @@
 import React, { Component } from 'react';
-import { WebView, ActivityIndicator, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { WebView, ActivityIndicator, View, StyleSheet } from 'react-native';
 import { Share } from 'react-native';
 import FetchWebView from './FetchWebView';
 
 class NewsWebView extends Component {
+  constructor(props) {
+    super(props);
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     isLoaded: false,
-  //   };
-  // }
-
-  shouldComponentUpdate(nextProps, nextState) {
-        //console.log(this.state, nextProps, nextState);
-        return false;
-  }
-
-  renderLoadingView() {
-    return (
-      <ActivityIndicator
-        color='rgb(33, 33, 33)'
-        size='small'
-        style={{ padding: 20 }}
-      />
-    );
+    this.state = {
+      isLoaded: false
+    };
   }
   onShare(url) {
     Share.share({
@@ -38,26 +22,56 @@ class NewsWebView extends Component {
         // iOS only:
       });
   }
+  renderLoadingView() {
+    return (
+      <ActivityIndicator
+        color='rgb(33, 33, 33)'
+        size='small'
+        style={{ padding: 20 }}
+      />
+    );
+  }
   render() {
     console.log('RENDER WEB VIEW');
     console.log(this.props);
 
-    if (this.props.webview) {
-        console.log('FOUND PRE LOADED WEBVIEW');
-        return this.props.webview;
+    if (this.state.isLoaded) {
+      console.log('WEB VIEW LOADED');
+
+      return (
+        <FetchWebView url={this.props.url} />
+      );
     }
+
+    // if (this.props.webview) {
+    //     console.log('FOUND PRE LOADED WEBVIEW');
+    //     return this.props.webview;
+    // }
     return (
-        <WebView
-          source={{ uri: this.props.url }}
-          renderLoading={this.renderLoadingView}
-          //startInLoadingState
-          onLoad={() => {
-            console.log('On load event', this.props.url);
-            //this.setState({ isLoaded: true });
-          }}
-        />
+      <View style={styles.container}>
+        <View style={{ height: 0, width: 0 }}>
+          <WebView
+            source={{ uri: this.props.url }}
+            renderLoading={this.renderLoadingView}
+            startInLoadingState
+            //onShouldStartLoadWithRequest={() => { return !this.state.isLoaded; }}
+            onLoad={() => {
+              console.log('On load event', this.props.url);
+              this.setState({ isLoaded: true });
+            }}
+          />
+        </View>
+      </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   // justifyContent: 'center',
+     alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+  },
+});
 
 export default NewsWebView;
