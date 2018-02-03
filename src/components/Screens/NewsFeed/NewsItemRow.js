@@ -5,7 +5,7 @@ import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-import FetchWebView from '../WebView/FetchWebView';
+import NewsWebView from '../WebView/NewsWebView';
 
 import * as Progress from 'react-native-progress';
 
@@ -15,7 +15,7 @@ class NewsItemRow extends React.PureComponent {
     super(props);
 
     this.state = {
-      webview: <FetchWebView url={props.item.url} />,
+      webview: <NewsWebView url={props.item.url} />,
     };
   }
 
@@ -42,7 +42,7 @@ class NewsItemRow extends React.PureComponent {
 
   _onPress = () => {
 
-    console.log(this.state.webview);
+    console.log({ ...this.state.webview });
 
     this.props.onPressItem(this.props.item, this.state.webview);
   };
@@ -59,8 +59,7 @@ class NewsItemRow extends React.PureComponent {
     } else {
       displayDate = moment(date).format('ddd, MMM DD, YYYY');
     }
-
-    console.log(this.state.webview);
+    console.log('Render News Item Row');
     return (
       <TouchableHighlight onPress={this._onPress}>
         <View style={styles.container}>
@@ -83,7 +82,7 @@ class NewsItemRow extends React.PureComponent {
             </View>
           </View>
           <View style={{ height: 0, width: 0 }}>
-            {this.state.webview}
+             {this.state.webview}
           </View>
         </View>
       </TouchableHighlight>

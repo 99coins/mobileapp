@@ -4,10 +4,19 @@ import { Actions } from 'react-native-router-flux';
 import { Share } from 'react-native';
 import FetchWebView from './FetchWebView';
 
-
-//const url = 'https://www.google.com/';
-
 class NewsWebView extends Component {
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     isLoaded: false,
+  //   };
+  // }
+
+  shouldComponentUpdate(nextProps, nextState) {
+        //console.log(this.state, nextProps, nextState);
+        return false;
+  }
 
   renderLoadingView() {
     return (
@@ -32,22 +41,21 @@ class NewsWebView extends Component {
   render() {
     console.log('RENDER WEB VIEW');
     console.log(this.props);
+
     if (this.props.webview) {
         console.log('FOUND PRE LOADED WEBVIEW');
         return this.props.webview;
     }
     return (
-      <View style={{ height: 0, width: 0 }}>
         <WebView
           source={{ uri: this.props.url }}
-          //source={{ uri: url }}
           renderLoading={this.renderLoadingView}
-          startInLoadingState
+          //startInLoadingState
           onLoad={() => {
-            this.setState({ isLoaded: true });
+            console.log('On load event', this.props.url);
+            //this.setState({ isLoaded: true });
           }}
         />
-      </View>
     );
   }
 }
