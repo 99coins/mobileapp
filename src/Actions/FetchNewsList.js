@@ -13,7 +13,7 @@ export default function FetchNewsList() {
 
         return axios.get(`${CRYPTO_COMPARE_BASE_URL}/data/news/`)
             .then(res => {
-                dispatch({ type: FETCHING_NEWS_LIST_SUCCESS, payload: res.data });
+                dispatch({ type: FETCHING_NEWS_LIST_SUCCESS, payload: [res.data[0]] });
             })
             .catch(err => {
                 dispatch({ type: FETCHING_NEWS_LIST_FAIL, payload: err });

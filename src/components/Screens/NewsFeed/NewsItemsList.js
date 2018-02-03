@@ -33,10 +33,10 @@ class NewsItemList extends Component {
         //     this.props.FetchWeeklyUpdateVideo();
         // }
     }
-    onPressItem = (item) => {
+    onPressItem = (item, webview) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.News_2({ url: item.url });
+            Actions.News_2({ url: item.url, webview: webview });
 
              setTimeout(() => {
                 this.state.disableTouch = false;

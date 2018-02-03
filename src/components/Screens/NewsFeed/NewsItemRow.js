@@ -5,74 +5,90 @@ import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-
+import FetchWebView from '../WebView/FetchWebView';
 
 import * as Progress from 'react-native-progress';
 
 class NewsItemRow extends React.PureComponent {
-  
-    stripHtmlTags = (str) => {
-       if ((str === null) || (str === '')) {
-           return false;
-       } 
-       const strip = str.toString();
-       return strip.replace(/<[^>]*>/g, ''); 
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      webview: <FetchWebView url={props.item.url} />,
+    };
+  }
+
+  stripHtmlTags = (str) => {
+    if ((str === null) || (str === '')) {
+      return false;
     }
-    
-   isFromLast24Hours = (date) => {
+    const strip = str.toString();
+    return strip.replace(/<[^>]*>/g, '');
+  }
+
+  isFromLast24Hours = (date) => {
     const timeStamp = Math.round(new Date().getTime() / 1000);
     const timeStampYesterday = timeStamp - (24 * 3600);
     const is24 = date >= new Date(timeStampYesterday).getTime();
     return is24;
-   }
+  }
 
-   isToday = (date) => {
-     const today = new Date();
+  isToday = (date) => {
+    const today = new Date();
 
-     return today.toDateString() === date.toDateString();
-   }
+    return today.toDateString() === date.toDateString();
+  }
 
-   _onPress = () => {
-    this.props.onPressItem(this.props.item);
+  _onPress = () => {
+
+    console.log(this.state.webview);
+
+    this.props.onPressItem(this.props.item, this.state.webview);
   };
 
-    render() {
+  render() {
     let title = this.props.item.title;
     title = this.stripHtmlTags(title);
 
-   const pubDate = this.props.item.published_on;
-   const date = new Date(pubDate * 1000);
-   let displayDate;
+    const pubDate = this.props.item.published_on;
+    const date = new Date(pubDate * 1000);
+    let displayDate;
     if (this.isToday(date)) {
-        displayDate = moment(date).format('HH:mm');
+      displayDate = moment(date).format('HH:mm');
     } else {
       displayDate = moment(date).format('ddd, MMM DD, YYYY');
     }
+
+    console.log(this.state.webview);
     return (
-        <TouchableHighlight onPress={this._onPress}>
-          <View style={styles.container}>
-            <Image
-                style={styles.image}
-                 source={{ uri: this.props.item.imageurl }}
-                 cache='force-cache'
-                 indicator={Progress.CircleSnail}
-                 indicatorProps={{
-                  color: Colors.themeRed,
-                  }}
-            />
-            <View style={styles.textContainer}>
-              <View style={styles.firstLine}>
-                   <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
-              </View>
-              <View style={styles.secondLine}>
-                 <Text style={styles.dateStyle}>{displayDate}</Text>
-                 <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
-              </View>
+      <TouchableHighlight onPress={this._onPress}>
+        <View style={styles.container}>
+          <Image
+            style={styles.image}
+            source={{ uri: this.props.item.imageurl }}
+            cache='force-cache'
+            indicator={Progress.CircleSnail}
+            indicatorProps={{
+              color: Colors.themeRed,
+            }}
+          />
+          <View style={styles.textContainer}>
+            <View style={styles.firstLine}>
+              <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
             </View>
+            <View style={styles.secondLine}>
+              <Text style={styles.dateStyle}>{displayDate}</Text>
+              <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
             </View>
-        </TouchableHighlight>
+          </View>
+          <View style={{ height: 0, width: 0 }}>
+            {this.state.webview}
+          </View>
+        </View>
+      </TouchableHighlight>
     );
-    }
+  }
 }
 
 //styling
@@ -80,8 +96,8 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
-   height: 80,
-   width: windowWidth,
+    height: 80,
+    width: windowWidth,
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 8,
@@ -91,14 +107,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.gray50
   },
   image: {
-    width: 74, 
+    width: 74,
     height: 64
   },
   textContainer: {
     flex: 1,
     justifyContent: 'space-between',
     paddingLeft: 10
-    },
+  },
   firstLine: {
     flexDirection: 'column',
     justifyContent: 'center',
@@ -108,23 +124,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end'
-    },
+  },
   titleStyle: {
-   flexWrap: 'wrap',
-   fontSize: 16,
-   fontWeight: 'bold',
-   color: Colors.gray900
+    flexWrap: 'wrap',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: Colors.gray900
   },
   dateStyle: {
-   fontSize: 13,
-   color: Colors.gray700
+    fontSize: 13,
+    color: Colors.gray700
   },
   sourceStyle: {
-   fontSize: 12,
-   color: Colors.gray700
+    fontSize: 12,
+    color: Colors.gray700
   },
   imageStyle: {
-   flex: 0.08,
+    flex: 0.08,
   },
 });
 
