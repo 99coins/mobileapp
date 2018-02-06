@@ -8,7 +8,7 @@ import {
 
 const WEEKLY_VIDEOS = 'weekly-videos';
 
-export default function FetchWeeklyUpdateVideo() {
+export default function fetchWeeklyUpdateVideo() {
     return dispatch => {
         dispatch({ type: FETCHING_WEEKLY_UPDATE_VIDEO });
 

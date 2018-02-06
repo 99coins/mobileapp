@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { FlatList, Text, Button, View, Dimensions } from 'react-native';
+import { FlatList } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
-import FetchNewsList from './../../../Actions/FetchNewsList';
-import FetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
+import { fetchNewsList, updateViewableNewsItems } from './../../../Actions/FetchNewsList';
+import fetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
 import memoize from 'lodash/memoize'
 
-
 const ITEM_HEIGHT = 80;
-//create comonente
+let firstItems = true;
+
 class NewsItemList extends Component {   
     state = { disableTouch: false };
 
@@ -19,25 +19,22 @@ class NewsItemList extends Component {
         this.onRefresh();
     }
     shouldComponentUpdate(nextProps) {
-        return (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video);
+        return (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.props.newsList.viewableItems !== nextProps.newsList.viewableItems);
+    }
+
+    onChangedItems = (items) => {
+        firstItems = false;
+        this.props.updateViewableNewsItems(items.viewableItems);
     }
     onRefresh() {
         console.log('onRefresh news');
-        //const { newsList, weeklyVideo } = this.props;
-        this.props.FetchNewsList();
-        this.props.FetchWeeklyUpdateVideo();
-        // if (newsList.isFetching === false) {
-        //     this.props.FetchNewsList();
-        // }
-        //  if (weeklyVideo.video === null) {
-        //     this.props.FetchWeeklyUpdateVideo();
-        // }
+        this.props.fetchNewsList();
+        this.props.fetchWeeklyUpdateVideo();
     }
-    onPressItem = (item) => {
+    onPressItem = (item, webview) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.News_2({ url: item.url });
-
+            Actions.News_2({ url: item.url, webview });
              setTimeout(() => {
                 this.state.disableTouch = false;
              }, 2000);
@@ -46,14 +43,6 @@ class NewsItemList extends Component {
         }
     }
     keyExtractor = (item, index) => item.id;
-
-    renderItem = ({ item }) => (
-        <NewsItemRow 
-            id={item.id}
-            item={item}
-            onPressItem={this.onPressItem}
-        />
-    );
     _renderVideo = memoize((video) => 
             <VideoPlayer
                  endWithThumbnail
@@ -75,6 +64,21 @@ class NewsItemList extends Component {
         return null;
     }
 
+    _renderItem = (item, viewable) => (
+        <NewsItemRow 
+            id={item.id}
+            item={item}
+            onPressItem={this.onPressItem}
+            viewable={viewable}
+        />
+    );
+    renderItem = ({ item }) => {
+
+        const viewableItems = this.props.newsList.viewableItems;
+        const viewable = (viewableItems.length > 0 && viewableItems.filter((i) => i.key === item.id).length > 0) || firstItems;
+        return this._renderItem(item, viewable);
+    }
+
     render() {
         console.log('RENDERING NEWS LIST');
         const { newsList } = this.props;
@@ -85,6 +89,7 @@ class NewsItemList extends Component {
             keyExtractor={this.keyExtractor}
             refreshing={false}
             renderItem={this.renderItem}
+            onViewableItemsChanged={this.onChangedItems}
             ListHeaderComponent={this.renderVideo}
             onRefresh={() => this.onRefresh()}
             getItemLayout={(data, index) => (
@@ -97,7 +102,7 @@ class NewsItemList extends Component {
 function mapStateToProps(state) {
     return {
         newsList: state.newsList,
-        weeklyVideo: state.weeklyVideo
+        weeklyVideo: state.weeklyVideo,
     };
 }
-export default connect(mapStateToProps, { FetchNewsList, FetchWeeklyUpdateVideo })(NewsItemList);
+export default connect(mapStateToProps, { fetchNewsList, updateViewableNewsItems, fetchWeeklyUpdateVideo })(NewsItemList);

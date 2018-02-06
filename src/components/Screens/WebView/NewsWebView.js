@@ -4,12 +4,15 @@ import { Share } from 'react-native';
 import FetchWebView from './FetchWebView';
 
 class NewsWebView extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      isLoaded: false
-    };
+  //   this.state = {
+  //     isLoaded: false
+  //   };
+  // }
+  shouldComponentUpdate(nextProps) {
+      return false;
   }
   onShare(url) {
     Share.share({
@@ -27,7 +30,7 @@ class NewsWebView extends Component {
       <ActivityIndicator
         color='rgb(33, 33, 33)'
         size='small'
-        style={{ padding: 20 }}
+        style={{ padding: 20, overflow: 'hidden' }}
       />
     );
   }
@@ -35,33 +38,25 @@ class NewsWebView extends Component {
     console.log('RENDER WEB VIEW');
     console.log(this.props);
 
-    if (this.state.isLoaded) {
-      console.log('WEB VIEW LOADED');
-
-      return (
-        <FetchWebView url={this.props.url} />
-      );
+    if (this.props.webview) {
+        console.log('FOUND PRE LOADED WEBVIEW');
+        return this.props.webview;
     }
-
-    // if (this.props.webview) {
-    //     console.log('FOUND PRE LOADED WEBVIEW');
-    //     return this.props.webview;
-    // }
     return (
-      <View style={styles.container}>
-        <View style={{ height: 0, width: 0 }}>
+      // <View style={styles.container}>
+      //   <View style={{ height: 0, width: 0 }}>
+      
+      //   </View>
+      // </View>
+
           <WebView
             source={{ uri: this.props.url }}
             renderLoading={this.renderLoadingView}
-            startInLoadingState
-            //onShouldStartLoadWithRequest={() => { return !this.state.isLoaded; }}
+            startInLoadingState={!this.props.hideIndicator}
             onLoad={() => {
               console.log('On load event', this.props.url);
-              this.setState({ isLoaded: true });
             }}
           />
-        </View>
-      </View>
     );
   }
 }

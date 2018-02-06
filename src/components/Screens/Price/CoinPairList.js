@@ -5,8 +5,8 @@ import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
 
-import FetchPriceData from './../../../Actions/FetchPriceData';
-import FetchCoinList from './../../../Actions/FetchCoinList';
+import fetchPriceData from './../../../Actions/FetchPriceData';
+import fetchCoinList from './../../../Actions/FetchCoinList';
 
 const ITEM_HEIGHT = 56;
 //create comonent
@@ -14,8 +14,8 @@ class CoinPairList extends Component {
 
     componentDidMount() {
         console.log('componentDidMount prices');
-        this.props.FetchCoinList();
-        this.props.FetchPriceData();
+        this.props.fetchCoinList();
+        this.props.fetchPriceData();
     }
     shouldComponentUpdate(nextProps) {
         return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
@@ -93,4 +93,4 @@ function mapStateToProps(state) {
         coinList: state.coinList
     };
 }
-export default connect(mapStateToProps, { FetchPriceData, FetchCoinList })(CoinPairList);
+export default connect(mapStateToProps, { fetchPriceData, fetchCoinList })(CoinPairList);

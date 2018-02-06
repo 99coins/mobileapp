@@ -3,11 +3,13 @@ import { CRYPTO_COMPARE_BASE_URL } from './../Utils/Constants';
 import {
     FETCHING_NEWS_LIST,
     FETCHING_NEWS_LIST_SUCCESS,
-    FETCHING_NEWS_LIST_FAIL
+    FETCHING_NEWS_LIST_FAIL,
+    VIEWABLE_NEWS_ITEMS_CHANGED,
+    CHECK_IF_VIEWABLE
 } from './../Utils/ActionTypes';
 
 
-export default function FetchNewsList() {
+export function fetchNewsList() {
     return dispatch => {
         dispatch({ type: FETCHING_NEWS_LIST });
 
@@ -21,3 +23,15 @@ export default function FetchNewsList() {
     };
 }
 
+export const updateViewableNewsItems = (items) => {
+    return dispatch => {
+         dispatch({ type: VIEWABLE_NEWS_ITEMS_CHANGED, payload: items });
+     };
+};
+
+
+// export const checkIfViewable = (itemId) => {
+//     return dispatch => {
+//          dispatch({ type: CHECK_IF_VIEWABLE, payload: itemId });
+//      };
+// };

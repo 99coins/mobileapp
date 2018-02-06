@@ -5,22 +5,24 @@ import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-//import NewsWebView from '../WebView/NewsWebView';
-
+import NewsWebView from '../WebView/NewsWebView';
 import * as Progress from 'react-native-progress';
 
 class NewsItemRow extends Component {
 
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  //   this.state = {
-  //     webview: <NewsWebView url={props.item.url} />,
-  //   };
-  // }
+    this.state = {
+      webview: <NewsWebView url={props.item.url} />,
+    };
+  }
 
   shouldComponentUpdate(nextProps) {
-      return (this.props.id !== nextProps.id);
+
+        const update = (this.props.id !== nextProps.id || this.props.viewable !== nextProps.viewable);
+        console.log('SHOULD UPDATE', update);
+        return update;
   }
 
   stripHtmlTags = (str) => {
@@ -46,8 +48,20 @@ class NewsItemRow extends Component {
 
   _onPress = () => {
 
-    this.props.onPressItem(this.props.item);
+    this.props.onPressItem(this.props.item, this.state.webview);
   };
+
+  renderWebView = (viewable) => {
+    console.log('VIEW', viewable);
+      if (viewable) {
+          return (
+               <View style={{ height: 0, width: 0, overflow: 'hidden' }}>
+                 {this.state.webview}
+              </View>
+          );    
+      }
+      return null;
+  }
 
   render() {
     let title = this.props.item.title;
@@ -83,9 +97,7 @@ class NewsItemRow extends Component {
               <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
             </View>
           </View>
-          {/* <View style={{ height: 0, width: 0 }}>
-             {this.state.webview}
-          </View> */}
+         {this.renderWebView(this.props.viewable)}
         </View>
       </TouchableHighlight>
     );
