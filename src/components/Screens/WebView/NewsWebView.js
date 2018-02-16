@@ -29,8 +29,20 @@ class NewsWebView extends Component {
   render() {
     console.log('RENDER WEB VIEW');
 
+    if (Platform.OS === 'ios') {
     return (
           <WKWebView
+            source={{ uri: this.props.url }}
+            renderLoading={this.renderLoadingView}
+            startInLoadingState={!this.props.hideIndicator}
+            onLoad={() => {
+              console.log('On load event', this.props.url);
+            }}
+          />
+    );
+    }
+      return (
+          <WebView
             source={{ uri: this.props.url }}
             renderLoading={this.renderLoadingView}
             startInLoadingState={!this.props.hideIndicator}
