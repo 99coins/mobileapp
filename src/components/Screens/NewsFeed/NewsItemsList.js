@@ -19,7 +19,9 @@ class NewsItemList extends Component {
         this.onRefresh();
     }
     shouldComponentUpdate(nextProps) {
-        return (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.props.newsList.viewableItems !== nextProps.newsList.viewableItems);
+        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.props.newsList.viewableItems !== nextProps.newsList.viewableItems);
+        console.log('ShoulUpdateNewsList', shouldUpdate);
+        return shouldUpdate;
     }
 
     onChangedItems = (items) => {
