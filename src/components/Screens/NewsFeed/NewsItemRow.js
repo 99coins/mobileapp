@@ -5,7 +5,7 @@ import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-import NewsWebView from '../WebView/NewsWebView';
+//import NewsWebView from '../WebView/NewsWebView';
 import * as Progress from 'react-native-progress';
 
 class NewsItemRow extends Component {
@@ -13,9 +13,9 @@ class NewsItemRow extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      webview: <NewsWebView url={props.item.url} />,
-    };
+    // this.state = {
+    //   webview: <NewsWebView url={props.item.url} />,
+    // };
   }
 
   shouldComponentUpdate(nextProps) {
@@ -48,7 +48,7 @@ class NewsItemRow extends Component {
 
   _onPress = () => {
 
-    this.props.onPressItem(this.props.item, this.state.webview);
+    this.props.onPressItem(this.props.item);
   };
 
   renderWebView = (viewable) => {
@@ -97,7 +97,6 @@ class NewsItemRow extends Component {
               <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
             </View>
           </View>
-         {this.renderWebView(this.props.viewable)}
         </View>
       </TouchableHighlight>
     );

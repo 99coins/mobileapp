@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import { WebView, ActivityIndicator, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, StyleSheet, Platform, WebView } from 'react-native';
 import { Share } from 'react-native';
-import FetchWebView from './FetchWebView';
+import WKWebView from 'react-native-wkwebview-reborn';
+
 
 class NewsWebView extends Component {
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     isLoaded: false
-  //   };
-  // }
-  shouldComponentUpdate(nextProps) {
-      return false;
-  }
   onShare(url) {
     Share.share({
       message: 'Found this intresteing article on the 99Bitcoins App ',
@@ -36,20 +28,9 @@ class NewsWebView extends Component {
   }
   render() {
     console.log('RENDER WEB VIEW');
-    console.log(this.props);
 
-    if (this.props.webview) {
-        console.log('FOUND PRE LOADED WEBVIEW');
-        return this.props.webview;
-    }
     return (
-      // <View style={styles.container}>
-      //   <View style={{ height: 0, width: 0 }}>
-      
-      //   </View>
-      // </View>
-
-          <WebView
+          <WKWebView
             source={{ uri: this.props.url }}
             renderLoading={this.renderLoadingView}
             startInLoadingState={!this.props.hideIndicator}

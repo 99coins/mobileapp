@@ -33,10 +33,10 @@ class NewsItemList extends Component {
         this.props.fetchNewsList();
         this.props.fetchWeeklyUpdateVideo();
     }
-    onPressItem = (item, webview) => {
+    onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.News_2({ url: item.url, webview });
+            Actions.News_2({ url: item.url });
              setTimeout(() => {
                 this.state.disableTouch = false;
              }, 2000);
@@ -66,19 +66,19 @@ class NewsItemList extends Component {
         return null;
     }
 
-    _renderItem = (item, viewable) => (
+    _renderItem = (item) => (
         <NewsItemRow 
             id={item.id}
             item={item}
             onPressItem={this.onPressItem}
-            viewable={viewable}
+            //viewable={viewable}
         />
     );
     renderItem = ({ item }) => {
 
-        const viewableItems = this.props.newsList.viewableItems;
-        const viewable = (viewableItems.length > 0 && viewableItems.filter((i) => i.key === item.id).length > 0) || firstItems;
-        return this._renderItem(item, viewable);
+        // const viewableItems = this.props.newsList.viewableItems;
+        // const viewable = (viewableItems.length > 0 && viewableItems.filter((i) => i.key === item.id).length > 0) || firstItems;
+        return this._renderItem(item);
     }
 
     render() {
@@ -91,7 +91,7 @@ class NewsItemList extends Component {
             keyExtractor={this.keyExtractor}
             refreshing={false}
             renderItem={this.renderItem}
-            onViewableItemsChanged={this.onChangedItems}
+            //onViewableItemsChanged={this.onChangedItems}
             ListHeaderComponent={this.renderVideo}
             onRefresh={() => this.onRefresh()}
             getItemLayout={(data, index) => (

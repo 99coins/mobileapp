@@ -32,6 +32,7 @@
 		151C1805200D452F00FE40AF /* libRNIntercom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C1804200D44F600FE40AF /* libRNIntercom.a */; };
 		151C180E200D4AB100FE40AF /* Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C180D200D4AB100FE40AF /* Intercom.framework */; };
 		151C180F200D4ABE00FE40AF /* Intercom.framework in Embed */ = {isa = PBXBuildFile; fileRef = 151C180D200D4AB100FE40AF /* Intercom.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */; };
 		15295F1C2013AB5E00777051 /* Smooch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; };
 		15295F1D2013AB6900777051 /* Smooch.framework in Embed */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15295F1E2013ABB900777051 /* libRCTSmooch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15295EFF2013AA5000777051 /* libRCTSmooch.a */; };
@@ -145,6 +146,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 112EE36D1CC0AB8A00BF6BB8;
 			remoteInfo = RNIntercom;
+		};
+		1527BCF92036FD19000D9B6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0974579A1D2A440A000D9368;
+			remoteInfo = RCTWKWebView;
 		};
 		15295EFE2013AA5000777051 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -412,6 +420,7 @@
 		14B591AE74644CA8B250FD5B /* SystemConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		151C17FF200D44F600FE40AF /* RNIntercom.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIntercom.xcodeproj; path = "../node_modules/react-native-intercom/iOS/RNIntercom.xcodeproj"; sourceTree = "<group>"; };
 		151C180D200D4AB100FE40AF /* Intercom.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intercom.framework; path = Carthage/Build/iOS/Intercom.framework; sourceTree = "<group>"; };
+		1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWKWebView.xcodeproj; path = "../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView.xcodeproj"; sourceTree = "<group>"; };
 		153C59121FA505850076215B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		153C59131FA505850076215B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		153C59141FA505860076215B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
@@ -462,6 +471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */,
 				15650B4A1FD5DEA800B35161 /* libART.a in Frameworks */,
 				153C592D1FA50F660076215B /* libz.tbd in Frameworks */,
 				15295F1E2013ABB900777051 /* libRCTSmooch.a in Frameworks */,
@@ -652,6 +662,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1527BCDF2036FD19000D9B6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		15295EEC2013AA5000777051 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +752,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */,
 				151C17FF200D44F600FE40AF /* RNIntercom.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				15650B231FD5DE7200B35161 /* ART.xcodeproj */,
@@ -917,6 +936,10 @@
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 				},
 				{
+					ProductGroup = 1527BCDF2036FD19000D9B6E /* Products */;
+					ProjectRef = 1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */;
+				},
+				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
@@ -1027,6 +1050,13 @@
 			fileType = archive.ar;
 			path = libRNIntercom.a;
 			remoteRef = 151C1803200D44F600FE40AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTWKWebView.a;
+			remoteRef = 1527BCF92036FD19000D9B6E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		15295EFF2013AA5000777051 /* libRCTSmooch.a */ = {
