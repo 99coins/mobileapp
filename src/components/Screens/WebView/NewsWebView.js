@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, WebView, Share, Platform } from 'react-native';
+import { ActivityIndicator, WebView, Share, Platform, View } from 'react-native';
 //const TestHTML = require('./test.html');
-import WKWebView from 'react-native-wkwebview-reborn';
+import Colors from '@assets/colors.js';
+
 
 class NewsWebView extends Component {
   onShare(url) {
@@ -34,28 +35,17 @@ class NewsWebView extends Component {
   render() {
     console.log('RENDER WEB VIEW');
     console.log(this.props.url);
+    const renderTime = Date.now();
     const baseUrl = this.getBaseURL(this.props.url);
-    if (Platform.OS === 'ios') {
-      return (
-        <WKWebView
-          source={{ html: this.props.html, baseUrl }}
-          //renderLoading={this.renderLoadingView}
-          startInLoadingState
-          onLoad={() => {
-            console.log('On load event');
-          }}
-        />
-      );
-    }
     return (
-      <WebView
+        <WebView
         source={{ html: this.props.html, baseUrl }}
         //renderLoading={this.renderLoadingView}
-        startInLoadingState
+        //startInLoadingState
         onLoad={() => {
-          console.log('On load event');
+          console.log('WebView On load event', `Loading time : ${Date.now() - renderTime}`);
         }}
-      />
+        />
     );
   }
 }

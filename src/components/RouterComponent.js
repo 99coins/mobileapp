@@ -107,6 +107,7 @@ class RouterComponent extends Component {
                scene.component.prototype.onShare(scene.url);
             }}
             back
+            navigationBarTitleImage={null}
         />
        </Scene>
         <Scene component={ChatButton} />   
