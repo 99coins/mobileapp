@@ -11,12 +11,17 @@ import logger from 'redux-logger';
 
 import RootReducer from './Reducers';
 
-const middleware = applyMiddleware(promise, thunk, logger);
+function middleware() {
+    if (__DEV__) {
+        return applyMiddleware(promise, thunk, logger);
+    }
+    return applyMiddleware(promise, thunk);
+} 
 
 const Store = createStore(
     RootReducer,
     compose(
-        middleware,       
+        middleware(),       
         devTools({
             name: Platform.OS,
             hostname: 'localhost',

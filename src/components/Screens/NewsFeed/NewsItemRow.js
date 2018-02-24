@@ -11,7 +11,6 @@ class NewsItemRow extends Component {
 
   shouldComponentUpdate(nextProps) {
     const update = (this.props.id !== nextProps.id);
-    console.log('SHOULD UPDATE', update);
     return update;
   }
 
