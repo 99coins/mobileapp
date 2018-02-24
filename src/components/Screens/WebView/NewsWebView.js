@@ -66,7 +66,7 @@ class NewsWebView extends Component {
         <Spinner
           visible={this.state.loading}
           cancelable
-          color={Colors.gray500}
+          color={Colors.gray200}
           overlayColor={Colors.gray100T}
           animation={'fade'}
         />
