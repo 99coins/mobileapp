@@ -5,24 +5,14 @@ import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-//import NewsWebView from '../WebView/NewsWebView';
 import * as Progress from 'react-native-progress';
 
 class NewsItemRow extends Component {
 
-  constructor(props) {
-    super(props);
-
-    // this.state = {
-    //   webview: <NewsWebView url={props.item.url} />,
-    // };
-  }
-
   shouldComponentUpdate(nextProps) {
-
-        const update = (this.props.id !== nextProps.id || this.props.viewable !== nextProps.viewable);
-        console.log('SHOULD UPDATE', update);
-        return update;
+    const update = (this.props.id !== nextProps.id);
+    console.log('SHOULD UPDATE', update);
+    return update;
   }
 
   stripHtmlTags = (str) => {
@@ -39,30 +29,14 @@ class NewsItemRow extends Component {
     const is24 = date >= new Date(timeStampYesterday).getTime();
     return is24;
   }
-
   isToday = (date) => {
     const today = new Date();
 
     return today.toDateString() === date.toDateString();
   }
-
   _onPress = () => {
-
     this.props.onPressItem(this.props.item);
   };
-
-  renderWebView = (viewable) => {
-    console.log('VIEW', viewable);
-      if (viewable) {
-          return (
-               <View style={{ height: 0, width: 0, overflow: 'hidden' }}>
-                 {this.state.webview}
-              </View>
-          );    
-      }
-      return null;
-  }
-
   render() {
     let title = this.props.item.title;
     title = this.stripHtmlTags(title);

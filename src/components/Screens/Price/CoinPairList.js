@@ -21,7 +21,7 @@ class CoinPairList extends Component {
         return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
     }
     onRefresh() {
-        this.props.FetchPriceData();
+        this.props.fetchPriceData();
     }
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
@@ -72,7 +72,7 @@ class CoinPairList extends Component {
         return (
           <FlatList
             onRefresh={() => this.onRefresh()}
-            refreshing={false}
+            refreshing={priceData.isFetching}
             data={priceData.data}
             extraData={coinList.data}
             keyExtractor={this.keyExtractor}

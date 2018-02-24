@@ -9,9 +9,8 @@ import VideoPlayer from 'react-native-video-player';
 import memoize from 'lodash/memoize'
 
 const ITEM_HEIGHT = 80;
-let firstItems = true;
 
-class NewsItemList extends Component {   
+class NewsItemList extends Component {
     state = { disableTouch: false };
 
     componentWillMount() {
@@ -19,14 +18,9 @@ class NewsItemList extends Component {
         this.onRefresh();
     }
     shouldComponentUpdate(nextProps) {
-        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.props.newsList.viewableItems !== nextProps.newsList.viewableItems);
+        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video);
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
-    }
-
-    onChangedItems = (items) => {
-        firstItems = false;
-        this.props.updateViewableNewsItems(items.viewableItems);
     }
     onRefresh() {
         console.log('onRefresh news');
@@ -36,26 +30,26 @@ class NewsItemList extends Component {
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.News_2({ url: item.url });
-             setTimeout(() => {
+            Actions.News_2({ url: item.url, source: item.source, html: item.html });
+            setTimeout(() => {
                 this.state.disableTouch = false;
-             }, 2000);
+            }, 2000);
         } else {
             console.log('touch disabled');
         }
     }
     keyExtractor = (item, index) => item.id;
-    _renderVideo = memoize((video) => 
-            <VideoPlayer
-                 endWithThumbnail
-                 thumbnail={{ uri: video.thumbnailUrl }}
-                 video={{ uri: video.videoUrl }}
-                 videoWidth={video.video.width}
-                 videoHeight={video.video.height}
-                 duration={video.video.duration}
-                 ref={(r) => { this.player = r; }}
-                 resizeMode={'cover'}
-            />)
+    _renderVideo = memoize((video) =>
+        <VideoPlayer
+            endWithThumbnail
+            thumbnail={{ uri: video.thumbnailUrl }}
+            video={{ uri: video.videoUrl }}
+            videoWidth={video.video.width}
+            videoHeight={video.video.height}
+            duration={video.video.duration}
+            ref={(r) => { this.player = r; }}
+            resizeMode={'cover'}
+        />)
 
     renderVideo = () => {
         const { weeklyVideo } = this.props;
@@ -65,41 +59,34 @@ class NewsItemList extends Component {
         }
         return null;
     }
-
-    _renderItem = (item) => (
-        <NewsItemRow 
-            id={item.id}
-            item={item}
-            onPressItem={this.onPressItem}
-            //viewable={viewable}
-        />
-    );
     renderItem = ({ item }) => {
-
-        // const viewableItems = this.props.newsList.viewableItems;
-        // const viewable = (viewableItems.length > 0 && viewableItems.filter((i) => i.key === item.id).length > 0) || firstItems;
-        return this._renderItem(item);
+        return (
+            <NewsItemRow
+                id={item.id}
+                item={item}
+                onPressItem={this.onPressItem}
+            />
+        );
     }
 
     render() {
         console.log('RENDERING NEWS LIST');
         const { newsList } = this.props;
         return (
-         <FlatList
-            data={newsList.data}
-            extraData={this.state}
-            keyExtractor={this.keyExtractor}
-            refreshing={false}
-            renderItem={this.renderItem}
-            //onViewableItemsChanged={this.onChangedItems}
-            ListHeaderComponent={this.renderVideo}
-            onRefresh={() => this.onRefresh()}
-            getItemLayout={(data, index) => (
-                 { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
-            )}
-         />
+            <FlatList
+                data={newsList.data}
+                extraData={this.state}
+                keyExtractor={this.keyExtractor}
+                refreshing={false}
+                renderItem={this.renderItem}
+                ListHeaderComponent={this.renderVideo}
+                onRefresh={() => this.onRefresh()}
+                getItemLayout={(data, index) => (
+                    { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
+                )}
+            />
         );
-   }
+    }
 }
 function mapStateToProps(state) {
     return {

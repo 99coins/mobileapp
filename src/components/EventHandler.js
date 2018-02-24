@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { AppState, NotificationsIOS } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import FetchNewsList from '../Actions/FetchNewsList';
-import FetchPriceData from '../Actions/FetchPriceData';
+import fetchNewsList from '../Actions/FetchNewsList';
+import fetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 import { connect } from 'react-redux';
 
@@ -37,9 +37,9 @@ class EventHandler extends Component {
       console.log('Currentscene:', Actions.currentScene);
       this.props.getUnreadCount();
       if (Actions.currentScene === 'Price') {
-         this.props.FetchPriceData();
+         this.props.fetchPriceData();
       } else if (Actions.currentScene === 'News') {
-          this.props.FetchNewsList();
+          this.props.fetchNewsList();
       }
     }
     this.setState({ appState: nextAppState });
@@ -47,4 +47,4 @@ class EventHandler extends Component {
 
    render() { return null; }
 
-} export default connect(null, { FetchNewsList, FetchPriceData, getUnreadCount })(EventHandler);
+} export default connect(null, { fetchNewsList, fetchPriceData, getUnreadCount })(EventHandler);

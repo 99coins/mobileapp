@@ -14,8 +14,8 @@ import UnreadBadge from './Screens/AMA/UnreadBadge';
 import EventHandler from './EventHandler';
 
 import { connect } from 'react-redux';
-import FetchNewsList from '../Actions/FetchNewsList';
-import FetchPriceData from '../Actions/FetchPriceData';
+import fetchNewsList from '../Actions/FetchNewsList';
+import fetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 
 class RouterComponent extends Component {
@@ -75,7 +75,7 @@ class RouterComponent extends Component {
 
              onEnter={() => {
               console.log('on enter news');
-              this.props.FetchNewsList();
+              this.props.fetchNewsList();
               this.props.getUnreadCount();
              }}
 
@@ -89,7 +89,7 @@ class RouterComponent extends Component {
              //onEnter={() => this.onEnterPrices()}
              onEnter={() => {
               console.log('on enter prices');
-              this.props.FetchPriceData();
+              this.props.fetchPriceData();
               this.props.getUnreadCount();
              }}
 
@@ -121,4 +121,4 @@ class RouterComponent extends Component {
 }   
 
 
-export default connect(null, { FetchNewsList, FetchPriceData, getUnreadCount })(RouterComponent);
+export default connect(null, { fetchNewsList, fetchPriceData, getUnreadCount })(RouterComponent);

@@ -29,9 +29,6 @@
 		151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150969A11FF7C6CC00FD6A2B /* libRNVectorIcons.a */; };
 		151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEF642002C4DD00D5913C /* libRNFetchBlob.a */; };
 		151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEFBC2006A41500D5913C /* libRCTVideo.a */; };
-		151C1805200D452F00FE40AF /* libRNIntercom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C1804200D44F600FE40AF /* libRNIntercom.a */; };
-		151C180E200D4AB100FE40AF /* Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151C180D200D4AB100FE40AF /* Intercom.framework */; };
-		151C180F200D4ABE00FE40AF /* Intercom.framework in Embed */ = {isa = PBXBuildFile; fileRef = 151C180D200D4AB100FE40AF /* Intercom.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */; };
 		15295F1C2013AB5E00777051 /* Smooch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; };
 		15295F1D2013AB6900777051 /* Smooch.framework in Embed */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -139,13 +136,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
-		};
-		151C1803200D44F600FE40AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 151C17FF200D44F600FE40AF /* RNIntercom.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 112EE36D1CC0AB8A00BF6BB8;
-			remoteInfo = RNIntercom;
 		};
 		1527BCF92036FD19000D9B6E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -388,7 +378,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				15295F1D2013AB6900777051 /* Smooch.framework in Embed */,
-				151C180F200D4ABE00FE40AF /* Intercom.framework in Embed */,
 				153C59201FA505B30076215B /* Firebase.framework in Embed */,
 			);
 			name = Embed;
@@ -418,7 +407,6 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NNCoins/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		14B591AE74644CA8B250FD5B /* SystemConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		151C17FF200D44F600FE40AF /* RNIntercom.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIntercom.xcodeproj; path = "../node_modules/react-native-intercom/iOS/RNIntercom.xcodeproj"; sourceTree = "<group>"; };
 		151C180D200D4AB100FE40AF /* Intercom.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intercom.framework; path = Carthage/Build/iOS/Intercom.framework; sourceTree = "<group>"; };
 		1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWKWebView.xcodeproj; path = "../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView.xcodeproj"; sourceTree = "<group>"; };
 		153C59121FA505850076215B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -446,6 +434,7 @@
 		28AE10BC7DD045AB9EAF32E3 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		350CE692175740DF9099AC53 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		37EDCC50DD1B4A4E9E18617B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		393919DA554744089576DF82 /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
 		426D691BF20E4136B52C7E3F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		6DBDA9FE9C3C4DE4BFF9CD30 /* libRNNotifications.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNNotifications.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -503,8 +492,6 @@
 				151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */,
 				151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */,
 				151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */,
-				151C1805200D452F00FE40AF /* libRNIntercom.a in Frameworks */,
-				151C180E200D4AB100FE40AF /* Intercom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,14 +641,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		151C1800200D44F600FE40AF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				151C1804200D44F600FE40AF /* libRNIntercom.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1527BCDF2036FD19000D9B6E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +676,7 @@
 				FE582A0FDBEA4A1BA6AFA5AD /* libRCTVideo.a */,
 				DD0D03AEE8E94A3D81300BF9 /* libRCTSmooch.a */,
 				6DBDA9FE9C3C4DE4BFF9CD30 /* libRNNotifications.a */,
+				393919DA554744089576DF82 /* libRNFS.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -753,7 +733,6 @@
 			isa = PBXGroup;
 			children = (
 				1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */,
-				151C17FF200D44F600FE40AF /* RNIntercom.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				15650B231FD5DE7200B35161 /* ART.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -952,10 +931,6 @@
 					ProjectRef = 1986D5D62C3246B6914D807B /* RNFIRAnalytics.xcodeproj */;
 				},
 				{
-					ProductGroup = 151C1800200D44F600FE40AF /* Products */;
-					ProjectRef = 151C17FF200D44F600FE40AF /* RNIntercom.xcodeproj */;
-				},
-				{
 					ProductGroup = 150969971FF7C6CC00FD6A2B /* Products */;
 					ProjectRef = 8820E57086C84B0FB2239810 /* RNVectorIcons.xcodeproj */;
 				},
@@ -1043,13 +1018,6 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = 150969A01FF7C6CC00FD6A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		151C1804200D44F600FE40AF /* libRNIntercom.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNIntercom.a;
-			remoteRef = 151C1803200D44F600FE40AF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */ = {
@@ -1323,7 +1291,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Intercom.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Firebase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Smooch.framework",
 			);
@@ -1397,11 +1364,13 @@
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
 					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
+					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
@@ -1452,11 +1421,13 @@
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
 					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
+					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
@@ -1542,11 +1513,13 @@
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
 					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
+					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
