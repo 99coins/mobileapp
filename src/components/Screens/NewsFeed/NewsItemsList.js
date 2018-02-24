@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
-import { fetchNewsList, updateViewableNewsItems } from './../../../Actions/FetchNewsList';
+import fetchNewsList from './../../../Actions/FetchNewsList';
 import fetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
@@ -94,4 +94,4 @@ function mapStateToProps(state) {
         weeklyVideo: state.weeklyVideo,
     };
 }
-export default connect(mapStateToProps, { fetchNewsList, updateViewableNewsItems, fetchWeeklyUpdateVideo })(NewsItemList);
+export default connect(mapStateToProps, { fetchNewsList, fetchWeeklyUpdateVideo })(NewsItemList);
