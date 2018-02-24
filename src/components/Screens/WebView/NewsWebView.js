@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { ActivityIndicator, WebView, Share, Platform, View } from 'react-native';
 //const TestHTML = require('./test.html');
 import Colors from '@assets/colors.js';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
 class NewsWebView extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      loading: true
+    };
+  }
   onShare(url) {
     Share.share({
       message: 'Found this intresteing article on the 99Bitcoins App ',
@@ -38,14 +45,27 @@ class NewsWebView extends Component {
     const renderTime = Date.now();
     const baseUrl = this.getBaseURL(this.props.url);
     return (
+       <View style={{ flex: 1 }}>
+        <Spinner 
+          visible={this.state.loading}
+          cancelable
+          color={Colors.themeRed}
+          overlayColor={Colors.gray100T}
+          animation={'fade'}
+        />
         <WebView
         source={{ html: this.props.html, baseUrl }}
         //renderLoading={this.renderLoadingView}
-        //startInLoadingState
+       // startInLoadingState
         onLoad={() => {
           console.log('WebView On load event', `Loading time : ${Date.now() - renderTime}`);
+          this.setState({
+            loading: false
+           });
         }}
         />
+      </View>
+
     );
   }
 }
