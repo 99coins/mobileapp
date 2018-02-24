@@ -1343,7 +1343,7 @@
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1401,7 +1401,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1493,7 +1493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
