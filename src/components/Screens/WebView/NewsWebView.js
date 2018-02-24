@@ -12,6 +12,23 @@ class NewsWebView extends Component {
       loading: true
     };
   }
+  componentDidMount() {
+    this.mounted = true;
+    setInterval(() => {
+      if (this.mounted) {
+        this.setState({
+          loading: false
+        });
+      }
+    }, 4000);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return (this.state.loading !== nextState.loading) || (this.props.html !== nextProps.html);
+  }
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
   onShare(url) {
     Share.share({
       message: 'Found this intresteing article on the 99Bitcoins App ',
@@ -45,24 +62,26 @@ class NewsWebView extends Component {
     const renderTime = Date.now();
     const baseUrl = this.getBaseURL(this.props.url);
     return (
-       <View style={{ flex: 1 }}>
-        <Spinner 
+      <View style={{ flex: 1 }}>
+        <Spinner
           visible={this.state.loading}
           cancelable
-          color={Colors.themeRed}
+          color={Colors.gray500}
           overlayColor={Colors.gray100T}
           animation={'fade'}
         />
         <WebView
-        source={{ html: this.props.html, baseUrl }}
-        //renderLoading={this.renderLoadingView}
-       // startInLoadingState
-        onLoad={() => {
-          console.log('WebView On load event', `Loading time : ${Date.now() - renderTime}`);
-          this.setState({
-            loading: false
-           });
-        }}
+          source={{ html: this.props.html, baseUrl }}
+          //renderLoading={this.renderLoadingView}
+          // startInLoadingState
+          onLoad={() => {
+            console.log('WebView On load event', `Loading time : ${Date.now() - renderTime}`);
+            if (this.mounted) {
+              this.setState({
+                loading: false
+              });
+            }
+          }}
         />
       </View>
 
