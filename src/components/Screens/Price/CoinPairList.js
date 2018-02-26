@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import CoinPairRow from './CoinPairRow';
 import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
 
 import fetchPriceData from './../../../Actions/FetchPriceData';
-import fetchCoinList from './../../../Actions/FetchCoinList';
+import { fetchCoinList } from './../../../Actions/FetchCoinList';
 
 const ITEM_HEIGHT = 56;
+
 //create comonent
 class CoinPairList extends Component {
 

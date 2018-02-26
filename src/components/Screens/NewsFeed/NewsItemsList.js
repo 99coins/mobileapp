@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Dimensions } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
@@ -8,6 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
 import memoize from 'lodash/memoize'
 
+const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 80;
 
 class NewsItemList extends Component {
@@ -44,11 +45,11 @@ class NewsItemList extends Component {
             endWithThumbnail
             thumbnail={{ uri: video.thumbnailUrl }}
             video={{ uri: video.videoUrl }}
-            videoWidth={video.video.width}
-            videoHeight={video.video.height}
+            videoWidth={windowWidth}
+            videoHeight={windowWidth / 1.78 }
             duration={video.video.duration}
             ref={(r) => { this.player = r; }}
-            resizeMode={'cover'}
+            resizeMode={'stretch'}
         />)
 
     renderVideo = () => {
@@ -71,6 +72,7 @@ class NewsItemList extends Component {
 
     render() {
         console.log('RENDERING NEWS LIST');
+        console.log(windowWidth);
         const { newsList } = this.props;
         return (
             <FlatList

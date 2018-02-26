@@ -1,7 +1,8 @@
 import {
     FETCHING_COIN_LIST,
     FETCHING_COIN_LIST_SUCCESS,
-    FETCHING_COIN_LIST_FAIL
+    FETCHING_COIN_LIST_FAIL,
+    GET_CACHED_COIN_LIST_SUCCESS
 } from './../Utils/ActionTypes';
 
 const initialState = {
@@ -21,7 +22,7 @@ export default function (state = initialState, action) {
                 hasError: false,
                 errorMessage: null 
             };
-
+        case GET_CACHED_COIN_LIST_SUCCESS:
         case FETCHING_COIN_LIST_SUCCESS:
             return { ...state,    
                 isFetching: false,
