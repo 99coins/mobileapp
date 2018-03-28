@@ -10,7 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android" />
-            <option value="$PROJECT_DIR$/../node_modules/react-native-firebase-analytics/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-firebase/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-fs/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-google-analytics-bridge/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-notifications/android" />

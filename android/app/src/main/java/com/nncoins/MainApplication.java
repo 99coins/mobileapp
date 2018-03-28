@@ -3,13 +3,12 @@ package com.nncoins;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.wix.reactnativenotifications.RNNotificationsPackage;
+import io.invertase.firebase.RNFirebasePackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
-import com.evollu.react.fa.FIRAnalyticsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -18,6 +17,7 @@ import com.facebook.soloader.SoLoader;
 import io.smooch.core.Smooch;
 import io.smooch.core.SmoochCallback;
 import io.smooch.core.Settings;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 
 
 
@@ -36,12 +36,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
+              new RNFirebaseAnalyticsPackage(),
             new ReactNativePushNotificationPackage(),
             new ReactVideoPackage(),
             new RNFetchBlobPackage(),
             new VectorIconsPackage(),
             new GoogleAnalyticsBridgePackage(),
-            new FIRAnalyticsPackage(),
             new ReactNativeSmoochPackage()
       );
     }

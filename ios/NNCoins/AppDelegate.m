@@ -10,8 +10,7 @@
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-@import Firebase;
-
+#import <Firebase.h>
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"//ֿ
 #import <Smooch/Smooch.h>

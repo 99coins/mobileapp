@@ -1,0 +1,6 @@
+framework module Pods_NNCoins {
+  umbrella header "Pods-NNCoins-umbrella.h"
+
+  export *
+  module * { export * }
+}

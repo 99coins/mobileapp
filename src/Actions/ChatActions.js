@@ -1,3 +1,4 @@
+import firebase from 'react-native-firebase';
 import {
     OPEN_CHAT_WINDOW,
     OPEN_CHAT_FORM,
@@ -16,7 +17,9 @@ const Smooch = require('react-native-smooch');
 
 export function chatButtonTapped() {
     return (dispatch, getState) => {
+       firebase.analytics().logEvent('click_chat_button', {});
        if (getState().chatState.shouldShowModal) {
+          firebase.analytics().logEvent('page_chat_form', {}); 
           dispatch({ type: OPEN_CHAT_FORM });
           return;
        }
@@ -33,18 +36,21 @@ export const openChat = (nickName) => {
          } else {
              Smooch.show();
          }
+        firebase.analytics().logEvent('page_chat', {});
         dispatch({ type: OPEN_CHAT_WINDOW }); 
      };
 };
 
 export const closeChatForm = () => {
      return dispatch => {
+         firebase.analytics().logEvent('click_dismiss_chat_form', {});
          dispatch({ type: CLOSE_CHAT_FORM });
      };
 };
 
 export const setNickName = (nickName) => {
      return dispatch => {
+         firebase.analytics().logEvent('enter_nickname', { nickname: nickName });
          dispatch({ type: SET_NICK_NAME, payload: nickName });
      };
 };
@@ -68,6 +74,7 @@ export const saveNickNameSet = () => {
     dispatch({ type: SAVE_NICNAME_SET });
     return AsyncStorage.setItem('@didSetNickName', 'true')
       .then(() => {
+        firebase.analytics().logEvent('nickname_saved', {});
         dispatch({ type: SAVE_NICNAME_SET_SUCCESS }); 
       });
   };

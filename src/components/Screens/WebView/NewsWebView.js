@@ -3,6 +3,7 @@ import { ActivityIndicator, WebView, Share, Platform, View } from 'react-native'
 //const TestHTML = require('./test.html');
 import Colors from '@assets/colors.js';
 import Spinner from 'react-native-loading-spinner-overlay';
+import firebase from 'react-native-firebase';
 
 
 class NewsWebView extends Component {
@@ -30,6 +31,7 @@ class NewsWebView extends Component {
   }
 
   onShare(url) {
+    firebase.analytics().logEvent('click_share_article', { url });
     Share.share({
       message: 'Found this intresteing article on the 99Bitcoins App ',
       url,

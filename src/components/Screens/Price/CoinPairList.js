@@ -7,6 +7,8 @@ import Colors from '@assets/colors.js';
 
 import fetchPriceData from './../../../Actions/FetchPriceData';
 import { fetchCoinList } from './../../../Actions/FetchCoinList';
+import firebase from 'react-native-firebase';
+
 
 const ITEM_HEIGHT = 56;
 
@@ -53,6 +55,9 @@ class CoinPairList extends Component {
                 priceUsd={item.price_usd}
                 percentChange24h={item.percent_change_24h}
                 imageUrl={this.getImageURLForCoin(item.symbol)}
+                onPressItem={() => {
+                    firebase.analytics().logEvent('click_coin', { coin: item.symbol });
+                }}
       />
     );
     renderSeparator = () => {
@@ -72,7 +77,10 @@ class CoinPairList extends Component {
         const { priceData, coinList } = this.props;
         return (
           <FlatList
-            onRefresh={() => this.onRefresh()}
+            onRefresh={() => {
+                firebase.analytics().logEvent('pull_to_refresh_pricelist', {});
+                this.onRefresh();
+            }}
             refreshing={priceData.isFetching}
             data={priceData.data}
             extraData={coinList.data}

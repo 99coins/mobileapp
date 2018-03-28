@@ -6,7 +6,9 @@ import fetchNewsList from './../../../Actions/FetchNewsList';
 import fetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
 import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
-import memoize from 'lodash/memoize'
+import memoize from 'lodash/memoize';
+import firebase from 'react-native-firebase';
+
 
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 80;
@@ -31,7 +33,7 @@ class NewsItemList extends Component {
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.News_2({ url: item.url, html: item.html });
+            Actions.article({ url: item.url, html: item.html });
             setTimeout(() => {
                 this.state.disableTouch = false;
             }, 2000);
@@ -50,6 +52,12 @@ class NewsItemList extends Component {
             duration={video.video.duration}
             ref={(r) => { this.player = r; }}
             resizeMode={'stretch'}
+            onPlayPress={() => {
+                firebase.analytics().logEvent('click_play_weekly_video', { url: video.videoUrl });
+            }}
+            onEnd={() => {
+                firebase.analytics().logEvent('weekly_video_end', { url: video.videoUrl });
+            }}
         />)
 
     renderVideo = () => {
@@ -82,7 +90,10 @@ class NewsItemList extends Component {
                 refreshing={false}
                 renderItem={this.renderItem}
                 ListHeaderComponent={this.renderVideo}
-                onRefresh={() => this.onRefresh()}
+                onRefresh={() => {
+                    firebase.analytics().logEvent('pull_to_refresh_newslist', {});
+                    this.onRefresh();
+                }}
                 getItemLayout={(data, index) => (
                     { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
                 )}

@@ -1,13 +1,15 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Colors from '@assets/colors.js';
 import * as Progress from 'react-native-progress';
 import Image from 'react-native-image-progress';
 import { CachedImage } from 'react-native-img-cache';
 
 
-const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl }) => {
+const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl, onPressItem }) => {
     return (
+     <TouchableWithoutFeedback onPress={onPressItem}>
+
         <View style={styles.container}>
             <View style={styles.coinContainer}>
                 <View style={styles.circleContainer}>
@@ -32,6 +34,7 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl })
              </View>    
 
         </View>
+    </TouchableWithoutFeedback>
     );
 };
 
