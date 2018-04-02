@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, TouchableWithoutFeedback, Image, ImageBackground } from 'react-native';
 import Colors from '@assets/colors.js';
+import Images from '@assets/images.js';
 import { Input } from '../../common';
 import { closeChatForm, setNickName, openChat, checkIfNameWasSet } from '../../../Actions/ChatActions';
 import { connect } from 'react-redux';
+
 
 class ChatForm extends Component {
 
@@ -15,7 +17,13 @@ class ChatForm extends Component {
        console.log('componentDidMount in ChatForm');
     }
     shouldComponentUpdate(nextProps) {
-        return (this.props.chatState.modalVisible !== nextProps.chatState.modalVisible);
+        return (this.props.chatState.modalVisible !== nextProps.chatState.modalVisible) || (this.props.chatState.userNickName !== nextProps.chatState.userNickName);
+    }
+
+    onStartChat() {
+        if (this.props.chatState.userNickName.length > 0) { 
+            this.props.openChat(this.props.chatState.userNickName);
+        }
     }
  
     render() {
@@ -37,10 +45,18 @@ class ChatForm extends Component {
 
                     <View style={styles.modalStyle}> 
                         <View style={styles.cardStyle} >
+                            <View style={styles.closeButtonContainerStyle}>
+                                <TouchableOpacity onPress={() => this.props.closeChatForm()}>
+                                    <Image source={Images.closeIcon} />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.backgroundContainer}>
+                                <Image source={Images.imgCoins} />
+                                <Image source={Images.imgHands} style={styles.handsImageStyle} />
+                            </View>                   
                             <View style={styles.textContainerStyle} >
                                 <Text style={styles.titleStyle}>Meet Your Personal Bitcoin Mentor!</Text>
                                 <Text style={styles.decriptionStyle} allowFontScaling >
-                                    New to the crypto world? Wer'e here to help.
                                     Ask us anything and one of our team members will answer shortly.
                                 </Text>
                             </View>
@@ -51,11 +67,10 @@ class ChatForm extends Component {
                                 }}
                             />
                             <TouchableOpacity
-                                onPress={() => { this.props.openChat(this.props.chatState.userNickName); }}
-                                //disabled={this.state.userNickName.length === 0}
+                                onPress={() => { this.onStartChat(); }}
                             >
-                                <View style={styles.buttonContainer}>
-                                    <Text style={styles.buttonText}>Start Chat!</Text>
+                                <View style={[styles.buttonContainer, this.props.chatState.userNickName.length > 0 && styles.buttonContainerEnabled]}>
+                                    <Text style={[styles.buttonText, this.props.chatState.userNickName.length > 0 && styles.buttonTextEnabled]}>START CHAT</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -90,22 +105,29 @@ modalStyle: {
     backgroundColor: 'rgba(33,33,33,0.5)',
     position: 'absolute',
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     height: windowHeight, 
     width: windowWidth 
 },
 cardStyle: {
     backgroundColor: 'white',
-    height: 260,
+    height: windowWidth - 32,
     marginLeft: 16,
     marginRight: 16, 
     alignItems: 'center',
     justifyContent: 'space-between',
     borderRadius: 4,
-    marginBottom: 290
+    marginTop: 56
+},
+closeButtonContainerStyle: {
+    marginTop: 16,
+    width: windowWidth - 64,
+    alignItems: 'flex-end',
+},
+handsImageStyle: {
+    position: 'absolute'
 },
 textContainerStyle: {
-   marginTop: 16,
    marginLeft: 16,
    marginRight: 16
 },
@@ -113,31 +135,41 @@ titleStyle: {
     textAlign: 'center',
     color: Colors.gray900,
     fontWeight: 'bold',
-	fontSize: 20
+	fontSize: 16
 },
-
+backgroundContainer: {
+    width: windowWidth - 32,
+    height: 80.4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
+},
 decriptionStyle: {
     textAlign: 'center',
-    color: Colors.gray500,
-    fontSize: 15,
-    //paddingTop: 16
+    color: Colors.gray700,
+    fontSize: 14,
     marginTop: 8
-
 },
 buttonContainer: {
-		width: 200,
-		height: 40,
-		backgroundColor: Colors.themeRed,
-		borderRadius: 10,
+		width: 188,
+        height: 48,
+        borderColor: Colors.themeRed,
+        borderWidth: 1,
+		borderRadius: 4,
         justifyContent: 'center',
-        marginBottom: 16,
-       // marginTop: 16
+        marginBottom: 16
+    },
+buttonContainerEnabled: {
+    backgroundColor: Colors.themeRed
 },
 buttonText: {
-		color: 'white',
-		fontSize: 20,
+		color: Colors.themeRed,
+		fontSize: 16,
 		fontWeight: 'bold',
 		textAlign: 'center'
+},
+buttonTextEnabled: {
+    color: 'white'
 }
 });
 
