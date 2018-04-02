@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,16 +16,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="KlF-fO-IMp">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <rect key="frame" x="52.5" y="-93" width="375" height="666"/>
                     <color key="backgroundColor" red="0.65098039215686276" green="0.0" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="375" id="NBm-X2-A7r"/>
+                        <constraint firstAttribute="height" constant="666" id="cTk-Nc-NF2"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="KlF-fO-IMp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LxP-NP-DFC"/>
-                <constraint firstAttribute="trailing" secondItem="KlF-fO-IMp" secondAttribute="trailing" id="Qla-Qv-2Mc"/>
-                <constraint firstItem="KlF-fO-IMp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TGp-z2-z5R"/>
-                <constraint firstAttribute="bottom" secondItem="KlF-fO-IMp" secondAttribute="bottom" id="VPb-A1-dg9"/>
+                <constraint firstItem="KlF-fO-IMp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="HlE-MP-CKP"/>
+                <constraint firstItem="KlF-fO-IMp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ggy-nV-USA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
