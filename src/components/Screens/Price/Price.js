@@ -9,7 +9,7 @@ const Rates = () => {
      return (   
       <View>
         <StatusBar
-         backgroundColor={Colors.gray200}
+         backgroundColor={Colors.gray50}
          barStyle="dark-content"
         />
     <CoinPairList />

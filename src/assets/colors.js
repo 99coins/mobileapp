@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
 const colors = {
-    gray50: 'rgb(240, 240, 240)',
+    gray50: 'rgb(250, 250, 250)',
     gray100: 'rgb(230, 230, 230)',
     gray200: 'rgb(217, 216, 216)',
     gray300: 'rgb(158, 158, 158)',
@@ -11,7 +11,7 @@ const colors = {
 
     gray100T: 'rgba(230, 230, 230, 0.2)',
 
-    themeRed: 'rgb(171, 35, 37)'
+    themeRed: 'rgb(229, 78, 82)'
 };
 
 

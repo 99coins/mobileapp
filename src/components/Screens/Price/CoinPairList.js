@@ -95,6 +95,7 @@ class CoinPairList extends Component {
             getItemLayout={(data, index) => (
                  { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
             )}
+            backgroundColor={'white'}
 
           />
     );

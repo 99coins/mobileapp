@@ -46,7 +46,7 @@ class RouterComponent extends Component {
               marginTop: 8
             }}
             navigationBarStyle={{
-              backgroundColor: Colors.gray100,
+              backgroundColor: 'white',
               paddingLeft: 8,
               shadowOpacity: 0,
               justifyContent: 'center',
@@ -59,7 +59,7 @@ class RouterComponent extends Component {
             <Scene
               key="tabbar"
               tabs
-              tabBarStyle={{ backgroundColor: Colors.gray100 }}
+              tabBarStyle={{ backgroundColor: 'white' }}
               tabBarPosition={'top'}
               swipeEnabled
               wrap={false}
@@ -68,15 +68,11 @@ class RouterComponent extends Component {
               labelStyle={{ fontWeight: 'bold' }}
               focused
               indicatorStyle={{ backgroundColor: Colors.themeRed }}
-            //navBar={Header}
             >
               {/* Tab and it's scenes */}
               <Scene
                 key="News"
-                //icon={TabIcon} 
                 component={NewsFeed}
-                /* onEnter={() => this.onEnterNews()} */
-
                 onEnter={() => {
                   console.log('on enter news');
                   this.props.fetchNewsList();
@@ -91,7 +87,6 @@ class RouterComponent extends Component {
               <Scene
                 key="Price"
                 component={Price}
-                //onEnter={() => this.onEnterPrices()}
                 onEnter={() => {
                   console.log('on enter prices');
                   this.props.fetchPriceData();
