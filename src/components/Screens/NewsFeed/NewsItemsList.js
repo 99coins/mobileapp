@@ -48,7 +48,7 @@ class NewsItemList extends Component {
             thumbnail={{ uri: video.thumbnailUrl }}
             video={{ uri: video.videoUrl }}
             videoWidth={windowWidth}
-            videoHeight={windowWidth / 1.78 }
+            videoHeight={windowWidth / 1.78}
             duration={video.video.duration}
             ref={(r) => { this.player = r; }}
             resizeMode={'stretch'}
