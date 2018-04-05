@@ -54,7 +54,7 @@ platform :ios do
 
     increment_build_number
 
-    gym(project: "NNCoins.xcodeproj",
+    gym(workspace: “NNCoins.xcworkspace”,
     scheme: “NNCoins”, configuration: "Release”, export_method:”app-store”)
     deliver(force: true)
 end
