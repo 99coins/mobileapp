@@ -7,6 +7,7 @@ import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import Price from './Screens/Price/Price';
+import CoinPage from './Screens/Coin/CoinPage';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
 import NewsWebView from './Screens/WebView/NewsWebView';
 import ChatForm from './Screens/AMA/ChatForm';
@@ -112,6 +113,16 @@ class RouterComponent extends Component {
               }}
               back
               navigationBarTitleImage={null}
+            />
+            <Scene
+              key="coin"
+              component={CoinPage}
+              onEnter={(coin) => {
+                firebase.analytics().logEvent(`page_${Actions.currentScene}`, { coin: coin.symbol });
+              }}
+              back
+              navigationBarTitleImage={null}
+              nav
             />
           </Scene>
           <Scene component={ChatButton} />

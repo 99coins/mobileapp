@@ -5,6 +5,7 @@ import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
 import { NNBITCOINS_PRICE_BASE_URL } from './../../../Utils/Constants';
+import { Actions } from 'react-native-router-flux';
 
 import fetchPriceData from './../../../Actions/FetchPriceData';
 import { fetchCoinList } from './../../../Actions/FetchCoinList';
@@ -21,8 +22,6 @@ class CoinPairList extends Component {
         console.log('componentDidMount prices');
         this.props.fetchCoinList();
         this.props.fetchPriceData();
-
-
     }
     shouldComponentUpdate(nextProps) {
         return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
@@ -61,6 +60,7 @@ class CoinPairList extends Component {
                 imageUrl={this.getImageURLForCoin(item.symbol)} /*{NNBITCOINS_PRICE_BASE_URL + item.icon}*/
                 onPressItem={() => {
                     firebase.analytics().logEvent('click_coin', { coin: item.symbol });
+                    Actions.coin({ coin: item });
                 }}
       />
     );
