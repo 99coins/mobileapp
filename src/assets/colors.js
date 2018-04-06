@@ -14,7 +14,10 @@ const colors = {
     themeRed: 'rgb(229, 78, 82)',
 
     themeGreen: 'rgb(142, 204, 96)',
-    themeGreenT: 'rgba(142, 204, 96, 0.1)'
+    themeGreenT: 'rgba(142, 204, 96, 0.1)',
+    chartOrange: 'rgb(255, 235, 198)',
+    chartBorderOrange: 'rgba(255, 191, 176, 0.2)',
+
 
 };
 

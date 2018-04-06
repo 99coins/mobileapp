@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import firebase from 'react-native-firebase';
 //import fetchCoinById from './../../../Actions/FetchCoinById';
-import Chart from './Chart';
+import Chart from './Chart/Chart';
 import Ranges from './Ranges';
 import PriceHeader from './PriceHeader';
 import SocialRow from './SocialRow';

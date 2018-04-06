@@ -18,7 +18,7 @@ export default class Ranges extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     height: 56
   },
 });
