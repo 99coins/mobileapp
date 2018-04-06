@@ -19,5 +19,6 @@ export default class SocialRow extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#673AB7',
+    height: 104
   },
 });

@@ -95,14 +95,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     priceChangePlus: {
-        color: '#00BFA5',
+        color: Colors.themeGreen,
         marginTop: 10,
         fontWeight: '400',
         width: 60,
         textAlign: 'right'
     },
     priceChangeMinus: {
-        color: '#DD2C00',
+        color: Colors.themeRed,
         marginTop: 10,
         fontWeight: '400',
         width: 60,

@@ -18,7 +18,7 @@ export default class Chart extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 38, // take 38% of the screen height
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'purple',
+    height: 200
   },
 });

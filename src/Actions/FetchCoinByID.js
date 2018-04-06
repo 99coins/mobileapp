@@ -7,7 +7,7 @@ import {
 } from './../Utils/ActionTypes';
 
 
-export default function FetchCoinByID() {
+export default function fetchCoinByID() {
     return dispatch => {
         dispatch({ type: FETCHING_COIN_BY_ID });
 

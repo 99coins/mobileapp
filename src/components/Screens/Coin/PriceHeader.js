@@ -1,23 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   StyleSheet,
-  View
+  View,
+  Text
 } from 'react-native';
+import Colors from '@assets/colors.js';
 
-export default class PriceHeader extends Component {
-
-  render() {
+const PriceHeader = ({ price, symbol }) => {
     return (
       <View style={styles.container}>
-
+        <Text style={styles.priceStyle}>{price}</Text>
+        <Text style={styles.symbolStyle}>{symbol}</Text>
       </View>
     );
-  }
-
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#673AB7',
+    backgroundColor: 'white',
+    height: 83,
+    flex: 1, 
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
+  priceStyle: {
+    fontSize: 48,
+    color: Colors.gray900
+  },
+  symbolStyle: {
+    fontSize: 48,
+    color: Colors.gray300
+  }
 });
+
+export default PriceHeader;
