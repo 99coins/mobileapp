@@ -5,11 +5,14 @@ import NewsListReducer from './NewsListReducer';
 import WeeklyVideoReducer from './WeeklyVideoReducer';
 
 import ChatReducer from './ChatReducer';
+import ChartReducer from './ChartReducer';
+
 
 export default combineReducers({
     priceData: PriceDataReducer,
     coinList: CoinListReducer,
     newsList: NewsListReducer,
     weeklyVideo: WeeklyVideoReducer,
-    chatState: ChatReducer
+    chatState: ChatReducer,
+    chartState: ChartReducer
 });

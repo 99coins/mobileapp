@@ -3,12 +3,11 @@ import { FlatList } from 'react-native';
 import firebase from 'react-native-firebase';
 //import fetchCoinById from './../../../Actions/FetchCoinById';
 import Chart from './Chart/Chart';
-import Ranges from './Ranges';
+import Ranges from './Range/Ranges';
 import PriceHeader from './PriceHeader';
 import SocialRow from './SocialRow';
 import InfoRow from './InfoRow';
 import ChangeRow from './ChangeRow';
-
 
 const tempData =  {
         id: 1,
@@ -48,41 +47,6 @@ class CoinPage extends Component {
     }
     keyExtractor = (item) => coinData.indexOf(item);
 
-    renderPriceHeader(item) {
-        return (
-             <PriceHeader 
-                price={item[4]}
-                symbol={item[5]}
-             />
-        );
-    }
-    renderChangeRow = (item) => (
-      <ChangeRow 
-                change={'+10.4%'}
-                period={'this month'}
-      />
-    );
-
-    renderChart = ({ item }) => (
-      <Chart 
-      />
-    );
-
-    renderRanges = ({ item }) => (
-      <Ranges 
-      />
-    );
-
-    renderInfoRow = ({ item }) => (
-      <InfoRow 
-      />
-    );
-
-    renderSocialRow = ({ item }) => (
-      <SocialRow 
-      />
-    );
-
     renderItem({ item, index }) {
         switch (index) {
             case 0: 
@@ -105,8 +69,7 @@ class CoinPage extends Component {
                 );
             case 3:
                 return (
-                    <Ranges 
-                    />
+                    <Ranges />
                 );
             case 4:
                 return (
@@ -136,7 +99,6 @@ class CoinPage extends Component {
         console.log('RENDERING COINPAGE');
         console.log(coinData);
 
-        
         return (   
            <FlatList
              /* onRefresh={() => {

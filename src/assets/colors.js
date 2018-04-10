@@ -9,6 +9,8 @@ const colors = {
     gray700: 'rgb(97, 97, 97)',
     gray900: 'rgb(33, 33, 33)',
 
+    clear: 'rgba(255, 255, 255, 0.0)',
+
     gray100T: 'rgba(230, 230, 230, 0.2)',
 
     themeRed: 'rgb(229, 78, 82)',
