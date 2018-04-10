@@ -8,8 +8,6 @@ import { NNBITCOINS_PRICE_BASE_URL } from './../../../Utils/Constants';
 import { Actions } from 'react-native-router-flux';
 
 import fetchPriceData from './../../../Actions/FetchPriceData';
-import { fetchCoinList } from './../../../Actions/FetchCoinList';
-
 import firebase from 'react-native-firebase';
 
 
@@ -20,7 +18,6 @@ class CoinPairList extends Component {
 
     componentDidMount() {
         console.log('componentDidMount prices');
-        this.props.fetchCoinList();
         this.props.fetchPriceData();
     }
     shouldComponentUpdate(nextProps) {
@@ -29,24 +26,24 @@ class CoinPairList extends Component {
     onRefresh() {
         this.props.fetchPriceData();
     }
-    getImageURLForCoin(symbol) {
-        const { coinList } = this.props;
-        if (coinList.isFetching === false && coinList.hasError === false) {
-            const baseImageURL = coinList.data.BaseImageUrl;
-            let coin = coinList.data.Data[symbol];
-            if (symbol === 'MIOTA') {
-                coin = coinList.data.Data.IOT;
-            }
-            if (symbol === 'BCC') {
-                coin = coinList.data.Data.BCCOIN;
-            }
-            if (coin) {
-                return baseImageURL + coin.ImageUrl;
-            }
-            return;
-        }
-        return;
-    }
+    // getImageURLForCoin(symbol) {
+    //     const { coinList } = this.props;
+    //     if (coinList.isFetching === false && coinList.hasError === false) {
+    //         const baseImageURL = coinList.data.BaseImageUrl;
+    //         let coin = coinList.data.Data[symbol];
+    //         if (symbol === 'MIOTA') {
+    //             coin = coinList.data.Data.IOT;
+    //         }
+    //         if (symbol === 'BCC') {
+    //             coin = coinList.data.Data.BCCOIN;
+    //         }
+    //         if (coin) {
+    //             return baseImageURL + coin.ImageUrl;
+    //         }
+    //         return;
+    //     }
+    //     return;
+    // }
     keyExtractor = (item, index) => item.id;
 
     
@@ -55,9 +52,9 @@ class CoinPairList extends Component {
                 key={item.id}
                 coinName={item.name}
                 symbol={item.symbol}
-                priceUsd={item.price_usd} /*.toFixed(2)*/
-                percentChange24h={item.percent_change_7d}  /*.toFixed(2)*/
-                imageUrl={this.getImageURLForCoin(item.symbol)} /*{NNBITCOINS_PRICE_BASE_URL + item.icon}*/
+                priceUsd={item.price_usd.toFixed(2)}
+                percentChange24h={item.percent_change_usd_7d.toFixed(2)}
+                imageUrl={NNBITCOINS_PRICE_BASE_URL + item.icon}
                 onPressItem={() => {
                     firebase.analytics().logEvent('click_coin', { coin: item.symbol });
                     Actions.coin({ coin: item });
@@ -107,4 +104,4 @@ function mapStateToProps(state) {
         coinList: state.coinList
     };
 }
-export default connect(mapStateToProps, { fetchCoinList, fetchPriceData })(CoinPairList);
+export default connect(mapStateToProps, { fetchPriceData })(CoinPairList);
