@@ -14,6 +14,7 @@ const colors = {
     gray100T: 'rgba(230, 230, 230, 0.2)',
 
     themeRed: 'rgb(229, 78, 82)',
+    themeRedT: 'rgba(229, 78, 82, 0.1)',
 
     themeGreen: 'rgb(142, 204, 96)',
     themeGreenT: 'rgba(142, 204, 96, 0.1)',

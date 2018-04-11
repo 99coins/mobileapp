@@ -58,10 +58,7 @@ class CoinPage extends Component {
                 );
             case 1:
                 return (
-                       <ChangeRow 
-                            change={'+10.4%'}
-                            period={'this month'}
-                       />
+                       <ChangeRow />
                 );
             case 2:
                 return (
@@ -86,10 +83,10 @@ class CoinPage extends Component {
                         subtile={'Total Supply'}
                     />
                 );
-            case 6:
-                return (
-                     <SocialRow />
-                );
+            // case 6:
+            //     return (
+            //          <SocialRow />
+            //     );
             default:
                 return null;
         }

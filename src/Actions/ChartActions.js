@@ -83,7 +83,7 @@ const buildAPIQuery = (symbol: string, range: Range): string => {
     case RANGE_MAX:
       endpoint = 'histoday';
       aggregate = 200;
-      limit = 2000; // maximum allowed limit
+      limit = 2000;
       break;
     default:
       endpoint = 'histohour';
@@ -94,3 +94,4 @@ const buildAPIQuery = (symbol: string, range: Range): string => {
 
   return `data/${endpoint}?fsym=${symbol}&tsym=USD&aggregate=${aggregate}&limit=${limit}`;
 };
+
