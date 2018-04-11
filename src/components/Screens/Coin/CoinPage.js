@@ -80,13 +80,16 @@ class CoinPage extends Component {
                 return (
                     <InfoRow 
                         title={'16,802,662'}
-                        subtile={'Total Supply'}
+                        subtile={'Cirucalting Supply'}
                     />
                 );
-            // case 6:
-            //     return (
-            //          <SocialRow />
-            //     );
+            case 6:
+                return (
+                    <InfoRow 
+                        title={'$4,473,713,323'}
+                        subtile={'24h Volume'}
+                    />
+                );
             default:
                 return null;
         }
