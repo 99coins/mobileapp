@@ -41,7 +41,7 @@ class NewsItemList extends Component {
             console.log('touch disabled');
         }
     }
-    keyExtractor = (item, index) => item.id;
+    keyExtractor = (item) => item.guid;
     _renderVideo = memoize((video) =>
         <VideoPlayer
             endWithThumbnail
