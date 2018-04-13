@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -15,7 +16,6 @@
 		0323B4B6902D43EF878896F7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EE62857B941A6874ACCE7 /* SimpleLineIcons.ttf */; };
 		0515812AC6AD4AD7B415571C /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28AE10BC7DD045AB9EAF32E3 /* MaterialCommunityIcons.ttf */; };
 		081348431ECA4D3C847E3618 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37EDCC50DD1B4A4E9E18617B /* Ionicons.ttf */; };
-		0A4F322CA22F0FEBBD41A195 /* Pods_NNCoins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9C5083CF159A396075AAF0 /* Pods_NNCoins.framework */; };
 		0C18265B23CA47E59F95B9C5 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16768DCD826D447B8C44D251 /* MaterialIcons.ttf */; };
 		0C80209BBFDB494194DBB0DF /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97417895B5244E41A305389A /* EvilIcons.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -30,9 +30,6 @@
 		151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEF642002C4DD00D5913C /* libRNFetchBlob.a */; };
 		151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEFBC2006A41500D5913C /* libRCTVideo.a */; };
 		1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */; };
-		15295F1C2013AB5E00777051 /* Smooch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; };
-		15295F1D2013AB6900777051 /* Smooch.framework in Embed */ = {isa = PBXBuildFile; fileRef = 1578AD641F3DC9CC0026F7E7 /* Smooch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		15295F1E2013ABB900777051 /* libRCTSmooch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15295EFF2013AA5000777051 /* libRCTSmooch.a */; };
 		153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592A1FA50F4E0076215B /* libsqlite3.tbd */; };
 		153C592D1FA50F660076215B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592C1FA50F660076215B /* libz.tbd */; };
 		153C59301FA513A40076215B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 153C592F1FA512B30076215B /* GoogleService-Info.plist */; };
@@ -40,6 +37,7 @@
 		1578AD401F3DC7DC0026F7E7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD3E1F3DC7DC0026F7E7 /* Crashlytics.framework */; };
 		1578AD411F3DC7DC0026F7E7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD3F1F3DC7DC0026F7E7 /* Fabric.framework */; };
 		24DB2ACA69474AE3931C6ACA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0119AD11B3843C69410F572 /* Foundation.ttf */; };
+		66EFEC6CBD65833735C8BA63 /* libPods-NNCoins.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FEB887DF1E662104F5B975 /* libPods-NNCoins.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		88C304C3F6014D9883442F4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 426D691BF20E4136B52C7E3F /* libsqlite3.0.tbd */; };
 		B0A0FE36F48B4C0C8C0A1CC0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E65736E9784924B0891092 /* Zocial.ttf */; };
@@ -360,20 +358,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		1578AD631F3DC9940026F7E7 /* Embed */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				15295F1D2013AB6900777051 /* Smooch.framework in Embed */,
-			);
-			name = Embed;
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -403,7 +387,6 @@
 		156A292C1F43851D00515DFC /* SmoochLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = SmoochLocalizable.strings; sourceTree = "<group>"; };
 		1578AD3E1F3DC7DC0026F7E7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1578AD3F1F3DC7DC0026F7E7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		1578AD641F3DC9CC0026F7E7 /* Smooch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Smooch.framework; path = Carthage/Build/iOS/Smooch.framework; sourceTree = "<group>"; };
 		15A8E9E61F5B405D00D145A0 /* NNCoins.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = NNCoins.entitlements; path = NNCoins/NNCoins.entitlements; sourceTree = "<group>"; };
 		15E65736E9784924B0891092 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		16768DCD826D447B8C44D251 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -412,6 +395,7 @@
 		28AE10BC7DD045AB9EAF32E3 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		3004C265CD76FE130587D6C3 /* Pods-NNCoins.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NNCoins.release.xcconfig"; path = "Pods/Target Support Files/Pods-NNCoins/Pods-NNCoins.release.xcconfig"; sourceTree = "<group>"; };
 		350CE692175740DF9099AC53 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		35FEB887DF1E662104F5B975 /* libPods-NNCoins.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NNCoins.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EDCC50DD1B4A4E9E18617B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		393919DA554744089576DF82 /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
 		426D691BF20E4136B52C7E3F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -425,7 +409,6 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8820E57086C84B0FB2239810 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		8B25BAFA6AC44A92B96375A3 /* libRCTGoogleAnalyticsBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTGoogleAnalyticsBridge.a; sourceTree = "<group>"; };
-		8D9C5083CF159A396075AAF0 /* Pods_NNCoins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NNCoins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		918D8657D449464488F1916A /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		97417895B5244E41A305389A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		A37C37CCB14249E684F7020E /* RCTGoogleAnalyticsBridge.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTGoogleAnalyticsBridge.xcodeproj; path = "../node_modules/react-native-google-analytics-bridge/ios/RCTGoogleAnalyticsBridge/RCTGoogleAnalyticsBridge.xcodeproj"; sourceTree = "<group>"; };
@@ -446,8 +429,6 @@
 				1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */,
 				15650B4A1FD5DEA800B35161 /* libART.a in Frameworks */,
 				153C592D1FA50F660076215B /* libz.tbd in Frameworks */,
-				15295F1E2013ABB900777051 /* libRCTSmooch.a in Frameworks */,
-				15295F1C2013AB5E00777051 /* Smooch.framework in Frameworks */,
 				153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -466,7 +447,7 @@
 				151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */,
 				151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */,
 				FCDCE71D065F423B8E1BD5EA /* libRNFirebase.a in Frameworks */,
-				0A4F322CA22F0FEBBD41A195 /* Pods_NNCoins.framework in Frameworks */,
+				66EFEC6CBD65833735C8BA63 /* libPods-NNCoins.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,11 +641,10 @@
 		1578AD601F3DC84D0026F7E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1578AD641F3DC9CC0026F7E7 /* Smooch.framework */,
 				153C592C1FA50F660076215B /* libz.tbd */,
 				153C592A1FA50F4E0076215B /* libsqlite3.tbd */,
 				426D691BF20E4136B52C7E3F /* libsqlite3.0.tbd */,
-				8D9C5083CF159A396075AAF0 /* Pods_NNCoins.framework */,
+				35FEB887DF1E662104F5B975 /* libPods-NNCoins.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -795,8 +775,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1578AD631F3DC9940026F7E7 /* Embed */,
-				15A8E9D31F58AF1F00D145A0 /* ShellScript */,
 				9914D97C8AC732F4B6CB555D /* [CP] Embed Pods Frameworks */,
 				866EFD297A73A484901108AC /* [CP] Copy Pods Resources */,
 			);
@@ -1265,20 +1243,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		15A8E9D31F58AF1F00D145A0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Smooch.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		20F1EF549D09BC18F6C20B8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1319,13 +1283,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NNCoins/Pods-NNCoins-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Smooch/Smooch.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Smooch.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1404,15 +1366,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins/Pods\"/**",
+					"$(SRCROOT)/NNCoins",
+					"$(SRCROOT)/NNCoins/Pods/**",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1464,15 +1419,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins/Pods\"/**",
+					"$(SRCROOT)/NNCoins",
+					"$(SRCROOT)/NNCoins/Pods/**",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1559,15 +1507,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins\"",
-					"\"$(SRCROOT)/NNCoins/Pods\"/**",
+					"$(SRCROOT)/NNCoins",
+					"$(SRCROOT)/NNCoins/Pods/**",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

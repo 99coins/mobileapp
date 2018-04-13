@@ -1,0 +1,6 @@
+framework module react_native_notifications {
+  umbrella header "react-native-notifications-umbrella.h"
+
+  export *
+  module * { export * }
+}

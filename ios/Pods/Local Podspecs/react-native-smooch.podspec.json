@@ -1,0 +1,25 @@
+{
+  "name": "react-native-smooch",
+  "version": "1.0.1",
+  "summary": "A React Native client for smooch.io",
+  "requires_arc": true,
+  "authors": {
+    "Mike Gozzo": "gozman@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "homepage": "n/a",
+  "source": {
+    "git": "https://github.com/smooch/react-native-smooch"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "dependencies": {
+    "Smooch": [
+      "~> 6.0"
+    ],
+    "React": [
+
+    ]
+  }
+}
