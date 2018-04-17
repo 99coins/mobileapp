@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Colors from '@assets/colors.js';
 import * as Progress from 'react-native-progress';
-import Image from 'react-native-image-progress';
 import { CachedImage } from 'react-native-img-cache';
 
 

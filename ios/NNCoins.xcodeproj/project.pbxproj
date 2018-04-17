@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -29,7 +28,6 @@
 		151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150969A11FF7C6CC00FD6A2B /* libRNVectorIcons.a */; };
 		151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEF642002C4DD00D5913C /* libRNFetchBlob.a */; };
 		151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15ACEFBC2006A41500D5913C /* libRCTVideo.a */; };
-		1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */; };
 		153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592A1FA50F4E0076215B /* libsqlite3.tbd */; };
 		153C592D1FA50F660076215B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 153C592C1FA50F660076215B /* libz.tbd */; };
 		153C59301FA513A40076215B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 153C592F1FA512B30076215B /* GoogleService-Info.plist */; };
@@ -124,13 +122,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFirebase;
-		};
-		1527BCF92036FD19000D9B6E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0974579A1D2A440A000D9368;
-			remoteInfo = RCTWKWebView;
 		};
 		15295EFE2013AA5000777051 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -379,7 +370,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NNCoins/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NNCoins/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWKWebView.xcodeproj; path = "../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView.xcodeproj"; sourceTree = "<group>"; };
 		153C592A1FA50F4E0076215B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		153C592C1FA50F660076215B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		153C592F1FA512B30076215B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -426,7 +416,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1527BD0E2036FD46000D9B6E /* libRCTWKWebView.a in Frameworks */,
 				15650B4A1FD5DEA800B35161 /* libART.a in Frameworks */,
 				153C592D1FA50F660076215B /* libz.tbd in Frameworks */,
 				153C592B1FA50F4E0076215B /* libsqlite3.tbd in Frameworks */,
@@ -597,14 +586,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1527BCDF2036FD19000D9B6E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		15295EEC2013AA5000777051 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,7 +659,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				15650B231FD5DE7200B35161 /* ART.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -873,10 +853,6 @@
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 				},
 				{
-					ProductGroup = 1527BCDF2036FD19000D9B6E /* Products */;
-					ProjectRef = 1527BCDE2036FD19000D9B6E /* RCTWKWebView.xcodeproj */;
-				},
-				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
@@ -976,13 +952,6 @@
 			fileType = archive.ar;
 			path = libRNFirebase.a;
 			remoteRef = 15116D952059510000E39D54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1527BCFA2036FD19000D9B6E /* libRCTWKWebView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTWKWebView.a;
-			remoteRef = 1527BCF92036FD19000D9B6E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		15295EFF2013AA5000777051 /* libRCTSmooch.a */ = {
@@ -1344,7 +1313,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1397,7 +1365,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1485,7 +1452,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

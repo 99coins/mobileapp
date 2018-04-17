@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
-import Image from 'react-native-image-progress';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
 import * as Progress from 'react-native-progress';
+import { CachedImage } from 'react-native-img-cache';
+
 
 class NewsItemRow extends Component {
 
@@ -52,7 +53,7 @@ class NewsItemRow extends Component {
     return (
       <TouchableHighlight onPress={this._onPress}>
         <View style={styles.container}>
-          <Image
+          <CachedImage
             style={styles.image}
             source={{ uri: this.props.item.imageurl }}
             cache='force-cache'
