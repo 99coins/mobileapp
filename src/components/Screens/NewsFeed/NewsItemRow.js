@@ -67,8 +67,8 @@ class NewsItemRow extends Component {
               <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
             </View>
             <View style={styles.secondLine}>
+             <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
               <Text style={styles.dateStyle}>{displayDate}</Text>
-              <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
             </View>
           </View>
         </View>
@@ -82,23 +82,24 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
-    height: 80,
+    height: 128,
     width: windowWidth,
     flex: 1,
     flexDirection: 'row',
-    paddingLeft: 8,
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingRight: 8,
+    paddingLeft: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+    paddingRight: 16,
     backgroundColor: Colors.gray50
   },
   image: {
-    width: 74,
-    height: 64
+    width: 96,
+    height: 96,
+    borderRadius: 4
   },
   textContainer: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     paddingLeft: 10
   },
   firstLine: {
@@ -109,16 +110,21 @@ const styles = StyleSheet.create({
     flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    paddingBottom: 7,
+
   },
   titleStyle: {
     flexWrap: 'wrap',
     fontSize: 16,
     fontWeight: 'bold',
-    color: Colors.gray900
+    color: Colors.gray900,
+    lineHeight: 24,
+    paddingBottom: 16,
+
   },
   dateStyle: {
-    fontSize: 13,
+    fontSize: 12,
     color: Colors.gray700
   },
   sourceStyle: {

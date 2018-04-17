@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions } from 'react-native';
+import { FlatList, Dimensions, View } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
@@ -8,10 +8,12 @@ import { Actions } from 'react-native-router-flux';
 import VideoPlayer from 'react-native-video-player';
 import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
+import Colors from '@assets/colors.js';
+
 
 
 const windowWidth = Dimensions.get('window').width;
-const ITEM_HEIGHT = 80;
+const ITEM_HEIGHT = 128;
 
 class NewsItemList extends Component {
     state = { disableTouch: false };
@@ -77,6 +79,18 @@ class NewsItemList extends Component {
             />
         );
     }
+   renderSeparator = () => {
+        return (
+            <View
+             style={{
+             height: 1,
+             width: windowWidth - 32,
+             backgroundColor: Colors.gray100,
+             marginLeft: 16
+            }}
+            />
+        );
+    };
 
     render() {
         console.log('RENDERING NEWS LIST');
@@ -90,6 +104,7 @@ class NewsItemList extends Component {
                 refreshing={false}
                 renderItem={this.renderItem}
                 ListHeaderComponent={this.renderVideo}
+                ItemSeparatorComponent={this.renderSeparator}
                 onRefresh={() => {
                     firebase.analytics().logEvent('pull_to_refresh_newslist', {});
                     this.onRefresh();
