@@ -25,9 +25,11 @@ export default function (state = initialState, action) {
 
         case FETCHING_NEWS_LIST_SUCCESS:
         if (state.data !== action.payload) {
+            const items = action.payload;
+            items[0].sponsored = true;
             return { ...state,    
                 isFetching: false,
-                data: action.payload
+                data: items
             };
         }
         return state;

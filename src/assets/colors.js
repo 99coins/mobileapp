@@ -21,6 +21,8 @@ const colors = {
     chartOrange: 'rgb(255, 235, 198)',
     chartBorderOrange: 'rgba(255, 191, 176, 0.2)',
 
+    sponsoredYellow: 'rgba(248, 231, 28, 0.1)'
+
 
 };
 

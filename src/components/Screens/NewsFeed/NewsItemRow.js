@@ -52,7 +52,7 @@ class NewsItemRow extends Component {
     console.log('Render News Item Row');
     return (
       <TouchableHighlight onPress={this._onPress}>
-        <View style={styles.container}>
+        <View style={[styles.container, this.props.item.sponsored && styles.sponsored]}>
           <CachedImage
             style={styles.image}
             source={{ uri: this.props.item.imageurl }}
@@ -91,6 +91,9 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     paddingRight: 16,
     backgroundColor: Colors.gray50
+  },
+  sponsored: {
+    backgroundColor: Colors.sponsoredYellow
   },
   image: {
     width: 96,
