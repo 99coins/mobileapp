@@ -22,8 +22,6 @@ target 'NNCoins' do
 
   pod 'react-native-smooch', :path => '../node_modules/react-native-smooch'
   
-  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-
   pod 'react-native-notifications', :path => '../node_modules/react-native-notifications'
 
 end
