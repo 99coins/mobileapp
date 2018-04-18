@@ -6,8 +6,6 @@ target 'NNCoins' do
   #use_frameworks!
 
   # Pods for NNCoins
-  pod 'Firebase/Core'
-  
   pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
   
   pod 'React', :subspecs => [
@@ -17,12 +15,17 @@ target 'NNCoins' do
   'RCTNetwork',
   'RCTPushNotification',
   'RCTText',
-  'DevSupport'
+  'DevSupport',
+  'BatchedBridge'
   ], :path => '../node_modules/react-native'
 
   pod 'react-native-smooch', :path => '../node_modules/react-native-smooch'
   
   pod 'react-native-notifications', :path => '../node_modules/react-native-notifications'
+  
+  pod 'Firebase/Core'
+
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
 end
 
