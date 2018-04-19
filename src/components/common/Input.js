@@ -47,7 +47,7 @@ const styles = {
     shadowColor: 'black',
     shadowOpacity: 0.1,
     shadowRadius: 24,
-    cornerRadius: 2
+    borderRadius: 2
   }
 };
 
