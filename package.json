@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "build:ios": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/NNCoins/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
-    "flow": "flow"
+    "flow": "flow",
+    "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json"
   },
   "dependencies": {
     "art": "^0.10.2",

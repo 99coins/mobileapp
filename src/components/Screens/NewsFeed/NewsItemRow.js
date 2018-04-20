@@ -50,6 +50,10 @@ class NewsItemRow extends Component {
       displayDate = moment(date).format('ddd, MMM DD, YYYY');
     }
     console.log('Render News Item Row');
+    if (this.props.item.sponsored) {
+      console.log(this.props.item.imageurl);
+    }
+
     return (
       <TouchableHighlight onPress={this._onPress}>
         <View style={[styles.container, this.props.item.sponsored && styles.sponsored]}>
@@ -67,7 +71,7 @@ class NewsItemRow extends Component {
               <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
             </View>
             <View style={styles.secondLine}>
-             <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
+             <Text style={[styles.sourceStyle, this.props.item.sponsored && styles.sponsoredSource]}>{this.props.item.sponsored ? 'Sponsored' : capitalizeFirstLetter(this.props.item.source)}</Text>
               <Text style={styles.dateStyle}>{displayDate}</Text>
             </View>
           </View>
@@ -93,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.gray50
   },
   sponsored: {
-    backgroundColor: Colors.sponsoredYellow
+    //backgroundColor: Colors.sponsoredYellow
   },
   image: {
     width: 96,
@@ -132,7 +136,19 @@ const styles = StyleSheet.create({
   },
   sourceStyle: {
     fontSize: 12,
-    color: Colors.gray700
+    color: Colors.gray700,
+  },
+  sponsoredSource: {
+    backgroundColor: Colors.sponsoredYellow,
+    top: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 4,
+    paddingBottom: 4,
+    borderRadius: 4,
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    shadowRadius: 16,  
   },
   imageStyle: {
     flex: 0.08,
