@@ -16,6 +16,7 @@ const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
         value={value}
         onChangeText={onChangeText}
         autoFocus
+        keyboardType='email-address'
       />
     </View>
   );
