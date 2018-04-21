@@ -121,13 +121,8 @@ export const receiveData = (value) => {
 export function getUnreadCount() {
     return dispatch => {
         //dispatch({ type: GET_UNREAD_COUNT });
-
-        //return Smooch.getUnreadCount();
-
-
-
-        // return Smooch.getUnreadCount.then(res => {
-        //     dispatch({ type: GET_UNREAD_COUNT_SUCCESS, payload: res });
-        // });
+        return Smooch.getUnreadCount().then(res => {
+            dispatch({ type: GET_UNREAD_COUNT_SUCCESS, payload: res });
+        });
     };
 }
