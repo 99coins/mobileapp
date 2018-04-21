@@ -1,4 +1,21 @@
 PODS:
+  - boost (1.59.0):
+    - boost/graph-includes (= 1.59.0)
+    - boost/math-includes (= 1.59.0)
+    - boost/numeric-includes (= 1.59.0)
+    - boost/pointer_cast-includes (= 1.59.0)
+    - boost/preprocessor-includes (= 1.59.0)
+    - boost/shared_ptr-includes (= 1.59.0)
+    - boost/string_algorithms-includes (= 1.59.0)
+  - boost-for-react-native (1.63.0)
+  - boost/graph-includes (1.59.0)
+  - boost/math-includes (1.59.0)
+  - boost/numeric-includes (1.59.0)
+  - boost/pointer_cast-includes (1.59.0)
+  - boost/preprocessor-includes (1.59.0)
+  - boost/shared_ptr-includes (1.59.0)
+  - boost/string_algorithms-includes (1.59.0)
+  - DoubleConversion (1.1.5)
   - Firebase/Core (4.13.0):
     - FirebaseAnalytics (= 4.2.0)
     - FirebaseCore (= 4.0.20)
@@ -11,6 +28,11 @@ PODS:
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
+  - Folly (2016.09.26.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+  - glog (0.3.4)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
@@ -26,28 +48,36 @@ PODS:
   - react-native-smooch (1.0.1):
     - React
     - Smooch (~> 6.0)
-  - React/BatchedBridge (0.52.3):
-    - React/Core
-    - React/cxxreact_legacy
   - React/Core (0.52.3):
     - yoga (= 0.52.3.React)
-  - React/cxxreact_legacy (0.52.3):
-    - React/jschelpers_legacy
-    - React/jsinspector_legacy
+  - React/CxxBridge (0.52.3):
+    - Folly (= 2016.09.26.00)
+    - React/Core
+    - React/cxxreact
+  - React/cxxreact (0.52.3):
+    - boost
+    - Folly (= 2016.09.26.00)
+    - React/jschelpers
+    - React/jsinspector
   - React/DevSupport (0.52.3):
     - React/Core
     - React/RCTWebSocket
   - React/fishhook (0.52.3)
-  - React/jschelpers_legacy (0.52.3)
-  - React/jsinspector_legacy (0.52.3)
+  - React/jschelpers (0.52.3):
+    - Folly (= 2016.09.26.00)
+    - React/PrivateDatabase
+  - React/jsinspector (0.52.3)
+  - React/PrivateDatabase (0.52.3)
+  - React/RCTAnimation (0.52.3):
+    - React/Core
   - React/RCTBlob (0.52.3):
     - React/Core
   - React/RCTImage (0.52.3):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.52.3):
+  - React/RCTLinkingIOS (0.52.3):
     - React/Core
-  - React/RCTPushNotification (0.52.3):
+  - React/RCTNetwork (0.52.3):
     - React/Core
   - React/RCTText (0.52.3):
     - React/Core
@@ -55,10 +85,6 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - React/tvOS (0.52.3):
-    - React/Core
-  - RNFirebase (3.3.1):
-    - React
   - Smooch (6.9.0)
   - yoga (0.52.3.React)
 
@@ -66,15 +92,16 @@ DEPENDENCIES:
   - Firebase/Core
   - react-native-notifications (from `../node_modules/react-native-notifications`)
   - react-native-smooch (from `../node_modules/react-native-smooch`)
-  - React/BatchedBridge (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
+  - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
+  - React/RCTAnimation (from `../node_modules/react-native`)
+  - React/RCTBlob (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTLinkingIOS (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
-  - React/RCTPushNotification (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
-  - React/tvOS (from `../node_modules/react-native`)
-  - RNFirebase (from `../node_modules/react-native-firebase/ios`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
@@ -84,25 +111,27 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native-notifications
   react-native-smooch:
     :path: ../node_modules/react-native-smooch
-  RNFirebase:
-    :path: ../node_modules/react-native-firebase/ios
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga
 
 SPEC CHECKSUMS:
+  boost: 61736773165d41c9367246936c0db5cf9352fc7f
+  boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
   FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  Folly: 211775e49d8da0ca658aebc8eab89d642935755c
+  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   React: c0dfd2dfc970019d1ae7d48bf24cef530992e079
   react-native-notifications: 339ca7565f21c94fae67aeb88702489658ac3afd
   react-native-smooch: b3ccea2c5402cbd27fbb2ebd6c527b8577f522ec
-  RNFirebase: 32fb607a803faf52d99f955db08116ed41cce919
   Smooch: 0379ea8fe5f5483abee59d476890a6d40568b735
   yoga: f45a46b966e1eb0c7a532cfd4beec5b97332ba48
 
-PODFILE CHECKSUM: 5af59901aaf46a7776bcdf8976b6713cbb1d4e9d
+PODFILE CHECKSUM: 2c79c17523b4da80a7f8cf40bd3e2f78cd7b7d39
 
 COCOAPODS: 1.3.1
