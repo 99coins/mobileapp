@@ -43,8 +43,6 @@ PODS:
   - nanopb/encode (0.3.8)
   - React (0.52.3):
     - React/Core (= 0.52.3)
-  - react-native-notifications (1.2.0):
-    - React
   - react-native-smooch (1.0.1):
     - React
     - Smooch (~> 6.0)
@@ -90,7 +88,6 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Core
-  - react-native-notifications (from `../node_modules/react-native-notifications`)
   - react-native-smooch (from `../node_modules/react-native-smooch`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -107,8 +104,6 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   React:
     :path: ../node_modules/react-native
-  react-native-notifications:
-    :path: ../node_modules/react-native-notifications
   react-native-smooch:
     :path: ../node_modules/react-native-smooch
   yoga:
@@ -127,11 +122,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   React: c0dfd2dfc970019d1ae7d48bf24cef530992e079
-  react-native-notifications: 339ca7565f21c94fae67aeb88702489658ac3afd
   react-native-smooch: b3ccea2c5402cbd27fbb2ebd6c527b8577f522ec
   Smooch: 0379ea8fe5f5483abee59d476890a6d40568b735
   yoga: f45a46b966e1eb0c7a532cfd4beec5b97332ba48
 
-PODFILE CHECKSUM: 2c79c17523b4da80a7f8cf40bd3e2f78cd7b7d39
+PODFILE CHECKSUM: a6af27f35c939f75c8d3536b0b1cb85dd612c56b
 
 COCOAPODS: 1.3.1

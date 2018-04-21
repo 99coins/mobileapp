@@ -26,7 +26,9 @@ export default function (state = initialState, action) {
         case FETCHING_NEWS_LIST_SUCCESS:
         if (state.data !== action.payload) {
             const items = action.payload;
-            items[0].imageurl = 'https://ik.imagekit.io/bkjbek18z/content/wp-content/uploads/2018/04/Corporate-governance-underpins-DasCoin%E2%80%99s-rise.jpg';
+            if (items[0].id === '102306') {
+                items[0].imageurl = 'https://ik.imagekit.io/bkjbek18z/content/wp-content/uploads/2018/04/Corporate-governance-underpins-DasCoin%E2%80%99s-rise.jpg';
+            }
             return { ...state,    
                 isFetching: false,
                 data: action.payload
