@@ -4,33 +4,10 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.RNFirebasePackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.wix.reactnativenotifications.RNNotificationsPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
-import io.invertase.firebase.RNFirebasePackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.smooch.rnsmooch.ReactNativeSmoochPackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.wix.reactnativenotifications.RNNotificationsPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
-import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -58,34 +35,12 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNFirebasePackage(),
-            new RNFirebasePackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
             new ReactNativeSmoochPackage(),
-            new ReactNativePushNotificationPackage(),
-            new RNNotificationsPackage(),
-            new LinearGradientPackage(),
-            new GoogleAnalyticsBridgePackage(),
-            new RNFirebasePackage(),
             new RNFetchBlobPackage(),
-            new ReactVideoPackage(),
-            new VectorIconsPackage(),
-            new ReactNativeSmoochPackage(),
-            new ReactNativePushNotificationPackage(),
-            new RNNotificationsPackage(),
-            new LinearGradientPackage(),
-            new GoogleAnalyticsBridgePackage(),
-            new RNFirebasePackage(),
-            new RNFetchBlobPackage(),
-            new LinearGradientPackage(),
-            new RNFirebasePackage(),
-              new RNFirebaseAnalyticsPackage(),
-            new ReactNativePushNotificationPackage(),
-            new ReactVideoPackage(),
-            new RNFetchBlobPackage(),
-            new VectorIconsPackage(),
-            new GoogleAnalyticsBridgePackage(),
-            new ReactNativeSmoochPackage()
+              new RNFirebaseAnalyticsPackage()
+
       );
     }
   };
