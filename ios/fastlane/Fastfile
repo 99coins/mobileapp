@@ -54,7 +54,7 @@ platform :ios do
 
     gym(workspace: “NNCoins.xcworkspace”,
     scheme: “NNCoins”, configuration: "Release”, export_method:”app-store”)
-    deliver(force: true)
+    deliver(force: true, skip_metadata: true)
 end
 
   # You can define as many lanes as you want
