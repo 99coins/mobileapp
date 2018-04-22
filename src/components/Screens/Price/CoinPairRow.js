@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, Image } from 'react-native';
 import Colors from '@assets/colors.js';
 import * as Progress from 'react-native-progress';
 import { CachedImage } from 'react-native-img-cache';
@@ -12,7 +12,7 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl, o
         <View style={styles.container}>
             <View style={styles.coinContainer}>
                 <View style={styles.circleContainer}>
-                    <CachedImage 
+                    <Image 
                         style={styles.image} 
                         source={{ uri: imageUrl }} 
                         //cache='force-cache'
