@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>110</string>
+	<string>111</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -86,6 +86,10 @@
   <key>NSLocationUsageDescription</key>
   <string>$(PRODUCT_NAME) location use.</string>
   <key>NSLocationWhenInUseUsageDescription</key>
+  <string>$(PRODUCT_NAME) location use.</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>$(PRODUCT_NAME) needs access to your photos.</string>
+  <key>NSLocationAlwaysUsageDescription</key>
   <string>$(PRODUCT_NAME) location use.</string>
 </dict>
 </plist>

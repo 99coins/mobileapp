@@ -18,6 +18,7 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    itc_team_name "99 Coins ltd"
   end
 
   desc "Runs all the tests"
