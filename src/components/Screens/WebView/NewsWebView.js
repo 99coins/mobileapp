@@ -58,6 +58,14 @@ class NewsWebView extends Component {
       />
     );
   }
+  pushCampainParamsScript() {
+    const jsCode = `
+        _gaq.push(['_set', 'campaignParams', 
+          '${this.props.campaignParams}']);
+    `;
+   console.log(jsCode);
+   return jsCode;
+  }
   render() {
     console.log('RENDER WEB VIEW');
     console.log(this.props.url);
@@ -73,12 +81,14 @@ class NewsWebView extends Component {
           animation={'fade'}
         />
         <WebView
+          ref={webview => (this.webview = webview)}
           source={{ html: this.props.html, baseUrl }}
-          //renderLoading={this.renderLoadingView}
-          // startInLoadingState
           onLoad={() => {
             console.log('WebView On load event', `Loading time : ${Date.now() - renderTime}`);
             if (this.mounted) {
+              if (this.props.campaignParams) {
+                this.webview.injectJavaScript(this.pushCampainParamsScript());
+              } 
               this.setState({
                 loading: false
               });
