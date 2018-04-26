@@ -71,8 +71,8 @@ class NewsItemRow extends Component {
               <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
             </View>
             <View style={styles.secondLine}>
-             <Text style={[styles.sourceStyle, this.props.item.sponsored && styles.sponsoredSource]}>{this.props.item.sponsored ? 'Sponsored' : capitalizeFirstLetter(this.props.item.source)}</Text>
-              <Text style={styles.dateStyle}>{displayDate}</Text>
+             <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
+              <Text style={[styles.dateStyle, this.props.item.sponsored && styles.sponsoredSource]}>{this.props.item.sponsored ? 'Sponsored' : displayDate}</Text>
             </View>
           </View>
         </View>
