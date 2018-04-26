@@ -19,7 +19,7 @@ class ChatButton extends Component {
                <ActionButton
                     buttonColor={Colors.themeRed}
                     onPress={() => { this.props.chatButtonTapped(); }}
-                    icon={chatIcon}
+                    renderIcon={() => chatIcon}
                /> 
         );
     }
