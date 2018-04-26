@@ -94,15 +94,29 @@ android {
     compileSdkVersion 23
     buildToolsVersion '26.0.2'
 
-    defaultConfig {
-        applicationId "com.nncoins"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 34
-        versionName "1.3.4"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
+    def versionPropertiesFile = file('version.properties')
+    if (versionPropertiesFile.canRead()) {
+
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropertiesFile))
+
+        def versionMajor = versionProps['app.version.major'].toInteger()
+        def versionMinor = versionProps['app.version.minor'].toInteger()
+        def versionBuild = versionProps['app.version.build'].toInteger()
+
+        defaultConfig {
+            applicationId "com.nncoins"
+            minSdkVersion 16
+            targetSdkVersion 23
+            versionCode "${versionMajor}${sprintf('%02d', versionMinor)}${sprintf('%02d', versionBuild)}".
+                    toInteger()
+            versionName "${versionMajor}.${versionMinor}.${sprintf('%02d', versionBuild)}"
+            ndk {
+                abiFilters "armeabi-v7a", "x86"
+            }
         }
+    } else {
+        throw new GradleException("Could not read version.properties!")
     }
     splits {
         abi {
