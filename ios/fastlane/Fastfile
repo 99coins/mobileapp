@@ -49,9 +49,7 @@ platform :ios do
   end
 
   lane :deploy do
-
-    itc_team_name "99 Coins ltd"
-
+  
     increment_build_number
 
     gym(workspace: “NNCoins.xcworkspace”,
