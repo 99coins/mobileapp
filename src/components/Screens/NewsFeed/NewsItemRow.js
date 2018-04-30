@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight, Dimensions, Image } from 'react-native';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
@@ -57,7 +57,7 @@ class NewsItemRow extends Component {
     return (
       <TouchableHighlight onPress={this._onPress}>
         <View style={[styles.container, this.props.item.sponsored && styles.sponsored]}>
-          <CachedImage
+          <Image
             style={styles.image}
             source={{ uri: this.props.item.imageurl }}
             cache='force-cache'

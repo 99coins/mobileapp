@@ -35,7 +35,7 @@ class NewsItemList extends Component {
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.article({ url: item.url, html: item.html, campaignParams: item.sponsored ? 'utm_source=99bitcoins&utm_medium=mobileapp&utm_campaign=dascoin' : null });
+            Actions.article({ url: item.url, html: item.html, sponsored: item.sponsored });
             setTimeout(() => {
                 this.state.disableTouch = false;
             }, 2000);
