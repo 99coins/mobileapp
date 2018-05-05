@@ -8,6 +8,7 @@ import {
 const initialState = {
     isFetching: false,
     data: [],
+    baseImageUrl: '',
     hasError: false,
     errorMessage: null
 };
@@ -26,7 +27,8 @@ export default function (state = initialState, action) {
         case FETCHING_COIN_LIST_SUCCESS:
             return { ...state,    
                 isFetching: false,
-                data: action.payload,
+                data: Object.values(action.payload.Data),
+                baseImageUrl: action.payload.BaseImageUrl,
                 hasError: false,
                 errorMessage: null 
             };

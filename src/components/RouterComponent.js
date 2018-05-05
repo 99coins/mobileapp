@@ -90,7 +90,7 @@ class RouterComponent extends Component {
                 component={Price}
                 onEnter={() => {
                   console.log('on enter prices');
-                  this.props.fetchPriceData();
+                  //this.props.fetchPriceData();
                   this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}

@@ -21,13 +21,14 @@ class CoinPairList extends Component {
     componentDidMount() {
         console.log('componentDidMount prices');
         this.props.fetchCoinList();
-        this.props.fetchPriceData();
+        //this.props.fetchPriceData();
     }
     shouldComponentUpdate(nextProps) {
-        return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
+        //return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
+        return true;
     }
     onRefresh() {
-        this.props.fetchPriceData();
+        //this.props.fetchPriceData();
     }
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
@@ -47,17 +48,17 @@ class CoinPairList extends Component {
         }
         return;
     }
-    keyExtractor = (item, index) => item.id;
+    keyExtractor = (item) => item.Id;
 
     
     renderItem = ({ item }) => (
       <CoinPairRow 
-                key={item.id}
-                coinName={item.name}
-                symbol={item.symbol}
-                priceUsd={item.price_usd} /*.toFixed(2)*/
-                percentChange24h={item.percent_change_24h}  /*.toFixed(2)*/
-                imageUrl={this.getImageURLForCoin(item.symbol)} /*{NNBITCOINS_PRICE_BASE_URL + item.icon}*/
+                key={item.Id}
+                coinName={item.CoinName}
+                symbol={item.Symbol}
+                //priceUsd={item.price_usd} /*.toFixed(2)*/
+                //percentChange24h={item.percent_change_24h}  /*.toFixed(2)*/
+                imageUrl={this.props.coinList.baseImageUrl + item.ImageUrl} /*{NNBITCOINS_PRICE_BASE_URL + item.icon}*/
                 onPressItem={() => {
                     firebase.analytics().logEvent('click_coin', { coin: item.symbol });
                     //Actions.coin({ coin: item });
@@ -79,15 +80,18 @@ class CoinPairList extends Component {
     render() {
         console.log('RENDERING COIN LIST');
         const { priceData, coinList } = this.props;
+        console.log(coinList.data);
+        console.log(coinList.baseImageUrl);
+
+
         return (
           <FlatList
             onRefresh={() => {
                 firebase.analytics().logEvent('pull_to_refresh_pricelist', {});
                 this.onRefresh();
             }}
-            refreshing={priceData.isFetching}
-            data={priceData.data}
-            extraData={coinList.data}
+            refreshing={coinList.isFetching}
+            data={coinList.data}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
             ItemSeparatorComponent={this.renderSeparator}
