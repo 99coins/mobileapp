@@ -11,7 +11,7 @@ export default function FetchPriceData() {
     return dispatch => {
         dispatch({ type: FETCHING_PRICE_DATA });
 
-        return axios.get(`${NNBITCOINS_PRICE_BASE_URL}/last/hour/all.json?limit=100`)
+        return axios.get(`${NNBITCOINS_PRICE_BASE_URL}/last/hour/all.json`)
             .then(res => {
                 dispatch({ type: FETCHING_PRICE_DATA_SUCCESS, payload: res.data });
             })
