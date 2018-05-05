@@ -49,17 +49,7 @@ class NewsWebView extends Component {
     const baseUrl = protocol + '//' + host;
     return baseUrl;
   }
-  pushCampaingParams() {
-    this.webview.postMessage(`_gaq.push(['_set', 'campaignParams', 
-                         'utm_source=99bitcoins&utm_medium=mobileapp&utm_campaign=sponsored_post_mobile_func_2']);`); 
-  }
 
-  campaingParams() {
-    return (
-       `_gaq.push(['_set', 'campaignParams', 
-                         'utm_source=99bitcoins&utm_medium=mobileapp&utm_campaign=sponsored_post_mobile_func_3']);`
-    );
-  }
   renderLoadingView() {
     return (
       <ActivityIndicator
@@ -86,11 +76,6 @@ class NewsWebView extends Component {
   return null;
   }
   render() {
-    const jsCode = `
-    _gaq.push(['_set', 'campaignParams', 
-        'utm_source=99bitcoins&utm_medium=mobileapp&utm_campaign=dascoin']);
-    `;
-
     console.log('RENDER WEB VIEW');
     console.log(this.props.url);
     const renderTime = Date.now();
@@ -119,16 +104,9 @@ class NewsWebView extends Component {
         <WebView
           ref={webview => (this.webview = webview)}
           source={{ html: this.props.html, baseUrl }}
-          //injectedJavaScript={this.campaingParams()}
           onLoad={() => {
             console.log('WebView On load event', `Loading time : ${Date.now() - renderTime}`);
             if (this.mounted) {
-              /* if (this.props.sponsored) {
-                firebase.analytics().logEvent('sponsored_article_loaded', { url: this.props.url });
-                //this.webview.injectJavaScript(this.campaingParams);
-
-                this.webview.injectJavaScript(jsCode);
-              }  */
               this.setState({
                 loading: false
               });
