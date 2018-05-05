@@ -4,11 +4,11 @@ import CoinPairRow from './CoinPairRow';
 import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
-import { NNBITCOINS_PRICE_BASE_URL } from './../../../Utils/Constants';
+import { COIN_MARKET_CAP_BASE_ICON_URL } from './../../../Utils/Constants';
 import { Actions } from 'react-native-router-flux';
 
 import fetchPriceData from './../../../Actions/FetchPriceData';
-import { fetchCoinList } from './../../../Actions/FetchCoinList';
+//import { fetchPriceData } from './../../../Actions/FetchCoinList';
 
 import firebase from 'react-native-firebase';
 
@@ -20,15 +20,15 @@ class CoinPairList extends Component {
 
     componentDidMount() {
         console.log('componentDidMount prices');
-        this.props.fetchCoinList();
-        //this.props.fetchPriceData();
+        //this.props.fetchCoinList();
+        this.props.fetchPriceData();
     }
     shouldComponentUpdate(nextProps) {
         //return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
         return true;
     }
     onRefresh() {
-        //this.props.fetchPriceData();
+        this.props.fetchPriceData();
     }
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
@@ -48,17 +48,18 @@ class CoinPairList extends Component {
         }
         return;
     }
-    keyExtractor = (item) => item.Id;
+    keyExtractor = (item) => item.id;
 
     
     renderItem = ({ item }) => (
       <CoinPairRow 
-                key={item.Id}
-                coinName={item.CoinName}
-                symbol={item.Symbol}
-                //priceUsd={item.price_usd} /*.toFixed(2)*/
-                //percentChange24h={item.percent_change_24h}  /*.toFixed(2)*/
-                imageUrl={this.props.coinList.baseImageUrl + item.ImageUrl} /*{NNBITCOINS_PRICE_BASE_URL + item.icon}*/
+                key={item.id}
+                coinName={item.name}
+                symbol={item.symbol}
+                priceUsd={item.quotes.USD.price} /*.toFixed(2)*/
+                percentChange24h={item.quotes.USD.percent_change_24h}  /*.toFixed(2)*/
+                imageUrl={`${COIN_MARKET_CAP_BASE_ICON_URL}/${item.id}.png`} 
+                //imageUrl={'https://s2.coinmarketcap.com/static/img/coins/200x200/4.png'}
                 onPressItem={() => {
                     firebase.analytics().logEvent('click_coin', { coin: item.symbol });
                     //Actions.coin({ coin: item });
@@ -79,10 +80,8 @@ class CoinPairList extends Component {
     };
     render() {
         console.log('RENDERING COIN LIST');
-        const { priceData, coinList } = this.props;
-        console.log(coinList.data);
-        console.log(coinList.baseImageUrl);
-
+        const { priceData } = this.props;
+        console.log(priceData.data);
 
         return (
           <FlatList
@@ -90,8 +89,8 @@ class CoinPairList extends Component {
                 firebase.analytics().logEvent('pull_to_refresh_pricelist', {});
                 this.onRefresh();
             }}
-            refreshing={coinList.isFetching}
-            data={coinList.data}
+            refreshing={priceData.isFetching}
+            data={priceData.data}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
             ItemSeparatorComponent={this.renderSeparator}
@@ -108,7 +107,7 @@ class CoinPairList extends Component {
 function mapStateToProps(state) {
     return {
         priceData: state.priceData,
-        coinList: state.coinList
+        //coinList: state.coinList
     };
 }
-export default connect(mapStateToProps, { fetchCoinList, fetchPriceData })(CoinPairList);
+export default connect(mapStateToProps, { fetchPriceData })(CoinPairList);

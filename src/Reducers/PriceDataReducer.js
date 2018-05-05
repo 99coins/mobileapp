@@ -23,17 +23,12 @@ export default function (state = initialState, action) {
             });
 
         case FETCHING_PRICE_DATA_SUCCESS:
-        if (state.data !== action.payload) {
             return Object.assign({}, state, {
                 isFetching: false,
-                data: action.payload,
+                data: Object.values(action.payload.data),
                 hasError: false,
                 errorMessage: null
             });
-        }
-        return state;
-       
-
         case FETCHING_PRICE_DATA_FAIL:
             return Object.assign({}, state, {
                 isFetching: false,

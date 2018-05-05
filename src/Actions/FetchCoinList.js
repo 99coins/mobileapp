@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CRYPTO_COMPARE_BASE_URL } from './../Utils/Constants';
+import { COIN_MARKET_CAP_BASE_URL } from './../Utils/Constants';
 import {
     FETCHING_COIN_LIST,
     FETCHING_COIN_LIST_SUCCESS,
@@ -16,7 +16,7 @@ export function fetchCoinList() {
     return dispatch => {
         dispatch({ type: FETCHING_COIN_LIST });
         //dispatch(getCachedCoinList());
-        return axios.get(`${CRYPTO_COMPARE_BASE_URL}/data/all/coinlist`)
+        return axios.get(`${COIN_MARKET_CAP_BASE_URL}/v2/listings/`)
             .then(res => {
                 dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res.data });
                 //dispatch(cacheCoinlist(res.data));
