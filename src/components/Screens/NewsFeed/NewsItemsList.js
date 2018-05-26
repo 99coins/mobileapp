@@ -10,8 +10,6 @@ import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
 
-
-
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
@@ -66,7 +64,34 @@ class NewsItemList extends Component {
         const { weeklyVideo } = this.props;
         if (weeklyVideo.video) {
             console.log('VIDEO FOUND', this._renderVideo(weeklyVideo));
-            return this._renderVideo(weeklyVideo);
+            //return this._renderVideo(weeklyVideo);
+
+            return (
+                <View style={{ backgroundColor: 'black', padding: 16 }}>
+                    <VideoPlayer
+                        endWithThumbnail
+                        thumbnail={{ uri: weeklyVideo.thumbnailUrl }}
+                        video={{ uri: weeklyVideo.videoUrl }}
+                        videoWidth={windowWidth - 32}
+                        videoHeight={(windowWidth - 32) / 1.78}
+                        duration={weeklyVideo.video.duration}
+                        ref={(r) => { this.player = r; }}
+                        resizeMode={'stretch'}
+                        onPlayPress={() => {
+                            firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
+                        }}
+                        onEnd={() => {
+                            firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
+                        }}
+                        style={{ borderRadius: 4 }}
+                        customStyles={{
+                            thumbnail: {
+                            overflow: 'hidden'
+                            }
+                         }}
+                    />
+              </View>
+                  );
         }
         return null;
     }
@@ -79,15 +104,15 @@ class NewsItemList extends Component {
             />
         );
     }
-   renderSeparator = () => {
+    renderSeparator = () => {
         return (
             <View
-             style={{
-             height: 1,
-             width: windowWidth - 32,
-             backgroundColor: Colors.gray100,
-             marginLeft: 16
-            }}
+                style={{
+                    height: 1,
+                    width: windowWidth - 32,
+                    backgroundColor: Colors.gray100,
+                    marginLeft: 16
+                }}
             />
         );
     };
