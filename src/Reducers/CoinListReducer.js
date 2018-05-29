@@ -8,6 +8,7 @@ import {
 const initialState = {
     isFetching: false,
     data: [],
+    page: 1,
     hasError: false,
     errorMessage: null
 };

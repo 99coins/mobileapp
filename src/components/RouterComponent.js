@@ -3,6 +3,10 @@
 import React, {
   Component
 } from 'react';
+import {
+  Button, 
+  Image
+} from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
@@ -14,7 +18,6 @@ import ChatForm from './Screens/AMA/ChatForm';
 import ChatButton from './Screens/AMA/ChatButton';
 import UnreadBadge from './Screens/AMA/UnreadBadge';
 import EventHandler from './EventHandler';
-
 import { connect } from 'react-redux';
 import fetchNewsList from '../Actions/FetchNewsList';
 import fetchPriceData from '../Actions/FetchPriceData';
@@ -90,7 +93,7 @@ class RouterComponent extends Component {
                 component={Price}
                 onEnter={() => {
                   console.log('on enter prices');
-                  this.props.fetchPriceData();
+                  //this.props.fetchPriceData();
                   this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
@@ -103,7 +106,12 @@ class RouterComponent extends Component {
             <Scene
               key="article"
               component={NewsWebView}
-              rightButtonImage={Images.shareIcon}
+              //rightButtonImage={Images.shareIcon}
+              renderRightButton={() =>
+                  <Button onPress={() => this.openDrawer()} title=''>
+                    <Image source={Images.shareIcon} />
+                  </Button>
+              }
               onRight={(scene) => {
                 console.log(scene);
                 scene.component.prototype.onShare(scene.url);

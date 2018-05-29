@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { COIN_MARKET_CAP_BASE_URL } from './../Utils/Constants';
+import { COINGECKO_BASE_URL } from './../Utils/Constants';
 import {
     FETCHING_COIN_LIST,
     FETCHING_COIN_LIST_SUCCESS,
@@ -13,12 +13,13 @@ import {
 import { AsyncStorage } from 'react-native';
 
 export function fetchCoinList() {
-    return dispatch => {
+    return (dispatch, getState) => {
         dispatch({ type: FETCHING_COIN_LIST });
         //dispatch(getCachedCoinList());
-        return axios.get(`${COIN_MARKET_CAP_BASE_URL}/v2/listings/`)
+         const { page } = getState();
+        return axios.get(`${COINGECKO_BASE_URL}/api/v3/coins?per_page=50?page=1?order=market_cap_desc`)
             .then(res => {
-                dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res.data });
+                dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res });
                 //dispatch(cacheCoinlist(res.data));
             })
             .catch(err => {

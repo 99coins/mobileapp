@@ -43,45 +43,21 @@ class NewsItemList extends Component {
     }
     keyExtractor = (item) => item.guid;
     _renderVideo = memoize((video) =>
-        <VideoPlayer
-            endWithThumbnail
-            thumbnail={{ uri: video.thumbnailUrl }}
-            video={{ uri: video.videoUrl }}
-            videoWidth={windowWidth}
-            videoHeight={windowWidth / 1.78}
-            duration={video.video.duration}
-            ref={(r) => { this.player = r; }}
-            resizeMode={'stretch'}
-            onPlayPress={() => {
-                firebase.analytics().logEvent('click_play_weekly_video', { url: video.videoUrl });
-            }}
-            onEnd={() => {
-                firebase.analytics().logEvent('weekly_video_end', { url: video.videoUrl });
-            }}
-        />)
-
-    renderVideo = () => {
-        const { weeklyVideo } = this.props;
-        if (weeklyVideo.video) {
-            console.log('VIDEO FOUND', this._renderVideo(weeklyVideo));
-            //return this._renderVideo(weeklyVideo);
-
-            return (
-                <View style={{ backgroundColor: 'black', padding: 16 }}>
+                  <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
                     <VideoPlayer
                         endWithThumbnail
-                        thumbnail={{ uri: weeklyVideo.thumbnailUrl }}
-                        video={{ uri: weeklyVideo.videoUrl }}
+                        thumbnail={{ uri: video.thumbnailUrl }}
+                        video={{ uri: video.videoUrl }}
                         videoWidth={windowWidth - 32}
                         videoHeight={(windowWidth - 32) / 1.78}
-                        duration={weeklyVideo.video.duration}
+                        duration={video.video.duration}
                         ref={(r) => { this.player = r; }}
                         resizeMode={'stretch'}
                         onPlayPress={() => {
-                            firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
+                            firebase.analytics().logEvent('click_play_weekly_video', { url: video.videoUrl });
                         }}
                         onEnd={() => {
-                            firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
+                            firebase.analytics().logEvent('weekly_video_end', { url: video.videoUrl });
                         }}
                         style={{ borderRadius: 4 }}
                         customStyles={{
@@ -91,7 +67,13 @@ class NewsItemList extends Component {
                          }}
                     />
               </View>
-                  );
+    );
+
+    renderVideo = () => {
+        const { weeklyVideo } = this.props;
+        if (weeklyVideo.video) {
+            console.log('VIDEO FOUND', this._renderVideo(weeklyVideo));
+            return this._renderVideo(weeklyVideo);
         }
         return null;
     }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, WebView, Share, Platform, View } from 'react-native';
-//const TestHTML = require('./test.html');
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '@assets/colors.js';
 import Spinner from 'react-native-loading-spinner-overlay';
 import firebase from 'react-native-firebase';
 
+const shareIcon = (<Icon name="share-square" size={30} color={Colors.themeRed} />);
 
 class NewsWebView extends Component {
   constructor(props) {

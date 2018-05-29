@@ -8,7 +8,7 @@ const images = {
     newsIcon: require('./img/icn_news.png'),
     priceIcon: require('./img/icn_price.png'), 
     logo: require('./img/logo.png'),
-    shareIcon: require('./img/share-arrow.png'),
+    shareIcon: require('./img/share-square.png'),
     closeIcon: require('./img/icn_close.png'),
     imgHands: require('./img/img_hands.png'),
     imgCoins: require('./img/img_coins.png')
