@@ -62,7 +62,7 @@ class CoinPairList extends Component {
                 imageUrl={item.image.small} 
                 onPressItem={() => {
                     firebase.analytics().logEvent('click_coin', { coin: item.symbol });
-                    //Actions.coin({ coin: item });
+                    Actions.coin({ coin: item });
                 }}
       />
     );

@@ -17,7 +17,7 @@ export function fetchCoinList() {
         dispatch({ type: FETCHING_COIN_LIST });
         //dispatch(getCachedCoinList());
          const { page } = getState();
-        return axios.get(`${COINGECKO_BASE_URL}/api/v3/coins?per_page=50?page=1?order=market_cap_desc`)
+        return axios.get(`${COINGECKO_BASE_URL}/coins?per_page=50?page=1?order=market_cap_desc`)
             .then(res => {
                 dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res });
                 //dispatch(cacheCoinlist(res.data));

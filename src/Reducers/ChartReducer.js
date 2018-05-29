@@ -25,7 +25,7 @@ import { Range } from './../Utils/Constants';
 
 const initialState = {
   loading: true,  // show activity indicator on first load
-  current: 'BTC',
+  current: 'bitcoin',
   range: '1D',    // default to one day range
   prices: [],     // no price data initially
 };
@@ -47,11 +47,11 @@ export default function (state = initialState, action) {
 
     case LOADING_CHART_PRICES_SUCCESS: {
      //const { payload: { Data } } = action;
-     const priceData = action.payload.Data;
+     const priceData = action.payload.prices;
       return {
         ...state,
         loading: false,
-        prices: priceData ? priceData.map(item => item.close) : [] // use closing prices
+        prices: priceData ? priceData.map(item => item[1]) : [] // use closing prices
         //prices: action.payload
       };
     }

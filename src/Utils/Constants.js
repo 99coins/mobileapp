@@ -3,7 +3,7 @@ export const COIN_MARKET_CAP_BASE_ICON_URL = 'https://s2.coinmarketcap.com/stati
 export const CRYPTO_COMPARE_BASE_URL = 'https://min-api.cryptocompare.com';
 export const NNBITCOINS_BASE_URL = 'https://99bitcoins.com/wp-json/99btc/v1';
 export const NNBITCOINS_PRICE_BASE_URL = 'https://price.99bitcoins.com';
-export const COINGECKO_BASE_URL = 'https://api.coingecko.com';
+export const COINGECKO_BASE_URL = 'https://api.coingecko.com/api/v3';
 export const COINGECKO_BASE_IMAGE_URL = 'https://assets.coingecko.com/coins/images';
 
 // -----------------------------------------------------------------------------
