@@ -11,7 +11,9 @@ const images = {
     shareIcon: require('./img/share-square.png'),
     closeIcon: require('./img/icn_close.png'),
     imgHands: require('./img/img_hands.png'),
-    imgCoins: require('./img/img_coins.png')
+    imgCoins: require('./img/img_coins.png'),
+    weeklyVideoThumb: require('./img/weeklyVideo.png')
+
 
 };
 

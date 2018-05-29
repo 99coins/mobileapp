@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View } from 'react-native';
+import { FlatList, Dimensions, View, Text } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
@@ -9,19 +9,21 @@ import VideoPlayer from 'react-native-video-player';
 import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
+import Images from '@assets/images.js';
+
 
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
 class NewsItemList extends Component {
-    state = { disableTouch: false };
+    state = { disableTouch: false, showVideoTitle: true };
 
     componentWillMount() {
         console.log('componentWillMount news');
         this.onRefresh();
     }
-    shouldComponentUpdate(nextProps) {
-        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video);
+    shouldComponentUpdate(nextProps, nextState) {
+        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.state.showVideoTitle !== nextState.showVideoTitle);
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
     }
@@ -44,9 +46,10 @@ class NewsItemList extends Component {
     keyExtractor = (item) => item.guid;
     _renderVideo = memoize((video) =>
                   <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
+                    <View>
                     <VideoPlayer
                         endWithThumbnail
-                        thumbnail={{ uri: video.thumbnailUrl }}
+                        thumbnail={Images.weeklyVideoThumb}
                         video={{ uri: video.videoUrl }}
                         videoWidth={windowWidth - 32}
                         videoHeight={(windowWidth - 32) / 1.78}
@@ -54,7 +57,9 @@ class NewsItemList extends Component {
                         ref={(r) => { this.player = r; }}
                         resizeMode={'stretch'}
                         onPlayPress={() => {
+                            console.log('onPlayPress');
                             firebase.analytics().logEvent('click_play_weekly_video', { url: video.videoUrl });
+                            this.setState({ showVideoTitle: false });
                         }}
                         onEnd={() => {
                             firebase.analytics().logEvent('weekly_video_end', { url: video.videoUrl });
@@ -66,6 +71,13 @@ class NewsItemList extends Component {
                             }
                          }}
                     />
+                    { this.state.showVideoTitle && 
+                         <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
+                         <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 16 }}>WEEKLY VIDEO</Text>
+                         <Text style={{ color: 'white', fontSize: 12, width: 140 }}>ALL YOUR BITCOIN NEWS IN 99 SECONDS</Text>
+                        </View>
+                    }
+                    </View>
               </View>
     );
 
@@ -73,7 +85,50 @@ class NewsItemList extends Component {
         const { weeklyVideo } = this.props;
         if (weeklyVideo.video) {
             console.log('VIDEO FOUND', this._renderVideo(weeklyVideo));
-            return this._renderVideo(weeklyVideo);
+            //return this._renderVideo(weeklyVideo);
+
+
+            return (
+                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
+                    <View>
+                    <VideoPlayer
+                        endWithThumbnail
+                        thumbnail={Images.weeklyVideoThumb}
+                        video={{ uri: weeklyVideo.videoUrl }}
+                        videoWidth={windowWidth - 32}
+                        videoHeight={(windowWidth - 32) / 1.78}
+                        duration={weeklyVideo.video.duration}
+                        ref={(r) => { this.player = r; }}
+                        resizeMode={'stretch'}
+                        /* onStartPress={() => {
+                            console.log('onPlayPress');
+                            firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
+                            this.setState({ showVideoTitle: false });
+                        }} */
+                        onStart={() => {
+                            firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
+                            this.setState({ showVideoTitle: false });
+                         }}
+                        onEnd={() => {
+                            firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
+                        }}
+                        style={{ borderRadius: 4 }}
+                        customStyles={{
+                            thumbnail: {
+                            overflow: 'hidden'
+                            }
+                         }}
+                    />
+                    { this.state.showVideoTitle && 
+                         <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
+                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>WEEKLY VIDEO</Text>
+                         <Text style={{ color: 'white', fontSize: 12, width: 140 }}>ALL YOUR BITCOIN NEWS IN 99 SECONDS</Text>
+                        </View>
+                    }
+                    </View>
+              </View>
+
+            );
         }
         return null;
     }
