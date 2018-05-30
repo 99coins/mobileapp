@@ -7,7 +7,7 @@ import {
 import Line from './Line';
 import Colors from '@assets/colors.js';
 import { connect } from 'react-redux';
-import { updateChartPrices } from './../../../../Actions/ChartActions';
+import { updateChartPrices } from './../../../../Actions/CoinActions';
 
 
 class Chart extends Component {
@@ -24,10 +24,10 @@ class Chart extends Component {
     // Update chart data if range was changed
     console.log('componentWillReceiveProps', nextProps, nextProps.prices);
 
-    if (nextProps.chartState.range !== this.props.chartState.range) {
+    if (nextProps.coinState.range !== this.props.coinState.range || nextProps.coinState.currentCoinId !== this.props.coinState.currentCoinId) {
       this.props.updateChartPrices();
     }
-    this.setState({ prices: nextProps.chartState.prices });
+    this.setState({ prices: nextProps.coinState.prices });
   }
 
   // shouldComponentUpdate(nextProps) {
@@ -38,18 +38,17 @@ class Chart extends Component {
 
   render() {
 
-    const { chartState } = this.props;
+    const { coinState } = this.props;
 
-    console.log('RENDER CHART');
-    console.log(chartState.loading, chartState.prices);
+    console.log('RENDER CHART', coinState);
 
     return (
       <View style={styles.container}>
-        {chartState.loading && <View pointerEvents="box-none" style={styles.loading}>
+        {coinState.loadingChart && <View pointerEvents="box-none" style={styles.loading}>
           <ActivityIndicator size="large" />
                     </View>}
           <View style={styles.internalContainer}>
-             {chartState.prices.length > 0 && <Line values={this.state.prices} />}
+             {coinState.prices.length > 0 && <Line values={this.state.prices} />}
           </View>
       </View>
     );
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        chartState: state.chartState,
+        coinState: state.coinState,
     };
 }
 

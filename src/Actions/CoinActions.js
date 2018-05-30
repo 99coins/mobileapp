@@ -5,7 +5,10 @@ import {
     LOADING_CHART_PRICES_SUCCESS,
     LOADING_CHART_PRICES_FAIL,
     SELECTED_CHART_RANGE,
-    SELECTED_CURRENT_COIN
+    SELECTED_CURRENT_COIN,
+    FETCHING_COIN_BY_ID,
+    FETCHING_COIN_BY_ID_SUCCESS,
+    FETCHING_COIN_BY_ID_FAIL
 } from './../Utils/ActionTypes';
 
 import { Range, RANGE_1D, RANGE_1W, RANGE_1M, RANGE_3M, RANGE_6M, RANGE_1Y, RANGE_MAX, COINGECKO_BASE_URL } from './../Utils/Constants';
@@ -21,19 +24,39 @@ export const selectRange = (range: Range) => {
          dispatch({ type: SELECTED_CHART_RANGE, range });
      };
 };
-export const selectCoin = (symbol) => {
+export const selectCoin = (id) => {
      return dispatch => {
-         dispatch({ type: SELECTED_CURRENT_COIN, current: symbol });
+         dispatch({ type: SELECTED_CURRENT_COIN, current: id });
+         dispatch(fetchCoinByID());
      };
 };
+export function fetchCoinByID() {
+    return (dispatch, getState) => {
+        dispatch({ type: FETCHING_COIN_BY_ID });
+
+        const {
+                coinState: { currentCoinId },
+             } = getState();
+
+        return axios.get(`${COINGECKO_BASE_URL}/coins/${currentCoinId}`)
+            .then(res => {
+                dispatch({ type: FETCHING_COIN_BY_ID_SUCCESS, payload: res });
+            })
+            .catch(err => {
+                dispatch({ type: FETCHING_COIN_BY_ID_FAIL, payload: err });
+            });
+     };
+}
 
 export function updateChartPrices() {
     return (dispatch, getState) => {
         dispatch({ type: LOADING_CHART_PRICES });
         const {
-                chartState: { range, current },
+                coinState: { range, currentCoinId },
              } = getState();
-        return axios.get(`${COINGECKO_BASE_URL}/coins/${current}/market_chart?vs_currency=usd&days=${daysFromRange(range)}`)
+            console.log(currentCoinId);
+
+        return axios.get(`${COINGECKO_BASE_URL}/coins/${currentCoinId}/market_chart?vs_currency=usd&days=${daysFromRange(range)}`)
             .then(res => {
                 dispatch({ type: LOADING_CHART_PRICES_SUCCESS, payload: res.data });
             })

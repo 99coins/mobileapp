@@ -5,7 +5,7 @@ import NewsListReducer from './NewsListReducer';
 import WeeklyVideoReducer from './WeeklyVideoReducer';
 
 import ChatReducer from './ChatReducer';
-import ChartReducer from './ChartReducer';
+import CoinReducer from './CoinReducer';
 
 
 export default combineReducers({
@@ -14,5 +14,5 @@ export default combineReducers({
     newsList: NewsListReducer,
     weeklyVideo: WeeklyVideoReducer,
     chatState: ChatReducer,
-    chartState: ChartReducer
+    coinState: CoinReducer
 });

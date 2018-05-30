@@ -55,9 +55,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
-        // flex: 1,
-        // height: 46,
-        // width: 46
     },
     priceContainer: {
         flexDirection: 'row',

@@ -12,8 +12,9 @@ const images = {
     closeIcon: require('./img/icn_close.png'),
     imgHands: require('./img/img_hands.png'),
     imgCoins: require('./img/img_coins.png'),
-    weeklyVideoThumb: require('./img/weeklyVideo.png')
-
+    weeklyVideoThumb: require('./img/weeklyVideo.png'),
+    headerSeperator: require('./img/rectangle7.png'),
+    backArrow: require('./img/icBackArrow.png')
 
 };
 

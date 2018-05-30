@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { selectRange } from './../../../../Actions/ChartActions';
+import { selectRange } from './../../../../Actions/CoinActions';
 import Switcher from './Switcher';
 import { RANGES } from './../../../../Utils/Constants';
 import Colors from '@assets/colors.js';

@@ -5,7 +5,8 @@ import React, {
 } from 'react';
 import {
   Button, 
-  Image
+  Image,
+  Text
 } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
@@ -23,6 +24,8 @@ import fetchNewsList from '../Actions/FetchNewsList';
 import fetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 import firebase from 'react-native-firebase';
+import NavBar from './common/NavBar';
+
 
 class RouterComponent extends Component {
   constructor() {
@@ -129,8 +132,8 @@ class RouterComponent extends Component {
                 firebase.analytics().logEvent(`page_${Actions.currentScene}`, { coin: coin.symbol });
               }}
               back
-              navigationBarTitleImage={null}
-              nav
+              //hideNavBar
+              navBar={NavBar}
             />
           </Scene>
           <Scene component={ChatButton} />

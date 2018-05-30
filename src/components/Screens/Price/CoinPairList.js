@@ -4,7 +4,6 @@ import CoinPairRow from './CoinPairRow';
 import CoinListHeader from './CoinListHeader';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
-import { COIN_MARKET_CAP_BASE_ICON_URL } from './../../../Utils/Constants';
 import { Actions } from 'react-native-router-flux';
 
 //import fetchCoinList from './../../../Actions/FetchPriceData';
@@ -52,7 +51,7 @@ class CoinPairList extends Component {
     keyExtractor = (item) => item.id;
 
     
-    renderItem = ({ item }) => (
+    renderItem = ({ item, index }) => (
       <CoinPairRow 
                 key={item.id}
                 coinName={item.name}
@@ -62,7 +61,7 @@ class CoinPairList extends Component {
                 imageUrl={item.image.small} 
                 onPressItem={() => {
                     firebase.analytics().logEvent('click_coin', { coin: item.symbol });
-                    Actions.coin({ coin: item });
+                    Actions.coin({ coin: item.id, rank: index + 1, icon: item.image.small, title: `${item.name} (${item.symbol.toUpperCase()})` });
                 }}
       />
     );
