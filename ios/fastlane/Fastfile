@@ -30,14 +30,7 @@ platform :ios do
 
   # build your iOS app
  gym(workspace: “NNCoins.xcworkspace”,
-  scheme: “NNCoins”,   
-  export_method: "ad-hoc",
-  export_options: {
-        provisioningProfiles: { 
-          "com.99coins.ios": "99bitcoins-adhoc",
-        }
-      }
-  )
+    scheme: “NNCoins”, configuration: "Ad-hoc, export_method:”ad-hoc”)
 
   # upload to Beta by Crashlytics
   crashlytics(
