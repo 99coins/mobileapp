@@ -4,9 +4,10 @@ import React, {
   Component
 } from 'react';
 import {
-  Button, 
+  Button,
   Image,
-  Text
+  Text,
+  TouchableWithoutFeedback
 } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
@@ -54,13 +55,27 @@ class RouterComponent extends Component {
             }}
             navigationBarStyle={{
               backgroundColor: 'white',
-              paddingLeft: 8,
+              // paddingLeft: 8,
               shadowOpacity: 0,
-              justifyContent: 'center',
+              //justifyContent: 'center',
               elevation: 0,
               borderBottomColor: 'transparent'
             }}
-            backButtonTintColor={Colors.themeRed}
+            renderBackButton={() => {
+              return (
+                <TouchableWithoutFeedback onPress={() => Actions.pop()} >
+                  <Image
+                    source={Images.backArrow}
+                    style={{
+                      resizeMode: 'contain',
+                      width: 24,
+                      height: 24,
+                      left: 16,
+                    }}
+                  />
+                </TouchableWithoutFeedback>
+              );
+            }}
           >
 
             <Scene
@@ -109,12 +124,7 @@ class RouterComponent extends Component {
             <Scene
               key="article"
               component={NewsWebView}
-              //rightButtonImage={Images.shareIcon}
-              renderRightButton={() =>
-                  <Button onPress={() => this.openDrawer()} title=''>
-                    <Image source={Images.shareIcon} />
-                  </Button>
-              }
+              rightButtonImage={Images.shareIcon}
               onRight={(scene) => {
                 console.log(scene);
                 scene.component.prototype.onShare(scene.url);
