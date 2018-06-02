@@ -100,11 +100,6 @@ class NewsItemList extends Component {
                         duration={weeklyVideo.video.duration}
                         ref={(r) => { this.player = r; }}
                         resizeMode={'stretch'}
-                        /* onStartPress={() => {
-                            console.log('onPlayPress');
-                            firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
-                            this.setState({ showVideoTitle: false });
-                        }} */
                         onStart={() => {
                             firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
                             this.setState({ showVideoTitle: false });
@@ -121,8 +116,8 @@ class NewsItemList extends Component {
                     />
                     { this.state.showVideoTitle && 
                          <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
-                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>WEEKLY VIDEO</Text>
-                         <Text style={{ color: 'white', fontSize: 12, width: 140 }}>ALL YOUR BITCOIN NEWS IN 99 SECONDS</Text>
+                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>BITCOIN NEWS SUMMARY</Text>
+                         <Text style={{ color: 'white', fontSize: 14, width: 140 }}>May 21, 2018</Text>
                         </View>
                     }
                     </View>
