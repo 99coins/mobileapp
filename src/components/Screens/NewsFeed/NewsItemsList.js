@@ -10,6 +10,8 @@ import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
 import Images from '@assets/images.js';
+import moment from 'moment';
+
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -117,7 +119,7 @@ class NewsItemList extends Component {
                     { this.state.showVideoTitle && 
                          <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
                          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>BITCOIN NEWS SUMMARY</Text>
-                         <Text style={{ color: 'white', fontSize: 14, width: 140 }}>May 21, 2018</Text>
+                         <Text style={{ color: 'white', fontSize: 14, width: 140 }}>{moment().startOf('isoWeek').format('MMM DD, YYYY')}</Text>
                         </View>
                     }
                     </View>
