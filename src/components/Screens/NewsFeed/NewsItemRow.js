@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableHighlight, Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
 import * as Progress from 'react-native-progress';
-import { CachedImage } from 'react-native-img-cache';
-
+import Image from 'react-native-image-progress';
 
 class NewsItemRow extends Component {
 

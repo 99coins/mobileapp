@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Colors from '@assets/colors.js';
 import * as Progress from 'react-native-progress';
-import { CachedImage } from 'react-native-img-cache';
+import Image from 'react-native-image-progress';
 
 
 const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl, onPressItem }) => {
@@ -20,7 +20,7 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl, o
                         indicatorProps={{ color: Colors.themeRed }}
                         resizeMode='contain'
                     />
-                    <View style={{ position: 'absolute', height: 56, width: 56, borderWidth: 10, borderRadius: 28, borderColor: Colors.gray50 }}></View>
+                    <View style={{ position: 'absolute', height: 56, width: 56, borderWidth: 10, borderRadius: 28, borderColor: Colors.gray50 }} />
 
                  </View>
                 <Text style={styles.coinSymbol}>{symbol}</Text>
