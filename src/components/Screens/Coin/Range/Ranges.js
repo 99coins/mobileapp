@@ -18,6 +18,8 @@ class Ranges extends Component {
       range,
       selectRange,
     } = this.props;
+
+    console.log('RANGES CURRENT', range)
     return (
       <View style={styles.container}>
         <Switcher
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        range: state.range
+        range: state.coinState.range
     };
 }
 

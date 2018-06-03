@@ -30,8 +30,8 @@ export default class Range extends Component {
       active,
     } = this.props;
     return (
-      <TouchableOpacity style={styles.container} onPress={this.onPress}>
-        <Text style={[styles.text, active ? styles.active : {}]}>{name}</Text>
+      <TouchableOpacity style={[styles.container, active && styles.containerActive]} onPress={this.onPress}>
+        <Text style={[styles.text, active && styles.active]}>{name}</Text>
       </TouchableOpacity>
     );
   }
@@ -40,14 +40,22 @@ export default class Range extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
+    padding: 4,
+    margin: 4,
+    borderWidth: 1,
+    borderColor: Colors.gray100,
+    borderRadius: 2
+  },
+  containerActive: {
+    backgroundColor: Colors.gray900
   },
   text: {
-    color: Colors.gray900,
-    fontFamily: 'Avenir',
+    color: Colors.gray100,
     fontSize: 12,
+    fontWeight: 'bold'
   },
   active: {
-    color: '#FFFFFF',
+    color: 'white'
+    //padding: 4
   },
 });

@@ -22,7 +22,7 @@ class Chart extends Component {
   }
   componentWillReceiveProps(nextProps) {
     // Update chart data if range was changed
-    console.log('componentWillReceiveProps', nextProps, nextProps.prices);
+    console.log('componentWillReceiveProps', nextProps, nextProps.coinState.prices);
 
     if (nextProps.coinState.range !== this.props.coinState.range || nextProps.coinState.currentCoinId !== this.props.coinState.currentCoinId) {
       this.props.updateChartPrices();
@@ -30,11 +30,13 @@ class Chart extends Component {
     this.setState({ prices: nextProps.coinState.prices });
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //       //const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video);
-  //       console.log('ShoulUpdateChart', nextProps);
-  //       return true;
-  //  }
+ shouldComponentUpdate(nextProps) {
+   console.log('shouldComponentUpdate', nextProps);
+   if (nextProps.coinState.loadingChart !== this.props.coinState.loadingChart || nextProps.coinState.prices !== this.props.coinState.prices) {
+     return true;
+   }
+    return false;
+  }
 
   render() {
 

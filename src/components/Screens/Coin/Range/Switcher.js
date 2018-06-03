@@ -13,6 +13,8 @@ export default class Switcher extends Component {
       current,
       onSelectRange,
     } = this.props;
+
+    console.log('CURRENT RANGE', current)
     return (
       <View style={styles.container}>
         {ranges.map((name, index) =>
@@ -30,7 +32,9 @@ export default class Switcher extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    height: 56,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });
