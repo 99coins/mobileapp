@@ -11,15 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82ef37ee-af63-497d-b63d-4c1d4a943f3c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle.meta" afterPath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" afterPath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/NNCoins.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../ios/NNCoins.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/version.properties" afterPath="$PROJECT_DIR$/app/version.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/acorn" afterPath="$PROJECT_DIR$/../node_modules/.bin/acorn" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/babylon" afterPath="$PROJECT_DIR$/../node_modules/.bin/babylon" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/errno" afterPath="$PROJECT_DIR$/../node_modules/.bin/errno" />
@@ -125,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="version.properties" pinned="false" current-in-tab="false">
+      <file leaf-file-name="version.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/version.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="45">
+              <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -152,7 +144,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -7519,8 +7511,8 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/version.properties" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java" />
+        <option value="$PROJECT_DIR$/app/version.properties" />
       </list>
     </option>
   </component>
@@ -7694,7 +7686,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528052039135" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528052718445" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -7856,7 +7848,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528052039136" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528052718447" />
       </method>
     </configuration>
     <list size="1">
@@ -8279,14 +8271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/version.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../node_modules/react-native/android/com/facebook/react/react-native/0.52.3/react-native-0.52.3-sources.jar!/com/facebook/react/views/textinput/ReactTextInputManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -8311,6 +8295,14 @@
             <element signature="e#1580#1581#0" expanded="true" />
             <marker date="1528051892657" expanded="true" signature="1261:1482" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/version.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
