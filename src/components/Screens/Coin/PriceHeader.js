@@ -18,11 +18,12 @@ const PriceHeader = ({ price, symbol }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    height: 83,
+    height: 73,
     flex: 1, 
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    top: 10
   },
   priceStyle: {
     fontSize: 48,

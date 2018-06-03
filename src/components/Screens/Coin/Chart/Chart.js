@@ -22,7 +22,7 @@ class Chart extends Component {
   }
   componentWillReceiveProps(nextProps) {
     // Update chart data if range was changed
-    console.log('componentWillReceiveProps', nextProps, nextProps.coinState.prices);
+   // console.log('componentWillReceiveProps', nextProps, nextProps.coinState.prices);
 
     if (nextProps.coinState.range !== this.props.coinState.range || nextProps.coinState.currentCoinId !== this.props.coinState.currentCoinId) {
       this.props.updateChartPrices();
@@ -31,7 +31,7 @@ class Chart extends Component {
   }
 
  shouldComponentUpdate(nextProps) {
-   console.log('shouldComponentUpdate', nextProps);
+   //console.log('shouldComponentUpdate', nextProps);
    if (nextProps.coinState.loadingChart !== this.props.coinState.loadingChart || nextProps.coinState.prices !== this.props.coinState.prices) {
      return true;
    }
@@ -39,11 +39,7 @@ class Chart extends Component {
   }
 
   render() {
-
-    const { coinState } = this.props;
-
-    console.log('RENDER CHART', coinState);
-
+    const { coinState } = this.props; 
     return (
       <View style={styles.container}>
         {coinState.loadingChart && <View pointerEvents="box-none" style={styles.loading}>

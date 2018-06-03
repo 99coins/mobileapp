@@ -15,12 +15,12 @@ import Images from '@assets/images.js';
 class CoinPage extends Component {
 
     componentDidMount() {
-        console.log('componentDidMount coin page', this.props);
+       // console.log('componentDidMount coin page', this.props);
         this.props.selectCoin(this.props.coin);
     }
     render() {
         const { coinState } = this.props;
-        console.log('RENDERING COINPAGE', coinState);
+        //console.log('RENDERING COINPAGE', coinState);
 
         return (
             <ScrollView style={styles.container}>
