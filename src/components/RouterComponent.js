@@ -43,7 +43,7 @@ class RouterComponent extends Component {
   }
   render() {
     return (
-      <Router backAndroidHandler={this.onBackPress}>
+      <Router backAndroidHandler={this.onBackPress} sceneStyle={{ backgroundColor: 'white' }}>
         <Overlay key="overlay">
           <Scene
             key="root"
@@ -76,6 +76,7 @@ class RouterComponent extends Component {
                 </TouchableWithoutFeedback>
               );
             }}
+            headerMode='screen'
           >
 
             <Scene
@@ -142,7 +143,6 @@ class RouterComponent extends Component {
                 firebase.analytics().logEvent(`page_${Actions.currentScene}`, { coin: coin.symbol });
               }}
               back
-              //hideNavBar
               navBar={NavBar}
             />
           </Scene>
