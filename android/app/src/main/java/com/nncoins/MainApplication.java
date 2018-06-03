@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.RNFirebasePackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
@@ -36,12 +37,12 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNFirebasePackage(),
-            new RNFirebasePackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
             new ReactNativeSmoochPackage(),
             new RNFetchBlobPackage(),
               new RNFirebaseAnalyticsPackage()
+
 
       );
     }
