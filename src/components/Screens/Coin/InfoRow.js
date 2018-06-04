@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 28,
     color: Colors.gray900
 
   },
