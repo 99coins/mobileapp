@@ -6,6 +6,7 @@ import fetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 import { connect } from 'react-redux';
 
+const ReactNative = require('react-native');
 
 class EventHandler extends Component {
 
@@ -13,7 +14,7 @@ class EventHandler extends Component {
     appState: AppState.currentState
   }
 
-    // onNotificationReceivedForeground(notification) {
+  // onNotificationReceivedForeground(notification) {
   //   console.log("Notification Received - Foreground", notification);
   //   this.props.getUnreadCount();  
   // }
@@ -25,6 +26,11 @@ class EventHandler extends Component {
 
   componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
+    try {
+      ReactNative.I18nManager.allowRTL(false);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   componentWillUnmount() {
@@ -37,14 +43,14 @@ class EventHandler extends Component {
       console.log('Currentscene:', Actions.currentScene);
       this.props.getUnreadCount();
       if (Actions.currentScene === 'Price') {
-         this.props.fetchPriceData();
+        this.props.fetchPriceData();
       } else if (Actions.currentScene === 'News') {
-          this.props.fetchNewsList();
+        this.props.fetchNewsList();
       }
     }
     this.setState({ appState: nextAppState });
   }
 
-   render() { return null; }
+  render() { return null; }
 
 } export default connect(null, { fetchNewsList, fetchPriceData, getUnreadCount })(EventHandler);
