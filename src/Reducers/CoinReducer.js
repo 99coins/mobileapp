@@ -2,14 +2,14 @@
 // @Flow
 
 import {
-    SELECTED_CURRENT_COIN,
-    FETCHING_COIN_BY_ID,
-    FETCHING_COIN_BY_ID_SUCCESS,
-    FETCHING_COIN_BY_ID_FAIL,
-    LOADING_CHART_PRICES,
-    LOADING_CHART_PRICES_SUCCESS,
-    LOADING_CHART_PRICES_FAIL,
-    SELECTED_CHART_RANGE
+  SELECTED_CURRENT_COIN,
+  FETCHING_COIN_BY_ID,
+  FETCHING_COIN_BY_ID_SUCCESS,
+  FETCHING_COIN_BY_ID_FAIL,
+  LOADING_CHART_PRICES,
+  LOADING_CHART_PRICES_SUCCESS,
+  LOADING_CHART_PRICES_FAIL,
+  SELECTED_CHART_RANGE
 } from './../Utils/ActionTypes';
 import { Range } from './../Utils/Constants';
 
@@ -22,17 +22,17 @@ const initialState = {
   loadingChart: true,
   currentCoinId: null,
   coinData: {
-      description: '',
-      image: {
-          thumb: '',
-          small: ''
-      },
-      circulating_supply: '',
-      currentPrice: '',
-      market_cap: '',
-      total_volume: '',
-      name: '',
-      symbol: '',
+    description: '',
+    image: {
+      thumb: '',
+      small: ''
+    },
+    circulating_supply: '',
+    currentPrice: '',
+    market_cap: '',
+    total_volume: '',
+    name: '',
+    symbol: '',
   },
   range: '1D',
   prices: []
@@ -69,7 +69,7 @@ export default function (state = initialState, action) {
         loadingCoinData: false,
       };
     }
-      case LOADING_CHART_PRICES: {
+    case LOADING_CHART_PRICES: {
       return {
         ...state,
         loadingChart: true,
@@ -77,7 +77,7 @@ export default function (state = initialState, action) {
     }
 
     case LOADING_CHART_PRICES_SUCCESS: {
-     const priceData = action.payload.prices;
+      const priceData = action.payload.prices;
       return {
         ...state,
         loadingChart: false,
@@ -107,22 +107,24 @@ export default function (state = initialState, action) {
   }
 }
 
+const numeral = require('numeral');
 
 const mapResponseToCoinData = (data: Object): Object => {
 
   console.log('mapResponseToCoinData:', data);
-return (
+  
+  return (
     {
       description: data.description.en,
       image: data.image,
-      circulating_supply: Number(data.market_data.circulating_supply).toLocaleString(undefined, { maximumFractionDigits: 2 }),
-      currentPrice: data.market_data.current_price.usd.toLocaleString(undefined, { maximumFractionDigits: 2 }),
-      market_cap: data.market_data.market_cap.usd.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }),
-      total_volume: data.market_data.total_volume.usd.toLocaleString(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }),
+      circulating_supply: numeral(Number(data.market_data.circulating_supply)).format('0,0'),
+      currentPrice: numeral(data.market_data.current_price.usd).format('0,0.00'),
+      market_cap: numeral(data.market_data.market_cap.usd).format('0,0.00'),
+      total_volume: numeral(data.market_data.total_volume.usd).format('0,0.00'),
       name: data.name,
       symbol: data.symbol,
-  }
-);
+    }
+  );
 };
 
 const numberWithCommas = (x) => {
