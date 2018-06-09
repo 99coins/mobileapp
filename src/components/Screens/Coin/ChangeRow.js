@@ -56,7 +56,6 @@ class ChangeRow extends Component {
     const change = getPercentageChange(prices[0], prices[prices.length - 1]);
     const chnageDisplay = change.toFixed(2) + '%';
 
-    console.log('RENDER ChangeRow');
     return (
       <View style={styles.container}>
         <View style={[styles.changeContainer, change < 0 && styles.changeContainerMinus]}>

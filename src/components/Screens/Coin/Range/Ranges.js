@@ -19,7 +19,7 @@ class Ranges extends Component {
       selectRange,
     } = this.props;
 
-    console.log('RANGES CURRENT', range)
+    console.log('RANGES CURRENT', range);
     return (
       <View style={styles.container}>
         <Switcher

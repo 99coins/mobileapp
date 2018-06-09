@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -43,6 +42,7 @@
 		B7DFFD90D8E8471892368C8A /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05AC09FC43D44350BFEDDE25 /* Feather.ttf */; };
 		D2C013FD0BD9416C82DCA5DC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 050D7E4C4C4747DD9CE4C648 /* Entypo.ttf */; };
 		E39677FA7B9F4F4C8005DAD0 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350CE692175740DF9099AC53 /* Octicons.ttf */; };
+		00024D2A5E584A97AD96767C /* libRNTooltips.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF1E1EA5A174F66B323E07B /* libRNTooltips.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -401,6 +401,8 @@
 		DD0D03AEE8E94A3D81300BF9 /* libRCTSmooch.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTSmooch.a; sourceTree = "<group>"; };
 		F6944502A8EB40D0F4796847 /* Pods-NNCoins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NNCoins.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NNCoins/Pods-NNCoins.debug.xcconfig"; sourceTree = "<group>"; };
 		FE582A0FDBEA4A1BA6AFA5AD /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
+		490DFA678ACE4034AA125B19 /* RNTooltips.xcodeproj */ = {isa = PBXFileReference; name = "RNTooltips.xcodeproj"; path = "../node_modules/react-native-tooltips/ios/RNTooltips.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		DCF1E1EA5A174F66B323E07B /* libRNTooltips.a */ = {isa = PBXFileReference; name = "libRNTooltips.a"; path = "libRNTooltips.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +430,7 @@
 				151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */,
 				151C17BB200D393700FE40AF /* libRNFetchBlob.a in Frameworks */,
 				66EFEC6CBD65833735C8BA63 /* libPods-NNCoins.a in Frameworks */,
+				00024D2A5E584A97AD96767C /* libRNTooltips.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +661,7 @@
 				AE6ED85E00974A3FAFBFDE85 /* RCTVideo.xcodeproj */,
 				242250383AAE4419B17523F9 /* RCTSmooch.xcodeproj */,
 				8E2D43D17C5844AEB98D71C9 /* RNFirebase.xcodeproj */,
+				490DFA678ACE4034AA125B19 /* RNTooltips.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1310,6 +1314,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
 					"\"$(SRCROOT)/../node_modules/react-native/React\"",
+					"\"$(SRCROOT)/NNCoins\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
@@ -1360,6 +1365,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
 					"\"$(SRCROOT)/../node_modules/react-native/React\"",
+					"\"$(SRCROOT)/NNCoins\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
@@ -1446,6 +1452,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
 					"\"$(SRCROOT)/../node_modules/react-native/React\"",
+					"\"$(SRCROOT)/NNCoins\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;

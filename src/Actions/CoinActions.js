@@ -22,6 +22,7 @@ import { Range, RANGE_1D, RANGE_1W, RANGE_1M, RANGE_3M, RANGE_6M, RANGE_1Y, RANG
 export const selectRange = (range: Range) => {
      return dispatch => {
          dispatch({ type: SELECTED_CHART_RANGE, range });
+         dispatch(updateChartPrices());
      };
 };
 export const selectCoin = (id) => {
@@ -41,6 +42,7 @@ export function fetchCoinByID() {
         return axios.get(`${COINGECKO_BASE_URL}/coins/${currentCoinId}`)
             .then(res => {
                 dispatch({ type: FETCHING_COIN_BY_ID_SUCCESS, payload: res });
+                dispatch(updateChartPrices());
             })
             .catch(err => {
                 dispatch({ type: FETCHING_COIN_BY_ID_FAIL, payload: err });

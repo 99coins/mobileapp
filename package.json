@@ -34,6 +34,7 @@
     "react-native-progress": "^3.4.0",
     "react-native-router-flux": "^4.0.0-beta.23",
     "react-native-smooch": "^1.0.1",
+    "react-native-tooltips": "0.0.6",
     "react-native-vector-icons": "^4.5.0",
     "react-native-video": "^2.0.0",
     "react-native-video-player": "^0.8.6",
@@ -71,7 +72,7 @@
   },
   "rnpm": {
     "assets": [
-	    "./assets/fonts/"
+      "./assets/fonts/"
     ]
   }
 }

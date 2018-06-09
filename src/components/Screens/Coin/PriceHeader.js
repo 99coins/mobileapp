@@ -9,7 +9,7 @@ import Colors from '@assets/colors.js';
 const PriceHeader = ({ price, symbol }) => {
     return (
       <View style={styles.container}>
-        <Text style={styles.priceStyle}>{price}</Text>
+        <Text style={styles.priceStyle}>{price} </Text>
         <Text style={styles.symbolStyle}>{symbol}</Text>
       </View>
     );

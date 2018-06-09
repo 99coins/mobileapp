@@ -12,42 +12,27 @@ import { updateChartPrices } from './../../../../Actions/CoinActions';
 
 class Chart extends Component {
 
-  state = {
-    viewHeight: 0,
-    prices: [],
-  };
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.coinState.range !== this.props.coinState.range || nextProps.coinState.currentCoinId !== this.props.coinState.currentCoinId) {
+  //     this.props.updateChartPrices();
+  //   }
+  // }
 
-  componentWillMount() {
-    this.props.updateChartPrices();
-  }
   componentWillReceiveProps(nextProps) {
-    // Update chart data if range was changed
-   // console.log('componentWillReceiveProps', nextProps, nextProps.coinState.prices);
-
-    if (nextProps.coinState.range !== this.props.coinState.range || nextProps.coinState.currentCoinId !== this.props.coinState.currentCoinId) {
-      this.props.updateChartPrices();
-    }
-    this.setState({ prices: nextProps.coinState.prices });
-  }
-
- shouldComponentUpdate(nextProps) {
-   //console.log('shouldComponentUpdate', nextProps);
-   if (nextProps.coinState.loadingChart !== this.props.coinState.loadingChart || nextProps.coinState.prices !== this.props.coinState.prices) {
-     return true;
-   }
-    return false;
+    console.log('PROPS: ', nextProps);
+    ///this.props.updateChartPrices();
   }
 
   render() {
-    const { coinState } = this.props; 
+    const { coinState } = this.props;
     return (
       <View style={styles.container}>
         {coinState.loadingChart && <View pointerEvents="box-none" style={styles.loading}>
           <ActivityIndicator size="large" />
-                    </View>}
-          <View style={styles.internalContainer}>
-             {coinState.prices.length > 0 && <Line values={this.state.prices} />}
-          </View>
+        </View>}
+        <View style={styles.internalContainer}>
+          {coinState.prices.length > 0 && <Line values={coinState.prices} />}
+        </View>
       </View>
     );
   }
@@ -58,7 +43,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     height: 200,
-    flex: 1
+    flex: 1,
+    borderRadius: 8
   },
   loading: {
     ...StyleSheet.absoluteFillObject, // overlay the chart
@@ -84,9 +70,9 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-    return {
-        coinState: state.coinState,
-    };
+  return {
+    coinState: state.coinState,
+  };
 }
 
 export default connect(mapStateToProps, { updateChartPrices })(Chart);

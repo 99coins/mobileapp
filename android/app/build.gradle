@@ -146,8 +146,23 @@ android {
         }
     }
 }
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        google()
+    }
+}
 
 dependencies {
+    compile project(':react-native-tooltips')
     compile(project(':react-native-firebase')) {
         transitive = false
     }
