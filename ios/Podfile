@@ -28,6 +28,8 @@ target 'NNCoins' do
   
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
+  pod 'react-native-google-analytics-bridge', :path => '../node_modules/react-native-google-analytics-bridge'
+
 end
 
 post_install do |installer|

@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>120</string>
+	<string>121</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -39,7 +39,7 @@
 	<key>FirebaseScreenReportingEnabled</key>
 	<string>NO</string>
 	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -77,7 +77,26 @@
 		<string>MaterialIcons.ttf</string>
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
-		<string>Zocial.ttf</string>
+		<string>Montserrat-Black.otf</string>
+    <string>Montserrat-BlackItalic.otf</string>
+    <string>Montserrat-Bold.otf</string>
+    <string>Montserrat-BoldItalic</string>
+    <string>Montserrat-ExtraBold</string>
+    <string>Montserrat-ExtraBoldItalic</string>
+    <string>Montserrat-ExtraLight.otf</string>
+    <string>Montserrat-ExtraLightItalic.otf</string>
+    <string>Montserrat-Italic.otf</string>
+    <string>Montserrat-Light.otf</string>
+    <string>Montserrat-LightItalic.otf</string>
+    <string>Montserrat-Medium.otf</string>
+    <string>Montserrat-MediumItalic.otf</string>
+    <string>Montserrat-Regular.otf</string>
+    <string>Montserrat-SemiBold.otf</string>
+    <string>Montserrat-SemiBoldItalic.otf</string>
+    <string>Montserrat-Thin.otf</string>
+    <string>Montserrat-ThinItalic.otf</string>
+
+
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

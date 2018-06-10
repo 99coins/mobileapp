@@ -3,6 +3,20 @@ package com.nncoins;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.brentvatne.react.ReactVideoPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactlibrary.RNTooltipsPackage;
+import com.smooch.rnsmooch.ReactNativeSmoochPackage;
+import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.brentvatne.react.ReactVideoPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactlibrary.RNTooltipsPackage;
+import com.smooch.rnsmooch.ReactNativeSmoochPackage;
+import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
 import com.reactlibrary.RNTooltipsPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -37,6 +51,20 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactVideoPackage(),
+            new VectorIconsPackage(),
+            new RNTooltipsPackage(),
+            new ReactNativeSmoochPackage(),
+            new GoogleAnalyticsBridgePackage(),
+            new RNFirebasePackage(),
+            new RNFetchBlobPackage(),
+            new ReactVideoPackage(),
+            new VectorIconsPackage(),
+            new RNTooltipsPackage(),
+            new ReactNativeSmoochPackage(),
+            new GoogleAnalyticsBridgePackage(),
+            new RNFirebasePackage(),
+            new RNFetchBlobPackage(),
             new RNTooltipsPackage(),
             new RNFirebasePackage(),
             new ReactVideoPackage(),

@@ -26,12 +26,20 @@ import fetchPriceData from '../Actions/FetchPriceData';
 import { getUnreadCount } from '../Actions/ChatActions';
 import firebase from 'react-native-firebase';
 import NavBar from './common/NavBar';
+import { setCustomText } from 'react-native-global-props';
 
+const customTextProps = { 
+  style: { 
+    fontFamily: 'Montserrat'
+  }
+};
 
 class RouterComponent extends Component {
   constructor() {
     super();
     firebase.analytics().setAnalyticsCollectionEnabled(true);
+    setCustomText(customTextProps);
+
   }
   onBackPress = () => {
     console.log('back press');
