@@ -39,7 +39,6 @@ class RouterComponent extends Component {
     super();
     firebase.analytics().setAnalyticsCollectionEnabled(true);
     setCustomText(customTextProps);
-
   }
   onBackPress = () => {
     console.log('back press');
@@ -99,6 +98,7 @@ class RouterComponent extends Component {
               labelStyle={{ fontWeight: 'bold' }}
               focused
               indicatorStyle={{ backgroundColor: Colors.themeRed }}
+              lazy={false}
             >
               {/* Tab and it's scenes */}
               <Scene
@@ -122,8 +122,6 @@ class RouterComponent extends Component {
                   this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
-
-                lazy
                 initial
 
               />

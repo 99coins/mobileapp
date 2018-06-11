@@ -180,6 +180,15 @@ dependencies {
         transitive = false
     }
     compile project(':react-native-fetch-blob')
+    compile project(':react-native-video')
+    compile project(':react-native-vector-icons')
+    compile project(':react-native-tooltips')
+    compile project(':react-native-smooch')
+    compile project(':react-native-google-analytics-bridge')
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
+    compile project(':react-native-fetch-blob')
     compile project(':react-native-tooltips')
     compile(project(':react-native-firebase')) {
         transitive = false
@@ -199,13 +208,13 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:23.0.1"
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation 'com.google.android.gms:play-services-location:12.0.1'
-    implementation 'com.google.firebase:firebase-messaging:12.0.1'
-    implementation "com.google.firebase:firebase-analytics:12.0.1"
+    implementation 'com.google.android.gms:play-services-location:15.0.0'
+    implementation 'com.google.firebase:firebase-messaging:15.0.2'
+    implementation "com.google.firebase:firebase-analytics:15.0.2"
 
     // Firebase dependencies
-    implementation "com.google.android.gms:play-services-base:12.0.1"
-    implementation "com.google.firebase:firebase-core:12.0.1"
+    implementation "com.google.android.gms:play-services-base:15.0.1"
+    implementation "com.google.firebase:firebase-core:15.0.0"
 
 }
 

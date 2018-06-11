@@ -67,7 +67,7 @@ class NewsItemRow extends Component {
           />
           <View style={styles.textContainer}>
             <View style={styles.firstLine}>
-              <Text numberOfLines={2} style={styles.titleStyle}>{title}</Text>
+              <Text numberOfLines={3} style={styles.titleStyle}>{title}</Text>
             </View>
             <View style={styles.secondLine}>
              <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
@@ -117,12 +117,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    paddingBottom: 7,
+    paddingBottom: 5,
 
   },
   titleStyle: {
     flexWrap: 'wrap',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: Colors.gray900,
     lineHeight: 24,

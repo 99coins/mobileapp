@@ -19,20 +19,15 @@ const ITEM_HEIGHT = 128;
 
 class NewsItemList extends Component {
     state = { disableTouch: false, showVideoTitle: true };
-
     componentWillMount() {
         console.log('componentWillMount news');
-        this.onRefresh();
+        this.fetchNews();
     }
+
     shouldComponentUpdate(nextProps, nextState) {
         const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.state.showVideoTitle !== nextState.showVideoTitle);
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
-    }
-    onRefresh() {
-        console.log('onRefresh news');
-        this.props.fetchNewsList();
-        this.props.fetchWeeklyUpdateVideo();
     }
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
@@ -44,6 +39,11 @@ class NewsItemList extends Component {
         } else {
             console.log('touch disabled');
         }
+    }
+    fetchNews() {
+        console.log('onRefresh news');
+        this.props.fetchNewsList();
+        this.props.fetchWeeklyUpdateVideo();
     }
     keyExtractor = (item) => item.guid;
     _renderVideo = memoize((video) =>
@@ -166,7 +166,7 @@ class NewsItemList extends Component {
                 ItemSeparatorComponent={this.renderSeparator}
                 onRefresh={() => {
                     firebase.analytics().logEvent('pull_to_refresh_newslist', {});
-                    this.onRefresh();
+                    this.fetchNews();
                 }}
                 getItemLayout={(data, index) => (
                     { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
