@@ -25,7 +25,7 @@ class NewsWebView extends Component {
     }, 4000);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    return (this.state.loading !== nextState.loading) || (this.props.html !== nextProps.html);
+    return (nextProps.url !== undefined) && ((this.state.loading !== nextState.loading) || (this.props.html !== nextProps.html));
   }
   componentWillUnmount() {
     this.mounted = false;

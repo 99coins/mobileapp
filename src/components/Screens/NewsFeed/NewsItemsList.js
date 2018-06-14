@@ -11,6 +11,7 @@ import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
 import Images from '@assets/images.js';
 import moment from 'moment';
+import { capitalizeFirstLetter } from '../../common';
 
 
 
@@ -32,7 +33,7 @@ class NewsItemList extends Component {
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.article({ url: item.url, html: item.html, sponsored: item.sponsored });
+            Actions.article({ url: item.url, html: item.html, sponsored: item.sponsored, icon: item.source_info.img, title: capitalizeFirstLetter(item.source_info.name) });
             setTimeout(() => {
                 this.state.disableTouch = false;
             }, 2000);

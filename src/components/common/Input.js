@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput, View } from 'react-native';
 import Colors from '@assets/colors.js';
 
-const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
+const Input = ({ value, onChangeText, placeholder, secureTextEntry, returnKeyType, onSubmitEditing }) => {
   const { inputStyle, containerStyle } = styles;
 
   return (
@@ -17,6 +17,8 @@ const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
         onChangeText={onChangeText}
         autoFocus
         keyboardType='email-address'
+        returnKeyType
+        onSubmitEditing={onSubmitEditing}
       />
     </View>
   );

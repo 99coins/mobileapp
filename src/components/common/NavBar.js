@@ -2,7 +2,7 @@ import {
     View, Image, StatusBar, TouchableWithoutFeedback, Text, Dimensions, Platform
 } from 'react-native';
 import React, { Component } from 'react';
-import { Actions, Router, Scene } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 
 class NavBar extends Component {

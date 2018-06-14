@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, TouchableWithoutFeedback, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, Modal, Dimensions, Text, TouchableOpacity, TouchableWithoutFeedback, Image, KeyboardAvoidingView } from 'react-native';
 import Colors from '@assets/colors.js';
 import Images from '@assets/images.js';
 import { Input } from '../../common';
@@ -44,7 +44,7 @@ class ChatForm extends Component {
                 <TouchableWithoutFeedback onPress={() => this.props.closeChatForm()}> 
 
                     <View style={styles.modalStyle}> 
-                        <View style={styles.cardStyle} >
+                        <KeyboardAvoidingView style={styles.cardStyle} behavior="padding" enabled>
                             <View style={styles.closeButtonContainerStyle}>
                                 <TouchableOpacity onPress={() => this.props.closeChatForm()}>
                                     <Image source={Images.closeIcon} />
@@ -62,6 +62,8 @@ class ChatForm extends Component {
                             </View>
                             <Input
                                 placeholder="Enter a nickname to begin.."
+                                returnKeyType="go"
+                                onSubmitEditing={() => { this.onStartChat(); }}
                                 onChangeText={(text) => {
                                 this.props.setNickName(text);
                                 }}
@@ -73,7 +75,7 @@ class ChatForm extends Component {
                                     <Text style={[styles.buttonText, this.props.chatState.userNickName.length > 0 && styles.buttonTextEnabled]}>START CHAT</Text>
                                 </View>
                             </TouchableOpacity>
-                        </View>
+                        </KeyboardAvoidingView>
                     </View>
                 </TouchableWithoutFeedback>
                 </Modal>
@@ -117,7 +119,7 @@ cardStyle: {
     alignItems: 'center',
     justifyContent: 'space-between',
     borderRadius: 4,
-    marginTop: 56
+    marginTop: 16
 },
 closeButtonContainerStyle: {
     marginTop: 16,
