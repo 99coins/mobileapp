@@ -53,7 +53,7 @@ class ChangeRow extends Component {
   render() {
     const { coinState } = this.props;
     const prices = coinState.prices;
-    const change = getPercentageChange(prices[0], prices[prices.length - 1]);
+    const change = prices.length > 0 ? getPercentageChange(prices[0], prices[prices.length - 1]) : 0;
     const chnageDisplay = change.toFixed(2) + '%';
 
     return (
