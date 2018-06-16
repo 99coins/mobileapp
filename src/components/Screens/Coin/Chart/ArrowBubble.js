@@ -7,12 +7,10 @@ import {
 } from 'react-native';
 export default class ArrowBubble extends Component {
 
-  state = {
-    left: 0
-  };
-
   render() {
     console.log('RENDER ARROW:', this.props.title);
+    console.log(this.props.style);
+
     return (
       <View
         style={[styles.talkBubble, this.props.style]}
@@ -46,8 +44,9 @@ export default class ArrowBubble extends Component {
 }
 const styles = StyleSheet.create({
   talkBubble: {
-    backgroundColor: 'transparent',
-    position: 'absolute'
+    //backgroundColor: 'transparent',
+    position: 'absolute',
+    overflow: 'visible'
   },
   talkBubbleSquare: {
     //width: 65,

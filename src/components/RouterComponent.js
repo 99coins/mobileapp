@@ -129,7 +129,6 @@ class RouterComponent extends Component {
             <Scene
               key="article"
               component={NewsWebView}
-              rightButtonImage={Images.shareIcon}
               onRight={(scene) => {
                 console.log(scene);
                 scene.component.prototype.onShare(scene.url);
@@ -138,7 +137,8 @@ class RouterComponent extends Component {
                 firebase.analytics().logEvent(`page_${Actions.currentScene}`, { url: scene.url });
               }}
               back
-              navigationBarTitleImage={null}
+              //navigationBarTitleImage={null}
+              navBar={NavBar}
             />
             <Scene
               key="coin"

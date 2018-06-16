@@ -1,11 +1,26 @@
 import {
-    View, Image, StatusBar, TouchableWithoutFeedback, Text, Dimensions, Platform
+    View, Image, StatusBar, TouchableWithoutFeedback, Text, Dimensions, Platform, Share
 } from 'react-native';
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import Images from '@assets/images.js';
+import firebase from 'react-native-firebase';
 
 class NavBar extends Component {
+
+
+  onShare(url) {
+    firebase.analytics().logEvent('click_share_article', { url });
+    Share.share({
+      message: `${url}\n\nYou can download 99Bitcoins at: https://tg55j.app.goo.gl/99bit`,
+      url,
+      title: 'Found this interesting article on the 99Bitcoins App'
+    }, {
+        // Android only:
+        dialogTitle: url,
+        // iOS only:
+      });
+  }
     componentDidMount() {
         console.log(this.props);
     }
@@ -13,18 +28,29 @@ class NavBar extends Component {
         return (
             <View style={[styles.backgroundStyle, isIphoneX() && styles.backgroundStyleIphoneX]}>
                 <StatusBar />
-                <TouchableWithoutFeedback onPress={() => Actions.pop()} >
+                <View style={styles.barItems}>
+                    <TouchableWithoutFeedback onPress={() => Actions.pop()} >
                     <Image
                         source={Images.backArrow}
-                        style={[styles.backarrowStyle, isIphoneX() && styles.backarrowStyleIphoneX]}
+                        style={styles.leftIcon}
                     />
-                </TouchableWithoutFeedback>
-                <View style={[styles.titleContainer, isIphoneX() && styles.titleContainerIphoneX]}>
-                    <Image
-                        source={{ uri: this.props.icon }}
-                        style={styles.icon}
-                    />
-                    <Text style={styles.title}>{this.props.title}</Text>
+                    </TouchableWithoutFeedback>
+                     <View style={[styles.titleContainer, isIphoneX() && styles.titleContainerIphoneX]}>
+                        <Image
+                            source={{ uri: this.props.icon }}
+                            style={styles.icon}
+                        /> 
+                        <Text style={styles.title}>{this.props.title}</Text> 
+                    </View>
+                    {this.props.share && 
+                    <TouchableWithoutFeedback onPress={() => this.onShare(this.props.url)} >
+                        <Image
+                        source={Images.shareIcon}
+                        style={styles.rightIcon}
+                        />
+                    </TouchableWithoutFeedback> 
+                    }
+
                 </View>
                 <Image
                     style={styles.headerSeperator}
@@ -34,8 +60,9 @@ class NavBar extends Component {
         );
     }
 }
+const d = Dimensions.get('window');
 const isIphoneX = () => {
-    let d = Dimensions.get('window');
+    
     const { height, width } = d;
 
     return (
@@ -51,28 +78,43 @@ const styles = {
     backgroundStyle: {
         backgroundColor: 'white',
         height: 64,
-        justifyContent: 'space-between'
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        justifyContent: 'flex-start'
+
     },
     backgroundStyleIphoneX: {
         height: 84,
     },
-    backarrowStyle: {
+    barItems: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'stretch'
+    },
+    leftIcon: {
         resizeMode: 'contain',
         width: 24,
         height: 24,
-        left: 16,
-        top: 30,
-        //justifyContent: 'flex-end',
+        marginLeft: 16,
+        alignSelf: 'center'
     },
-    backarrowStyleIphoneX: {
-        top: 52,
+    rightIcon: {
+        resizeMode: 'contain',
+        width: 24,
+        height: 24,
+        marginLeft: 16,
+       // marginRight: 16,
+        alignSelf: 'center'
     },
     headerSeperator: {
         alignSelf: 'center',
     },
     titleContainer: {
         flexDirection: 'row',
-        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: d.width - 100
     },
     titleContainerIphoneX: {
         bottom: -8

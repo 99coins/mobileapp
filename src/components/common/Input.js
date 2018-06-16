@@ -17,7 +17,7 @@ const Input = ({ value, onChangeText, placeholder, secureTextEntry, returnKeyTyp
         onChangeText={onChangeText}
         autoFocus
         keyboardType='email-address'
-        returnKeyType
+        returnKeyType={returnKeyType}
         onSubmitEditing={onSubmitEditing}
       />
     </View>

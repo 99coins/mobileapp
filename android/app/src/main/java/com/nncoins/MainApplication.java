@@ -5,33 +5,8 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.reactlibrary.RNTooltipsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 import io.invertase.firebase.RNFirebasePackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.reactlibrary.RNTooltipsPackage;
-import com.smooch.rnsmooch.ReactNativeSmoochPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.reactlibrary.RNTooltipsPackage;
-import com.smooch.rnsmooch.ReactNativeSmoochPackage;
-import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.reactlibrary.RNTooltipsPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.smooch.rnsmooch.ReactNativeSmoochPackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -60,31 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
-            new RNTooltipsPackage(),
             new ReactNativeSmoochPackage(),
-            new GoogleAnalyticsBridgePackage(),
             new RNFirebasePackage(),
-            new RNFetchBlobPackage(),
-            new ReactVideoPackage(),
-            new VectorIconsPackage(),
-            new RNTooltipsPackage(),
-            new ReactNativeSmoochPackage(),
-            new GoogleAnalyticsBridgePackage(),
-            new RNFirebasePackage(),
-            new RNFetchBlobPackage(),
-            new ReactVideoPackage(),
-            new VectorIconsPackage(),
-            new RNTooltipsPackage(),
-            new ReactNativeSmoochPackage(),
-            new GoogleAnalyticsBridgePackage(),
-            new RNFirebasePackage(),
-            new RNFetchBlobPackage(),
-            new RNTooltipsPackage(),
-            new RNFirebasePackage(),
-            new ReactVideoPackage(),
-            new VectorIconsPackage(),
-            new ReactNativeSmoochPackage(),
-            new RNFetchBlobPackage(),
               new RNFirebaseAnalyticsPackage()
 
 

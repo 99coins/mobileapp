@@ -4,11 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NNCoins.iml" filepath="$PROJECT_DIR$/NNCoins.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-firebase/android/react-native-firebase.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-firebase/android/react-native-firebase.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-google-analytics-bridge/android/react-native-google-analytics-bridge.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-google-analytics-bridge/android/react-native-google-analytics-bridge.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-tooltips/android/react-native-tooltips.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-tooltips/android/react-native-tooltips.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-video/android/react-native-video.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-video/android/react-native-video.iml" />
     </modules>

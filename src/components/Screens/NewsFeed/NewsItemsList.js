@@ -33,7 +33,7 @@ class NewsItemList extends Component {
     onPressItem = (item) => {
         if (this.state.disableTouch === false) {
             this.state.disableTouch = true;
-            Actions.article({ url: item.url, html: item.html, sponsored: item.sponsored, icon: item.source_info.img, title: capitalizeFirstLetter(item.source_info.name) });
+            Actions.article({ url: item.url, html: item.html, sponsored: item.sponsored, icon: item.source_info.img, title: capitalizeFirstLetter(item.source_info.name), share: true });
             setTimeout(() => {
                 this.state.disableTouch = false;
             }, 2000);

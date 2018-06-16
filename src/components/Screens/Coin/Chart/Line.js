@@ -15,7 +15,6 @@ import {
 } from 'react-native/Libraries/ART/ReactNativeART';
 
 import Colors from '@assets/colors.js';
-import RNTooltips from 'react-native-tooltips';
 import ArrowBubble from './ArrowBubble';
 import { connect } from 'react-redux';
 
@@ -173,7 +172,7 @@ class Line extends Component {
           point={highPoint}
           style={{
             left: highPoint.x < 250 ? highPoint.x : highPoint.x - 50,
-            bottom: -highPoint.y + 10 
+            bottom: -highPoint.y - 26
           }}
         />
         <ArrowBubble
