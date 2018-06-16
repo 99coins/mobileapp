@@ -11,21 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82ef37ee-af63-497d-b63d-4c1d4a943f3c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../node_modules/has/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../node_modules/has/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../node_modules/has/README.mkd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../node_modules/has/test/.jshintrc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle.meta" afterPath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" afterPath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/NNCoins.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../ios/NNCoins.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/NNCoins/Info.plist" afterPath="$PROJECT_DIR$/../ios/NNCoins/Info.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/version.properties" afterPath="$PROJECT_DIR$/app/version.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/acorn" afterPath="$PROJECT_DIR$/../node_modules/.bin/acorn" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/babylon" afterPath="$PROJECT_DIR$/../node_modules/.bin/babylon" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/errno" afterPath="$PROJECT_DIR$/../node_modules/.bin/errno" />
@@ -55,114 +41,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/uuid" afterPath="$PROJECT_DIR$/../node_modules/.bin/uuid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/.bin/which" afterPath="$PROJECT_DIR$/../node_modules/.bin/which" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn-jsx/node_modules/.bin/acorn" afterPath="$PROJECT_DIR$/../node_modules/acorn-jsx/node_modules/.bin/acorn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/CHANGELOG.md" afterPath="$PROJECT_DIR$/../node_modules/acorn/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn.es.js" afterPath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn.es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn.js" afterPath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn_loose.es.js" afterPath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn_loose.es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn_loose.js" afterPath="$PROJECT_DIR$/../node_modules/acorn/dist/acorn_loose.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/dist/walk.es.js" afterPath="$PROJECT_DIR$/../node_modules/acorn/dist/walk.es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/dist/walk.js" afterPath="$PROJECT_DIR$/../node_modules/acorn/dist/walk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/acorn/package.json" afterPath="$PROJECT_DIR$/../node_modules/acorn/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/append-transform/index.js" afterPath="$PROJECT_DIR$/../node_modules/append-transform/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/append-transform/package.json" afterPath="$PROJECT_DIR$/../node_modules/append-transform/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/append-transform/readme.md" afterPath="$PROJECT_DIR$/../node_modules/append-transform/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/big-integer/BigInteger.js" afterPath="$PROJECT_DIR$/../node_modules/big-integer/BigInteger.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/big-integer/BigInteger.min.js" afterPath="$PROJECT_DIR$/../node_modules/big-integer/BigInteger.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/big-integer/package.json" afterPath="$PROJECT_DIR$/../node_modules/big-integer/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/color-convert/conversions.js" afterPath="$PROJECT_DIR$/../node_modules/color-convert/conversions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/color-convert/package.json" afterPath="$PROJECT_DIR$/../node_modules/color-convert/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/color-name/README.md" afterPath="$PROJECT_DIR$/../node_modules/color-name/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/color-name/index.js" afterPath="$PROJECT_DIR$/../node_modules/color-name/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/color-name/package.json" afterPath="$PROJECT_DIR$/../node_modules/color-name/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/compressible/HISTORY.md" afterPath="$PROJECT_DIR$/../node_modules/compressible/HISTORY.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/compressible/package.json" afterPath="$PROJECT_DIR$/../node_modules/compressible/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/create-react-class/package.json" afterPath="$PROJECT_DIR$/../node_modules/create-react-class/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/default-require-extensions/js.js" afterPath="$PROJECT_DIR$/../node_modules/default-require-extensions/js.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/default-require-extensions/json.js" afterPath="$PROJECT_DIR$/../node_modules/default-require-extensions/json.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/default-require-extensions/license" afterPath="$PROJECT_DIR$/../node_modules/default-require-extensions/license" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/default-require-extensions/package.json" afterPath="$PROJECT_DIR$/../node_modules/default-require-extensions/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/default-require-extensions/readme.md" afterPath="$PROJECT_DIR$/../node_modules/default-require-extensions/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/escodegen/escodegen.js" afterPath="$PROJECT_DIR$/../node_modules/escodegen/escodegen.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/escodegen/node_modules/.bin/esparse" afterPath="$PROJECT_DIR$/../node_modules/escodegen/node_modules/.bin/esparse" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/escodegen/node_modules/.bin/esvalidate" afterPath="$PROJECT_DIR$/../node_modules/escodegen/node_modules/.bin/esvalidate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/escodegen/package.json" afterPath="$PROJECT_DIR$/../node_modules/escodegen/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/fbjs/CHANGELOG.md" afterPath="$PROJECT_DIR$/../node_modules/fbjs/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/fbjs/package.json" afterPath="$PROJECT_DIR$/../node_modules/fbjs/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/fs.realpath/package.json" afterPath="$PROJECT_DIR$/../node_modules/fs.realpath/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/function-bind/package.json" afterPath="$PROJECT_DIR$/../node_modules/function-bind/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/has/package.json" afterPath="$PROJECT_DIR$/../node_modules/has/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/has/src/index.js" afterPath="$PROJECT_DIR$/../node_modules/has/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/has/test/index.js" afterPath="$PROJECT_DIR$/../node_modules/has/test/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/image-size/Readme.md" afterPath="$PROJECT_DIR$/../node_modules/image-size/Readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/image-size/lib/types.js" afterPath="$PROJECT_DIR$/../node_modules/image-size/lib/types.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/image-size/lib/types/tiff.js" afterPath="$PROJECT_DIR$/../node_modules/image-size/lib/types/tiff.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/image-size/lib/types/webp.js" afterPath="$PROJECT_DIR$/../node_modules/image-size/lib/types/webp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/image-size/package.json" afterPath="$PROJECT_DIR$/../node_modules/image-size/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/inflight/package.json" afterPath="$PROJECT_DIR$/../node_modules/inflight/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/inherits/package.json" afterPath="$PROJECT_DIR$/../node_modules/inherits/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/is-buffer/package.json" afterPath="$PROJECT_DIR$/../node_modules/is-buffer/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/is-utf8/package.json" afterPath="$PROJECT_DIR$/../node_modules/is-utf8/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/istanbul-lib-hook/CHANGELOG.md" afterPath="$PROJECT_DIR$/../node_modules/istanbul-lib-hook/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/istanbul-lib-hook/package.json" afterPath="$PROJECT_DIR$/../node_modules/istanbul-lib-hook/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/jest-config/package.json" afterPath="$PROJECT_DIR$/../node_modules/jest-config/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/jest-diff/package.json" afterPath="$PROJECT_DIR$/../node_modules/jest-diff/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/jest-matcher-utils/package.json" afterPath="$PROJECT_DIR$/../node_modules/jest-matcher-utils/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/jest-snapshot/package.json" afterPath="$PROJECT_DIR$/../node_modules/jest-snapshot/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/jest-validate/package.json" afterPath="$PROJECT_DIR$/../node_modules/jest-validate/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/jest/node_modules/.bin/jest" afterPath="$PROJECT_DIR$/../node_modules/jest/node_modules/.bin/jest" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/lodash/package.json" afterPath="$PROJECT_DIR$/../node_modules/lodash/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/loose-envify/package.json" afterPath="$PROJECT_DIR$/../node_modules/loose-envify/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/mime-db/package.json" afterPath="$PROJECT_DIR$/../node_modules/mime-db/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/minimatch/package.json" afterPath="$PROJECT_DIR$/../node_modules/minimatch/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/once/package.json" afterPath="$PROJECT_DIR$/../node_modules/once/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/p-limit/index.js" afterPath="$PROJECT_DIR$/../node_modules/p-limit/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/p-limit/package.json" afterPath="$PROJECT_DIR$/../node_modules/p-limit/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/path-is-absolute/package.json" afterPath="$PROJECT_DIR$/../node_modules/path-is-absolute/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/prop-types/package.json" afterPath="$PROJECT_DIR$/../node_modules/prop-types/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/react-clone-referenced-element/package.json" afterPath="$PROJECT_DIR$/../node_modules/react-clone-referenced-element/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/react-native/package.json" afterPath="$PROJECT_DIR$/../node_modules/react-native/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/regjsparser/node_modules/.bin/jsesc" afterPath="$PROJECT_DIR$/../node_modules/regjsparser/node_modules/.bin/jsesc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/.travis.yml" afterPath="$PROJECT_DIR$/../node_modules/resolve/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/lib/async.js" afterPath="$PROJECT_DIR$/../node_modules/resolve/lib/async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/lib/core.js" afterPath="$PROJECT_DIR$/../node_modules/resolve/lib/core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/lib/core.json" afterPath="$PROJECT_DIR$/../node_modules/resolve/lib/core.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/lib/sync.js" afterPath="$PROJECT_DIR$/../node_modules/resolve/lib/sync.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/package.json" afterPath="$PROJECT_DIR$/../node_modules/resolve/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/test/resolver.js" afterPath="$PROJECT_DIR$/../node_modules/resolve/test/resolver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/resolve/test/resolver_sync.js" afterPath="$PROJECT_DIR$/../node_modules/resolve/test/resolver_sync.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/send/node_modules/.bin/mime" afterPath="$PROJECT_DIR$/../node_modules/send/node_modules/.bin/mime" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/bin/sshpk-verify" afterPath="$PROJECT_DIR$/../node_modules/sshpk/bin/sshpk-verify" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/algs.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/algs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/certificate.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/certificate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/dhe.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/dhe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/ed-compat.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/ed-compat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/fingerprint.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/fingerprint.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/auto.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/auto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/openssh-cert.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/openssh-cert.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/pem.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/pem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/pkcs1.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/pkcs1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/pkcs8.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/pkcs8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/rfc4253.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/rfc4253.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/ssh-private.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/ssh-private.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/ssh.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/ssh.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/x509-pem.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/x509-pem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/x509.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/formats/x509.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/identity.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/identity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/private-key.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/private-key.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/signature.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/signature.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/ssh-buffer.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/ssh-buffer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/lib/utils.js" afterPath="$PROJECT_DIR$/../node_modules/sshpk/lib/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/sshpk/package.json" afterPath="$PROJECT_DIR$/../node_modules/sshpk/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/strip-bom/package.json" afterPath="$PROJECT_DIR$/../node_modules/strip-bom/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/temp/node_modules/.bin/rimraf" afterPath="$PROJECT_DIR$/../node_modules/temp/node_modules/.bin/rimraf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/ua-parser-js/package.json" afterPath="$PROJECT_DIR$/../node_modules/ua-parser-js/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../node_modules/xcode/node_modules/.bin/uuid" afterPath="$PROJECT_DIR$/../node_modules/xcode/node_modules/.bin/uuid" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../package.json" afterPath="$PROJECT_DIR$/../package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/components/RouterComponent.js" afterPath="$PROJECT_DIR$/../src/components/RouterComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/components/Screens/Coin/Chart/Line.js" afterPath="$PROJECT_DIR$/../src/components/Screens/Coin/Chart/Line.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/components/Screens/NewsFeed/NewsItemsList.js" afterPath="$PROJECT_DIR$/../src/components/Screens/NewsFeed/NewsItemsList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/components/common/Input.js" afterPath="$PROJECT_DIR$/../src/components/common/Input.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../src/components/common/NavBar.js" afterPath="$PROJECT_DIR$/../src/components/common/NavBar.js" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -227,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="version.properties" pinned="false" current-in-tab="false">
+      <file leaf-file-name="version.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/version.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="45">
+              <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -247,7 +132,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="202">
@@ -263,21 +148,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <file leaf-file-name="local.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cache.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml">
+      <file leaf-file-name="gradle.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gradle.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10440">
-              <caret line="696" column="60" lean-forward="false" selection-start-line="696" selection-start-column="60" selection-end-line="696" selection-end-column="60" />
+            <state relative-caret-position="135">
+              <caret line="9" column="58" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -6988,12 +6883,12 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/../node_modules/react-native-smooch/android/build.gradle" />
         <option value="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-        <option value="$PROJECT_DIR$/app/version.properties" />
         <option value="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nncoins/MainApplication.java" />
+        <option value="$PROJECT_DIR$/app/version.properties" />
       </list>
     </option>
   </component>
@@ -7041,6 +6936,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NNCoins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -7153,7 +7062,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529180114602" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529184856316" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -7201,7 +7110,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529180114602" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529184856317" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -7363,7 +7272,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529180114603" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529184856318" />
       </method>
     </configuration>
     <list size="1">
@@ -7614,13 +7523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -7679,13 +7581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="58" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../node_modules/react-native-smooch/android/proguard-rules.pro">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -7739,14 +7634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/version.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/index.android.bundle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1632870">
@@ -7790,6 +7677,30 @@
             <element signature="e#1746#1747#0" expanded="true" />
             <marker date="1529153343374" expanded="true" signature="1241:1305" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="58" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/version.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
