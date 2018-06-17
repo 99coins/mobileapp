@@ -42,7 +42,7 @@ class CoinPage extends Component {
                 />
                 <InfoRow
                     title={coinState.coinData.circulating_supply}
-                    subtile={'Cirucalting Supply'}
+                    subtile={'Circulating Supply'}
                 />
 
             </ScrollView>

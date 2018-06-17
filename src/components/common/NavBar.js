@@ -26,7 +26,7 @@ class NavBar extends Component {
     }
     render() {
         return (
-            <View style={[styles.backgroundStyle, isIphoneX() && styles.backgroundStyleIphoneX]}>
+            <View style={styles.backgroundStyle}>
                 <StatusBar />
                 <View style={styles.barItems}>
                     <TouchableWithoutFeedback onPress={() => Actions.pop()} >
@@ -74,23 +74,23 @@ const isIphoneX = () => {
     );
 };
 
+const navbarHeight = isIphoneX() ? 84 : 64;
+//const statusBarHeight = Platform.OS === 'ios' ? 20 : 0;
+
 const styles = {
     backgroundStyle: {
         backgroundColor: 'white',
-        height: 64,
+        height: navbarHeight,
         flexDirection: 'column',
-        alignItems: 'stretch',
-        justifyContent: 'flex-start'
-
-    },
-    backgroundStyleIphoneX: {
-        height: 84,
+        justifyContent: 'space-between',
+        //justifyContent: 'space-between'
     },
     barItems: {
-        flex: 1,
+        top: 20,
+        height: navbarHeight - 21,
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        alignItems: 'stretch'
+        alignItems: 'center',
     },
     leftIcon: {
         resizeMode: 'contain',

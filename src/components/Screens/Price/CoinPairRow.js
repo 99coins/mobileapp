@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
  
     coinPrice: {
         marginTop: 10,
-        fontWeight: 'bold',        
+        fontWeight: '500',        
     },
     image: {
         width: 36,

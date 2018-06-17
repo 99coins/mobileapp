@@ -19,7 +19,6 @@ export default function (state = initialState, action) {
         case FETCHING_COIN_LIST:
             return { ...state,    
                 isFetching: true,
-                data: [],
                 hasError: false,
                 errorMessage: null 
             };
@@ -36,7 +35,6 @@ export default function (state = initialState, action) {
 
             return { ...state,    
                 isFetching: false,
-                data: [],
                 hasError: true,
                 errorMessage: action.err 
             };
