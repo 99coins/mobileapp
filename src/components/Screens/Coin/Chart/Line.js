@@ -171,7 +171,7 @@ class Line extends Component {
         </Surface>
         <ArrowBubble
           backgroundColor={Colors.themeGreen}
-          title={numeral(high).format('0,0.00')}
+          title={high}
           point={highPoint}
           style={{
             left: highPoint.x < 250 ? highPoint.x : highPoint.x - 50,
@@ -180,7 +180,7 @@ class Line extends Component {
         />
         <ArrowBubble
           backgroundColor={Colors.themeRed}
-          title={numeral(low).format('0,0.00')}
+          title={low}
           style={{
             left: lowPoint.x < 250 ? lowPoint.x : lowPoint.x - 50,
             bottom: -lowPoint.y + 10

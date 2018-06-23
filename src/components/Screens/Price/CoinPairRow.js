@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
 
     },
     coinName: {
+        width: 140,
         fontSize: 14,
         fontWeight: '700',
         color: Colors.gray900,

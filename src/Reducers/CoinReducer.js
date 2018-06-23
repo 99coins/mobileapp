@@ -95,14 +95,16 @@ export default function (state = initialState, action) {
       const priceData = action.payload.prices;
       const prices = priceData ? priceData.map(item => item[1]) : [];
       const pathData = buildPath(prices);
+      const high = Math.max(...prices);
+      const low = Math.min(...prices);
       return {
         ...state,
         chartData: {
         range: state.chartData.range,
          loading: false,
          prices, // use closing prices
-         high: Math.max(...prices),
-         low: Math.min(...prices),
+         high: numeral(high).format(high < 1 ? '0,0.00000' : '0,0.00'),
+         low: numeral(low).format(low < 1 ? '0,0.00000' : '0,0.00'),
          highPoint: pathData.highPoint,
          lowPoint: pathData.lowPoint,
          path: pathData.path
@@ -144,7 +146,7 @@ const mapResponseToCoinData = (data: Object): Object => {
       description: data.description.en,
       image: data.image,
       circulating_supply: numeral(Number(data.market_data.circulating_supply)).format('0,0'),
-      currentPrice: numeral(data.market_data.current_price.usd).format('0,0.00'),
+      currentPrice: numeral(data.market_data.current_price.usd).format(data.market_data.current_price.usd < 1 ? '0,0.00000' : '0,0.00'),
       market_cap: numeral(data.market_data.market_cap.usd).format('0,0.00'),
       total_volume: numeral(data.market_data.total_volume.usd).format('0,0.00'),
       name: data.name,

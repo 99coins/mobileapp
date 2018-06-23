@@ -57,7 +57,7 @@ class CoinPairList extends Component {
                 key={item.id}
                 coinName={item.name}
                 symbol={item.symbol.toUpperCase()}
-                priceUsd={item.market_data.current_price.usd ? item.market_data.current_price.usd.toFixed(2) : 0.0} /*.toFixed(2)*/
+                priceUsd={item.market_data.current_price.usd < 1 ? item.market_data.current_price.usd.toFixed(5) : item.market_data.current_price.usd.toFixed(2)} /*.toFixed(2)*/
                 percentChange24h={item.market_data.price_change_percentage_24h ? Number(item.market_data.price_change_percentage_24h).toFixed(1) : 0}  /*.toFixed(2)*/
                 imageUrl={item.image.small} 
                 onPressItem={() => {
