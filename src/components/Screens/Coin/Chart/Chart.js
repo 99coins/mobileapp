@@ -12,26 +12,20 @@ import { updateChartPrices } from './../../../../Actions/CoinActions';
 
 class Chart extends Component {
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.coinState.range !== this.props.coinState.range || nextProps.coinState.currentCoinId !== this.props.coinState.currentCoinId) {
-  //     this.props.updateChartPrices();
-  //   }
-  // }
-
   componentWillReceiveProps(nextProps) {
     console.log('PROPS: ', nextProps);
     ///this.props.updateChartPrices();
   }
 
   render() {
-    const { coinState } = this.props;
+    const { chartData } = this.props;
     return (
       <View style={styles.container}>
-        {coinState.loadingChart && <View pointerEvents="box-none" style={styles.loading}>
+        {chartData.loading && <View pointerEvents="box-none" style={styles.loading}>
           <ActivityIndicator size="large" />
         </View>}
         <View style={styles.internalContainer}>
-          {coinState.prices.length > 0 && <Line values={coinState.prices} />}
+          {chartData.prices.length > 0 && <Line values={chartData.prices} />}
         </View>
       </View>
     );
@@ -71,7 +65,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    coinState: state.coinState,
+    chartData: state.coinState.chartData,
   };
 }
 

@@ -24,10 +24,9 @@ import {
 // -----------------------------------------------------------------------------
 
 const initialState = {
-  loadingCoinData: true,
-  loadingChart: true,
   currentCoinId: null,
   coinData: {
+    loading: true,
     description: '',
     image: {
       thumb: '',
@@ -40,13 +39,16 @@ const initialState = {
     name: '',
     symbol: '',
   },
-  range: '1D',
-  prices: [],
-  high: 0,
-  low: 0,
-  highPoint: { x: 0, y: 0 },
-  lowPoint: { x: 0, y: 0 },
-  path: null
+  chartData: {
+    loading: true,
+    range: '1D',
+    prices: [],
+    high: 0,
+    low: 0,
+    highPoint: { x: 0, y: 0 },
+    lowPoint: { x: 0, y: 0 },
+    path: null
+  }
 };
 
 
@@ -60,7 +62,8 @@ export default function (state = initialState, action) {
     case FETCHING_COIN_BY_ID: {
       return {
         ...state,
-        loadingCoinData: true,
+        chartData: initialState.chartData,
+        coinData: state.coinData
       };
     }
 
@@ -68,22 +71,23 @@ export default function (state = initialState, action) {
       const data = action.payload.data;
       return {
         ...state,
-        loadingCoinData: false,
         coinData: mapResponseToCoinData(data),
-
       };
     }
 
     case FETCHING_COIN_BY_ID_FAIL: {
       return {
         ...state,
-        loadingCoinData: false,
+        coinData: {
+          ...state.coinData,
+          loading: false
+        }
       };
     }
     case LOADING_CHART_PRICES: {
       return {
         ...state,
-        loadingChart: true,
+       // chartData: state.chartData
       };
     }
 
@@ -93,13 +97,16 @@ export default function (state = initialState, action) {
       const pathData = buildPath(prices);
       return {
         ...state,
-        loadingChart: false,
-        prices, // use closing prices
-        high: Math.max(...prices),
-        low: Math.min(...prices),
-        highPoint: pathData.highPoint,
-        lowPoint: pathData.lowPoint,
-        path: pathData.path
+        chartData: {
+        range: state.chartData.range,
+         loading: false,
+         prices, // use closing prices
+         high: Math.max(...prices),
+         low: Math.min(...prices),
+         highPoint: pathData.highPoint,
+         lowPoint: pathData.lowPoint,
+         path: pathData.path
+        }
       };
     }
 
@@ -107,7 +114,10 @@ export default function (state = initialState, action) {
       const { range } = action;
       return {
         ...state,
-        range,
+        chartData: {
+          ...state.chartData,
+          range
+        }
       };
     }
     case SELECTED_CURRENT_COIN: {
@@ -127,11 +137,10 @@ export default function (state = initialState, action) {
 const numeral = require('numeral');
 
 const mapResponseToCoinData = (data: Object): Object => {
-
-  console.log('mapResponseToCoinData:', data);
   
   return (
     {
+      loading: false,
       description: data.description.en,
       image: data.image,
       circulating_supply: numeral(Number(data.market_data.circulating_supply)).format('0,0'),

@@ -141,13 +141,16 @@ class Line extends Component {
     const {
       fillColor,
       strokeColor,
-      strokeWidth,
+      strokeWidth
+    } = this.props;
+
+    const {
       high,
       low,
       highPoint,
       lowPoint,
       path,
-    } = this.props;
+    } = this.props.chartData;
 
     console.log('LINE', highPoint);
 
@@ -226,12 +229,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    prices: state.coinState.prices,
-    high: state.coinState.high,
-    low: state.coinState.low,
-    highPoint: state.coinState.highPoint,
-    lowPoint: state.coinState.lowPoint,
-    path: state.coinState.path
+    chartData: state.coinState.chartData
   };
 }
 

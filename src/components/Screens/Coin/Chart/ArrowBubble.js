@@ -8,9 +8,6 @@ import {
 export default class ArrowBubble extends Component {
 
   render() {
-    console.log('RENDER ARROW:', this.props.title);
-    console.log(this.props.style);
-
     return (
       <View
         style={[styles.talkBubble, this.props.style]}

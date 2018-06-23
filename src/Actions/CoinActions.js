@@ -53,12 +53,10 @@ export function fetchCoinByID() {
 export function updateChartPrices() {
     return (dispatch, getState) => {
         dispatch({ type: LOADING_CHART_PRICES });
-        const {
-                coinState: { range, currentCoinId },
-             } = getState();
-            console.log(currentCoinId);
-
-        return axios.get(`${COINGECKO_BASE_URL}/coins/${currentCoinId}/market_chart?vs_currency=usd&days=${daysFromRange(range)}`)
+        const { coinState } = getState();        
+        const url = `${COINGECKO_BASE_URL}/coins/${coinState.currentCoinId}/market_chart?vs_currency=usd&days=${daysFromRange(coinState.chartData.range)}`;
+        console.log(url);
+        return axios.get(url)
             .then(res => {
                 dispatch({ type: LOADING_CHART_PRICES_SUCCESS, payload: res.data });
             })

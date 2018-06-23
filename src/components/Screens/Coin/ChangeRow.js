@@ -51,8 +51,8 @@ const getPercentageChange = (first, last) => {
 class ChangeRow extends Component {
 
   render() {
-    const { coinState } = this.props;
-    const prices = coinState.prices;
+    const { chartData } = this.props;
+    const prices = chartData.prices;
     const change = prices.length > 0 ? getPercentageChange(prices[0], prices[prices.length - 1]) : 0;
     const chnageDisplay = change.toFixed(2) + '%';
 
@@ -61,7 +61,7 @@ class ChangeRow extends Component {
         <View style={[styles.changeContainer, change < 0 && styles.changeContainerMinus]}>
           <Text style={[styles.priceChangePlus, change < 0 && styles.priceChangeMinus]}>{chnageDisplay}</Text>
         </View>
-        <Text style={styles.periodStyle}>{rangeDescription(coinState.range)}</Text>
+        <Text style={styles.periodStyle}>{rangeDescription(chartData.range)}</Text>
       </View>
     );
   }
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        coinState: state.coinState,
+        chartData: state.coinState.chartData,
     };
 }
 

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        range: state.coinState.range
+        range: state.coinState.chartData.range
     };
 }
 
