@@ -7,7 +7,7 @@ import Colors from '@assets/colors.js';
 import { Actions } from 'react-native-router-flux';
 
 //import fetchCoinList from './../../../Actions/FetchPriceData';
-import { fetchCoinList } from './../../../Actions/FetchCoinList';
+import { fetchCoinList, getCachedCoinList } from './../../../Actions/FetchCoinList';
 
 import firebase from 'react-native-firebase';
 
@@ -19,6 +19,7 @@ class CoinPairList extends Component {
 
     componentDidMount() {
         console.log('componentDidMount prices');
+        this.props.getCachedCoinList();
         this.props.fetchCoinList();
 //this.props.fetchPriceData();
     }
@@ -107,4 +108,4 @@ function mapStateToProps(state) {
         coinList: state.coinList
     };
 }
-export default connect(mapStateToProps, { fetchCoinList })(CoinPairList);
+export default connect(mapStateToProps, { fetchCoinList, getCachedCoinList })(CoinPairList);

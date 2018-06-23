@@ -26,7 +26,7 @@ export default function (state = initialState, action) {
         case FETCHING_COIN_LIST_SUCCESS:
             return { ...state,    
                 isFetching: false,
-                data: action.payload.data,
+                data: action.payload,
                 hasError: false,
                 errorMessage: null 
             };

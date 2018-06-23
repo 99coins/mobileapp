@@ -19,8 +19,8 @@ export function fetchCoinList() {
          const { page } = getState();
         return axios.get(`${COINGECKO_BASE_URL}/coins?per_page=1000&page=1&order=market_cap_desc`)
             .then(res => {
-                dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res });
-                //dispatch(cacheCoinlist(res.data));
+                dispatch({ type: FETCHING_COIN_LIST_SUCCESS, payload: res.data });
+                dispatch(cacheCoinlist(res.data));
             })
             .catch(err => {
                 dispatch({ type: FETCHING_COIN_LIST_FAIL, payload: err });
@@ -31,23 +31,23 @@ export function fetchCoinList() {
 export const cacheCoinlist = (list) => {
   return dispatch => {
     dispatch({ type: CACHE_COIN_LIST });
-    return AsyncStorage.setItem('@coinList', list)
+    return AsyncStorage.setItem('coinList', JSON.stringify(list))
       .then(() => {
         dispatch({ type: CACHE_COIN_LIST_SUCCESS }); 
       });
   };
 };
-export const getCachedCoinList = () => {
+export function getCachedCoinList() {
   return dispatch => {
     dispatch({ type: GET_CACHED_COIN_LIST });
-    return AsyncStorage.getItem('@coinList')
+    return AsyncStorage.getItem('coinList')
       .then((value) => {
           if (value !== null) {
-            dispatch(receiveData(value));
+            dispatch(receiveData(JSON.parse(value)));
           }
       });
   };
-};
+}
 export const receiveData = (value) => {
   return {
     type: GET_CACHED_COIN_LIST_SUCCESS,
