@@ -22,10 +22,12 @@ const CoinPairRow = ({ symbol, coinName, priceUsd, percentChange24h, imageUrl, o
                     />
                     <View style={{ position: 'absolute', height: 56, width: 56, borderWidth: 10, borderRadius: 28, borderColor: Colors.gray50 }} />
 
-                 </View>
-                <Text style={styles.coinSymbol}>{symbol}</Text>
-                <Text style={styles.seperator}>|</Text>
-                <Text style={styles.coinName}>{coinName}</Text>
+                </View>
+                <View style={styles.textContainer}>
+                        <Text style={styles.coinName}>{coinName}</Text>
+                        <Text style={styles.coinSymbol}>{symbol}</Text>
+                </View>
+            
             </View>
             <View style={styles.priceContainer}>
                  <Text style={styles.coinPrice}>${priceUsd}</Text>
@@ -56,15 +58,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    textContainer: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        left: 16
+    },
     priceContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-end'
     },
 
-    coinSymbol: {
-        marginTop: 10,
-        marginLeft: 8,
-        fontWeight: 'bold',        
+    coinSymbol: { 
+        fontSize: 14,
+        color: Colors.gray600,
+        top: 2
+      
     },
     seperator: {
         marginTop: 10,
@@ -72,14 +80,14 @@ const styles = StyleSheet.create({
 
     },
     coinName: {
-        marginTop: 10,
-        marginLeft: 2,
-
+        fontSize: 14,
+        fontWeight: '700',
+        color: Colors.gray900,
     },
  
     coinPrice: {
         marginTop: 10,
-        fontWeight: '500',        
+        fontWeight: '600',        
     },
     image: {
         width: 36,
@@ -93,14 +101,14 @@ const styles = StyleSheet.create({
     priceChangePlus: {
         color: Colors.themeGreen,
         marginTop: 10,
-        fontWeight: '400',
+        fontWeight: '600',
         width: 60,
         textAlign: 'right'
     },
     priceChangeMinus: {
         color: Colors.themeRed,
         marginTop: 10,
-        fontWeight: '400',
+        fontWeight: '600',
         width: 60,
         textAlign: 'right'
     }

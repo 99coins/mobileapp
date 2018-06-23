@@ -20,10 +20,7 @@ class NavBar extends Component {
         dialogTitle: url,
         // iOS only:
       });
-  }
-    componentDidMount() {
-        console.log(this.props);
-    }
+  } 
     render() {
         return (
             <View style={styles.backgroundStyle}>
