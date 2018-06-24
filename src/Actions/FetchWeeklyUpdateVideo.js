@@ -12,9 +12,9 @@ export default function fetchWeeklyUpdateVideo() {
     return dispatch => {
         dispatch({ type: FETCHING_WEEKLY_UPDATE_VIDEO });
 
-        return axios.get(`${NNBITCOINS_BASE_URL}/${WEEKLY_VIDEOS}/latest`)
+        return axios.get(`${NNBITCOINS_BASE_URL}/${WEEKLY_VIDEOS}`)
             .then(res => {
-                dispatch({ type: FETCHING_WEEKLY_UPDATE_VIDEO_SUCCESS, payload: res.data });
+                dispatch({ type: FETCHING_WEEKLY_UPDATE_VIDEO_SUCCESS, payload: res.data[0] });
             })
             .catch(err => {
                 dispatch({ type: FETCHING_WEEKLY_UPDATE_VIDEO_FAIL, payload: err });

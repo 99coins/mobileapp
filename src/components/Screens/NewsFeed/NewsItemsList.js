@@ -76,7 +76,7 @@ class NewsItemList extends Component {
                     />
                     { this.state.showVideoTitle && 
                          <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
-                         <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 16 }}>WEEKLY VIDEO</Text>
+                         <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 16 }}>{video.title}</Text>
                          <Text style={{ color: 'white', fontSize: 12, width: 140 }}>ALL YOUR BITCOIN NEWS IN 99 SECONDS</Text>
                         </View>
                     }
@@ -119,8 +119,8 @@ class NewsItemList extends Component {
                     />
                     { this.state.showVideoTitle && 
                          <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
-                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>BITCOIN NEWS SUMMARY</Text>
-                         <Text style={{ color: 'white', fontSize: 14, width: 140 }}>{moment().startOf('isoWeek').format('MMM DD, YYYY')}</Text>
+                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>{weeklyVideo.title}</Text>
+                         <Text style={{ color: 'white', fontSize: 14, width: 140 }}>{weeklyVideo.subtitle}</Text>
                         </View>
                     }
                     </View>

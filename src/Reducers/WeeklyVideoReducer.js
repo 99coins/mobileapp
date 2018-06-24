@@ -9,6 +9,8 @@ const initialState = {
     thumbnailUrl: null,
     videoUrl: null,
     video: null,
+    title: null,
+    subtitle: null,
     hasError: false,
     errorMessage: null,
     id: 'weeklyVideo'
@@ -18,38 +20,36 @@ export default function (state = initialState, action) {
     switch (action.type) {
 
         case FETCHING_WEEKLY_UPDATE_VIDEO:
-            return Object.assign({}, state, {
-                isFetching: true,
-                thumbnailUrl: state.thumbnailUrl,
-                videoUrl: state.videoUrl,
-                video: state.video,
-                hasError: false,
-                errorMessage: null
-            });
+        return {
+            ...state,
+            isFetching: true
+        };
 
         case FETCHING_WEEKLY_UPDATE_VIDEO_SUCCESS:
         if (state.data !== action.payload) {
-            return Object.assign({}, state, {
+            const fullTitle = action.payload.title.split('-');
+            return {
+                ...state,
                 isFetching: false,
-                thumbnailUrl: action.payload[0]/*action.payload.videos[0].thumbnail.url*/,
-                videoUrl: action.payload[1].url,
-                video: action.payload[1],
+                title: fullTitle[0],
+                subtitle: fullTitle[1],
+                videoUrl: action.payload.videos[0][1].url,
+                video: action.payload.videos[0][1],
+                shareUrl: action.payload.url,
                 hasError: false,
                 errorMessage: null
-            }); 
+             };
         }
         return state;
        
 
         case FETCHING_WEEKLY_UPDATE_VIDEO_FAIL:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 isFetching: false,
-                thumbnailUrl: null,
-                videoUrl: null,
-                video: null,
                 hasError: true,
                 errorMessage: action.err
-            });
+             };
 
     
         default:
