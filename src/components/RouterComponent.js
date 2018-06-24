@@ -7,7 +7,8 @@ import {
   Button,
   Image,
   Text,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Dimensions
 } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
@@ -34,6 +35,9 @@ const customTextProps = {
   }
 };
 
+const windowWidth = Dimensions.get('window').width;
+
+
 class RouterComponent extends Component {
   constructor() {
     super();
@@ -56,17 +60,16 @@ class RouterComponent extends Component {
             key="root"
             navigationBarTitleImage={Images.logo}
             navigationBarTitleImageStyle={{
-              resizeMode: 'contain',
-              width: 180,
-              marginTop: 8
+              resizeMode: 'center',
+              width: windowWidth,
+              height: 21,
+              marginTop: 8,
             }}
             navigationBarStyle={{
               backgroundColor: 'white',
-              // paddingLeft: 8,
               shadowOpacity: 0,
-              //justifyContent: 'center',
               elevation: 0,
-              borderBottomColor: 'transparent'
+              borderBottomColor: 'transparent',
             }}
             renderBackButton={() => {
               return (
