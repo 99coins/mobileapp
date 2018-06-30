@@ -8,7 +8,8 @@ import {
   Image,
   Text,
   TouchableWithoutFeedback,
-  Dimensions
+  Dimensions,
+  Platform
 } from 'react-native';
 import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
 import Images from '@assets/images.js';
@@ -60,10 +61,10 @@ class RouterComponent extends Component {
             key="root"
             navigationBarTitleImage={Images.logo}
             navigationBarTitleImageStyle={{
-              resizeMode: 'center',
+              resizeMode: Platform.OS === 'android' ? 'center' : 'contain',
               width: windowWidth,
               height: 21,
-              marginTop: 8,
+              top: 8
             }}
             navigationBarStyle={{
               backgroundColor: 'white',
