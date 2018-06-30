@@ -7,7 +7,7 @@ import Colors from '@assets/colors.js';
 import { Actions } from 'react-native-router-flux';
 
 //import fetchCoinList from './../../../Actions/FetchPriceData';
-import { fetchCoinList, getCachedCoinList } from './../../../Actions/FetchCoinList';
+import { fetchCoinList, getCachedCoinList, setSearchInput } from './../../../Actions/FetchCoinList';
 
 import firebase from 'react-native-firebase';
 
@@ -24,8 +24,7 @@ class CoinPairList extends Component {
 //this.props.fetchPriceData();
     }
     shouldComponentUpdate(nextProps) {
-        //return (this.props.coinList.data !== nextProps.coinList.data) || (this.props.priceData.data !== nextProps.priceData.data);
-        return true;
+        return (this.props.coinList.data !== nextProps.coinList.data || this.props.coinList.searchInput !== nextProps.coinList.searchInput);
     }
     onRefresh() {
     // this.props.fetchPriceData();
@@ -78,10 +77,28 @@ class CoinPairList extends Component {
             />
         );
     };
+    renderHeader = () => {
+        return (
+            <CoinListHeader
+                onChangeText={(text) => {
+                    this.props.setSearchInput(text);
+                    //console.log('onChangeText');
+                }}
+            />
+        );
+    };
     render() {
         console.log('RENDERING COIN LIST');
         const { coinList } = this.props;
-
+        let coinsToShow;
+        if (coinList.searchInput !== null) {
+            const input = coinList.searchInput.toLowerCase();
+            coinsToShow = coinList.data.filter(item => {
+                return item.name.toLowerCase().includes(input) || item.symbol.toLowerCase().includes(input);
+            });
+        } else {
+          coinsToShow = coinList.data;
+        }
         return (
           <FlatList
             onRefresh={() => {
@@ -89,11 +106,11 @@ class CoinPairList extends Component {
                 this.onRefresh();
             }}
             refreshing={coinList.isFetching}
-            data={coinList.data}
+            data={coinsToShow}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
             ItemSeparatorComponent={this.renderSeparator}
-            ListHeaderComponent={CoinListHeader}
+            ListHeaderComponent={this.renderHeader}
             getItemLayout={(data, index) => (
                  { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
             )}
@@ -108,4 +125,4 @@ function mapStateToProps(state) {
         coinList: state.coinList
     };
 }
-export default connect(mapStateToProps, { fetchCoinList, getCachedCoinList })(CoinPairList);
+export default connect(mapStateToProps, { fetchCoinList, getCachedCoinList, setSearchInput })(CoinPairList);

@@ -118,7 +118,7 @@ class RouterComponent extends Component {
 
               {/* Tab and it's scenes */}
               <Scene
-                key="Price"
+                key="Coins"
                 component={Price}
                 onEnter={() => {
                   console.log('on enter prices');

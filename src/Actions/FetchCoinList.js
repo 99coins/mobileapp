@@ -8,6 +8,7 @@ import {
     CACHE_COIN_LIST_SUCCESS,
     GET_CACHED_COIN_LIST,
     GET_CACHED_COIN_LIST_SUCCESS,
+    SET_COIN_SEARCH_INPUT
 
 } from './../Utils/ActionTypes';
 import { AsyncStorage } from 'react-native';
@@ -52,6 +53,12 @@ export const receiveData = (value) => {
   return {
     type: GET_CACHED_COIN_LIST_SUCCESS,
     payload: value || '',
+  };
+};
+
+export const setSearchInput = (text) => {
+  return dispatch => {
+    dispatch({ type: SET_COIN_SEARCH_INPUT, payload: text && text.length > 1 ? text : null });
   };
 };
 

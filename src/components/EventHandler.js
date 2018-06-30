@@ -42,7 +42,7 @@ class EventHandler extends Component {
       console.log('App has come to the foreground!');
       console.log('Currentscene:', Actions.currentScene);
       this.props.getUnreadCount();
-      if (Actions.currentScene === 'Price') {
+      if (Actions.currentScene === 'Coins') {
         this.props.fetchPriceData();
       } else if (Actions.currentScene === 'News') {
         this.props.fetchNewsList();
