@@ -44,7 +44,7 @@ class NewsItemList extends Component {
     onShareVideo(title, url) {
         firebase.analytics().logEvent('click_share_weekly_video', { url });
         Share.share({
-            message: `${url}\n\nYou can download 99Bitcoins at: https://tg55j.app.goo.gl/99bit`,
+            message: `${url}\n\nYou can download the 99 Bitcoins app at: https://tg55j.app.goo.gl/99bit`,
             url,
             title
         }, {
@@ -80,7 +80,7 @@ class NewsItemList extends Component {
                                 this.setState({ showVideoTitle: false });
                             }}
                             onSharePress={() => {
-                                this.onShareVideo(weeklyVideo.shareUrl, weeklyVideo.fulltitle);
+                                this.onShareVideo(weeklyVideo.fullTitle, weeklyVideo.shareUrl);
                             }}
                             onEnd={() => {
                                 firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
