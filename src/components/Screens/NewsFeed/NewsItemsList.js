@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, Text } from 'react-native';
+import { FlatList, Dimensions, View, Text, Share } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
@@ -41,90 +41,65 @@ class NewsItemList extends Component {
             console.log('touch disabled');
         }
     }
+    onShareVideo(title, url) {
+        firebase.analytics().logEvent('click_share_weekly_video', { url });
+        Share.share({
+            message: `${url}\n\nYou can download 99Bitcoins at: https://tg55j.app.goo.gl/99bit`,
+            url,
+            title
+        }, {
+                // Android only:
+                dialogTitle: url,
+                // iOS only:
+            });
+    }
     fetchNews() {
         console.log('onRefresh news');
         this.props.fetchNewsList();
         this.props.fetchWeeklyUpdateVideo();
     }
     keyExtractor = (item) => item.guid;
-    _renderVideo = memoize((video) =>
-                  <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
-                    <View>
-                    <VideoPlayer
-                        endWithThumbnail
-                        thumbnail={Images.weeklyVideoThumb}
-                        video={{ uri: video.videoUrl }}
-                        videoWidth={windowWidth - 32}
-                        videoHeight={(windowWidth - 32) / 1.78}
-                        duration={video.video.duration}
-                        ref={(r) => { this.player = r; }}
-                        resizeMode={'stretch'}
-                        onPlayPress={() => {
-                            console.log('onPlayPress');
-                            firebase.analytics().logEvent('click_play_weekly_video', { url: video.videoUrl });
-                            this.setState({ showVideoTitle: false });
-                        }}
-                        onEnd={() => {
-                            firebase.analytics().logEvent('weekly_video_end', { url: video.videoUrl });
-                        }}
-                        style={{ borderRadius: 4 }}
-                        customStyles={{
-                            thumbnail: {
-                            overflow: 'hidden'
-                            }
-                         }}
-                    />
-                    { this.state.showVideoTitle && 
-                         <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
-                         <Text style={{ color: 'blue', fontWeight: 'bold', fontSize: 16 }}>{video.title}</Text>
-                         <Text style={{ color: 'white', fontSize: 12, width: 140 }}>ALL YOUR BITCOIN NEWS IN 99 SECONDS</Text>
-                        </View>
-                    }
-                    </View>
-              </View>
-    );
 
     renderVideo = () => {
         const { weeklyVideo } = this.props;
         if (weeklyVideo.video) {
-            console.log('VIDEO FOUND', this._renderVideo(weeklyVideo));
-            //return this._renderVideo(weeklyVideo);
-
-
             return (
-                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
+                <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
                     <View>
-                    <VideoPlayer
-                        endWithThumbnail
-                        thumbnail={Images.weeklyVideoThumb}
-                        video={{ uri: weeklyVideo.videoUrl }}
-                        videoWidth={windowWidth - 32}
-                        videoHeight={(windowWidth - 32) / 1.78}
-                        duration={weeklyVideo.video.duration}
-                        ref={(r) => { this.player = r; }}
-                        resizeMode={'stretch'}
-                        onStart={() => {
-                            firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
-                            this.setState({ showVideoTitle: false });
-                         }}
-                        onEnd={() => {
-                            firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
-                        }}
-                        style={{ borderRadius: 4 }}
-                        customStyles={{
-                            thumbnail: {
-                            overflow: 'hidden'
-                            }
-                         }}
-                    />
-                    { this.state.showVideoTitle && 
-                         <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
-                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>{weeklyVideo.title}</Text>
-                         <Text style={{ color: 'white', fontSize: 14, width: 140 }}>{weeklyVideo.subtitle}</Text>
-                        </View>
-                    }
+                        <VideoPlayer
+                            endWithThumbnail
+                            thumbnail={Images.weeklyVideoThumb}
+                            video={{ uri: weeklyVideo.videoUrl }}
+                            videoWidth={windowWidth - 32}
+                            videoHeight={(windowWidth - 32) / 1.78}
+                            duration={weeklyVideo.video.duration}
+                            ref={(r) => { this.player = r; }}
+                            resizeMode={'stretch'}
+                            onStart={() => {
+                                firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
+                                this.setState({ showVideoTitle: false });
+                            }}
+                            onSharePress={() => {
+                                this.onShareVideo(weeklyVideo.shareUrl, weeklyVideo.fulltitle);
+                            }}
+                            onEnd={() => {
+                                firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
+                            }}
+                            style={{ borderRadius: 4 }}
+                            customStyles={{
+                                thumbnail: {
+                                    overflow: 'hidden'
+                                }
+                            }}
+                        />
+                        {this.state.showVideoTitle &&
+                            <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
+                                <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>{weeklyVideo.title}</Text>
+                                <Text style={{ color: 'white', fontSize: 14, width: 140 }}>{weeklyVideo.subtitle}</Text>
+                            </View>
+                        }
                     </View>
-              </View>
+                </View>
 
             );
         }

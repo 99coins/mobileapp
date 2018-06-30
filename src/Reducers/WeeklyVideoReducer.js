@@ -9,6 +9,7 @@ const initialState = {
     thumbnailUrl: null,
     videoUrl: null,
     video: null,
+    fullTitle: null,
     title: null,
     subtitle: null,
     hasError: false,
@@ -31,6 +32,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
+                fullTitle: action.payload.title,
                 title: fullTitle[0],
                 subtitle: fullTitle[1],
                 videoUrl: action.payload.videos[0][1].url,
