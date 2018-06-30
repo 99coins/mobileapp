@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="53px" viewBox="0 0 38 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_ios_export@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iOS-icon" transform="translate(-345.000000, -310.000000)">
+            <g id="icon_ios_export" transform="translate(328.000000, 300.000000)">
+                <rect id="@bounds" x="0" y="0" width="72" height="72"></rect>
+                <path d="M31,25 L31,27 L19,27 L19,61 L53,61 L53,27 L41,27 L41,25 L55,25 L55,63 L17,63 L17,25 L31,25 Z" id="Rectangle-57" fill="#007AFF"></path>
+                <path d="M37,13.9811153 L37,44 L35,44 L35,13.9835666 L29.1403198,19.8540039 L27.6584473,18.3562622 L36,10.0024503 L36,10 L36.0012234,10.0012252 L36.0024467,10 L36.0028242,10.0028284 L44.3439995,18.3562622 L42.8621269,19.8540039 L37,13.9811153 Z" id="Rectangle-57" fill="#007AFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
