@@ -44,7 +44,8 @@ const styles = {
         paddingRight: 16
     },
     searchIcon: {
-        position: 'absolute'
+        position: 'absolute',
+        padding: 2
     },
     search: {      
         flexDirection: 'row',
