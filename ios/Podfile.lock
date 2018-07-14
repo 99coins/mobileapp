@@ -15,17 +15,32 @@ PODS:
   - boost/preprocessor-includes (1.59.0)
   - boost/shared_ptr-includes (1.59.0)
   - boost/string_algorithms-includes (1.59.0)
+  - BoringSSL (10.0.5):
+    - BoringSSL/Implementation (= 10.0.5)
+    - BoringSSL/Interface (= 10.0.5)
+  - BoringSSL/Implementation (10.0.5):
+    - BoringSSL/Interface (= 10.0.5)
+  - BoringSSL/Interface (10.0.5)
   - DoubleConversion (1.1.5)
   - Firebase/Core (4.13.0):
     - FirebaseAnalytics (= 4.2.0)
     - FirebaseCore (= 4.0.20)
+  - Firebase/Firestore (4.13.0):
+    - Firebase/Core
+    - FirebaseFirestore (= 0.11.0)
   - FirebaseAnalytics (4.2.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.20):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseFirestore (0.11.0):
+    - FirebaseAnalytics (~> 4.1)
+    - FirebaseCore (~> 4.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - Protobuf (~> 3.5)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
   - Folly (2016.09.26.00):
@@ -33,14 +48,37 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.4)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - gRPC (1.13.0):
+    - gRPC-RxLibrary (= 1.13.0)
+    - gRPC/Main (= 1.13.0)
+  - gRPC-Core (1.13.0):
+    - gRPC-Core/Implementation (= 1.13.0)
+    - gRPC-Core/Interface (= 1.13.0)
+  - gRPC-Core/Implementation (1.13.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core/Interface (= 1.13.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.13.0)
+  - gRPC-ProtoRPC (1.13.0):
+    - gRPC-ProtoRPC/Main (= 1.13.0)
+  - gRPC-ProtoRPC/Main (1.13.0):
+    - gRPC (= 1.13.0)
+    - gRPC-RxLibrary (= 1.13.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.13.0)
+  - gRPC/Main (1.13.0):
+    - gRPC-Core (= 1.13.0)
+    - gRPC-RxLibrary (= 1.13.0)
+  - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Protobuf (3.6.0)
   - React (0.52.3):
     - React/Core (= 0.52.3)
   - react-native-smooch (1.0.1):
@@ -83,13 +121,12 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNFirebase (3.3.1):
-    - React
-  - Smooch (6.9.0)
+  - Smooch (6.10.0)
   - yoga (0.52.3.React)
 
 DEPENDENCIES:
-  - Firebase/Core
+  - Firebase/Core (~> 4.13.0)
+  - Firebase/Firestore
   - react-native-smooch (from `../node_modules/react-native-smooch`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -101,37 +138,64 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
-  - RNFirebase (from `../node_modules/react-native-firebase/ios`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - boost
+    - boost-for-react-native
+    - BoringSSL
+    - DoubleConversion
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseFirestore
+    - FirebaseInstanceID
+    - Folly
+    - glog
+    - GoogleToolboxForMac
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
+    - leveldb-library
+    - nanopb
+    - Protobuf
+    - Smooch
 
 EXTERNAL SOURCES:
   React:
-    :path: ../node_modules/react-native
+    :path: "../node_modules/react-native"
   react-native-smooch:
-    :path: ../node_modules/react-native-smooch
-  RNFirebase:
-    :path: ../node_modules/react-native-firebase/ios
+    :path: "../node_modules/react-native-smooch"
   yoga:
-    :path: ../node_modules/react-native/ReactCommon/yoga
+    :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  boost: 61736773165d41c9367246936c0db5cf9352fc7f
+  boost: 30a15ffb6d9aa4646dd3caffc960753f4cb4ca4e
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  BoringSSL: cf3f1793eb6e3c445c4d150456341f149c268a35
   DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
   FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
+  FirebaseFirestore: e92a096ce80c7b4b905d4e9d41dbd944adc9d2a5
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   Folly: 211775e49d8da0ca658aebc8eab89d642935755c
   glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  gRPC: 81b990caa01d7c32605d300c2ffd1b5ba0ef9e49
+  gRPC-Core: a56b086a8ef5ced6f6ba5be5bc0a63fca185015a
+  gRPC-ProtoRPC: 842797fbe05dfcf891afb4a5048e5ccf5f06ef86
+  gRPC-RxLibrary: fa6852f98d6ec0b73c0ec2f6406c26943099d501
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  React: c0dfd2dfc970019d1ae7d48bf24cef530992e079
-  react-native-smooch: b3ccea2c5402cbd27fbb2ebd6c527b8577f522ec
-  RNFirebase: 32fb607a803faf52d99f955db08116ed41cce919
-  Smooch: 0379ea8fe5f5483abee59d476890a6d40568b735
-  yoga: f45a46b966e1eb0c7a532cfd4beec5b97332ba48
+  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  React: 43e97926f429d846050880666de1809e22dd5cc5
+  react-native-smooch: c83ec4fde278bce695e5eea7b247b6ebaf2c2263
+  Smooch: 8e501c62c20ffb66b6dccd89c5a5b0b1eb16ee52
+  yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 25ae2f0547df6cdb6d6a23e0318fa29f334a921a
+PODFILE CHECKSUM: 205f6d8bfc4875ffad8c45f3e9ba310ad1759fe5
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { CRYPTO_COMPARE_BASE_URL } from './../Utils/Constants';
 import {
     FETCHING_NEWS_LIST,
     FETCHING_NEWS_LIST_SUCCESS,

@@ -24,12 +24,10 @@ target 'NNCoins' do
 
   pod 'react-native-smooch', :path => '../node_modules/react-native-smooch'
     
-  pod 'Firebase/Core'
+  pod 'Firebase/Core', '~> 4.13.0'
+
+  pod 'Firebase/Firestore'
   
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-
-  pod 'react-native-google-analytics-bridge', :path => '../node_modules/react-native-google-analytics-bridge'
-
 end
 
 post_install do |installer|

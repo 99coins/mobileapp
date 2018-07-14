@@ -17,6 +17,7 @@ import Colors from '@assets/colors.js';
 import Price from './Screens/Price/Price';
 import CoinPage from './Screens/Coin/CoinPage';
 import NewsFeed from './Screens/NewsFeed/NewsFeed';
+import Lessons from './Screens/Lessons/Lessons';
 import NewsWebView from './Screens/WebView/NewsWebView';
 import ChatForm from './Screens/AMA/ChatForm';
 import ChatButton from './Screens/AMA/ChatButton';
@@ -25,13 +26,14 @@ import EventHandler from './EventHandler';
 import { connect } from 'react-redux';
 import fetchNewsList from '../Actions/FetchNewsList';
 import fetchPriceData from '../Actions/FetchPriceData';
+import fetchLessonList from '../Actions/LessonActions';
 import { getUnreadCount } from '../Actions/ChatActions';
 import firebase from 'react-native-firebase';
 import NavBar from './common/NavBar';
 import { setCustomText } from 'react-native-global-props';
 
-const customTextProps = { 
-  style: { 
+const customTextProps = {
+  style: {
     fontFamily: 'Montserrat'
   }
 };
@@ -127,7 +129,16 @@ class RouterComponent extends Component {
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
                 initial
-
+              />
+              <Scene
+                key="Lessons"
+                component={Lessons}
+                onEnter={() => {
+                  console.log('on enter lessons');
+                  this.props.fetchLessonList();
+                  this.props.getUnreadCount();
+                  firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
+                }}
               />
             </Scene>
             <Scene
@@ -166,4 +177,4 @@ class RouterComponent extends Component {
 }
 
 
-export default connect(null, { fetchNewsList, fetchPriceData, getUnreadCount })(RouterComponent);
+export default connect(null, { fetchNewsList, fetchPriceData, fetchLessonList, getUnreadCount })(RouterComponent);
