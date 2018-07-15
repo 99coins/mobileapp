@@ -57,14 +57,15 @@ class LessonList extends Component {
             })[0];
         const lesson = lessonRaw ? lessonRaw._data : undefined;
         if (lesson !== undefined) {
-            console.log(lesson);
             return (
                 <View style={{ backgroundColor: Colors.gray900 }}>
                     <View>
                         <VideoPlayer
+                            autoplay={false}
                             endWithThumbnail
+                            hideControlsOnStart
                             thumbnail={{ uri: lesson.thumbnail }}
-                            video={{ uri: lesson.video.url }}
+                            video={{ uri: lesson.url }}
                             /* videoWidth={windowWidth - 32}
                             videoHeight={(windowWidth - 32) / 1.78} */
                             ref={(r) => { this.player = r; }}
@@ -128,6 +129,7 @@ class LessonList extends Component {
         console.log('RENDERING NEWS LIST');
         console.log(windowWidth);
         const { lessonList } = this.props;
+
         return (
             <FlatList
                 data={lessonList.data}
