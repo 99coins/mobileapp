@@ -30,6 +30,9 @@ class LessonList extends Component {
     // }
     onPressItem = (id) => {
        this.props.selectLesson(id);
+        if (this.player) {
+          this.player.setState({ isStarted: false });
+       }
     }
     onShareVideo(title, url) {
         firebase.analytics().logEvent('click_share_weekly_video', { url });
@@ -79,13 +82,9 @@ class LessonList extends Component {
                             }}
                             onEnd={() => {
                                 //firebase.analytics().logEvent('lesson_end', { url: weeklyVideo.videoUrl });
+                                console.log('on end');
                             }}
-                            /* style={{ borderRadius: 4 }}
-                            customStyles={{
-                                thumbnail: {
-                                    overflow: 'hidden'
-                                }
-                            }} */
+              
                         />
                         {/* {this.state.showVideoTitle &&
                             <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
@@ -126,7 +125,7 @@ class LessonList extends Component {
     };
 
     render() {
-        console.log('RENDERING NEWS LIST');
+        console.log('RENDERING LESSON LIST');
         console.log(windowWidth);
         const { lessonList } = this.props;
 
@@ -139,10 +138,6 @@ class LessonList extends Component {
                 renderItem={this.renderItem}
                 ListHeaderComponent={this.renderVideo}
                 ItemSeparatorComponent={this.renderSeparator}
-                onRefresh={() => {
-                    firebase.analytics().logEvent('pull_to_refresh_newslist', {});
-                    this.props.fetchLessonList();
-                }}
                 getItemLayout={(data, index) => (
                     { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
                 )}

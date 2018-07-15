@@ -131,11 +131,10 @@ class RouterComponent extends Component {
                 initial
               />
               <Scene
-                key="Lessons"
+                key="Courses"
                 component={Lessons}
                 onEnter={() => {
                   console.log('on enter lessons');
-                  this.props.fetchLessonList();
                   this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
