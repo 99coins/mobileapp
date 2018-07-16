@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 0.2,
     shadowRadius: 16,
+    overflow: 'hidden'  
   }
 });
 

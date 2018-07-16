@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.gray100,
     shadowColor: 'black',
     shadowOpacity: 0.2,
-    shadowRadius: 16,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 0 }
   },
   title: {
     fontSize: 28,
