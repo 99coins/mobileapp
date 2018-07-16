@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
   image: {
     width: 96,
     height: 96,
-    borderRadius: 4
+    borderRadius: 4,
+    overflow: 'hidden'
   },
   textContainer: {
     flex: 1,
