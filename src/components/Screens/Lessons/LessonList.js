@@ -69,7 +69,7 @@ class LessonList extends Component {
                     onChangeQuality={e => this.setState({ quality: e.quality })}
                     onError={e => this.setState({ error: e.error })}
 
-                    style={{ alignSelf: 'stretch', height: 210 }}
+                    style={{ alignSelf: 'stretch', height: windowWidth * 0.5625 }}
                     showinfo={false}
                     modestbranding
                 />
