@@ -165,6 +165,16 @@ dependencies {
     compile(project(':react-native-firebase')) {
         transitive = false
     }
+    compile project(':react-native-youtube')
+    compile project(':react-native-video')
+    compile project(':react-native-vector-icons')
+    compile project(':react-native-smooch')
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
     compile(project(':react-native-firebase')) {
         transitive = false
     }

@@ -1,6 +1,7 @@
 package com.nncoins;
 
 import com.facebook.react.ReactActivity;
+import io.invertase.firebase.RNFirebasePackage;
 
 public class MainActivity extends ReactActivity {
 
