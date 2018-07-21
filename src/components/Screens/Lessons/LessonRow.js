@@ -52,11 +52,10 @@ class LessonRow extends Component {
           />
           <View style={styles.textContainer}>
             <View style={styles.firstLine}>
-              <Text numberOfLines={3} style={styles.titleStyle}>{this.props.item.title}</Text>
+              <Text style={styles.titleStyle}>{this.props.item.title}</Text>
             </View>
             <View style={styles.secondLine}>
-             {/* <Text style={styles.sourceStyle}>{capitalizeFirstLetter(this.props.item.source)}</Text>
-              <Text style={[styles.dateStyle, this.props.item.sponsored && styles.sponsoredSource]}>{this.props.item.sponsored ? 'Sponsored' : displayDate}</Text> */}
+              <Text style={styles.sourceStyle}>{this.props.item.duration}</Text>
             </View>
           </View>
         </View>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingTop: 16,
     paddingBottom: 16,
-    paddingRight: 16,
+    paddingRight: 20,
     backgroundColor: Colors.gray50
   },
   selected: {
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 56,
-    borderRadius: 4,
+    borderRadius: 2,
     borderWidth: 1,
     borderColor: Colors.gray300,
     overflow: 'hidden'

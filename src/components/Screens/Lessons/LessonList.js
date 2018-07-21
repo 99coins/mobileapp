@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, Text, Share } from 'react-native';
+import { FlatList, Dimensions, View, Share } from 'react-native';
 import { connect } from 'react-redux';
 import LessonRow from './LessonRow';
-import { Actions } from 'react-native-router-flux';
-import VideoPlayer from 'react-native-video-player';
 import YouTube from 'react-native-youtube';
-import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
-import Images from '@assets/images.js';
-import moment from 'moment';
-import { capitalizeFirstLetter } from '../../common';
 import fetchLessonList, { selectLesson } from './../../../Actions/LessonActions';
 
 const windowWidth = Dimensions.get('window').width;
@@ -30,9 +24,6 @@ class LessonList extends Component {
     // }
     onPressItem = (id) => {
         this.props.selectLesson(id);
-        if (this.player) {
-            this.player.setState({ isStarted: false });
-        }
     }
     onShareVideo(title, url) {
         firebase.analytics().logEvent('click_share_weekly_video', { url });
