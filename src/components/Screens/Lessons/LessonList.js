@@ -13,7 +13,6 @@ import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
 import fetchLessonList, { selectLesson } from './../../../Actions/LessonActions';
 
-
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
@@ -70,7 +69,7 @@ class LessonList extends Component {
                     onChangeQuality={e => this.setState({ quality: e.quality })}
                     onError={e => this.setState({ error: e.error })}
 
-                    style={{ alignSelf: 'stretch', height: 300 }}
+                    style={{ alignSelf: 'stretch', height: 210 }}
                     showinfo={false}
                     modestbranding
                 />
@@ -110,18 +109,23 @@ class LessonList extends Component {
         const { lessonList } = this.props;
 
         return (
+            <View style={{ flexDirection: 'column' }}>
+                {this.renderVideo()}
             <FlatList
                 data={lessonList.data}
-                extraData={this.state}
+                //extraData={this.state}
                 keyExtractor={this.keyExtractor}
                 refreshing={false}
                 renderItem={this.renderItem}
-                ListHeaderComponent={this.renderVideo}
+                //ListHeaderComponent={this.renderVideo}
+                ListFooterComponent={() => <View style={{ height: 211 }} />}
                 ItemSeparatorComponent={this.renderSeparator}
                 getItemLayout={(data, index) => (
                     { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
                 )}
             />
+            </View>
+     
         );
     }
 }

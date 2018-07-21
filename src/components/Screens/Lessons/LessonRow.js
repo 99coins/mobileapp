@@ -42,12 +42,13 @@ class LessonRow extends Component {
         <View style={[styles.container, this.props.selected && styles.selected]}>
           <Image
             style={styles.image}
-            source={{ uri: this.props.item.thumbnail }}
+            source={{ uri: `https://img.youtube.com/vi/${this.props.item.youtubeVideoId}/hqdefault.jpg` }}
             cache='force-cache'
             indicator={Progress.CircleSnail}
             indicatorProps={{
               color: Colors.themeRed,
             }}
+            //resizeMode='contain'
           />
           <View style={styles.textContainer}>
             <View style={styles.firstLine}>
@@ -69,7 +70,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
-    height: 128,
+    height: 88,
     width: windowWidth,
     flex: 1,
     flexDirection: 'row',
@@ -83,8 +84,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.gray100
   },
   image: {
-    width: 96,
-    height: 96,
+    width: 100,
+    height: 56,
     borderRadius: 4,
     borderWidth: 1,
     borderColor: Colors.gray300,
