@@ -7,7 +7,7 @@ export const COINGECKO_BASE_URL = 'https://api.coingecko.com/api/v3';
 export const COINGECKO_BASE_IMAGE_URL = 'https://assets.coingecko.com/coins/images';
 export const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 export const COURSES_PLAYLIST_ID = 'PLU52pNodXIGdM6XDgHVG7DsPytlsrR_6b';
-export const YOUTUBE_API_KEY = 'AIzaSyB6zDZOurtOHuB3tJMMJHJ5w8m4t0w4oBw';
+export const YOUTUBE = 'AIzaSyB6zDZOurtOHuB3tJMMJHJ5w8m4t0w4oBw';
 
 
 

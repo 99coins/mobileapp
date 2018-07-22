@@ -8,7 +8,7 @@ import {
   FETCHING_LESSONS_DURATION_SUCCESS,
   FETCHING_LESSONS_DURATION_FAIL
 } from './../Utils/ActionTypes';
-import { YOUTUBE_BASE_URL, COURSES_PLAYLIST_ID, YOUTUBE_API_KEY } from './../Utils/Constants';
+import { YOUTUBE_BASE_URL, COURSES_PLAYLIST_ID, YOUTUBE } from './../Utils/Constants';
 
 
 
@@ -16,7 +16,7 @@ export default function fetchLessonList() {
   return (dispatch, getState) => {
     dispatch({ type: FETCHING_LESSONS });
 
-    return axios.get(`${YOUTUBE_BASE_URL}/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=${COURSES_PLAYLIST_ID}&key=${YOUTUBE_API_KEY}`)
+    return axios.get(`${YOUTUBE_BASE_URL}/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=${COURSES_PLAYLIST_ID}&key=${YOUTUBE}`)
       .then(res => {
         dispatch({ type: FETCHING_LESSONS_SUCCESS, payload: res.data });
         const lessonList = getState().lessonList;
@@ -43,7 +43,7 @@ export function getLessonsDuration() {
            }
     }
 
-    return axios.get(`${YOUTUBE_BASE_URL}/videos?part=contentDetails&id=${lessonIds}&key=${YOUTUBE_API_KEY}`)
+    return axios.get(`${YOUTUBE_BASE_URL}/videos?part=contentDetails&id=${lessonIds}&key=${YOUTUBE}`)
       .then(res => {
         dispatch({ type: FETCHING_LESSONS_DURATION_SUCCESS, payload: res.data });
       })

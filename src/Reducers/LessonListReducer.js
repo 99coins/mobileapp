@@ -49,7 +49,6 @@ export default function (state = initialState, action) {
         case FETCHING_LESSONS_DURATION_SUCCESS:
             {
                 const updatedData = state.data;
-                console.log(updatedData.items);
                 const updatedItems = action.payload.items;
                 updatedItems.forEach((u) => {
                     const item = updatedData.items.filter(i => {
