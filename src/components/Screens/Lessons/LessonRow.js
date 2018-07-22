@@ -9,10 +9,10 @@ import Image from 'react-native-image-progress';
 
 class LessonRow extends Component {
 
-  shouldComponentUpdate(nextProps) {
-    const update = (this.props.id !== nextProps.id || this.props.selected !== nextProps.selected);
-    return update;
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   const update = (this.props.id !== nextProps.id || this.props.selected !== nextProps.selected || this.props.item.contentDetails.duration !== nextProps.item.contentDetails.duration);
+  //   return update;
+  // }
 
   stripHtmlTags = (str) => {
     if ((str === null) || (str === '')) {
@@ -42,7 +42,7 @@ class LessonRow extends Component {
         <View style={[styles.container, this.props.selected && styles.selected]}>
           <Image
             style={styles.image}
-            source={{ uri: `https://img.youtube.com/vi/${this.props.item.youtubeVideoId}/hqdefault.jpg` }}
+            source={{ uri: this.props.item.snippet.thumbnails.default.url }}
             cache='force-cache'
             indicator={Progress.CircleSnail}
             indicatorProps={{
@@ -52,10 +52,10 @@ class LessonRow extends Component {
           />
           <View style={styles.textContainer}>
             <View style={styles.firstLine}>
-              <Text style={styles.titleStyle}>{this.props.item.title}</Text>
+              <Text numberOfLines={1} style={styles.titleStyle}>{this.props.item.snippet.title}</Text>
             </View>
             <View style={styles.secondLine}>
-              <Text style={styles.sourceStyle}>{this.props.item.duration}</Text>
+              <Text style={styles.sourceStyle}>{moment.duration(this.props.item.contentDetails.duration).humanize()}</Text>
             </View>
           </View>
         </View>

@@ -5,6 +5,11 @@ export const NNBITCOINS_BASE_URL = 'https://99bitcoins.com/wp-json/99btc/v1';
 export const NNBITCOINS_PRICE_BASE_URL = 'https://price.99bitcoins.com';
 export const COINGECKO_BASE_URL = 'https://api.coingecko.com/api/v3';
 export const COINGECKO_BASE_IMAGE_URL = 'https://assets.coingecko.com/coins/images';
+export const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
+export const COURSES_PLAYLIST_ID = 'PLwZ46xRXD2QGMQoCSy0Yx5yR89PILSiq1';
+export const YOUTUBE_API_KEY = 'AIzaSyB6zDZOurtOHuB3tJMMJHJ5w8m4t0w4oBw';
+
+
 
 // -----------------------------------------------------------------------------
 // Constants

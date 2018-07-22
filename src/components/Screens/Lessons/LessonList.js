@@ -46,14 +46,18 @@ class LessonList extends Component {
 
     renderVideo = () => {
         const { lessonList } = this.props;
-        const lessonRaw = lessonList.data.filter(item => {
+
+        if (lessonList.data.items === undefined) {
+            return;
+        }
+
+        const lesson = lessonList.data.items.filter(item => {
             return item.id === lessonList.selectedItem;
         })[0];
-        const lesson = lessonRaw ? lessonRaw._data : undefined;
         if (lesson !== undefined) {
             return (
                 <YouTube
-                    videoId={lesson.youtubeVideoId}  // The YouTube video ID
+                    videoId={lesson.contentDetails.videoId}  // The YouTube video ID
                     play            // control playback of video with true/false
                     onReady={e => this.setState({ isReady: true })}
                     onChangeState={e => this.setState({ status: e.state })}
@@ -75,7 +79,7 @@ class LessonList extends Component {
         return (
             <LessonRow
                 id={item.id}
-                item={item._data}
+                item={item}
                 onPressItem={this.onPressItem}
                 selected={selected}
             />
@@ -103,7 +107,7 @@ class LessonList extends Component {
             <View style={{ flexDirection: 'column' }}>
                 {this.renderVideo()}
             <FlatList
-                data={lessonList.data}
+                data={lessonList.data.items}
                 //extraData={this.state}
                 keyExtractor={this.keyExtractor}
                 refreshing={false}
