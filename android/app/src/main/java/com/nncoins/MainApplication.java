@@ -8,6 +8,16 @@ import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import io.invertase.firebase.RNFirebasePackage;
+import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
+import com.brentvatne.react.ReactVideoPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.smooch.rnsmooch.ReactNativeSmoochPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
+import com.brentvatne.react.ReactVideoPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.smooch.rnsmooch.ReactNativeSmoochPackage;
+import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -41,6 +51,16 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeYouTube(),
+            new ReactVideoPackage(),
+            new VectorIconsPackage(),
+            new ReactNativeSmoochPackage(),
+            new RNFirebasePackage(),
+            new ReactNativeYouTube(),
+            new ReactVideoPackage(),
+            new VectorIconsPackage(),
+            new ReactNativeSmoochPackage(),
+            new RNFirebasePackage(),
             new ReactNativeYouTube(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),

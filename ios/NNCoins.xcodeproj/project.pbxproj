@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0038A7D9B16844729F3FD84C /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A63BC560D01645D5AF108D70 /* libRCTYouTube.a */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
