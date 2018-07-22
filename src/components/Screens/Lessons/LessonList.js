@@ -11,37 +11,13 @@ const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
 class LessonList extends Component {
-    state = { disableTouch: false };
     componentWillMount() {
         console.log('componentWillMount news');
         this.props.fetchLessonList();
     }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.state.showVideoTitle !== nextState.showVideoTitle);
-    //     console.log('ShoulUpdateLessonList', shouldUpdate);
-    //     return shouldUpdate;
-    // }
     onPressItem = (id) => {
         this.props.selectLesson(id);
     }
-    onShareVideo(title, url) {
-        firebase.analytics().logEvent('click_share_weekly_video', { url });
-        Share.share({
-            message: `${url}\n\nYou can download the 99 Bitcoins app at: https://tg55j.app.goo.gl/99bit`,
-            url,
-            title
-        }, {
-                // Android only:
-                dialogTitle: url,
-                // iOS only:
-            });
-    }
-    // fetchNews() {
-    //     console.log('onRefresh news');
-    //     this.props.fetchNewsList();
-    //     this.props.fetchWeeklyUpdateVideo();
-    // }
     keyExtractor = (item) => item.id;
 
     renderVideo = () => {
@@ -59,10 +35,10 @@ class LessonList extends Component {
                 <YouTube
                     videoId={lesson.contentDetails.videoId}  // The YouTube video ID
                     play            // control playback of video with true/false
-                    onReady={e => this.setState({ isReady: true })}
-                    onChangeState={e => this.setState({ status: e.state })}
+                    //onReady={e => this.player}
+                    /* onChangeState={e => this.setState({ status: e.state })}
                     onChangeQuality={e => this.setState({ quality: e.quality })}
-                    onError={e => this.setState({ error: e.error })}
+                    onError={e => this.setState({ error: e.error })} */
 
                     style={{ alignSelf: 'stretch', height: windowWidth * 0.5625 }}
                     showinfo={false}
@@ -85,6 +61,10 @@ class LessonList extends Component {
             />
         );
     }
+
+    // stopVideo = () => {
+    //     this.setState({ status: e.state }
+    // }
     renderSeparator = () => {
         return (
             <View
