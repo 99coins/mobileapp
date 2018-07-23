@@ -5,8 +5,8 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
-		0038A7D9B16844729F3FD84C /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A63BC560D01645D5AF108D70 /* libRCTYouTube.a */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
@@ -48,6 +48,7 @@
 		153D007B20CD30AF008DB688 /* Montserrat-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 153D005620CD30AF008DB688 /* Montserrat-SemiBoldItalic.otf */; };
 		15650B4A1FD5DEA800B35161 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15650B291FD5DE7200B35161 /* libART.a */; };
 		1568A45020FA273700619EB7 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1568A40720FA088200619EB7 /* libRNFirebase.a */; };
+		157587B02104C9A2004FFCEC /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1578AD401F3DC7DC0026F7E7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD3E1F3DC7DC0026F7E7 /* Crashlytics.framework */; };
 		1578AD411F3DC7DC0026F7E7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1578AD3F1F3DC7DC0026F7E7 /* Fabric.framework */; };
 		15A8C8AD208A0A8900162FA8 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -470,8 +471,8 @@
 				151C17BC200D399300FE40AF /* libRCTVideo.a in Frameworks */,
 				151C1790200D355400FE40AF /* libRNVectorIcons.a in Frameworks */,
 				66EFEC6CBD65833735C8BA63 /* libPods-NNCoins.a in Frameworks */,
+				157587B02104C9A2004FFCEC /* libReact.a in Frameworks */,
 				1568A45020FA273700619EB7 /* libRNFirebase.a in Frameworks */,
-				0038A7D9B16844729F3FD84C /* libRCTYouTube.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1295,11 +1296,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NNCoins/Pods-NNCoins-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-youtube/assets/YTPlayerView-iframe-player.html",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YTPlayerView-iframe-player.html",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1390,9 +1391,6 @@
 					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
@@ -1402,7 +1400,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
 					"\"$(SRCROOT)/../node_modules/react-native/React\"",
-					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
@@ -1444,9 +1441,6 @@
 					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
@@ -1456,7 +1450,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
 					"\"$(SRCROOT)/../node_modules/react-native/React\"",
-					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
@@ -1534,9 +1527,6 @@
 					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
@@ -1546,7 +1536,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
 					"\"$(SRCROOT)/../node_modules/react-native/React\"",
-					"\"$(SRCROOT)/NNCoins\"",
 					"\"$(SRCROOT)/NNCoins\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
