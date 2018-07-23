@@ -6,7 +6,7 @@ import YouTube from 'react-native-youtube';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
 import fetchLessonList, { selectLesson, playSelectedLesson } from './../../../Actions/LessonActions';
-
+import { YOUTUBE } from './../../../Utils/Constants';
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
@@ -38,6 +38,7 @@ class LessonList extends Component {
                     ref={component => {
                         this.youTubeRef = component;
                     }}
+                    apiKey={YOUTUBE}
                     videoId={lesson.contentDetails.videoId}  // The YouTube video ID
                     play={this.props.lessonList.playSelected}           // control playback of video with true/false
                     style={{ alignSelf: 'stretch', height: windowWidth * 0.5625 }}

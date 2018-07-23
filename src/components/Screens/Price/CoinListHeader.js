@@ -20,6 +20,7 @@ const CoinListHeader = (props) => {
                         props.onChangeText(text);
                     }}
                     returnKeyType="done"
+                    underlineColorAndroid='transparent'
                 //autoFocus
                 />
             </View>
@@ -35,7 +36,7 @@ const CoinListHeader = (props) => {
 
 const styles = {
     container: {
-        height: 40,
+        height: 44,
         backgroundColor: Colors.gray50,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -50,7 +51,7 @@ const styles = {
     search: {      
         flexDirection: 'row',
         backgroundColor: Colors.gray100,
-        height: 24,
+        height: 34,
         width: 120,
         alignItems: 'center',
         borderRadius: 4
@@ -64,8 +65,8 @@ const styles = {
     inputStyle: {
         fontSize: 12,
         fontWeight: '400',
-        paddingLeft: 24,
-        //alignSelf: 'flex-end'
+        width: 120,
+        paddingLeft: 24
     },
     price: {
         fontSize: 10,
