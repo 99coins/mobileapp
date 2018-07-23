@@ -6,7 +6,8 @@ import {
   SELECT_LESSON,
   FETCHING_LESSONS_DURATION,
   FETCHING_LESSONS_DURATION_SUCCESS,
-  FETCHING_LESSONS_DURATION_FAIL
+  FETCHING_LESSONS_DURATION_FAIL,
+  PLAY_SELECTED_LESSON
 } from './../Utils/ActionTypes';
 import { YOUTUBE_BASE_URL, COURSES_PLAYLIST_ID, YOUTUBE } from './../Utils/Constants';
 
@@ -56,5 +57,11 @@ export function getLessonsDuration() {
   export const selectLesson = (id) => {
     return dispatch => {
       dispatch({ type: SELECT_LESSON, payload: id });
+    };
+  };
+
+  export const playSelectedLesson = (shouldPlay) => {
+    return dispatch => {
+      dispatch({ type: PLAY_SELECTED_LESSON, payload: shouldPlay });
     };
   };

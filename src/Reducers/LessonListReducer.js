@@ -3,7 +3,8 @@ import {
     FETCHING_LESSONS_SUCCESS,
     FETCHING_LESSONS_FAIL,
     FETCHING_LESSONS_DURATION_SUCCESS,
-    SELECT_LESSON
+    SELECT_LESSON,
+    PLAY_SELECTED_LESSON
 } from './../Utils/ActionTypes';
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
     data: [],
     hasError: false,
     errorMessage: null,
-    selectedItem: null
+    selectedItem: null,
+    playSelected: false
 };
 
 export default function (state = initialState, action) {
@@ -36,6 +38,11 @@ export default function (state = initialState, action) {
                 ...state,
                 selectedItem: action.payload,
             };
+        case PLAY_SELECTED_LESSON:
+            return {
+                ...state,
+                playSelected: action.payload,
+            };
 
         case FETCHING_LESSONS_FAIL:
             return {
@@ -54,9 +61,6 @@ export default function (state = initialState, action) {
                     const item = updatedData.items.filter(i => {
                         return u.id === i.contentDetails.videoId;
                     })[0];
-                    console.log(u);
-                    console.log(item);
-
                     item.contentDetails.duration = u.contentDetails.duration;
                 });
                 return {

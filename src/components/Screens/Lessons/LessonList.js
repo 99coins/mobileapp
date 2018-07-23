@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, Share } from 'react-native';
+import { FlatList, Dimensions, View, Share, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import LessonRow from './LessonRow';
 import YouTube from 'react-native-youtube';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
-import fetchLessonList, { selectLesson } from './../../../Actions/LessonActions';
+import fetchLessonList, { selectLesson, playSelectedLesson } from './../../../Actions/LessonActions';
 
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
 class LessonList extends Component {
     componentWillMount() {
-        console.log('componentWillMount news');
+        console.log('componentWillMount lesson list');
         this.props.fetchLessonList();
     }
     onPressItem = (id) => {
@@ -21,6 +21,7 @@ class LessonList extends Component {
     keyExtractor = (item) => item.id;
 
     renderVideo = () => {
+
         const { lessonList } = this.props;
 
         if (lessonList.data.items === undefined) {
@@ -31,15 +32,14 @@ class LessonList extends Component {
             return item.id === lessonList.selectedItem;
         })[0];
         if (lesson !== undefined) {
+            console.log('rendering video', this.props.lessonList.playSelected);
             return (
                 <YouTube
+                    ref={component => {
+                        this.youTubeRef = component;
+                    }}
                     videoId={lesson.contentDetails.videoId}  // The YouTube video ID
-                    play            // control playback of video with true/false
-                    //onReady={e => this.player}
-                    /* onChangeState={e => this.setState({ status: e.state })}
-                    onChangeQuality={e => this.setState({ quality: e.quality })}
-                    onError={e => this.setState({ error: e.error })} */
-
+                    play={this.props.lessonList.playSelected}           // control playback of video with true/false
                     style={{ alignSelf: 'stretch', height: windowWidth * 0.5625 }}
                     showinfo={false}
                     modestbranding
@@ -51,7 +51,6 @@ class LessonList extends Component {
     }
     renderItem = ({ item }) => {
         const selected = this.props.lessonList.selectedItem === item.id;
-        console.log(selected);
         return (
             <LessonRow
                 id={item.id}
@@ -61,10 +60,6 @@ class LessonList extends Component {
             />
         );
     }
-
-    // stopVideo = () => {
-    //     this.setState({ status: e.state }
-    // }
     renderSeparator = () => {
         return (
             <View
@@ -80,19 +75,15 @@ class LessonList extends Component {
 
     render() {
         console.log('RENDERING LESSON LIST');
-        console.log(windowWidth);
         const { lessonList } = this.props;
-
         return (
             <View style={{ flexDirection: 'column' }}>
                 {this.renderVideo()}
             <FlatList
                 data={lessonList.data.items}
-                //extraData={this.state}
                 keyExtractor={this.keyExtractor}
                 refreshing={false}
                 renderItem={this.renderItem}
-                //ListHeaderComponent={this.renderVideo}
                 ListFooterComponent={() => <View style={{ height: 211 }} />}
                 ItemSeparatorComponent={this.renderSeparator}
                 getItemLayout={(data, index) => (
@@ -109,4 +100,4 @@ function mapStateToProps(state) {
         lessonList: state.lessonList
     };
 }
-export default connect(mapStateToProps, { fetchLessonList, selectLesson })(LessonList);
+export default connect(mapStateToProps, { fetchLessonList, selectLesson, playSelectedLesson })(LessonList);

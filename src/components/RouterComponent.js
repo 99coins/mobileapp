@@ -26,7 +26,7 @@ import EventHandler from './EventHandler';
 import { connect } from 'react-redux';
 import fetchNewsList from '../Actions/FetchNewsList';
 import fetchPriceData from '../Actions/FetchPriceData';
-import fetchLessonList from '../Actions/LessonActions';
+import fetchLessonList, { playSelectedLesson } from '../Actions/LessonActions';
 import { getUnreadCount } from '../Actions/ChatActions';
 import firebase from 'react-native-firebase';
 import NavBar from './common/NavBar';
@@ -137,6 +137,10 @@ class RouterComponent extends Component {
                   console.log('on enter lessons');
                   this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
+                  //this.props.playSelectedLesson(true);
+                }}
+                onExit={() => {
+                  this.props.playSelectedLesson(false);
                 }}
               />
             </Scene>
@@ -176,4 +180,4 @@ class RouterComponent extends Component {
 }
 
 
-export default connect(null, { fetchNewsList, fetchPriceData, fetchLessonList, getUnreadCount })(RouterComponent);
+export default connect(null, { fetchNewsList, fetchPriceData, fetchLessonList, getUnreadCount, playSelectedLesson })(RouterComponent);
