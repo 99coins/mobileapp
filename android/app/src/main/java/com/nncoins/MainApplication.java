@@ -55,14 +55,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativeYouTube(),
-            new ReactVideoPackage(),
             new VectorIconsPackage(),
             new ReactNativeSmoochPackage(),
             new RNFirebasePackage(),
               new RNFirebaseAnalyticsPackage()
-
-
       );
     }
   };

@@ -7,8 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-firebase/android/react-native-firebase.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-firebase/android/react-native-firebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-smooch/android/react-native-smooch.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-video/android/react-native-video.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-video/android/react-native-video.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-youtube/android/react-native-youtube.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-youtube/android/react-native-youtube.iml" />
     </modules>
   </component>
 </project>
