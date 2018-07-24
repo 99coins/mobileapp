@@ -11,8 +11,6 @@ import {
 } from './../Utils/ActionTypes';
 import { YOUTUBE_BASE_URL, COURSES_PLAYLIST_ID, YOUTUBE } from './../Utils/Constants';
 
-
-
 export default function fetchLessonList() {
   return (dispatch, getState) => {
     dispatch({ type: FETCHING_LESSONS });

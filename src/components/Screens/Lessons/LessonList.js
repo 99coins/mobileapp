@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, Share, Platform } from 'react-native';
+import { FlatList, Dimensions, View, WebView, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import LessonRow from './LessonRow';
 import YouTube from 'react-native-youtube';
@@ -18,6 +18,18 @@ class LessonList extends Component {
     onPressItem = (id) => {
         this.props.selectLesson(id);
     }
+    onShouldStartLoadWithRequest = (navigator) => {
+        console.log('onShouldStartLoadWithRequest');
+        return true;
+
+        // if (navigator.url.indexOf('embed') !== -1
+        // ) {
+        //     return true;
+        // } else {
+        //     this.videoPlayer.stopLoading(); //Some reference to your WebView to make it stop loading that URL
+        //     return false;
+        // }
+    }
     keyExtractor = (item) => item.id;
 
     renderVideo = () => {
@@ -34,17 +46,27 @@ class LessonList extends Component {
         if (lesson !== undefined) {
             console.log('rendering video', this.props.lessonList.playSelected);
             return (
-                <YouTube
-                    ref={component => {
-                        this.youTubeRef = component;
-                    }}
-                    apiKey={YOUTUBE}
-                    videoId={lesson.contentDetails.videoId}  // The YouTube video ID
-                    play={this.props.lessonList.playSelected}           // control playback of video with true/false
-                    style={{ alignSelf: 'stretch', height: windowWidth * 0.5625 }}
-                    showinfo={false}
-                    modestbranding
-                />
+                <View style={{ height: windowWidth * 0.5625 }}>
+                    <WebView
+                        ref={(ref) => { this.videoPlayer = ref; }}
+                        javaScriptEnabled
+                        domStorageEnabled
+                        source={{ uri: `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` }}
+                        onShouldStartLoadWithRequest={this.onShouldStartLoadWithRequest} //for iOS
+                        onNavigationStateChange={this.onShouldStartLoadWithRequest} //for Android */
+                    />
+                </View>
+                // <YouTube
+                //     ref={component => {
+                //         this.youTubeRef = component;
+                //     }}
+                //     apiKey={YOUTUBE}
+                //     videoId={lesson.contentDetails.videoId}  // The YouTube video ID
+                //     play={this.props.lessonList.playSelected}           // control playback of video with true/false
+                //     style={{ alignSelf: 'stretch', height: windowWidth * 0.5625 }}
+                //     showinfo={false}
+                //     modestbranding
+                // />
 
             );
         }
@@ -80,19 +102,19 @@ class LessonList extends Component {
         return (
             <View style={{ flexDirection: 'column' }}>
                 {this.renderVideo()}
-            <FlatList
-                data={lessonList.data.items}
-                keyExtractor={this.keyExtractor}
-                refreshing={false}
-                renderItem={this.renderItem}
-                ListFooterComponent={() => <View style={{ height: 211 }} />}
-                ItemSeparatorComponent={this.renderSeparator}
-                getItemLayout={(data, index) => (
-                    { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
-                )}
-            />
+                <FlatList
+                    data={lessonList.data.items}
+                    keyExtractor={this.keyExtractor}
+                    refreshing={false}
+                    renderItem={this.renderItem}
+                    ListFooterComponent={() => <View style={{ height: 211 }} />}
+                    ItemSeparatorComponent={this.renderSeparator}
+                    getItemLayout={(data, index) => (
+                        { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
+                    )}
+                />
             </View>
-     
+
         );
     }
 }

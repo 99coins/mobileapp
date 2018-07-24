@@ -28,16 +28,11 @@ export default function (state = initialState, action) {
 
         case FETCHING_WEEKLY_UPDATE_VIDEO_SUCCESS:
         if (state.data !== action.payload) {
-            const fullTitle = action.payload.title.split('-');
             return {
                 ...state,
                 isFetching: false,
-                fullTitle: action.payload.title,
-                title: fullTitle[0],
-                subtitle: fullTitle[1],
-                videoUrl: action.payload.videos[0][1].url,
-                video: action.payload.videos[0][1],
-                shareUrl: action.payload.url,
+                title: action.payload.snippet.title,
+                videoId: action.payload.contentDetails.videoId,
                 hasError: false,
                 errorMessage: null
              };

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, Text, Share } from 'react-native';
+import { FlatList, Dimensions, View, WebView, Share } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
 import fetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
 import { Actions } from 'react-native-router-flux';
-import VideoPlayer from 'react-native-video-player';
+import YouTube from 'react-native-youtube';
 import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
 import Images from '@assets/images.js';
 import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
+import { YOUTUBE } from './../../../Utils/Constants';
+
 
 
 
@@ -26,7 +28,7 @@ class NewsItemList extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.video !== nextProps.weeklyVideo.video) || (this.state.showVideoTitle !== nextState.showVideoTitle);
+        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.videoId !== nextProps.weeklyVideo.videoId);
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
     }
@@ -58,49 +60,40 @@ class NewsItemList extends Component {
         this.props.fetchNewsList();
         this.props.fetchWeeklyUpdateVideo();
     }
+    onShouldStartLoadWithRequest = (navigator) => {
+        console.log('onShouldStartLoadWithRequest');
+        return true;
+
+        // if (navigator.url.indexOf('embed') !== -1
+        // ) {
+        //     return true;
+        // } else {
+        //     this.videoPlayer.stopLoading(); //Some reference to your WebView to make it stop loading that URL
+        //     return false;
+        // }
+    }
     keyExtractor = (item) => item.guid;
 
     renderVideo = () => {
+        console.log('RENDER VIDEO', this.youTubeRef);
         const { weeklyVideo } = this.props;
-        if (weeklyVideo.video) {
-            return (
-                <View style={{ backgroundColor: Colors.gray900, padding: 16 }}>
-                    <View>
-                        <VideoPlayer
-                            endWithThumbnail
-                            thumbnail={Images.weeklyVideoThumb}
-                            video={{ uri: weeklyVideo.videoUrl }}
-                            videoWidth={windowWidth - 32}
-                            videoHeight={(windowWidth - 32) / 1.78}
-                            duration={weeklyVideo.video.duration}
-                            ref={(r) => { this.player = r; }}
-                            resizeMode={'stretch'}
-                            onStart={() => {
-                                firebase.analytics().logEvent('click_play_weekly_video', { url: weeklyVideo.videoUrl });
-                                this.setState({ showVideoTitle: false });
-                            }}
-                            onSharePress={() => {
-                                this.onShareVideo(weeklyVideo.fullTitle, weeklyVideo.shareUrl);
-                            }}
-                            onEnd={() => {
-                                firebase.analytics().logEvent('weekly_video_end', { url: weeklyVideo.videoUrl });
-                            }}
-                            style={{ borderRadius: 4 }}
-                            customStyles={{
-                                thumbnail: {
-                                    overflow: 'hidden'
-                                }
-                            }}
-                        />
-                        {this.state.showVideoTitle &&
-                            <View style={{ position: 'absolute', marginLeft: 16, marginTop: 16 }}>
-                                <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>{weeklyVideo.title}</Text>
-                                <Text style={{ color: 'white', fontSize: 14, width: 140 }}>{weeklyVideo.subtitle}</Text>
-                            </View>
-                        }
-                    </View>
-                </View>
 
+        if (this.youTubeRef) {
+            return (this.youTubeRef);
+        }
+
+        if (weeklyVideo) {
+            return (
+                <View style={{ height: windowWidth * 0.5625 }}>
+                    <WebView
+                        ref={(ref) => { this.videoPlayer = ref; }}
+                        javaScriptEnabled
+                        domStorageEnabled
+                        source={{ uri: `https://www.youtube.com/embed/${weeklyVideo.videoId}` }}
+                        onShouldStartLoadWithRequest={this.onShouldStartLoadWithRequest} //for iOS
+                        onNavigationStateChange={this.onShouldStartLoadWithRequest} //for Android */
+                    />
+                </View>
             );
         }
         return null;
@@ -126,7 +119,6 @@ class NewsItemList extends Component {
             />
         );
     };
-
     render() {
         console.log('RENDERING NEWS LIST');
         console.log(windowWidth);

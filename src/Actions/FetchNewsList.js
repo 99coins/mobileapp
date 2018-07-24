@@ -5,7 +5,6 @@ import {
     FETCHING_NEWS_LIST_FAIL
 } from './../Utils/ActionTypes';
 
-
 export default function fetchNewsList() {
     return dispatch => {
         dispatch({ type: FETCHING_NEWS_LIST });
