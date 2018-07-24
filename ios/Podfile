@@ -26,8 +26,6 @@ target 'NNCoins' do
     
   pod 'Firebase/Core', '~> 4.13.0'
   
-  pod 'react-native-youtube', :path => '../node_modules/react-native-youtube'
-
 end
 
 post_install do |installer|

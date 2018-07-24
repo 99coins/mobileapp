@@ -46,8 +46,6 @@ PODS:
   - react-native-smooch (1.0.1):
     - React
     - Smooch (~> 6.0)
-  - react-native-youtube (1.1.0):
-    - React
   - React/Core (0.52.3):
     - yoga (= 0.52.3.React)
   - React/CxxBridge (0.52.3):
@@ -91,7 +89,6 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core (~> 4.13.0)
   - react-native-smooch (from `../node_modules/react-native-smooch`)
-  - react-native-youtube (from `../node_modules/react-native-youtube`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -124,8 +121,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-smooch:
     :path: "../node_modules/react-native-smooch"
-  react-native-youtube:
-    :path: "../node_modules/react-native-youtube"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -143,10 +138,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   React: 43e97926f429d846050880666de1809e22dd5cc5
   react-native-smooch: c83ec4fde278bce695e5eea7b247b6ebaf2c2263
-  react-native-youtube: 7ab01f1320b037d605e6c6ac9d59cc2b92091799
   Smooch: 29749ac80a69a1ecce7981383f37a385e167c4c3
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 11c823a8b04512bc3768fcac1ed6c4cf18570f9a
+PODFILE CHECKSUM: 17555040770c96deebb1a951e598bb08288da075
 
 COCOAPODS: 1.5.3
