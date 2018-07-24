@@ -5,17 +5,9 @@ import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
 import fetchWeeklyUpdateVideo from './../../../Actions/FetchWeeklyUpdateVideo';
 import { Actions } from 'react-native-router-flux';
-import YouTube from 'react-native-youtube';
-import memoize from 'lodash/memoize';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
-import Images from '@assets/images.js';
-import moment from 'moment';
 import { capitalizeFirstLetter } from '../../common';
-import { YOUTUBE } from './../../../Utils/Constants';
-
-
-
 
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
@@ -60,18 +52,6 @@ class NewsItemList extends Component {
         this.props.fetchNewsList();
         this.props.fetchWeeklyUpdateVideo();
     }
-    onShouldStartLoadWithRequest = (navigator) => {
-        console.log('onShouldStartLoadWithRequest');
-        return true;
-
-        // if (navigator.url.indexOf('embed') !== -1
-        // ) {
-        //     return true;
-        // } else {
-        //     this.videoPlayer.stopLoading(); //Some reference to your WebView to make it stop loading that URL
-        //     return false;
-        // }
-    }
     keyExtractor = (item) => item.guid;
 
     renderVideo = () => {
@@ -84,14 +64,13 @@ class NewsItemList extends Component {
 
         if (weeklyVideo) {
             return (
-                <View style={{ height: windowWidth * 0.5625 }}>
+                <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
                     <WebView
+                        style={{ height: windowWidth * 0.5625, borderRadius: 8, overflow: 'hidden' }}
                         ref={(ref) => { this.videoPlayer = ref; }}
                         javaScriptEnabled
                         domStorageEnabled
                         source={{ uri: `https://www.youtube.com/embed/${weeklyVideo.videoId}` }}
-                        onShouldStartLoadWithRequest={this.onShouldStartLoadWithRequest} //for iOS
-                        onNavigationStateChange={this.onShouldStartLoadWithRequest} //for Android */
                     />
                 </View>
             );
