@@ -18,8 +18,14 @@ class NewsItemList extends Component {
         console.log('componentWillMount news');
         this.fetchNews();
     }
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+        if (this.props.routes.scene !== nextProps.routes.scene && nextProps.routes.scene === 'News') {
+            this.fetchNews();
+        }
+    }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextProps) {
         const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.videoId !== nextProps.weeklyVideo.videoId);
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
@@ -126,6 +132,7 @@ function mapStateToProps(state) {
     return {
         newsList: state.newsList,
         weeklyVideo: state.weeklyVideo,
+        routes: state.routes
     };
 }
 export default connect(mapStateToProps, { fetchNewsList, fetchWeeklyUpdateVideo })(NewsItemList);

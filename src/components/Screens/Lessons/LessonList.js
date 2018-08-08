@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, WebView } from 'react-native';
+import { FlatList, Dimensions, View } from 'react-native';
 import { connect } from 'react-redux';
 import LessonRow from './LessonRow';
 import Colors from '@assets/colors.js';
 import fetchLessonList, { selectLesson, playSelectedLesson } from './../../../Actions/LessonActions';
+import WebView from 'react-native-android-fullscreen-webview-video';
+
 
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
@@ -13,6 +15,11 @@ class LessonList extends Component {
         console.log('componentWillMount lesson list');
         this.props.fetchLessonList();
     }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.routes.scene !== nextProps.routes.scene && nextProps.routes.scene === 'Courses') {
+            this.props.fetchLessonList();
+        }
+    }
     onPressItem = (id) => {
         this.props.selectLesson(id);
     }
@@ -20,7 +27,9 @@ class LessonList extends Component {
 
     renderVideo = () => {
 
-        const { lessonList } = this.props;
+        const { lessonList, routes } = this.props;
+
+        console.log('renderVideo', routes);
 
         if (lessonList.data.items === undefined) {
             return;
@@ -92,7 +101,8 @@ class LessonList extends Component {
 }
 function mapStateToProps(state) {
     return {
-        lessonList: state.lessonList
+        lessonList: state.lessonList,
+        routes: state.routes
     };
 }
 export default connect(mapStateToProps, { fetchLessonList, selectLesson, playSelectedLesson })(LessonList);

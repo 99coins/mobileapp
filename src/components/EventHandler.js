@@ -13,17 +13,6 @@ class EventHandler extends Component {
   state = {
     appState: AppState.currentState
   }
-
-  // onNotificationReceivedForeground(notification) {
-  //   console.log("Notification Received - Foreground", notification);
-  //   this.props.getUnreadCount();  
-  // }
-
-  // onNotificationReceivedBackground(notification) {
-  //   console.log("Notification Received - Background", notification);
-  //   this.props.getUnreadCount();  
-  // }
-
   componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
     try {
@@ -32,7 +21,12 @@ class EventHandler extends Component {
       console.log(e);
     }
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    if (this.props.routes.scene !== nextProps.routes.scene) {
+        this.props.getUnreadCount();
+    }
+  }
   componentWillUnmount() {
     AppState.removeEventListener('change', this.handleAppStateChange);
   }
@@ -53,4 +47,11 @@ class EventHandler extends Component {
 
   render() { return null; }
 
-} export default connect(null, { fetchNewsList, fetchPriceData, getUnreadCount })(EventHandler);
+} 
+function mapStateToProps(state) {
+  return {
+      routes: state.routes
+  };
+}
+
+export default connect(mapStateToProps, { fetchNewsList, fetchPriceData, getUnreadCount })(EventHandler);

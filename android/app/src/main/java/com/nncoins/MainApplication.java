@@ -14,6 +14,8 @@ import io.smooch.core.Smooch;
 import io.smooch.core.SmoochCallback;
 import io.smooch.core.Settings;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import com.airship.customwebview.CustomWebViewPackage;
+
 
 
 
@@ -35,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new ReactNativeSmoochPackage(),
             new RNFirebasePackage(),
-              new RNFirebaseAnalyticsPackage()
+              new RNFirebaseAnalyticsPackage(),
+             new CustomWebViewPackage()
       );
     }
   };

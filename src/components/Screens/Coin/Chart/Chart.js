@@ -12,11 +12,6 @@ import { updateChartPrices } from './../../../../Actions/CoinActions';
 
 class Chart extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    console.log('PROPS: ', nextProps);
-    ///this.props.updateChartPrices();
-  }
-
   render() {
     const { chartData } = this.props;
     return (

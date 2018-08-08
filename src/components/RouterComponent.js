@@ -3,15 +3,14 @@
 import React, {
   Component
 } from 'react';
+import PropTypes from 'prop-types';
 import {
-  Button,
   Image,
-  Text,
   TouchableWithoutFeedback,
   Dimensions,
   Platform
 } from 'react-native';
-import { Scene, Router, Actions, Overlay } from 'react-native-router-flux';
+import { Scene, Router, Actions, Overlay, Reducer } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
 import Price from './Screens/Price/Price';
@@ -24,10 +23,6 @@ import ChatButton from './Screens/AMA/ChatButton';
 import UnreadBadge from './Screens/AMA/UnreadBadge';
 import EventHandler from './EventHandler';
 import { connect } from 'react-redux';
-import fetchNewsList from '../Actions/FetchNewsList';
-import fetchPriceData from '../Actions/FetchPriceData';
-import fetchLessonList, { playSelectedLesson } from '../Actions/LessonActions';
-import { getUnreadCount } from '../Actions/ChatActions';
 import firebase from 'react-native-firebase';
 import NavBar from './common/NavBar';
 import { setCustomText } from 'react-native-global-props';
@@ -42,22 +37,35 @@ const windowWidth = Dimensions.get('window').width;
 
 
 class RouterComponent extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    dispatch: PropTypes.func
+  };
+  constructor(props) {
+    super(props);
     firebase.analytics().setAnalyticsCollectionEnabled(true);
     setCustomText(customTextProps);
   }
   onBackPress = () => {
-    console.log('back press');
     if (Actions.currentScene === 'article') {
       Actions.pop();
       return true;
     }
     return false;
   }
+  reducerCreate(params) {
+    const defaultReducer = Reducer(params);
+    return (state, action) => {
+      this.props.dispatch(action);
+      return defaultReducer(state, action);
+    };
+  }
   render() {
     return (
-      <Router backAndroidHandler={this.onBackPress} sceneStyle={{ backgroundColor: 'white' }}>
+      <Router
+        createReducer={this.reducerCreate.bind(this)}
+        backAndroidHandler={this.onBackPress}
+        sceneStyle={{ backgroundColor: 'white' }}
+      >
         <Overlay key="overlay">
           <Scene
             key="root"
@@ -111,9 +119,6 @@ class RouterComponent extends Component {
                 key="News"
                 component={NewsFeed}
                 onEnter={() => {
-                  console.log('on enter news');
-                  this.props.fetchNewsList();
-                  this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
               />
@@ -123,9 +128,6 @@ class RouterComponent extends Component {
                 key="Coins"
                 component={Price}
                 onEnter={() => {
-                  console.log('on enter prices');
-                  this.props.fetchPriceData();
-                  this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
                 initial
@@ -134,13 +136,10 @@ class RouterComponent extends Component {
                 key="Courses"
                 component={Lessons}
                 onEnter={() => {
-                  console.log('on enter lessons');
-                  this.props.getUnreadCount();
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
-                  //this.props.playSelectedLesson(true);
                 }}
                 onExit={() => {
-                  this.props.playSelectedLesson(false);
+                  //this.props.playSelectedLesson(false);
                 }}
               />
             </Scene>
@@ -148,7 +147,6 @@ class RouterComponent extends Component {
               key="article"
               component={NewsWebView}
               onRight={(scene) => {
-                console.log(scene);
                 scene.component.prototype.onShare(scene.url);
               }}
               onEnter={(scene) => {
@@ -178,6 +176,4 @@ class RouterComponent extends Component {
     );
   }
 }
-
-
-export default connect(null, { fetchNewsList, fetchPriceData, fetchLessonList, getUnreadCount, playSelectedLesson })(RouterComponent);
+export default connect()(RouterComponent);

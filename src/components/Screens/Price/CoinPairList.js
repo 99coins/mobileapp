@@ -21,7 +21,12 @@ class CoinPairList extends Component {
         console.log('componentDidMount prices');
         this.props.getCachedCoinList();
         this.props.fetchCoinList();
-//this.props.fetchPriceData();
+    }
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+        if (this.props.routes.scene !== nextProps.routes.scene && nextProps.routes.scene === 'Coins') {
+            this.props.fetchCoinList();
+        }
     }
     shouldComponentUpdate(nextProps) {
         return (this.props.coinList.data !== nextProps.coinList.data || this.props.coinList.searchInput !== nextProps.coinList.searchInput);
@@ -122,7 +127,8 @@ class CoinPairList extends Component {
 }
 function mapStateToProps(state) {
     return {
-        coinList: state.coinList
+        coinList: state.coinList,
+        routes: state.routes
     };
 }
 export default connect(mapStateToProps, { fetchCoinList, getCachedCoinList, setSearchInput })(CoinPairList);

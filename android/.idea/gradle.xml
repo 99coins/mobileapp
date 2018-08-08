@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-android-fullscreen-webview-video/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-firebase/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-smooch/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />

@@ -8,6 +8,7 @@ import WeeklyVideoReducer from './WeeklyVideoReducer';
 
 import ChatReducer from './ChatReducer';
 import CoinReducer from './CoinReducer';
+import Routes from './SceneReducer';
 
 
 export default combineReducers({
@@ -17,5 +18,6 @@ export default combineReducers({
     weeklyVideo: WeeklyVideoReducer,
     chatState: ChatReducer,
     coinState: CoinReducer,
-    lessonList: LessonListReducer
+    lessonList: LessonListReducer,
+    routes: Routes
 });

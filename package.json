@@ -21,6 +21,7 @@
     "react": "16.2.0",
     "react-native": "^0.52.0",
     "react-native-action-button": "^2.8.3",
+    "react-native-android-fullscreen-webview-video": "^1.0.2",
     "react-native-button": "^2.1.0",
     "react-native-elements": "^0.18.4",
     "react-native-firebase": "^3.3.1",
