@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View } from 'react-native';
+import { FlatList, Dimensions, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import LessonRow from './LessonRow';
 import Colors from '@assets/colors.js';
@@ -18,6 +18,9 @@ class LessonList extends Component {
     componentWillReceiveProps(nextProps) {
         if (this.props.routes.scene !== nextProps.routes.scene && nextProps.routes.scene === 'Courses') {
             this.props.fetchLessonList();
+        }
+        if (this.videoPlayer && nextProps.routes.scene !== 'Courses' && Platform.OS === 'android') {
+            this.videoPlayer.reload();
         }
     }
     onPressItem = (id) => {
@@ -38,20 +41,21 @@ class LessonList extends Component {
         const lesson = lessonList.data.items.filter(item => {
             return item.id === lessonList.selectedItem;
         })[0];
-        if (lesson !== undefined) {
-            console.log('rendering video', this.props.lessonList.playSelected);
+        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` : '';
+        //if (lesson !== undefined) {
+            console.log('rendering video');
             return (
                 <View style={{ height: windowWidth * 0.5625 }}>
                     <WebView
                         ref={(ref) => { this.videoPlayer = ref; }}
                         javaScriptEnabled
                         domStorageEnabled
-                        source={{ uri: `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` }}
+                        source={{ uri: videoUrl }}
+                        startInLoadingState
                     />
                 </View>
             );
-        }
-        return null;
+       // }
     }
     renderItem = ({ item }) => {
         const selected = this.props.lessonList.selectedItem === item.id;

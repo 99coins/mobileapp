@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Dimensions, View, WebView, Share } from 'react-native';
+import { FlatList, Dimensions, View, Share, Platform } from 'react-native';
 import NewsItemRow from './NewsItemRow';
 import { connect } from 'react-redux';
 import fetchNewsList from './../../../Actions/FetchNewsList';
@@ -8,6 +8,8 @@ import { Actions } from 'react-native-router-flux';
 import firebase from 'react-native-firebase';
 import Colors from '@assets/colors.js';
 import { capitalizeFirstLetter } from '../../common';
+import WebView from 'react-native-android-fullscreen-webview-video';
+
 
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
@@ -23,10 +25,13 @@ class NewsItemList extends Component {
         if (this.props.routes.scene !== nextProps.routes.scene && nextProps.routes.scene === 'News') {
             this.fetchNews();
         }
+        if (this.videoPlayer && nextProps.routes.scene !== 'News' && Platform.OS === 'android') {
+            this.videoPlayer.reload();
+        }
     }
 
     shouldComponentUpdate(nextProps) {
-        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.videoId !== nextProps.weeklyVideo.videoId);
+        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.videoId !== nextProps.weeklyVideo.videoId) || (this.props.routes.scene !== nextProps.routes.scene);
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
     }
@@ -53,22 +58,23 @@ class NewsItemList extends Component {
                 // iOS only:
             });
     }
+    onShouldStartLoadWithRequest() {
+        console.log('onShouldStartLoadWithRequest');
+        return true;
+    }
+    keyExtractor = (item) => item.guid;
+
     fetchNews() {
         console.log('onRefresh news');
         this.props.fetchNewsList();
         this.props.fetchWeeklyUpdateVideo();
     }
-    keyExtractor = (item) => item.guid;
 
     renderVideo = () => {
-        console.log('RENDER VIDEO', this.youTubeRef);
-        const { weeklyVideo } = this.props;
+        console.log('RENDER VIDEO', );
+        const { weeklyVideo, routes } = this.props;
+        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` : '';
 
-        if (this.youTubeRef) {
-            return (this.youTubeRef);
-        }
-
-        if (weeklyVideo) {
             return (
                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
                     <WebView
@@ -76,12 +82,10 @@ class NewsItemList extends Component {
                         ref={(ref) => { this.videoPlayer = ref; }}
                         javaScriptEnabled
                         domStorageEnabled
-                        source={{ uri: `https://www.youtube.com/embed/${weeklyVideo.videoId}` }}
+                        source={{ uri: videoUrl }}
                     />
                 </View>
             );
-        }
-        return null;
     }
     renderItem = ({ item }) => {
         return (

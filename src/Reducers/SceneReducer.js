@@ -8,7 +8,7 @@ export default function reducer(state = initialState, action = {}) {
 
   switch (action.type) {
     // focus action is dispatched when a new screen comes into focus    
-    case ActionConst.FOCUS:
+    case 'Navigation/NAVIGATE':
       return {
         ...state,
         scene: action.routeName,
