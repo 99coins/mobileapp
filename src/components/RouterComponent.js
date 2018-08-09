@@ -3,7 +3,6 @@
 import React, {
   Component
 } from 'react';
-import PropTypes from 'prop-types';
 import {
   Image,
   TouchableWithoutFeedback,
@@ -13,10 +12,10 @@ import {
 import { Scene, Router, Actions, Overlay, Reducer } from 'react-native-router-flux';
 import Images from '@assets/images.js';
 import Colors from '@assets/colors.js';
-import Price from './Screens/Price/Price';
+import CoinPairList from './Screens/Price/CoinPairList';
 import CoinPage from './Screens/Coin/CoinPage';
-import NewsFeed from './Screens/NewsFeed/NewsFeed';
-import Lessons from './Screens/Lessons/Lessons';
+import NewsItemsList from './Screens/NewsFeed/NewsItemsList';
+import LessonList from './Screens/Lessons/LessonList';
 import NewsWebView from './Screens/WebView/NewsWebView';
 import ChatForm from './Screens/AMA/ChatForm';
 import ChatButton from './Screens/AMA/ChatButton';
@@ -37,9 +36,6 @@ const windowWidth = Dimensions.get('window').width;
 
 
 class RouterComponent extends Component {
-  static propTypes = {
-    dispatch: PropTypes.func
-  };
   constructor(props) {
     super(props);
     firebase.analytics().setAnalyticsCollectionEnabled(true);
@@ -117,7 +113,7 @@ class RouterComponent extends Component {
               {/* Tab and it's scenes */}
               <Scene
                 key="News"
-                component={NewsFeed}
+                component={NewsItemsList}
                 onEnter={() => {
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
@@ -126,7 +122,7 @@ class RouterComponent extends Component {
               {/* Tab and it's scenes */}
               <Scene
                 key="Coins"
-                component={Price}
+                component={CoinPairList}
                 onEnter={() => {
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
@@ -134,7 +130,7 @@ class RouterComponent extends Component {
               />
               <Scene
                 key="Courses"
-                component={Lessons}
+                component={LessonList}
                 onEnter={() => {
                   firebase.analytics().logEvent(`page_${Actions.currentScene.toLowerCase()}`, {});
                 }}
