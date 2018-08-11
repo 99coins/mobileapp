@@ -9,43 +9,42 @@ import firebase from 'react-native-firebase';
 class NavBar extends Component {
 
 
-  onShare(url) {
-    firebase.analytics().logEvent('click_share_article', { url });
-    Share.share({
-      message: `${url}\n\nYou can download 99Bitcoins at: https://tg55j.app.goo.gl/99bit`,
-      url,
-      title: 'Found this interesting article on the 99Bitcoins App'
-    }, {
-        // Android only:
-        dialogTitle: url,
-        // iOS only:
-      });
-  } 
+    onShare(url) {
+        firebase.analytics().logEvent('click_share_article', { url });
+        Share.share({
+            message: `${url}\n\nYou can download 99Bitcoins at: https://tg55j.app.goo.gl/99bit`,
+            url,
+            title: 'Found this interesting article on the 99Bitcoins App'
+        }, {
+                // Android only:
+                dialogTitle: url,
+                // iOS only:
+            });
+    }
     render() {
         return (
             <View style={styles.backgroundStyle}>
-                <StatusBar />
                 <View style={styles.barItems}>
                     <TouchableWithoutFeedback onPress={() => Actions.pop()} >
-                    <Image
-                        source={Images.backArrow}
-                        style={styles.leftIcon}
-                    />
+                        <Image
+                            source={Images.backArrow}
+                            style={styles.leftIcon}
+                        />
                     </TouchableWithoutFeedback>
-                     <View style={[styles.titleContainer, isIphoneX() && styles.titleContainerIphoneX]}>
+                    <View style={[styles.titleContainer, isIphoneX() && styles.titleContainerIphoneX]}>
                         <Image
                             source={{ uri: this.props.icon }}
                             style={styles.icon}
-                        /> 
-                        <Text style={styles.title}>{this.props.title}</Text> 
-                    </View>
-                    {this.props.share && 
-                    <TouchableWithoutFeedback onPress={() => this.onShare(this.props.url)} >
-                        <Image
-                        source={Images.shareIcon}
-                        style={styles.rightIcon}
                         />
-                    </TouchableWithoutFeedback> 
+                        <Text style={styles.title}>{this.props.title}</Text>
+                    </View>
+                    {this.props.share &&
+                        <TouchableWithoutFeedback onPress={() => this.onShare(this.props.url)} >
+                            <Image
+                                source={Images.shareIcon}
+                                style={styles.rightIcon}
+                            />
+                        </TouchableWithoutFeedback>
                     }
 
                 </View>
@@ -59,7 +58,7 @@ class NavBar extends Component {
 }
 const d = Dimensions.get('window');
 const isIphoneX = () => {
-    
+
     const { height, width } = d;
 
     return (
@@ -101,7 +100,7 @@ const styles = {
         width: 24,
         height: 24,
         marginLeft: 16,
-       // marginRight: 16,
+        // marginRight: 16,
         alignSelf: 'center'
     },
     headerSeperator: {

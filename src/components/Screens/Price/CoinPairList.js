@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, RefreshControl } from 'react-native';
 import CoinPairRow from './CoinPairRow';
 import CoinListHeader from './CoinListHeader';
+import LoadingBar from './LoadingBar';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
 import { Actions } from 'react-native-router-flux';
@@ -21,6 +22,7 @@ class CoinPairList extends Component {
         console.log('componentDidMount prices');
         this.props.getCachedCoinList();
         this.props.fetchCoinList();
+        this.timer = setInterval(() => this.onRefresh(), 120000);
     }
     componentWillReceiveProps(nextProps) {
         console.log(nextProps);
@@ -29,11 +31,13 @@ class CoinPairList extends Component {
         }
     }
     shouldComponentUpdate(nextProps) {
-        return (this.props.coinList.data !== nextProps.coinList.data || this.props.coinList.searchInput !== nextProps.coinList.searchInput);
+        return (this.props.coinList.data !== nextProps.coinList.data || this.props.coinList.searchInput !== nextProps.coinList.searchInput || this.props.coinList.isFetching !== nextProps.coinList.isFetching);
     }
     onRefresh() {
-    // this.props.fetchPriceData();
-        this.props.fetchCoinList();
+        // this.props.fetchPriceData();
+        if (this.props.routes.scene === 'Coins') {
+            this.props.fetchCoinList();
+        }
     }
     getImageURLForCoin(symbol) {
         const { coinList } = this.props;
@@ -55,30 +59,30 @@ class CoinPairList extends Component {
     }
     keyExtractor = (item) => item.id;
 
-    
+
     renderItem = ({ item, index }) => (
-      <CoinPairRow 
-                key={item.id}
-                coinName={item.name}
-                symbol={item.symbol.toUpperCase()}
-                priceUsd={item.market_data.current_price.usd < 1 ? item.market_data.current_price.usd.toFixed(5) : item.market_data.current_price.usd.toFixed(2)} /*.toFixed(2)*/
-                percentChange24h={item.market_data.price_change_percentage_24h ? Number(item.market_data.price_change_percentage_24h).toFixed(1) : 0}  /*.toFixed(2)*/
-                imageUrl={item.image.small} 
-                onPressItem={() => {
-                    firebase.analytics().logEvent('click_coin', { coin: item.symbol });
-                    Actions.coin({ coin: item.id, rank: index + 1, icon: item.image.small, title: `${item.name} (${item.symbol.toUpperCase()})` });
-                }}
-      />
+        <CoinPairRow
+            key={item.id}
+            coinName={item.name}
+            symbol={item.symbol.toUpperCase()}
+            priceUsd={item.market_data.current_price.usd < 1 ? item.market_data.current_price.usd.toFixed(5) : item.market_data.current_price.usd.toFixed(2)} /*.toFixed(2)*/
+            percentChange24h={item.market_data.price_change_percentage_24h ? Number(item.market_data.price_change_percentage_24h).toFixed(1) : 0}  /*.toFixed(2)*/
+            imageUrl={item.image.small}
+            onPressItem={() => {
+                firebase.analytics().logEvent('click_coin', { coin: item.symbol });
+                Actions.coin({ coin: item.id, rank: index + 1, icon: item.image.small, title: `${item.name} (${item.symbol.toUpperCase()})` });
+            }}
+        />
     );
     renderSeparator = () => {
         return (
             <View
-             style={{
-             height: 1,
-             width: '95%',
-             backgroundColor: Colors.gray100,
-             marginLeft: 16
-            }}
+                style={{
+                    height: 1,
+                    width: '95%',
+                    backgroundColor: Colors.gray100,
+                    marginLeft: 16
+                }}
             />
         );
     };
@@ -102,29 +106,38 @@ class CoinPairList extends Component {
                 return item.name.toLowerCase().includes(input) || item.symbol.toLowerCase().includes(input);
             });
         } else {
-          coinsToShow = coinList.data;
+            coinsToShow = coinList.data;
         }
         return (
-          <FlatList
-            onRefresh={() => {
-                firebase.analytics().logEvent('pull_to_refresh_pricelist', {});
-                this.onRefresh();
-            }}
-            refreshing={coinList.isFetching}
-            data={coinsToShow}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderItem}
-            ItemSeparatorComponent={this.renderSeparator}
-            ListHeaderComponent={this.renderHeader}
-            getItemLayout={(data, index) => (
-                 { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
-            )}
-            backgroundColor={'white'}
-
-          />
-    );
-   }
+            <View style={styles.container}>
+            {coinList.isFetching && <LoadingBar title={'Fetching updated pricess..'} />}
+            <FlatList
+                // onRefresh={() => {
+                //     firebase.analytics().logEvent('pull_to_refresh_pricelist', {});
+                //     this.onRefresh();
+                // }}
+                refreshing={false}
+                data={coinsToShow}
+                keyExtractor={this.keyExtractor}
+                renderItem={this.renderItem}
+                ItemSeparatorComponent={this.renderSeparator}
+                ListHeaderComponent={this.renderHeader}
+                getItemLayout={(data, index) => (
+                    { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
+                )}
+                backgroundColor={'white'}
+                alwaysBounceVertical={false}
+            />
+            </View>
+        );
+    }
 }
+const styles = {
+    container: {
+        flexDirection: 'column',
+        flex: 1
+    }
+};
 function mapStateToProps(state) {
     return {
         coinList: state.coinList,

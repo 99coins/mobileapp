@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import { AppState, NotificationsIOS } from 'react-native';
+import { AppState } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import fetchNewsList from '../Actions/FetchNewsList';
-import fetchPriceData from '../Actions/FetchPriceData';
+import { fetchCoinList } from '../Actions/FetchCoinList';
 import { getUnreadCount } from '../Actions/ChatActions';
 import { connect } from 'react-redux';
 
@@ -37,7 +37,7 @@ class EventHandler extends Component {
       console.log('Currentscene:', Actions.currentScene);
       this.props.getUnreadCount();
       if (Actions.currentScene === 'Coins') {
-        this.props.fetchPriceData();
+        this.props.fetchCoinList();
       } else if (Actions.currentScene === 'News') {
         this.props.fetchNewsList();
       }
@@ -54,4 +54,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchNewsList, fetchPriceData, getUnreadCount })(EventHandler);
+export default connect(mapStateToProps, { fetchNewsList, fetchCoinList, getUnreadCount })(EventHandler);

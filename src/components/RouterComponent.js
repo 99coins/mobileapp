@@ -7,7 +7,8 @@ import {
   Image,
   TouchableWithoutFeedback,
   Dimensions,
-  Platform
+  Platform,
+  Text
 } from 'react-native';
 import { Scene, Router, Actions, Overlay, Reducer } from 'react-native-router-flux';
 import Images from '@assets/images.js';
@@ -24,13 +25,7 @@ import EventHandler from './EventHandler';
 import { connect } from 'react-redux';
 import firebase from 'react-native-firebase';
 import NavBar from './common/NavBar';
-import { setCustomText } from 'react-native-global-props';
-
-const customTextProps = {
-  style: {
-    fontFamily: 'Montserrat'
-  }
-};
+import GlobalFont from 'react-native-global-font';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -39,7 +34,8 @@ class RouterComponent extends Component {
   constructor(props) {
     super(props);
     firebase.analytics().setAnalyticsCollectionEnabled(true);
-    setCustomText(customTextProps);
+    const fontName = 'Montserrat-Regular';
+    GlobalFont.applyGlobal(fontName);
   }
   onBackPress = () => {
     if (Actions.currentScene === 'article') {
