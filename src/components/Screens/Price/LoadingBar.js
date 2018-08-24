@@ -24,7 +24,16 @@ const styles = {
     backgroundColor: Colors.themeRed,
     height: 24,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    position: 'absolute',
+    alignSelf: 'center',
+    padding: 4,
+    borderRadius: 4,
+    top: 16,
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 0 }
   }
 };
 

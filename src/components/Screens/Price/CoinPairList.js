@@ -110,7 +110,6 @@ class CoinPairList extends Component {
         }
         return (
             <View style={styles.container}>
-            {coinList.isFetching && <LoadingBar title={'Fetching updated pricess..'} />}
             <FlatList
                 // onRefresh={() => {
                 //     firebase.analytics().logEvent('pull_to_refresh_pricelist', {});
@@ -128,6 +127,7 @@ class CoinPairList extends Component {
                 backgroundColor={'white'}
                 alwaysBounceVertical={false}
             />
+            {coinList.isFetching && <LoadingBar title={'Fetching updated prices..'} />}
             </View>
         );
     }
