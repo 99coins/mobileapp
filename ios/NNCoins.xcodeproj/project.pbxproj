@@ -1273,8 +1273,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 152;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = DG95G74F4E;
@@ -1300,6 +1301,7 @@
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1325,7 +1327,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1350,6 +1354,7 @@
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1361,8 +1366,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
 				PRODUCT_NAME = NNCoins;
-				PROVISIONING_PROFILE = "7840ddeb-281b-4c1d-a670-9be7b7015c95";
-				PROVISIONING_PROFILE_SPECIFIER = "99bitcoins-prod";
+				PROVISIONING_PROFILE = "9b6f4c37-b20d-4b94-9cb0-1d25b82961ae";
+				PROVISIONING_PROFILE_SPECIFIER = "99bitcoins-adhoc";
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1411,7 +1416,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NNCoins/NNCoins.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1436,6 +1443,7 @@
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
 				);
 				INFOPLIST_FILE = NNCoins/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1447,8 +1455,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.99coins.ios;
 				PRODUCT_NAME = NNCoins;
-				PROVISIONING_PROFILE = "8fa690c5-e520-4e80-9faf-c5fe223b9188";
-				PROVISIONING_PROFILE_SPECIFIER = "99bitcoins-adhoc";
+				PROVISIONING_PROFILE = "db191cd1-cb3a-4c46-94c3-716dcf18de0f";
+				PROVISIONING_PROFILE_SPECIFIER = "99coins-prod";
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

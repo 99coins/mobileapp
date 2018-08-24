@@ -114,11 +114,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   secondLine: {
-    flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    paddingBottom: 5,
+    paddingBottom: 2,
 
   },
   titleStyle: {
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: Colors.gray900,
-    lineHeight: 24,
+    lineHeight: 21,
     paddingBottom: 16,
 
   },
@@ -140,7 +139,6 @@ const styles = StyleSheet.create({
   },
   sponsoredSource: {
     backgroundColor: Colors.sponsoredYellow,
-    top: 4,
     paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 4,

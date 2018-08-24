@@ -1,20 +1,5 @@
 PODS:
-  - boost (1.59.0):
-    - boost/graph-includes (= 1.59.0)
-    - boost/math-includes (= 1.59.0)
-    - boost/numeric-includes (= 1.59.0)
-    - boost/pointer_cast-includes (= 1.59.0)
-    - boost/preprocessor-includes (= 1.59.0)
-    - boost/shared_ptr-includes (= 1.59.0)
-    - boost/string_algorithms-includes (= 1.59.0)
   - boost-for-react-native (1.63.0)
-  - boost/graph-includes (1.59.0)
-  - boost/math-includes (1.59.0)
-  - boost/numeric-includes (1.59.0)
-  - boost/pointer_cast-includes (1.59.0)
-  - boost/preprocessor-includes (1.59.0)
-  - boost/shared_ptr-includes (1.59.0)
-  - boost/string_algorithms-includes (1.59.0)
   - DoubleConversion (1.1.5)
   - Firebase/Core (4.13.0):
     - FirebaseAnalytics (= 4.2.0)
@@ -28,7 +13,7 @@ PODS:
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
-  - Folly (2016.09.26.00):
+  - Folly (2016.10.31.00):
     - boost-for-react-native
     - DoubleConversion
     - glog
@@ -41,53 +26,56 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - React (0.52.3):
-    - React/Core (= 0.52.3)
+  - React (0.56.0):
+    - React/Core (= 0.56.0)
   - react-native-smooch (1.0.1):
     - React
     - Smooch (~> 6.0)
-  - React/Core (0.52.3):
-    - yoga (= 0.52.3.React)
-  - React/CxxBridge (0.52.3):
-    - Folly (= 2016.09.26.00)
+  - React/Core (0.56.0):
+    - yoga (= 0.56.0.React)
+  - React/CxxBridge (0.56.0):
+    - Folly (= 2016.10.31.00)
     - React/Core
     - React/cxxreact
-  - React/cxxreact (0.52.3):
-    - boost
-    - Folly (= 2016.09.26.00)
+  - React/cxxreact (0.56.0):
+    - boost-for-react-native (= 1.63.0)
+    - Folly (= 2016.10.31.00)
     - React/jschelpers
     - React/jsinspector
-  - React/DevSupport (0.52.3):
+  - React/DevSupport (0.56.0):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.52.3)
-  - React/jschelpers (0.52.3):
-    - Folly (= 2016.09.26.00)
+  - React/fishhook (0.56.0)
+  - React/jschelpers (0.56.0):
+    - Folly (= 2016.10.31.00)
     - React/PrivateDatabase
-  - React/jsinspector (0.52.3)
-  - React/PrivateDatabase (0.52.3)
-  - React/RCTAnimation (0.52.3):
+  - React/jsinspector (0.56.0)
+  - React/PrivateDatabase (0.56.0)
+  - React/RCTAnimation (0.56.0):
     - React/Core
-  - React/RCTBlob (0.52.3):
+  - React/RCTBlob (0.56.0):
     - React/Core
-  - React/RCTImage (0.52.3):
+  - React/RCTImage (0.56.0):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.52.3):
+  - React/RCTLinkingIOS (0.56.0):
     - React/Core
-  - React/RCTNetwork (0.52.3):
+  - React/RCTNetwork (0.56.0):
     - React/Core
-  - React/RCTText (0.52.3):
+  - React/RCTText (0.56.0):
     - React/Core
-  - React/RCTWebSocket (0.52.3):
+  - React/RCTWebSocket (0.56.0):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - Smooch (6.10.1)
-  - yoga (0.52.3.React)
+  - Smooch (6.10.2)
+  - yoga (0.56.0.React)
 
 DEPENDENCIES:
+  - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Firebase/Core (~> 4.13.0)
+  - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - react-native-smooch (from `../node_modules/react-native-smooch`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -103,20 +91,22 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - boost
     - boost-for-react-native
-    - DoubleConversion
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseInstanceID
-    - Folly
-    - glog
     - GoogleToolboxForMac
     - nanopb
     - Smooch
 
 EXTERNAL SOURCES:
+  DoubleConversion:
+    :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  Folly:
+    :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+  glog:
+    :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
   react-native-smooch:
@@ -125,22 +115,21 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  boost: 30a15ffb6d9aa4646dd3caffc960753f4cb4ca4e
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
+  DoubleConversion: a9706f16e388b53ff12cca34473428ee29746a26
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
   FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  Folly: 211775e49d8da0ca658aebc8eab89d642935755c
-  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
+  Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
+  glog: b3b0330915eccea41c5cc9731a77cf564a9be5ea
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  React: 43e97926f429d846050880666de1809e22dd5cc5
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-smooch: c83ec4fde278bce695e5eea7b247b6ebaf2c2263
-  Smooch: 29749ac80a69a1ecce7981383f37a385e167c4c3
-  yoga: 55da126afc384965b96bff46652464373b330add
+  Smooch: c174670caa8a3eb17f17af7640e8bf44ae9eff11
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 17555040770c96deebb1a951e598bb08288da075
+PODFILE CHECKSUM: 8a655bf2c909facb090245c0a91e4bcd8708079e
 
 COCOAPODS: 1.5.3
