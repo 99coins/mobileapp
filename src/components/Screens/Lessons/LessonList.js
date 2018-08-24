@@ -41,7 +41,7 @@ class LessonList extends Component {
         const lesson = lessonList.data.items.filter(item => {
             return item.id === lessonList.selectedItem;
         })[0];
-        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` : '';
+        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}`+`?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : '';
         //if (lesson !== undefined) {
             console.log('rendering video');
             return (

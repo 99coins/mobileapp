@@ -73,7 +73,7 @@ class NewsItemList extends Component {
     renderVideo = () => {
         console.log('RENDER VIDEO', );
         const { weeklyVideo, routes } = this.props;
-        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` : '';
+        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : '';
 
             return (
                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
