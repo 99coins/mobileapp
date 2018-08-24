@@ -41,21 +41,19 @@ class LessonList extends Component {
         const lesson = lessonList.data.items.filter(item => {
             return item.id === lessonList.selectedItem;
         })[0];
-        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}`+`?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : '';
-        //if (lesson !== undefined) {
-            console.log('rendering video');
+        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : null;
+        if (videoUrl !== null) {
+            console.log('rendering video', videoUrl);
             return (
-                <View style={{ height: windowWidth * 0.5625 }}>
+                <View style={{ backgroundColor: 'white', height: windowWidth * 0.5625 }}>
                     <WebView
                         ref={(ref) => { this.videoPlayer = ref; }}
-                        javaScriptEnabled
-                        domStorageEnabled
                         source={{ uri: videoUrl }}
-                        startInLoadingState
                     />
                 </View>
             );
-       // }
+        }
+        return null;
     }
     renderItem = ({ item }) => {
         const selected = this.props.lessonList.selectedItem === item.id;

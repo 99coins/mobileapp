@@ -58,10 +58,6 @@ class NewsItemList extends Component {
                 // iOS only:
             });
     }
-    onShouldStartLoadWithRequest() {
-        console.log('onShouldStartLoadWithRequest');
-        return true;
-    }
     keyExtractor = (item) => item.guid;
 
     fetchNews() {
@@ -73,19 +69,22 @@ class NewsItemList extends Component {
     renderVideo = () => {
         console.log('RENDER VIDEO', );
         const { weeklyVideo, routes } = this.props;
-        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : '';
+        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : null;
 
+        if (videoUrl !== null){
+            console.log('VIDEO', videoUrl);
             return (
                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
-                    <WebView
+                 <WebView
                         style={{ height: windowWidth * 0.5625, borderRadius: 8, overflow: 'hidden' }}
                         ref={(ref) => { this.videoPlayer = ref; }}
-                        javaScriptEnabled
-                        domStorageEnabled
                         source={{ uri: videoUrl }}
-                    />
+                /> 
                 </View>
             );
+        }
+        return null;
+
     }
     renderItem = ({ item }) => {
         return (
