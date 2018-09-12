@@ -6,10 +6,7 @@ import LoadingBar from './LoadingBar';
 import { connect } from 'react-redux';
 import Colors from '@assets/colors.js';
 import { Actions } from 'react-native-router-flux';
-
-//import fetchCoinList from './../../../Actions/FetchPriceData';
 import { fetchCoinList, getCachedCoinList, setSearchInput } from './../../../Actions/FetchCoinList';
-
 import firebase from 'react-native-firebase';
 
 
