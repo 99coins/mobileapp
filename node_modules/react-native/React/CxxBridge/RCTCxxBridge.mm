@@ -121,6 +121,8 @@ static void registerPerformanceLoggerHooks(RCTPerformanceLogger *performanceLogg
       case ReactMarker::JS_BUNDLE_STRING_CONVERT_STOP:
       case ReactMarker::NATIVE_MODULE_SETUP_START:
       case ReactMarker::NATIVE_MODULE_SETUP_STOP:
+      case ReactMarker::REGISTER_JS_SEGMENT_START:
+      case ReactMarker::REGISTER_JS_SEGMENT_STOP:
         // These are not used on iOS.
         break;
     }
@@ -186,6 +188,11 @@ struct RCTInstanceCallback : public InstanceCallback {
 - (JSGlobalContextRef)jsContextRef
 {
   return (JSGlobalContextRef)(_reactInstance ? _reactInstance->getJavaScriptContext() : nullptr);
+}
+
+- (std::shared_ptr<MessageQueueThread>)jsMessageThread
+{
+  return _jsMessageThread;
 }
 
 - (BOOL)isInspectable
@@ -539,8 +546,9 @@ struct RCTInstanceCallback : public InstanceCallback {
   RCT_PROFILE_BEGIN_EVENT(RCTProfileTagAlways,
                           @"-[RCTCxxBridge initModulesWithDispatchGroup:] autoexported moduleData", nil);
 
-  NSMutableArray<RCTModuleData *> *moduleDataByID = [NSMutableArray arrayWithCapacity:moduleClasses.count];
-  for (Class moduleClass in moduleClasses) {
+  NSArray *moduleClassesCopy = [moduleClasses copy];
+  NSMutableArray<RCTModuleData *> *moduleDataByID = [NSMutableArray arrayWithCapacity:moduleClassesCopy.count];
+  for (Class moduleClass in moduleClassesCopy) {
     NSString *moduleName = RCTBridgeModuleNameForClass(moduleClass);
 
     // Check for module name collisions
