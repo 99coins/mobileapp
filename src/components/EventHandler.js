@@ -5,6 +5,7 @@ import fetchNewsList from '../Actions/FetchNewsList';
 import { fetchCoinList } from '../Actions/FetchCoinList';
 import { getUnreadCount } from '../Actions/ChatActions';
 import { connect } from 'react-redux';
+import { onAppStateChange } from '../Actions/AppStateActions'
 
 const ReactNative = require('react-native');
 
@@ -43,6 +44,7 @@ class EventHandler extends Component {
       }
     }
     this.setState({ appState: nextAppState });
+    this.props.onAppStateChange();
   }
 
   render() { return null; }
@@ -54,4 +56,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchNewsList, fetchCoinList, getUnreadCount })(EventHandler);
+export default connect(mapStateToProps, { fetchNewsList, fetchCoinList, getUnreadCount, onAppStateChange })(EventHandler);

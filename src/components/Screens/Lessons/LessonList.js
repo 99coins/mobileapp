@@ -6,7 +6,6 @@ import Colors from '@assets/colors.js';
 import fetchLessonList, { selectLesson, playSelectedLesson } from './../../../Actions/LessonActions';
 import WebView from 'react-native-android-fullscreen-webview-video';
 
-
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
@@ -42,7 +41,7 @@ class LessonList extends Component {
             return item.id === lessonList.selectedItem;
         })[0];
         const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : null;
-        if (videoUrl !== null) {
+        if (videoUrl !== null && this.props.appState === 'active') {
             console.log('rendering video', videoUrl);
             return (
                 <View style={{ backgroundColor: 'white', height: windowWidth * 0.5625 }}>
@@ -105,6 +104,7 @@ function mapStateToProps(state) {
     return {
         lessonList: state.lessonList,
         routes: state.routes
+        appState: AppStateReducer
     };
 }
 export default connect(mapStateToProps, { fetchLessonList, selectLesson, playSelectedLesson })(LessonList);

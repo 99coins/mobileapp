@@ -3,6 +3,7 @@ import CoinListReducer from './CoinListReducer';
 import PriceDataReducer from './PriceDataReducer';
 import NewsListReducer from './NewsListReducer';
 import LessonListReducer from './LessonListReducer';
+import AppStateReducer from './AppStateReducer';
 
 import WeeklyVideoReducer from './WeeklyVideoReducer';
 
@@ -19,5 +20,6 @@ export default combineReducers({
     chatState: ChatReducer,
     coinState: CoinReducer,
     lessonList: LessonListReducer,
-    routes: Routes
+    routes: Routes,
+    appState: AppStateReducer
 });
