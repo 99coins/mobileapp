@@ -103,7 +103,7 @@ class LessonList extends Component {
 function mapStateToProps(state) {
     return {
         lessonList: state.lessonList,
-        routes: state.routes
+        routes: state.routes,
         appState: AppStateReducer
     };
 }

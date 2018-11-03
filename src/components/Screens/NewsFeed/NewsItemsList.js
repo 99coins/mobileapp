@@ -134,7 +134,7 @@ function mapStateToProps(state) {
     return {
         newsList: state.newsList,
         weeklyVideo: state.weeklyVideo,
-        routes: state.routes
+        routes: state.routes,
         appState: AppStateReducer
     };
 }
