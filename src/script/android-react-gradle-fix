@@ -1,8 +1,8 @@
 doLast {
     def moveFunc = { resSuffix ->
-        File originalDir = file("$buildDir/generated/res/react/release/drawable-${resSuffix}");
+        File originalDir = file("${buildDir}/generated/res/react/release/drawable-${resSuffix}");
         if (originalDir.exists()) {
-            File destDir = file("$buildDir/../src/main/res/drawable-${resSuffix}");
+            File destDir = file("${buildDir}/../src/main/res/drawable-${resSuffix}");
             ant.move(file: originalDir, tofile: destDir);
         }
     }
