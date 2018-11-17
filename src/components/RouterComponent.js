@@ -36,6 +36,8 @@ class RouterComponent extends Component {
     firebase.analytics().setAnalyticsCollectionEnabled(true);
     const fontName = 'Montserrat-Regular';
     GlobalFont.applyGlobal(fontName);
+    console.disableYellowBox = true;
+
   }
   onBackPress = () => {
     if (Actions.currentScene === 'article') {
