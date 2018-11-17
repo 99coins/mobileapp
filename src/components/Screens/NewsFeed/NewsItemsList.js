@@ -66,11 +66,11 @@ class NewsItemList extends Component {
     }
 
     renderVideo = () => {
-        console.log('RENDER VIDEO', );
-        const { weeklyVideo, routes } = this.props;
-        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : null;
+        const { weeklyVideo, appState } = this.props;
+        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}?modestbranding=1&playsinline=1&showinfo=0&rel=0` : null;
+        console.log('RENDER VIDEO', videoUrl, appState.appState);
 
-        if (videoUrl !== null && this.props.appState === 'active'){
+        if (videoUrl !== null && appState.appState === 'active') {
             console.log('VIDEO', videoUrl);
             return (
                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
@@ -135,7 +135,7 @@ function mapStateToProps(state) {
         newsList: state.newsList,
         weeklyVideo: state.weeklyVideo,
         routes: state.routes,
-        appState: AppStateReducer
+        appState: state.appState
     };
 }
 export default connect(mapStateToProps, { fetchNewsList, fetchWeeklyUpdateVideo })(NewsItemList);

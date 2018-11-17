@@ -29,7 +29,7 @@ class LessonList extends Component {
 
     renderVideo = () => {
 
-        const { lessonList, routes } = this.props;
+        const { lessonList, routes, appState } = this.props;
 
         console.log('renderVideo', routes);
 
@@ -40,8 +40,8 @@ class LessonList extends Component {
         const lesson = lessonList.data.items.filter(item => {
             return item.id === lessonList.selectedItem;
         })[0];
-        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : null;
-        if (videoUrl !== null && this.props.appState === 'active') {
+        const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}?modestbranding=1&playsinline=1&showinfo=0&rel=0` : null;
+        if (videoUrl !== null && appState.appState === 'active') {
             console.log('rendering video', videoUrl);
             return (
                 <View style={{ backgroundColor: 'white', height: windowWidth * 0.5625 }}>
@@ -104,7 +104,7 @@ function mapStateToProps(state) {
     return {
         lessonList: state.lessonList,
         routes: state.routes,
-        appState: AppStateReducer
+        appState: state.appState
     };
 }
 export default connect(mapStateToProps, { fetchLessonList, selectLesson, playSelectedLesson })(LessonList);
