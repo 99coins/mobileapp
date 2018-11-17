@@ -5,7 +5,8 @@ import fetchNewsList from '../Actions/FetchNewsList';
 import { fetchCoinList } from '../Actions/FetchCoinList';
 import { getUnreadCount } from '../Actions/ChatActions';
 import { connect } from 'react-redux';
-import { onAppStateChange } from '../Actions/AppStateActions'
+import { onAppStateChange } from '../Actions/AppStateActions';
+import { fetchLessonList } from '../Actions/LessonActions';
 
 const ReactNative = require('react-native');
 
@@ -37,13 +38,16 @@ class EventHandler extends Component {
       console.log('App has come to the foreground!');
       console.log('Currentscene:', Actions.currentScene);
       this.props.getUnreadCount();
-      this.props.fetchCoinList();
-      this.props.fetchNewsList();
-      // if (Actions.currentScene === 'Coins') {
-      //   this.props.fetchCoinList();
-      // } else if (Actions.currentScene === 'News') {
-      //   this.props.fetchNewsList();
-      // }
+
+      if (Actions.currentScene === 'Coins') {
+        this.props.fetchCoinList();
+      } else if (Actions.currentScene === 'News') {
+        this.props.fetchNewsList();
+      } else if (Actions.currentScene === 'Courses') {
+        this.props.fetchLessonList();
+      }
+
+
     }
     this.setState({ appState: nextAppState });
     this.props.onAppStateChange();
@@ -58,4 +62,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchNewsList, fetchCoinList, getUnreadCount, onAppStateChange })(EventHandler);
+export default connect(mapStateToProps, 
+  { 
+    fetchNewsList, 
+    fetchCoinList, 
+    getUnreadCount, 
+    onAppStateChange,
+    fetchLessonList 
+  })(EventHandler);

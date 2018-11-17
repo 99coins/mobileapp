@@ -29,9 +29,7 @@ class LessonList extends Component {
 
     renderVideo = () => {
 
-        const { lessonList, routes, appState } = this.props;
-
-        console.log('renderVideo', routes);
+        const { lessonList, appState } = this.props;
 
         if (lessonList.data.items === undefined) {
             return;
@@ -42,7 +40,6 @@ class LessonList extends Component {
         })[0];
         const videoUrl = lesson ? `https://www.youtube.com/embed/${lesson.contentDetails.videoId}?modestbranding=1&playsinline=1&showinfo=0&rel=0` : null;
         if (videoUrl !== null && appState.appState === 'active') {
-            console.log('rendering video', videoUrl);
             return (
                 <View style={{ backgroundColor: 'white', height: windowWidth * 0.5625 }}>
                     <WebView

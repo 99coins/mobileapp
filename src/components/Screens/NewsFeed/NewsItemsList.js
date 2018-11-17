@@ -15,12 +15,15 @@ const ITEM_HEIGHT = 128;
 
 class NewsItemList extends Component {
     state = { disableTouch: false, showVideoTitle: true };
+   
+
     componentWillMount() {
         console.log('componentWillMount news');
+        this.renderedOnce = false;
         this.fetchNews();
     }
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
+        console.log('componentWillReceiveProps', nextProps);
         if (this.props.routes.scene !== nextProps.routes.scene && nextProps.routes.scene === 'News') {
             this.fetchNews();
         }
@@ -30,7 +33,7 @@ class NewsItemList extends Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        const shouldUpdate = (this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.videoId !== nextProps.weeklyVideo.videoId) || (this.props.routes.scene !== nextProps.routes.scene);
+        const shouldUpdate = (nextProps.routes.scene === 'News' || this.renderedOnce === false) && ((this.props.newsList.data !== nextProps.newsList.data) || (this.props.weeklyVideo.videoId !== nextProps.weeklyVideo.videoId) || (this.props.routes.scene !== nextProps.routes.scene));
         console.log('ShoulUpdateNewsList', shouldUpdate);
         return shouldUpdate;
     }
@@ -68,10 +71,7 @@ class NewsItemList extends Component {
     renderVideo = () => {
         const { weeklyVideo, appState } = this.props;
         const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}?modestbranding=1&playsinline=1&showinfo=0&rel=0` : null;
-        console.log('RENDER VIDEO', videoUrl, appState.appState);
-
         if (videoUrl !== null && appState.appState === 'active') {
-            console.log('VIDEO', videoUrl);
             return (
                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
                  <WebView
@@ -86,6 +86,7 @@ class NewsItemList extends Component {
 
     }
     renderItem = ({ item }) => {
+        this.renderedOnce = true;
         return (
             <NewsItemRow
                 id={item.id}
@@ -108,7 +109,6 @@ class NewsItemList extends Component {
     };
     render() {
         console.log('RENDERING NEWS LIST');
-        console.log(windowWidth);
         const { newsList } = this.props;
         return (
             <FlatList

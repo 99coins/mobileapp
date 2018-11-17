@@ -8,7 +8,7 @@ import { View, StatusBar, StyleSheet } from 'react-native';
 const App = () => (
     <Provider store={Store}>
         <View style={styles.application}>
-            <StatusBar />
+            <StatusBar barStyle='dark-content' />
             <RouterComponent />
         </View>
     </Provider>
