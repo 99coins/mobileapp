@@ -10,7 +10,6 @@ import Colors from '@assets/colors.js';
 import { capitalizeFirstLetter } from '../../common';
 import WebView from 'react-native-android-fullscreen-webview-video';
 
-
 const windowWidth = Dimensions.get('window').width;
 const ITEM_HEIGHT = 128;
 
@@ -67,11 +66,11 @@ class NewsItemList extends Component {
     }
 
     renderVideo = () => {
-        console.log('RENDER VIDEO', );
-        const { weeklyVideo, routes } = this.props;
-        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}` + `?modestbranding=1&playsinline=1&showinfo=0&rel=0"` : null;
+        const { weeklyVideo, appState } = this.props;
+        const videoUrl = weeklyVideo ? `https://www.youtube.com/embed/${weeklyVideo.videoId}?modestbranding=1&playsinline=1&showinfo=0&rel=0` : null;
+        console.log('RENDER VIDEO', videoUrl, appState.appState);
 
-        if (videoUrl !== null){
+        if (videoUrl !== null && appState.appState === 'active') {
             console.log('VIDEO', videoUrl);
             return (
                 <View style={{ backgroundColor: Colors.gray900, padding: 16 }} >
@@ -135,7 +134,8 @@ function mapStateToProps(state) {
     return {
         newsList: state.newsList,
         weeklyVideo: state.weeklyVideo,
-        routes: state.routes
+        routes: state.routes,
+        appState: state.appState
     };
 }
 export default connect(mapStateToProps, { fetchNewsList, fetchWeeklyUpdateVideo })(NewsItemList);

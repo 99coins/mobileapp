@@ -91,7 +91,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
 
     def versionPropertiesFile = file('version.properties')
@@ -107,7 +107,7 @@ android {
         defaultConfig {
             applicationId "com.nncoins"
             minSdkVersion 16
-            targetSdkVersion 23
+            targetSdkVersion 26
             versionCode "${versionMajor}${sprintf('%02d', versionMinor)}${sprintf('%02d', versionBuild)}".
                     toInteger()
             versionName "${versionMajor}.${versionMinor}.${sprintf('%02d', versionBuild)}"
@@ -148,8 +148,8 @@ android {
 }
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 }
 
@@ -158,6 +158,7 @@ allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
         google()
+        jcenter()
     }
 }
 
