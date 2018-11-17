@@ -33,7 +33,7 @@ class EventHandler extends Component {
   }
 
   handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
+    if (this.state.appState.match(/inactive|background|null/) && nextAppState === 'active') {
       console.log('App has come to the foreground!');
       console.log('Currentscene:', Actions.currentScene);
       this.props.getUnreadCount();
