@@ -1,6 +1,6 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - DoubleConversion (1.1.5)
+  - DoubleConversion (1.1.6)
   - Firebase/Core (4.13.0):
     - FirebaseAnalytics (= 4.2.0)
     - FirebaseCore (= 4.0.20)
@@ -17,59 +17,59 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
-  - glog (0.3.4)
+  - glog (0.3.5)
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - React (0.56.0):
-    - React/Core (= 0.56.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - React (0.57.0):
+    - React/Core (= 0.57.0)
   - react-native-smooch (1.0.1):
     - React
     - Smooch (~> 6.0)
-  - React/Core (0.56.0):
-    - yoga (= 0.56.0.React)
-  - React/CxxBridge (0.56.0):
+  - React/Core (0.57.0):
+    - yoga (= 0.57.0.React)
+  - React/CxxBridge (0.57.0):
     - Folly (= 2016.10.31.00)
     - React/Core
     - React/cxxreact
-  - React/cxxreact (0.56.0):
+  - React/cxxreact (0.57.0):
     - boost-for-react-native (= 1.63.0)
     - Folly (= 2016.10.31.00)
     - React/jschelpers
     - React/jsinspector
-  - React/DevSupport (0.56.0):
+  - React/DevSupport (0.57.0):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.56.0)
-  - React/jschelpers (0.56.0):
+  - React/fishhook (0.57.0)
+  - React/jschelpers (0.57.0):
     - Folly (= 2016.10.31.00)
     - React/PrivateDatabase
-  - React/jsinspector (0.56.0)
-  - React/PrivateDatabase (0.56.0)
-  - React/RCTAnimation (0.56.0):
+  - React/jsinspector (0.57.0)
+  - React/PrivateDatabase (0.57.0)
+  - React/RCTAnimation (0.57.0):
     - React/Core
-  - React/RCTBlob (0.56.0):
+  - React/RCTBlob (0.57.0):
     - React/Core
-  - React/RCTImage (0.56.0):
+  - React/RCTImage (0.57.0):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.56.0):
+  - React/RCTLinkingIOS (0.57.0):
     - React/Core
-  - React/RCTNetwork (0.56.0):
+  - React/RCTNetwork (0.57.0):
     - React/Core
-  - React/RCTText (0.56.0):
+  - React/RCTText (0.57.0):
     - React/Core
-  - React/RCTWebSocket (0.56.0):
+  - React/RCTWebSocket (0.57.0):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - Smooch (6.10.2)
-  - yoga (0.56.0.React)
+  - Smooch (6.11.2)
+  - yoga (0.57.0.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -116,18 +116,18 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  DoubleConversion: a9706f16e388b53ff12cca34473428ee29746a26
+  DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
   FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
-  glog: b3b0330915eccea41c5cc9731a77cf564a9be5ea
+  glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-smooch: c83ec4fde278bce695e5eea7b247b6ebaf2c2263
-  Smooch: c174670caa8a3eb17f17af7640e8bf44ae9eff11
+  Smooch: 0fe1bea4b661e7f189b107736bb12691767a707f
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
 PODFILE CHECKSUM: 8a655bf2c909facb090245c0a91e4bcd8708079e
