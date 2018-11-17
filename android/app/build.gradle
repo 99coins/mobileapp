@@ -163,6 +163,12 @@ allprojects {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
+    compile project(':react-native-smooch')
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
+    compile project(':react-native-android-fullscreen-webview-video')
     implementation(project(':react-native-firebase')) {
         transitive = false
     }

@@ -6,6 +6,7 @@ import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.smooch.rnsmooch.ReactNativeSmoochPackage;
 import io.invertase.firebase.RNFirebasePackage;
+import com.airship.customwebview.CustomWebViewPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -14,7 +15,6 @@ import io.smooch.core.Smooch;
 import io.smooch.core.SmoochCallback;
 import io.smooch.core.Settings;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
-import com.airship.customwebview.CustomWebViewPackage;
 
 
 
@@ -37,8 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new ReactNativeSmoochPackage(),
             new RNFirebasePackage(),
-              new RNFirebaseAnalyticsPackage(),
-             new CustomWebViewPackage()
+            new CustomWebViewPackage(),
+              new RNFirebaseAnalyticsPackage()
       );
     }
   };
