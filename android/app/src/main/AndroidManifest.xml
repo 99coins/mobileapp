@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nncoins"
     android:versionCode="1"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
     android:versionName="1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,9 +10,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
 
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="22" />
+    <uses-sdk android:targetSdkVersion="22" />
 
     <application
       android:name=".MainApplication"

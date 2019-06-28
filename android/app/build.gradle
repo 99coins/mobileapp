@@ -91,8 +91,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 28
 
     def versionPropertiesFile = file('version.properties')
     if (versionPropertiesFile.canRead()) {
@@ -132,6 +131,9 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    defaultConfig {
+        minSdkVersion 16
+    }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -163,12 +165,6 @@ allprojects {
 }
 
 dependencies {
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-smooch')
-    compile(project(':react-native-firebase')) {
-        transitive = false
-    }
-    compile project(':react-native-android-fullscreen-webview-video')
     implementation(project(':react-native-firebase')) {
         transitive = false
     }
