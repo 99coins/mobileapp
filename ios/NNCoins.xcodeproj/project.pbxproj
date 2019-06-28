@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -55,7 +56,6 @@
 		15A8C90B208A13DD00162FA8 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		15A8C90C208A142600162FA8 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		15A8C90D208A144800162FA8 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
-		15B1D52E208B464500AA4C8A /* libRCTSmooch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15295EFF2013AA5000777051 /* libRCTSmooch.a */; };
 		24DB2ACA69474AE3931C6ACA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0119AD11B3843C69410F572 /* Foundation.ttf */; };
 		66EFEC6CBD65833735C8BA63 /* libPods-NNCoins.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FEB887DF1E662104F5B975 /* libPods-NNCoins.a */; };
 		88C304C3F6014D9883442F4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 426D691BF20E4136B52C7E3F /* libsqlite3.0.tbd */; };
@@ -445,7 +445,6 @@
 			files = (
 				152A3D7022C60EF0009C3C02 /* libdouble-conversion.a in Frameworks */,
 				152A3D6F22C60DB8009C3C02 /* libRCTAnimation.a in Frameworks */,
-				15B1D52E208B464500AA4C8A /* libRCTSmooch.a in Frameworks */,
 				15A8C90D208A144800162FA8 /* libRCTNetwork.a in Frameworks */,
 				15A8C90C208A142600162FA8 /* libRCTText.a in Frameworks */,
 				15A8C90B208A13DD00162FA8 /* libRCTImage.a in Frameworks */,
@@ -1240,7 +1239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		20F1EF549D09BC18F6C20B8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1342,7 +1341,6 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
-					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
@@ -1395,7 +1393,6 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
-					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
@@ -1484,7 +1481,6 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-intercom/iOS",
-					"$(SRCROOT)/../node_modules/react-native-smooch/ios/RCTSmooch",
 					"$(SRCROOT)/../node_modules/react-native-notifications/RNNotifications",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",

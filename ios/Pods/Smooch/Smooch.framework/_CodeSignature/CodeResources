@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/SKTAuthenticationDelegate.h</key>
+		<data>
+		9D2nKK8lX6QkVhe8iIZhD3xAgcc=
+		</data>
 		<key>Headers/SKTConversation.h</key>
 		<data>
-		7CYEFN3NKh9utvVEcKIOlqGVnNU=
+		+FjJDtLpnwoJQroBpKFG/85gI0M=
 		</data>
 		<key>Headers/SKTConversationActivity.h</key>
 		<data>
@@ -34,7 +38,7 @@
 		</data>
 		<key>Headers/SKTSettings.h</key>
 		<data>
-		1a4C9FkYaYy/bLE7zKA48hWu6lQ=
+		k459fQxfRDEygwz2YDF9EMu0ADY=
 		</data>
 		<key>Headers/SKTUser.h</key>
 		<data>
@@ -42,11 +46,11 @@
 		</data>
 		<key>Headers/Smooch.h</key>
 		<data>
-		iYKPaPpkIHw5IlBV9R/GRtRnAmU=
+		PqRexKG1Evk6YvLG/YlXQ7pp6XE=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZgrSzono9/Ug5W2It3Id2i+gEW4=
+		eJH1u6AjikRsl8uzJZBj1QVK2KQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -410,15 +414,26 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/SKTAuthenticationDelegate.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9D2nKK8lX6QkVhe8iIZhD3xAgcc=
+			</data>
+			<key>hash2</key>
+			<data>
+			qpEBCIWZn4VW5YA8QXiRAAxDGOh7mMWcI335I7LpKtc=
+			</data>
+		</dict>
 		<key>Headers/SKTConversation.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7CYEFN3NKh9utvVEcKIOlqGVnNU=
+			+FjJDtLpnwoJQroBpKFG/85gI0M=
 			</data>
 			<key>hash2</key>
 			<data>
-			2QZhyVTCVI6tBbByjmH+rp8mEibPYTfrqqPxIMB7KNI=
+			jP72YVlo+w6b0LP+aOEpfCKyHimdZPp0lswT+HcaLLo=
 			</data>
 		</dict>
 		<key>Headers/SKTConversationActivity.h</key>
@@ -491,11 +506,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1a4C9FkYaYy/bLE7zKA48hWu6lQ=
+			k459fQxfRDEygwz2YDF9EMu0ADY=
 			</data>
 			<key>hash2</key>
 			<data>
-			HDr/RxDR/lcAHaJGedfO+fL3Sl1krzRexHyfETRBmdw=
+			FVAFIuiX3jrqP6QWy9cqPIU/+f64zQFsQ3kp/a/DvWs=
 			</data>
 		</dict>
 		<key>Headers/SKTUser.h</key>
@@ -513,11 +528,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iYKPaPpkIHw5IlBV9R/GRtRnAmU=
+			PqRexKG1Evk6YvLG/YlXQ7pp6XE=
 			</data>
 			<key>hash2</key>
 			<data>
-			9sflrWcMCLAjVqiE+B62yyWw5nUS3SkItHYOvkp/JgU=
+			U2J1kz7TQXz2u/B3eSWlylKZ6ZPPkeBsMN+hkj/dUQc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1287,7 +1302,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -1318,24 +1333,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -1371,13 +1374,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

@@ -24,7 +24,7 @@ target 'NNCoins' do
 
   pod 'react-native-smooch', :path => '../node_modules/react-native-smooch'
     
-  pod 'Firebase/Core', '~> 4.13.0'
+  pod 'Firebase/Core', '~> 6.2.0'
 
   # Third party deps podspec link
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'

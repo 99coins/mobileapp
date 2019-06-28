@@ -451,7 +451,7 @@
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="43">
-              <caret line="133" column="19" lean-forward="true" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+              <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -461,7 +461,7 @@
           <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="50" lean-forward="true" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+              <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -761,7 +761,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Resources Explorer" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25035766" />
@@ -921,7 +920,7 @@
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
-          <caret line="133" column="19" lean-forward="true" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+          <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -929,7 +928,7 @@
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="50" lean-forward="true" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
         </state>
       </provider>
     </entry>

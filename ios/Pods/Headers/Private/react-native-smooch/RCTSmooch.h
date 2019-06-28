@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-smooch/ios/RCTSmooch/RCTSmooch.h
