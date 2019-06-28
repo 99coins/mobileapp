@@ -1322,7 +1322,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matan Guttman (BHQ67ZSME6)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 157;
+				CURRENT_PROJECT_VERSION = 159;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1375,7 +1375,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 157;
+				CURRENT_PROJECT_VERSION = 159;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1463,7 +1463,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 157;
+				CURRENT_PROJECT_VERSION = 159;
 				DEVELOPMENT_TEAM = DG95G74F4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

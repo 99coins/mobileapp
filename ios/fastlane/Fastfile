@@ -45,8 +45,17 @@ platform :ios do
   
     increment_build_number
 
-    gym(workspace: “NNCoins.xcworkspace”,
-    scheme: “NNCoins”, configuration: "Release”, export_method:”app-store”)
+    gym(
+      workspace: “NNCoins.xcworkspace”,
+      scheme: “NNCoins”, 
+      configuration: "Release”, 
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: { 
+          "com.99coins.ios" => "99coins-prod",
+        }
+      }
+    )
     deliver(force: true, skip_metadata: true)
 end
 
