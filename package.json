@@ -14,7 +14,7 @@
     "eslint": "^6.0.1",
     "fast-xml-parser": "^2.6.0",
     "lodash": "^4.17.5",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "numeral": "^2.0.6",
     "react": "^16.8.3",
     "react-native": "^0.59.9",
